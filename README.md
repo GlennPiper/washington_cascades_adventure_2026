@@ -115,7 +115,28 @@ python -m http.server 8899
 ```
 
 A plain `file://` open mostly works, but service workers and the PWA install
-prompt need to be served over HTTP.
+prompt need to be served over HTTP. **Geolocation on iPad also needs HTTPS or
+localhost** — `file://` will never show the blue "you are here" dot.
+
+### iPad GPS + fullscreen tests (free)
+
+The last version of this app failed two iPad Safari cases: `watchPosition`
+started on a timer (no tap, so the permission prompt never appeared) and the
+Fullscreen API, which exists on iPad but is a no-op for anything but `<video>`.
+Apple's Simulator is Mac-only and cloud device farms are paid. The free stand-in
+is Playwright Chromium with an iPad viewport plus scripts that reproduce those
+two Safari quirks:
+
+```bash
+pip install playwright
+python -m playwright install chromium
+python scripts/test_ipad_maps.py
+```
+
+That is not a real iPad. It catches the logic bugs (silent GPS errors, fullscreen
+fallback never applying, nav covering the map). Final check is still a physical
+iPad over HTTPS: tap **My location**, allow Safari, confirm the blue dot, then
+toggle **Fullscreen** twice and with the hardware Escape equivalent.
 
 ### Pipeline shape
 

@@ -146,39 +146,45 @@ td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .summary-stat .lab{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
 .map{height:400px;background:#0d1117;border:1px solid var(--border);border-radius:6px;margin:12px 0}
 .map-wrap{position:relative;margin:12px 0}
-/* Inner stage: map + fullscreen button. OSRM note lives below the stage (not inside)
-   so the button's position:absolute bottom:* stays over the map, not the disclaimer. */
+/* Inner stage: map + chrome buttons. OSRM note lives below the stage (not inside)
+   so the chrome's position:absolute bottom:* stays over the map, not the disclaimer. */
 .map-stage{position:relative}
 .map-wrap .map{margin:0}
 /* Bottom-right corner, lifted ~24px to clear Leaflet's attribution strip
    (which lives at bottom:0). Top-right is reserved for the layers control
    and top-left for the zoom buttons, so this is the only free corner. */
-.map-fs-btn{position:absolute;bottom:24px;right:10px;z-index:1000;display:inline-flex;align-items:center;gap:6px;
-  background:rgba(13,17,23,0.85);color:var(--fg);border:1px solid var(--border);border-radius:6px;
-  padding:6px 10px;font:600 12px/1 system-ui,sans-serif;cursor:pointer;
+.map-chrome{position:absolute;bottom:24px;right:10px;z-index:1100;display:flex;gap:6px;align-items:center;
+  pointer-events:none}
+.map-chrome button{pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;min-width:44px;
+  background:rgba(13,17,23,0.88);color:var(--text);border:1px solid var(--border);border-radius:6px;
+  padding:8px 12px;font:600 13px/1 system-ui,sans-serif;cursor:pointer;
   box-shadow:0 2px 6px rgba(0,0,0,0.4)}
-.map-fs-btn:hover{background:rgba(31,111,235,0.85);border-color:#1f6feb;color:#fff}
-.map-fs-btn .fs-icon{font-size:14px;line-height:1}
+.map-chrome button:hover,.map-chrome button:focus-visible{background:rgba(31,111,235,0.85);border-color:#1f6feb;color:#fff}
+.map-loc-btn.has-fix{border-color:#2f80ff;color:#79b8ff}
+.map-loc-btn.is-locating{opacity:0.75}
+.map-loc-btn .loc-icon,.map-fs-btn .fs-icon{font-size:16px;line-height:1}
 .map-fs-btn .fs-icon-exit{display:none}
-.map-wrap.is-fullscreen .map-fs-btn .fs-icon-enter{display:none}
-.map-wrap.is-fullscreen .map-fs-btn .fs-icon-exit{display:inline}
-.map-wrap.is-fullscreen .map-fs-btn .fs-label::before{content:"Exit "}
+.map-wrap.is-fullscreen .map-fs-btn .fs-icon-enter,.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-icon-enter{display:none}
+.map-wrap.is-fullscreen .map-fs-btn .fs-icon-exit,.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-icon-exit{display:inline}
+.map-wrap.is-fullscreen .map-fs-btn .fs-label::before,.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-label::before{content:"Exit "}
 /* Native :fullscreen pseudo-class makes the wrapper and inner map fill the viewport.
    Flex layout: percentage heights on .map need a definite parent chain; map-stage flex:1
-   gives Leaflet a real box (fixes black fullscreen on file:// and many browsers). */
-.map-wrap:fullscreen,.map-wrap:-webkit-full-screen{width:100vw;height:100vh;background:#0d1117;padding:0;border-radius:0;
+   gives Leaflet a real box (fixes black fullscreen on file:// and many browsers).
+   100dvh (with 100% fallback) avoids iOS 100vh including the area behind the Safari chrome. */
+.map-wrap:fullscreen,.map-wrap:-webkit-full-screen{width:100%;height:100%;height:100dvh;background:#0d1117;padding:0;border-radius:0;
   display:flex;flex-direction:column}
 .map-wrap:fullscreen .map-stage,.map-wrap:-webkit-full-screen .map-stage{flex:1;min-height:0;position:relative;display:flex;flex-direction:column}
 .map-wrap:fullscreen .map,.map-wrap:-webkit-full-screen .map{flex:1;min-height:0;width:100%;height:auto!important;border-radius:0;border:0;margin:0}
-.map-wrap:fullscreen .map-fs-btn,.map-wrap:-webkit-full-screen .map-fs-btn{bottom:28px;right:14px}
-/* Fallback "max" mode when the browser denies native fullscreen. */
-.map-wrap.is-fullscreen-fallback{position:fixed;inset:0;z-index:10000;width:100vw;height:100vh;margin:0;background:#0d1117;border-radius:0;
-  display:flex;flex-direction:column}
+.map-wrap:fullscreen .map-chrome,.map-wrap:-webkit-full-screen .map-chrome{bottom:28px;right:14px}
+/* Fallback "max" mode when the browser denies native fullscreen.
+   z-index must beat .trip-chrome (10050) or the nav sits on top of the map on iPad. */
+.map-wrap.is-fullscreen-fallback{position:fixed;inset:0;z-index:20000;width:100%;height:100%;height:100dvh;margin:0;background:#0d1117;border-radius:0;
+  display:flex;flex-direction:column;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
 .map-wrap.is-fullscreen-fallback .map-stage{flex:1;min-height:0;position:relative;display:flex;flex-direction:column}
 .map-wrap.is-fullscreen-fallback .map{flex:1;min-height:0;width:100%;height:auto!important;border-radius:0;border:0;margin:0}
-.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-icon-enter{display:none}
-.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-icon-exit{display:inline}
-.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-label::before{content:"Exit "}
+html.map-fs-open,body.map-fs-open{overflow:hidden;overscroll-behavior:none}
 .map-offline-notice{padding:40px;color:var(--muted);text-align:center;font-style:italic}
 .link-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px}
 .link-grid a{display:block;background:#0d1117;border:1px solid var(--border);border-radius:4px;

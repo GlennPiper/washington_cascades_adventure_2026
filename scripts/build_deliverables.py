@@ -607,6 +607,30 @@ def esc(s):
     return html.escape(str(s))
 
 
+def _map_chrome_html(wrap_id: str) -> str:
+    """Locate + fullscreen buttons that sit over a Leaflet map.
+
+    iPad Safari will not show a geolocation permission prompt unless the
+    request is tied to a tap, and its Fullscreen API is a no-op for non-video
+    elements. Both buttons are therefore real <button>s (user gesture) with
+    44px touch targets.
+    """
+    wid = esc(wrap_id)
+    return (
+        f'<div class="map-chrome">'
+        f'<button type="button" class="map-loc-btn" data-target="{wid}" '
+        f'title="Show my GPS location on this map" aria-label="Show my location">'
+        f'<span class="loc-icon" aria-hidden="true">&#x25CE;</span>'
+        f'<span class="loc-label">My location</span></button>'
+        f'<button type="button" class="map-fs-btn" data-target="{wid}" '
+        f'title="Toggle fullscreen map (Esc to exit)" aria-label="Toggle fullscreen">'
+        f'<span class="fs-icon fs-icon-enter" aria-hidden="true">&#x26F6;</span>'
+        f'<span class="fs-icon fs-icon-exit" aria-hidden="true">&times;</span>'
+        f'<span class="fs-label">Fullscreen</span></button>'
+        f'</div>'
+    )
+
+
 def merge_weather_days(weather_key: str, trip_days: list) -> list:
     variants = WEATHER_FORECAST.get('variants') or {}
     template_rows = variants.get(weather_key)
@@ -1196,39 +1220,45 @@ td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .summary-stat .lab{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
 .map{height:400px;background:#0d1117;border:1px solid var(--border);border-radius:6px;margin:12px 0}
 .map-wrap{position:relative;margin:12px 0}
-/* Inner stage: map + fullscreen button. OSRM note lives below the stage (not inside)
-   so the button's position:absolute bottom:* stays over the map, not the disclaimer. */
+/* Inner stage: map + chrome buttons. OSRM note lives below the stage (not inside)
+   so the chrome's position:absolute bottom:* stays over the map, not the disclaimer. */
 .map-stage{position:relative}
 .map-wrap .map{margin:0}
 /* Bottom-right corner, lifted ~24px to clear Leaflet's attribution strip
    (which lives at bottom:0). Top-right is reserved for the layers control
    and top-left for the zoom buttons, so this is the only free corner. */
-.map-fs-btn{position:absolute;bottom:24px;right:10px;z-index:1000;display:inline-flex;align-items:center;gap:6px;
-  background:rgba(13,17,23,0.85);color:var(--fg);border:1px solid var(--border);border-radius:6px;
-  padding:6px 10px;font:600 12px/1 system-ui,sans-serif;cursor:pointer;
+.map-chrome{position:absolute;bottom:24px;right:10px;z-index:1100;display:flex;gap:6px;align-items:center;
+  pointer-events:none}
+.map-chrome button{pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;min-width:44px;
+  background:rgba(13,17,23,0.88);color:var(--text);border:1px solid var(--border);border-radius:6px;
+  padding:8px 12px;font:600 13px/1 system-ui,sans-serif;cursor:pointer;
   box-shadow:0 2px 6px rgba(0,0,0,0.4)}
-.map-fs-btn:hover{background:rgba(31,111,235,0.85);border-color:#1f6feb;color:#fff}
-.map-fs-btn .fs-icon{font-size:14px;line-height:1}
+.map-chrome button:hover,.map-chrome button:focus-visible{background:rgba(31,111,235,0.85);border-color:#1f6feb;color:#fff}
+.map-loc-btn.has-fix{border-color:#2f80ff;color:#79b8ff}
+.map-loc-btn.is-locating{opacity:0.75}
+.map-loc-btn .loc-icon,.map-fs-btn .fs-icon{font-size:16px;line-height:1}
 .map-fs-btn .fs-icon-exit{display:none}
-.map-wrap.is-fullscreen .map-fs-btn .fs-icon-enter{display:none}
-.map-wrap.is-fullscreen .map-fs-btn .fs-icon-exit{display:inline}
-.map-wrap.is-fullscreen .map-fs-btn .fs-label::before{content:"Exit "}
+.map-wrap.is-fullscreen .map-fs-btn .fs-icon-enter,.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-icon-enter{display:none}
+.map-wrap.is-fullscreen .map-fs-btn .fs-icon-exit,.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-icon-exit{display:inline}
+.map-wrap.is-fullscreen .map-fs-btn .fs-label::before,.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-label::before{content:"Exit "}
 /* Native :fullscreen pseudo-class makes the wrapper and inner map fill the viewport.
    Flex layout: percentage heights on .map need a definite parent chain; map-stage flex:1
-   gives Leaflet a real box (fixes black fullscreen on file:// and many browsers). */
-.map-wrap:fullscreen,.map-wrap:-webkit-full-screen{width:100vw;height:100vh;background:#0d1117;padding:0;border-radius:0;
+   gives Leaflet a real box (fixes black fullscreen on file:// and many browsers).
+   100dvh (with 100% fallback) avoids iOS 100vh including the area behind the Safari chrome. */
+.map-wrap:fullscreen,.map-wrap:-webkit-full-screen{width:100%;height:100%;height:100dvh;background:#0d1117;padding:0;border-radius:0;
   display:flex;flex-direction:column}
 .map-wrap:fullscreen .map-stage,.map-wrap:-webkit-full-screen .map-stage{flex:1;min-height:0;position:relative;display:flex;flex-direction:column}
 .map-wrap:fullscreen .map,.map-wrap:-webkit-full-screen .map{flex:1;min-height:0;width:100%;height:auto!important;border-radius:0;border:0;margin:0}
-.map-wrap:fullscreen .map-fs-btn,.map-wrap:-webkit-full-screen .map-fs-btn{bottom:28px;right:14px}
-/* Fallback "max" mode when the browser denies native fullscreen. */
-.map-wrap.is-fullscreen-fallback{position:fixed;inset:0;z-index:10000;width:100vw;height:100vh;margin:0;background:#0d1117;border-radius:0;
-  display:flex;flex-direction:column}
+.map-wrap:fullscreen .map-chrome,.map-wrap:-webkit-full-screen .map-chrome{bottom:28px;right:14px}
+/* Fallback "max" mode when the browser denies native fullscreen.
+   z-index must beat .trip-chrome (10050) or the nav sits on top of the map on iPad. */
+.map-wrap.is-fullscreen-fallback{position:fixed;inset:0;z-index:20000;width:100%;height:100%;height:100dvh;margin:0;background:#0d1117;border-radius:0;
+  display:flex;flex-direction:column;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
 .map-wrap.is-fullscreen-fallback .map-stage{flex:1;min-height:0;position:relative;display:flex;flex-direction:column}
 .map-wrap.is-fullscreen-fallback .map{flex:1;min-height:0;width:100%;height:auto!important;border-radius:0;border:0;margin:0}
-.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-icon-enter{display:none}
-.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-icon-exit{display:inline}
-.map-wrap.is-fullscreen-fallback .map-fs-btn .fs-label::before{content:"Exit "}
+html.map-fs-open,body.map-fs-open{overflow:hidden;overscroll-behavior:none}
 .map-offline-notice{padding:40px;color:var(--muted);text-align:center;font-style:italic}
 .link-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px}
 .link-grid a{display:block;background:#0d1117;border:1px solid var(--border);border-radius:4px;
@@ -1534,16 +1564,14 @@ def build_itinerary_html(variant=None):
     ov_has_map = bool(overview_track) or bool(ov_markers)
     ov_map_id = f'map-{ROUTE_OVERVIEW_ID}'
     if ov_has_map:
+        ov_wrap_id = f'map-wrap-{ROUTE_OVERVIEW_ID}'
         ov_map_html = (
-            f'<div class="map-wrap" id="map-wrap-{ROUTE_OVERVIEW_ID}">'
-            f'<button type="button" class="map-fs-btn" data-target="map-wrap-{ROUTE_OVERVIEW_ID}" '
-            f'title="Toggle fullscreen map (Esc to exit)" aria-label="Toggle fullscreen">'
-            f'<span class="fs-icon fs-icon-enter" aria-hidden="true">&#x26F6;</span>'
-            f'<span class="fs-icon fs-icon-exit" aria-hidden="true">&times;</span>'
-            f'<span class="fs-label">Fullscreen</span></button>'
+            f'<div class="map-wrap" id="{ov_wrap_id}">'
+            f'<div class="map-stage">'
+            f'{_map_chrome_html(ov_wrap_id)}'
             f'<div id="{ov_map_id}" class="map" data-day-id="{ROUTE_OVERVIEW_ID}"><div class="map-offline-notice">'
             'Loading map... (requires internet for tiles; falls back to coordinates list if offline)'
-            '</div></div></div>'
+            '</div></div></div></div>'
         )
     else:
         ov_map_html = '<div class="info">No map data for full-route view.</div>'
@@ -1701,14 +1729,11 @@ def build_itinerary_html(variant=None):
                 'Navigate with Google Maps (or similar) in real time for lanes, traffic, and closures.'
                 '</p>'
             )
+        day_wrap_id = f'map-wrap-{d["id"]}'
         map_html = (
-            f'<div class="map-wrap" id="map-wrap-{d["id"]}">'
+            f'<div class="map-wrap" id="{day_wrap_id}">'
             f'<div class="map-stage">'
-            f'<button type="button" class="map-fs-btn" data-target="map-wrap-{d["id"]}" '
-            f'title="Toggle fullscreen map (Esc to exit)" aria-label="Toggle fullscreen">'
-            f'<span class="fs-icon fs-icon-enter" aria-hidden="true">&#x26F6;</span>'
-            f'<span class="fs-icon fs-icon-exit" aria-hidden="true">&times;</span>'
-            f'<span class="fs-label">Fullscreen</span></button>'
+            f'{_map_chrome_html(day_wrap_id)}'
             f'<div id="{map_id}" class="map" data-day-id="{d["id"]}"><div class="map-offline-notice">'
             'Loading map... (requires internet for tiles; falls back to coordinates list if offline)'
             f'</div></div></div>{hw_note}</div>'
@@ -1908,7 +1933,7 @@ def build_itinerary_html(variant=None):
 <html lang="en"><head>
 <meta charset="utf-8">
 <title>{esc(variant['page_title'])}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 {PWA_HEAD}
 <style>{LEAFLET_CSS}</style>
 <style>{CSS}</style>
@@ -1972,6 +1997,7 @@ const BACKUP_MARKER_REGISTRY = {{}};
 // Optional GPS dot per map (never used for initial fitBounds).
 let __{cfg.JS_PREFIX}_LAST_GPS = null;
 const __{cfg.JS_PREFIX}_MY_LOC_BY_DAY = {{}};
+let __{cfg.JS_PREFIX}_GPS_WATCH_ID = null;
 
 function esriLayer(name) {{
   // Online Esri tile sources; we mark failed tiles transparent so the
@@ -2085,13 +2111,14 @@ function syncMyLocationForDay(dayId) {{
   let layer = __{cfg.JS_PREFIX}_MY_LOC_BY_DAY[dayId];
   if (!layer) {{
     layer = L.circleMarker([lat, lon], {{
-      radius: 9,
+      radius: 10,
       color: '#ffffff',
-      weight: 2,
+      weight: 3,
       fillColor: '#2f80ff',
       fillOpacity: 0.95,
       interactive: true,
       pane: 'markerPane',
+      className: 'wca-my-location',
     }}).addTo(map);
     layer.bindPopup('Your location (GPS, approximate)');
     __{cfg.JS_PREFIX}_MY_LOC_BY_DAY[dayId] = layer;
@@ -2105,21 +2132,128 @@ function syncMyLocationAllMaps() {{
   Object.keys(MAPS).forEach((id) => syncMyLocationForDay(id));
 }}
 
-function startMyLocationWatch() {{
-  if (!navigator.geolocation) return;
+function _setGpsUi(state, detail) {{
+  document.querySelectorAll('.map-loc-btn').forEach(btn => {{
+    btn.classList.toggle('is-locating', state === 'locating');
+    btn.classList.toggle('has-fix', state === 'fix');
+    btn.dataset.gpsState = state;
+    const title = detail || 'Show my GPS location on this map';
+    btn.title = title;
+    btn.setAttribute('aria-label', title);
+    const label = btn.querySelector('.loc-label');
+    if (!label) return;
+    label.textContent = ({{
+      idle: 'My location',
+      locating: 'Locating…',
+      fix: 'My location',
+      denied: 'Location blocked',
+      unavailable: 'No GPS',
+      insecure: 'Needs HTTPS',
+    }})[state] || 'My location';
+  }});
+}}
+
+function _gpsApplyFix(pos, flyDayId) {{
+  const lat = pos && pos.coords && pos.coords.latitude;
+  const lon = pos && pos.coords && pos.coords.longitude;
+  if (lat == null || lon == null || !Number.isFinite(lat) || !Number.isFinite(lon)) return;
+  __{cfg.JS_PREFIX}_LAST_GPS = {{ lat, lon }};
+  _setGpsUi('fix', 'GPS fix — tap to recenter this map on you');
+  syncMyLocationAllMaps();
+  if (flyDayId && MAPS[flyDayId]) {{
+    const m = MAPS[flyDayId];
+    const z = Math.max(m.getZoom() || 0, 12);
+    m.flyTo([lat, lon], z, {{duration: 0.6}});
+  }}
+}}
+
+function _gpsErrorMessage(err) {{
+  const code = err && err.code;
+  if (code === 1) return 'Location permission denied. On iPad: Settings → Safari → Location, or Settings → Privacy → Location Services.';
+  if (code === 2) return 'Location unavailable (Wi‑Fi iPads need a network fix; there is no GPS chip).';
+  if (code === 3) return 'Location timed out. Try My location again, or move to open sky / Wi‑Fi.';
+  return (err && err.message) ? String(err.message) : 'Location failed.';
+}}
+
+function _gpsOnError(err, allowLowAccuracyRetry) {{
+  if (err && err.code === 3 && allowLowAccuracyRetry) {{
+    startMyLocationWatch({{enableHighAccuracy: false, retry: false}});
+    return;
+  }}
+  const state = (err && err.code === 1) ? 'denied' : 'unavailable';
+  _setGpsUi(state, _gpsErrorMessage(err));
+}}
+
+function _gpsClearWatch() {{
+  if (__{cfg.JS_PREFIX}_GPS_WATCH_ID != null && navigator.geolocation) {{
+    try {{ navigator.geolocation.clearWatch(__{cfg.JS_PREFIX}_GPS_WATCH_ID); }} catch (e) {{}}
+  }}
+  __{cfg.JS_PREFIX}_GPS_WATCH_ID = null;
+}}
+
+function startMyLocationWatch(opts) {{
+  opts = opts || {{}};
+  if (!navigator.geolocation) {{
+    _setGpsUi('unavailable', 'This browser has no geolocation API.');
+    return;
+  }}
+  if (!window.isSecureContext) {{
+    _setGpsUi('insecure', 'Location requires HTTPS or localhost (file:// will not work on iPad).');
+    return;
+  }}
+  const high = opts.enableHighAccuracy !== false;
+  const retry = opts.retry !== false;
+  _setGpsUi('locating', 'Waiting for GPS…');
+  _gpsClearWatch();
   try {{
-    navigator.geolocation.watchPosition(
-      (pos) => {{
-        const lat = pos.coords.latitude;
-        const lon = pos.coords.longitude;
-        if (lat == null || lon == null || !Number.isFinite(lat) || !Number.isFinite(lon)) return;
-        __{cfg.JS_PREFIX}_LAST_GPS = {{ lat, lon }};
-        syncMyLocationAllMaps();
-      }},
-      () => {{}},
-      {{ enableHighAccuracy: true, maximumAge: 30000, timeout: 20000 }}
+    __{cfg.JS_PREFIX}_GPS_WATCH_ID = navigator.geolocation.watchPosition(
+      (pos) => _gpsApplyFix(pos, null),
+      (err) => _gpsOnError(err, retry && high),
+      {{
+        enableHighAccuracy: high,
+        maximumAge: high ? 10000 : 60000,
+        timeout: high ? 10000 : 20000,
+      }}
     );
-  }} catch (e) {{}}
+  }} catch (e) {{
+    _setGpsUi('unavailable', String((e && e.message) || e));
+  }}
+}}
+
+function requestMyLocation(dayId) {{
+  if (!navigator.geolocation) {{
+    _setGpsUi('unavailable', 'This browser has no geolocation API.');
+    return;
+  }}
+  if (!window.isSecureContext) {{
+    _setGpsUi('insecure', 'Location requires HTTPS or localhost (file:// will not work on iPad).');
+    return;
+  }}
+  _setGpsUi('locating', 'Waiting for GPS…');
+  const onFix = (pos) => {{
+    _gpsApplyFix(pos, dayId);
+    startMyLocationWatch({{enableHighAccuracy: true, retry: true}});
+  }};
+  const lowAccuracyOpts = {{enableHighAccuracy: false, maximumAge: 60000, timeout: 20000}};
+  try {{
+    navigator.geolocation.getCurrentPosition(
+      onFix,
+      (err) => {{
+        if (err && err.code === 3) {{
+          navigator.geolocation.getCurrentPosition(
+            onFix,
+            (err2) => _gpsOnError(err2, false),
+            lowAccuracyOpts
+          );
+          return;
+        }}
+        _gpsOnError(err, false);
+      }},
+      {{enableHighAccuracy: true, maximumAge: 10000, timeout: 8000}}
+    );
+  }} catch (e) {{
+    _setGpsUi('unavailable', String((e && e.message) || e));
+  }}
 }}
 
 function syncBackupMarkersForDay(dayId) {{
@@ -2230,7 +2364,12 @@ document.addEventListener('click', function(e) {{
   focusMap(a.dataset.day, parseFloat(a.dataset.lat), parseFloat(a.dataset.lon));
 }});
 
-// ----- Map fullscreen toggle (native Fullscreen API; works offline) -----
+// ----- Map fullscreen toggle -----
+// iPad Safari: requestFullscreen/webkitRequestFullscreen exist for HTMLElement
+// but only actually work for <video>. Checking the method is not enough —
+// document.fullscreenEnabled is false, the webkit call returns undefined and
+// does nothing, and a thrown/rejected request never reached the CSS fallback
+// because the old handler only toggled fallback inside promise.catch().
 function _fsRequest(el) {{
   if (el.requestFullscreen) return el.requestFullscreen();
   if (el.webkitRequestFullscreen) return el.webkitRequestFullscreen();
@@ -2243,6 +2382,12 @@ function _fsExit() {{
 }}
 function _fsElement() {{
   return document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement || null;
+}}
+function _fsNativeEnabled() {{
+  if (typeof document.fullscreenEnabled === 'boolean') return document.fullscreenEnabled;
+  if (typeof document.webkitFullscreenEnabled === 'boolean') return document.webkitFullscreenEnabled;
+  if (typeof document.msFullscreenEnabled === 'boolean') return document.msFullscreenEnabled;
+  return false;
 }}
 function _invalidateAllMapSizes() {{
   requestAnimationFrame(() => {{
@@ -2258,37 +2403,95 @@ function _invalidateAllMapSizes() {{
     }});
   }});
 }}
-document.addEventListener('click', function(e) {{
-  const btn = e.target.closest('.map-fs-btn');
-  if (!btn) return;
-  e.preventDefault();
-  const wrap = document.getElementById(btn.dataset.target);
-  if (!wrap) return;
-  const dayId = wrap.querySelector('.map').dataset.dayId;
-  ensureMap(dayId);
+function _fsLockScroll(on) {{
+  document.documentElement.classList.toggle('map-fs-open', on);
+  document.body.classList.toggle('map-fs-open', on);
+}}
+function _fsFallbackOn(wrap) {{
+  document.querySelectorAll('.map-wrap.is-fullscreen-fallback').forEach(w => {{
+    if (w !== wrap) w.classList.remove('is-fullscreen-fallback');
+  }});
+  wrap.classList.add('is-fullscreen-fallback');
+  _fsLockScroll(true);
+  setTimeout(_invalidateAllMapSizes, 0);
+  setTimeout(_invalidateAllMapSizes, 200);
+}}
+function _fsFallbackOff(wrap) {{
+  wrap.classList.remove('is-fullscreen-fallback');
+  if (!document.querySelector('.map-wrap.is-fullscreen-fallback')) _fsLockScroll(false);
+  setTimeout(_invalidateAllMapSizes, 0);
+  setTimeout(_invalidateAllMapSizes, 200);
+}}
+function _toggleMapFullscreen(wrap) {{
+  if (wrap.classList.contains('is-fullscreen-fallback')) {{
+    _fsFallbackOff(wrap);
+    return;
+  }}
   if (_fsElement() === wrap) {{
-    _fsExit();
-  }} else {{
+    try {{ _fsExit(); }} catch (e) {{ _fsFallbackOff(wrap); }}
+    return;
+  }}
+  if (!_fsNativeEnabled()) {{
+    _fsFallbackOn(wrap);
+    return;
+  }}
+  try {{
     const p = _fsRequest(wrap);
     if (p && typeof p.then === 'function') {{
       p.then(() => {{
         setTimeout(_invalidateAllMapSizes, 0);
         setTimeout(_invalidateAllMapSizes, 200);
-      }}).catch(() => {{
-        wrap.classList.toggle('is-fullscreen-fallback');
-        setTimeout(_invalidateAllMapSizes, 0);
-        setTimeout(_invalidateAllMapSizes, 200);
-      }});
+      }}).catch(() => _fsFallbackOn(wrap));
     }} else {{
-      setTimeout(_invalidateAllMapSizes, 0);
+      requestAnimationFrame(() => {{
+        if (_fsElement() !== wrap) _fsFallbackOn(wrap);
+        else {{
+          setTimeout(_invalidateAllMapSizes, 0);
+          setTimeout(_invalidateAllMapSizes, 200);
+        }}
+      }});
     }}
+  }} catch (e) {{
+    _fsFallbackOn(wrap);
   }}
+}}
+document.addEventListener('click', function(e) {{
+  const locBtn = e.target.closest('.map-loc-btn');
+  if (locBtn) {{
+    e.preventDefault();
+    const wrap = document.getElementById(locBtn.dataset.target);
+    if (!wrap) return;
+    const mapEl = wrap.querySelector('.map');
+    const dayId = mapEl && mapEl.dataset.dayId;
+    if (dayId) ensureMap(dayId);
+    requestMyLocation(dayId);
+    return;
+  }}
+  const btn = e.target.closest('.map-fs-btn');
+  if (!btn) return;
+  e.preventDefault();
+  const wrap = document.getElementById(btn.dataset.target);
+  if (!wrap) return;
+  const mapEl = wrap.querySelector('.map');
+  const dayId = mapEl && mapEl.dataset.dayId;
+  if (dayId) ensureMap(dayId);
+  _toggleMapFullscreen(wrap);
+}});
+document.addEventListener('keydown', function(e) {{
+  if (e.key !== 'Escape') return;
+  const open = document.querySelector('.map-wrap.is-fullscreen-fallback');
+  if (!open) return;
+  e.preventDefault();
+  _fsFallbackOff(open);
 }});
 function _fsChange() {{
   const fsEl = _fsElement();
   document.querySelectorAll('.map-wrap').forEach(w => w.classList.remove('is-fullscreen'));
   if (fsEl && fsEl.classList && fsEl.classList.contains('map-wrap')) {{
     fsEl.classList.add('is-fullscreen');
+    _fsLockScroll(true);
+  }} else if (!document.querySelector('.map-wrap.is-fullscreen-fallback')) {{
+    _fsLockScroll(false);
   }}
   setTimeout(_invalidateAllMapSizes, 0);
   setTimeout(_invalidateAllMapSizes, 150);
@@ -2296,6 +2499,10 @@ function _fsChange() {{
 document.addEventListener('fullscreenchange', _fsChange);
 document.addEventListener('webkitfullscreenchange', _fsChange);
 document.addEventListener('msfullscreenchange', _fsChange);
+if (window.visualViewport) {{
+  window.visualViewport.addEventListener('resize', _invalidateAllMapSizes);
+}}
+window.addEventListener('orientationchange', () => setTimeout(_invalidateAllMapSizes, 300));
 
 // ----- Live NWS alerts for {cfg.NWS_ALERT_AREA} (CORS-enabled public API) -----
 function escHTML(s){{return String(s==null?'':s).replace(/[&<>"']/g,c=>({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c]));}}
