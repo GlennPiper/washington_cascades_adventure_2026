@@ -180,6 +180,67 @@ PWA_REGISTER_JS = """<script>
 </script>"""
 
 
+# localStorage keys for spoken-notes settings. JS_PREFIX keeps them unique per trip.
+_SPEAK_KEY = cfg.JS_PREFIX.lower() + '-speak-notes'
+
+# Shared read/write helper. Plain string spliced into itinerary, reference, and
+# settings pages (same pattern as PWA_REGISTER_JS — no extra brace escaping).
+SPEAK_SETTINGS_JS = f"""<script>
+(function(global) {{
+  var KEYS = {{
+    enabled: '{_SPEAK_KEY}',
+    scope: '{_SPEAK_KEY}-scope',
+    landmarks: '{_SPEAK_KEY}-landmarks',
+    repeat: '{_SPEAK_KEY}-repeat',
+    voice: '{_SPEAK_KEY}-voice'
+  }};
+  function defaults() {{
+    return {{ enabled: false, scope: 'all', landmarks: true, repeat: false, voice: '' }};
+  }}
+  function readBool(key, fallback) {{
+    try {{
+      var v = localStorage.getItem(key);
+      if (v === null) return fallback;
+      return v === '1' || v === 'true';
+    }} catch (e) {{ return fallback; }}
+  }}
+  function readStr(key, fallback) {{
+    try {{
+      var v = localStorage.getItem(key);
+      return (v == null || v === '') ? fallback : v;
+    }} catch (e) {{ return fallback; }}
+  }}
+  function write(key, val) {{
+    try {{ localStorage.setItem(key, val); }} catch (e) {{}}
+  }}
+  global.WcaSpeakSettings = {{
+    keys: KEYS,
+    sampleText: 'Washington Cascades. This is how notes will sound as you approach a stop.',
+    read: function() {{
+      var d = defaults();
+      return {{
+        enabled: readBool(KEYS.enabled, d.enabled),
+        scope: readStr(KEYS.scope, d.scope) === 'included' ? 'included' : 'all',
+        landmarks: readBool(KEYS.landmarks, d.landmarks),
+        repeat: readBool(KEYS.repeat, d.repeat),
+        voice: readStr(KEYS.voice, d.voice)
+      }};
+    }},
+    write: function(partial) {{
+      var cur = this.read();
+      var next = Object.assign(cur, partial || {{}});
+      write(KEYS.enabled, next.enabled ? '1' : '0');
+      write(KEYS.scope, next.scope === 'included' ? 'included' : 'all');
+      write(KEYS.landmarks, next.landmarks ? '1' : '0');
+      write(KEYS.repeat, next.repeat ? '1' : '0');
+      write(KEYS.voice, next.voice || '');
+      return next;
+    }}
+  }};
+}})(window);
+</script>"""
+
+
 # Itinerary HTML pages use nav_key 'itinerary' — first nav item is "you are here".
 ITINERARY_NAV_KEYS = frozenset({'itinerary'})
 
@@ -342,7 +403,7 @@ def _top_nav_html(
     a compact link-only bar.
 
     current highlights one page: 'itinerary' | 'reference' | 'weather' | 'fuel' |
-    'fire' | 'camping' | 'caves' | 'none'.
+    'fire' | 'camping' | 'caves' | 'settings' | 'none'.
 
     itinerary_href / weather_href / gpx_href override defaults for variant-specific pages.
     """
@@ -372,6 +433,7 @@ def _top_nav_html(
         li_link('camping-plan.html', 'Camping plan', 'camping'),
         li_link('lava-caves.html', 'Lava caves', 'caves'),
         li_link('trip-reference.html', 'Full reference', 'reference'),
+        li_link('settings.html', 'Settings', 'settings'),
         li_link(gpx_href, 'GPX', '_gpx', download=True),
     ]
     ul = '<ul class="top-nav-list" id="top-nav-list">' + ''.join(lis) + '</ul>'
@@ -734,6 +796,203 @@ def write_weather_html() -> None:
     print(f'Wrote weather.html ({len(page) / 1024:.1f} KB)')
 
 
+def write_settings_html() -> None:
+    """Trip settings page. Spoken notes is the first section."""
+    nav = _top_nav_html('settings', brand_html=TRIP_BRAND_SHARED_HTML)
+    extra_css = """
+.settings-section{margin:8px 0 28px;padding:16px 16px 18px;background:#161b22;
+  border:1px solid #30363d;border-radius:10px}
+.settings-section h2{margin:0 0 8px;padding:0;border:0;font-size:18px;color:#f0f6fc}
+.settings-row{display:flex;align-items:flex-start;gap:12px;margin:12px 0;cursor:pointer;
+  min-height:44px}
+.settings-row input[type=checkbox]{margin-top:4px;width:18px;height:18px;flex:none}
+.settings-row span{flex:1;line-height:1.4}
+.settings-fieldset{border:1px solid #30363d;border-radius:8px;margin:14px 0;padding:10px 14px 12px}
+.settings-fieldset legend{padding:0 6px;color:#f0f6fc;font-weight:600}
+.settings-fieldset label{display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer}
+.settings-voice-label{display:block;margin:16px 0 6px;font-weight:600;color:#f0f6fc}
+#speak-voice{display:block;width:100%;max-width:520px;min-height:44px;padding:8px 10px;
+  background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:6px;font:inherit}
+#speak-voice:focus{outline:2px solid #58a6ff;outline-offset:1px}
+.settings-hint{color:#8b949e;font-size:14px;margin:12px 0 0}
+"""
+    boot = r"""
+<script>
+(function(){
+  var formEnabled = document.getElementById('speak-enabled');
+  var formLandmarks = document.getElementById('speak-landmarks');
+  var formRepeat = document.getElementById('speak-repeat');
+  var formVoice = document.getElementById('speak-voice');
+  var formFallback = document.getElementById('speak-voice-fallback');
+  var scopeAll = document.querySelector('input[name="speak-scope"][value="all"]');
+  var scopeInc = document.querySelector('input[name="speak-scope"][value="included"]');
+  if (!window.WcaSpeakSettings) return;
+
+  function applyForm(s) {
+    formEnabled.checked = !!s.enabled;
+    formLandmarks.checked = !!s.landmarks;
+    formRepeat.checked = !!s.repeat;
+    if (s.scope === 'included') scopeInc.checked = true;
+    else scopeAll.checked = true;
+  }
+  applyForm(WcaSpeakSettings.read());
+
+  function persistFromForm() {
+    return WcaSpeakSettings.write({
+      enabled: formEnabled.checked,
+      landmarks: formLandmarks.checked,
+      repeat: formRepeat.checked,
+      scope: scopeInc.checked ? 'included' : 'all',
+      voice: formVoice.value || WcaSpeakSettings.read().voice
+    });
+  }
+
+  function unlockTts() {
+    if (!window.speechSynthesis) return;
+    try {
+      var u = new SpeechSynthesisUtterance(' ');
+      u.volume = 0;
+      speechSynthesis.speak(u);
+      speechSynthesis.cancel();
+    } catch (e) {}
+  }
+
+  function defaultVoice(voices) {
+    var localEn = voices.filter(function(v){ return v.localService && /^en/i.test(v.lang || ''); });
+    if (localEn.length) {
+      return localEn.find(function(v){ return /en-US/i.test(v.lang || ''); }) || localEn[0];
+    }
+    var anyEn = voices.filter(function(v){ return /^en/i.test(v.lang || ''); });
+    if (anyEn.length) return anyEn[0];
+    return voices.find(function(v){ return v.default; }) || voices[0] || null;
+  }
+
+  function fillVoices() {
+    if (!window.speechSynthesis) {
+      formVoice.hidden = true;
+      formFallback.hidden = false;
+      return;
+    }
+    formFallback.hidden = true;
+    formVoice.hidden = false;
+    var voices = speechSynthesis.getVoices() || [];
+    var saved = WcaSpeakSettings.read().voice;
+    var scored = voices.map(function(v){
+      var local = !!v.localService;
+      var en = /^en/i.test(v.lang || '');
+      var score = (local && en) ? 0 : (local ? 1 : 2);
+      return {v: v, score: score, local: local};
+    }).sort(function(a, b){
+      if (a.score !== b.score) return a.score - b.score;
+      return String(a.v.name).localeCompare(String(b.v.name));
+    });
+    var prev = formVoice.value;
+    formVoice.innerHTML = '';
+    scored.forEach(function(item){
+      var opt = document.createElement('option');
+      opt.value = item.v.voiceURI;
+      opt.textContent = item.v.name + ' (' + (item.v.lang || '?') + ') — ' +
+        (item.local ? 'on this device' : 'needs network');
+      formVoice.appendChild(opt);
+    });
+    if (saved && Array.prototype.some.call(formVoice.options, function(o){ return o.value === saved; })) {
+      formVoice.value = saved;
+    } else if (prev && Array.prototype.some.call(formVoice.options, function(o){ return o.value === prev; })) {
+      formVoice.value = prev;
+    } else {
+      var pick = defaultVoice(voices);
+      if (pick) formVoice.value = pick.voiceURI;
+    }
+  }
+
+  function playSample() {
+    if (!window.speechSynthesis) return;
+    try { speechSynthesis.cancel(); } catch (e) {}
+    var uri = formVoice.value;
+    WcaSpeakSettings.write({voice: uri});
+    var u = new SpeechSynthesisUtterance(WcaSpeakSettings.sampleText);
+    var voices = speechSynthesis.getVoices() || [];
+    for (var i = 0; i < voices.length; i++) {
+      if (voices[i].voiceURI === uri) { u.voice = voices[i]; break; }
+    }
+    try { speechSynthesis.speak(u); } catch (e) {}
+  }
+
+  formEnabled.addEventListener('change', function(){
+    persistFromForm();
+    if (formEnabled.checked) unlockTts();
+    else if (window.speechSynthesis) { try { speechSynthesis.cancel(); } catch (e) {} }
+  });
+  formLandmarks.addEventListener('change', persistFromForm);
+  formRepeat.addEventListener('change', persistFromForm);
+  scopeAll.addEventListener('change', persistFromForm);
+  scopeInc.addEventListener('change', persistFromForm);
+  formVoice.addEventListener('change', function(){
+    persistFromForm();
+    playSample();
+  });
+
+  fillVoices();
+  if (window.speechSynthesis) {
+    speechSynthesis.addEventListener('voiceschanged', fillVoices);
+  }
+})();
+</script>
+"""
+    page = f"""<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Settings — {cfg.PWA_TITLE}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{PWA_HEAD}
+<style>{STATIC_MD_PAGE_CSS}</style>
+<style>{extra_css}</style>
+</head><body>
+{nav}
+<article class="md-page settings-page">
+<h1>Settings</h1>
+<p class="muted">Preferences stay on this device and work offline.</p>
+
+<section class="settings-section" aria-labelledby="speak-notes-heading">
+<h2 id="speak-notes-heading">Spoken notes</h2>
+<p>Read a stop’s description out loud as you approach it. Uses voices already on this phone, so it works offline. Keep the itinerary open — the phone will not speak if the app is in the background or the screen is locked.</p>
+
+<label class="settings-row">
+  <input type="checkbox" id="speak-enabled">
+  <span>Read descriptions as I approach</span>
+</label>
+
+<fieldset class="settings-fieldset">
+  <legend>Which stops</legend>
+  <label><input type="radio" name="speak-scope" value="all"> All POIs with a note or description</label>
+  <label><input type="radio" name="speak-scope" value="included"> Only included stops</label>
+</fieldset>
+
+<label class="settings-row">
+  <input type="checkbox" id="speak-landmarks">
+  <span>Include distant landmarks (Rainier, Adams, St Helens, and other summit markers)</span>
+</label>
+
+<label class="settings-row">
+  <input type="checkbox" id="speak-repeat">
+  <span>Repeat when I return (after leaving about 1.2 miles)</span>
+</label>
+
+<label class="settings-voice-label" for="speak-voice">Voice</label>
+<select id="speak-voice" aria-describedby="speak-voice-fallback"></select>
+<p id="speak-voice-fallback" class="muted" hidden>This browser cannot speak.</p>
+<p class="settings-hint">Auto-read only works while the itinerary is open. Use Listen on a stop row anytime. Tap Stop to cancel a readout.</p>
+</section>
+</article>
+{SPEAK_SETTINGS_JS}
+{boot}
+{PWA_REGISTER_JS}
+</body></html>
+"""
+    (OUT_DIR / 'settings.html').write_text(page, encoding='utf-8')
+    print(f'Wrote settings.html ({len(page) / 1024:.1f} KB)')
+
+
 STATUS_BADGE = {
     'primary': ('primary', 'Primary'),
     'landmark': ('logistics', 'Landmark'),
@@ -785,6 +1044,281 @@ def desc_button_html(name, desc):
         '<path fill="currentColor" d="M3 1.5h7.293a1 1 0 0 1 .707.293l2.5 2.5a1 1 0 0 1 .293.707V14.5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 .5-.5zM10 2v3h3L10 2zM4.5 7h7v1h-7zm0 2h7v1h-7zm0 2h5v1h-5z"/>'
         '</svg></button>'
     )
+
+
+def speak_button_html(name, desc, note, speak_id=''):
+    """Inline speaker button that reads the POI desc (or note fallback)."""
+    if not (desc or '').strip() and not (note or '').strip():
+        return ''
+    sid = f' data-speak-id="{esc(speak_id)}"' if speak_id else ''
+    return (
+        ' <button type="button" class="speak-btn" '
+        f'data-speak-name="{esc(name)}"{sid} '
+        'aria-label="Listen to description" title="Listen">'
+        '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">'
+        '<path fill="currentColor" d="M2.5 6.5v3h2.2L8 12.3V3.7L4.7 6.5H2.5zm8.2 1.5a2.2 2.2 0 0 0-1.2-1.95v3.9A2.2 2.2 0 0 0 10.7 8zm1.6 0a3.8 3.8 0 0 0-2.1-3.4v1.1a2.7 2.7 0 0 1 0 4.6v1.1A3.8 3.8 0 0 0 12.3 8z"/>'
+        '</svg></button>'
+    )
+
+
+def _scheduled_merged_pois(day):
+    """Same merge + sort as the itinerary Stops table (ids must match)."""
+    return sorted(
+        [p for p in (day.get('pois') or [])
+         if p.get('status') in ('primary', 'hike_candidate', 'conditional', 'backup')],
+        key=lambda p: p['mile'],
+    )
+
+
+def collect_speakable_pois(trip_data):
+    """POIs with a desc or note and coordinates, for approach TTS + Listen.
+
+    Scheduled-table rows use the same ``{dayId}-{idx}`` ids as ``poi_row``.
+    Logistics/landmarks that are not in that table get ``{dayId}-extra-{i}``.
+    """
+    out = []
+    seen = set()
+    for d in trip_data.get('days') or []:
+        day_id = d['id']
+        pois = d.get('pois') or []
+        merged = _scheduled_merged_pois(d) if d.get('schedule') else []
+        merged_ids = {id(p): f'{day_id}-{i}' for i, p in enumerate(merged)}
+        for i, p in enumerate(pois):
+            if p.get('status') == 'skip':
+                continue
+            desc = (p.get('desc') or '').strip()
+            note = (p.get('note') or '').strip()
+            if not desc and not note:
+                continue
+            lat, lon = p.get('lat'), p.get('lon')
+            if lat is None or lon is None:
+                continue
+            pid = merged_ids.get(id(p), f'{day_id}-extra-{i}')
+            if pid in seen:
+                continue
+            seen.add(pid)
+            out.append({
+                'id': pid,
+                'dayId': day_id,
+                'name': p['name'],
+                'lat': lat,
+                'lon': lon,
+                'desc': desc,
+                'note': note,
+                'status': p.get('status') or '',
+                'sched': id(p) in merged_ids,
+            })
+    return out
+
+
+# Injected after WcaSpeakSettings. __POIS__ is replaced with JSON.
+SPEAK_ENGINE_JS = r"""
+const SPEAKABLE_POIS = __POIS__;
+const SPEAK_TRIGGER_MI = 0.5;
+const SPEAK_LEAVE_MI = 1.2;
+let _speakGen = 0;
+let _speakQueue = [];
+let _speakCurrent = null;
+let _speakAnnounced = new Set();
+let _speakResumeTimer = null;
+let _speakWakeLock = null;
+
+function _speakHavMi(lat1, lon1, lat2, lon2) {
+  const R = 3958.7613;
+  const tr = x => x * Math.PI / 180;
+  const dLa = tr(lat2 - lat1), dLo = tr(lon2 - lon1);
+  const a = Math.sin(dLa/2)**2 + Math.cos(tr(lat1))*Math.cos(tr(lat2))*Math.sin(dLo/2)**2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+function _speakStripUrls(s) {
+  return String(s || '').replace(/https?:\/\/\S+/gi, ' ').replace(/\s+/g, ' ').trim();
+}
+function _speakParagraphs(text) {
+  return String(text || '').split(/\n\s*\n/).map(function(p) {
+    return _speakStripUrls(p.replace(/\n/g, ' '));
+  }).filter(Boolean);
+}
+function _speakBodyForPoi(poi) {
+  return ((poi && poi.desc) || '').trim() || ((poi && poi.note) || '').trim();
+}
+function _speakPickVoice(uri) {
+  if (!window.speechSynthesis) return null;
+  const voices = speechSynthesis.getVoices() || [];
+  if (uri) {
+    for (let i = 0; i < voices.length; i++) {
+      if (voices[i].voiceURI === uri) return voices[i];
+    }
+  }
+  const localEn = voices.filter(v => v.localService && /^en/i.test(v.lang || ''));
+  if (localEn.length) {
+    return localEn.find(v => /en-US/i.test(v.lang || '')) || localEn[0];
+  }
+  const anyEn = voices.filter(v => /^en/i.test(v.lang || ''));
+  if (anyEn.length) return anyEn[0];
+  return voices.find(v => v.default) || voices[0] || null;
+}
+function _speakUnlock() {
+  if (!window.speechSynthesis) return;
+  try {
+    const u = new SpeechSynthesisUtterance(' ');
+    u.volume = 0;
+    speechSynthesis.speak(u);
+    speechSynthesis.cancel();
+  } catch (e) {}
+}
+function _speakRequestWake() {
+  if (!navigator.wakeLock || typeof navigator.wakeLock.request !== 'function') return;
+  navigator.wakeLock.request('screen').then(function(lock) {
+    _speakWakeLock = lock;
+  }).catch(function() {});
+}
+function _speakReleaseWake() {
+  if (_speakWakeLock) {
+    try { _speakWakeLock.release(); } catch (e) {}
+    _speakWakeLock = null;
+  }
+}
+function _speakShowBar(name) {
+  let bar = document.getElementById('wca-speak-bar');
+  if (!bar) {
+    bar = document.createElement('div');
+    bar.id = 'wca-speak-bar';
+    bar.setAttribute('role', 'status');
+    bar.innerHTML = '<span class="speak-bar-name"></span>' +
+      '<button type="button" class="speak-bar-stop">Stop</button>';
+    bar.querySelector('.speak-bar-stop').addEventListener('click', function() {
+      const id = _speakCurrent && _speakCurrent.id;
+      _speakCancel();
+      if (id) _speakAnnounced.add(id);
+    });
+    document.body.appendChild(bar);
+  }
+  bar.querySelector('.speak-bar-name').textContent = name || 'Reading…';
+  bar.hidden = false;
+}
+function _hideSpeakBar() {
+  const bar = document.getElementById('wca-speak-bar');
+  if (bar) bar.hidden = true;
+}
+function _speakCancel() {
+  _speakGen += 1;
+  _speakQueue = [];
+  _speakCurrent = null;
+  if (window.speechSynthesis) {
+    try { speechSynthesis.cancel(); } catch (e) {}
+  }
+  if (_speakResumeTimer) {
+    clearInterval(_speakResumeTimer);
+    _speakResumeTimer = null;
+  }
+  _hideSpeakBar();
+  _speakReleaseWake();
+}
+function _speakStartUtterances(poi, texts) {
+  if (!window.speechSynthesis || !texts || !texts.length) return;
+  _speakCancel();
+  const gen = ++_speakGen;
+  _speakCurrent = poi;
+  const settings = (window.WcaSpeakSettings && WcaSpeakSettings.read()) || {};
+  const voice = _speakPickVoice(settings.voice);
+  _speakQueue = texts.slice();
+  _speakShowBar(poi && poi.name);
+  _speakRequestWake();
+  if (!_speakResumeTimer) {
+    _speakResumeTimer = setInterval(function() {
+      try { if (speechSynthesis.paused) speechSynthesis.resume(); } catch (e) {}
+    }, 8000);
+  }
+  function next() {
+    if (gen !== _speakGen) return;
+    if (!_speakQueue.length) {
+      const doneId = _speakCurrent && _speakCurrent.id;
+      if (gen === _speakGen) _speakCancel();
+      if (doneId) _speakAnnounced.add(doneId);
+      return;
+    }
+    const chunk = _speakQueue.shift();
+    const u = new SpeechSynthesisUtterance(chunk);
+    if (voice) u.voice = voice;
+    u.rate = 0.95;
+    u.onend = function() { if (gen === _speakGen) next(); };
+    u.onerror = function() { if (gen === _speakGen) next(); };
+    try { speechSynthesis.speak(u); } catch (e) { next(); }
+  }
+  next();
+}
+function speakPoi(poi) {
+  if (!poi) return;
+  const body = _speakBodyForPoi(poi);
+  if (!body) return;
+  const texts = _speakParagraphs(body);
+  texts.unshift((poi.name || 'Stop') + '.');
+  if (poi.id) _speakAnnounced.add(poi.id);
+  _speakStartUtterances(poi, texts);
+}
+function _speakFindPoi(id, name) {
+  if (id) {
+    for (let i = 0; i < SPEAKABLE_POIS.length; i++) {
+      if (SPEAKABLE_POIS[i].id === id) return SPEAKABLE_POIS[i];
+    }
+  }
+  if (name) {
+    for (let i = 0; i < SPEAKABLE_POIS.length; i++) {
+      if (SPEAKABLE_POIS[i].name === name) return SPEAKABLE_POIS[i];
+    }
+  }
+  return null;
+}
+function _speakIsIncluded(poi) {
+  if (!poi || !poi.sched) return false;
+  const tr = document.querySelector('tr[data-poi-id="' + poi.id + '"]');
+  if (!tr) return false;
+  const cb = tr.querySelector('.poi-include');
+  return !!(cb && cb.checked);
+}
+function _speakOnGps(lat, lon) {
+  const settings = window.WcaSpeakSettings && WcaSpeakSettings.read();
+  if (!settings || !settings.enabled) return;
+  if (_speakCurrent) return;
+  let best = null;
+  let bestD = Infinity;
+  for (let i = 0; i < SPEAKABLE_POIS.length; i++) {
+    const p = SPEAKABLE_POIS[i];
+    if (!settings.landmarks && p.status === 'landmark') continue;
+    if (settings.scope === 'included' && !_speakIsIncluded(p)) continue;
+    const d = _speakHavMi(lat, lon, p.lat, p.lon);
+    if (d > SPEAK_LEAVE_MI && settings.repeat) {
+      _speakAnnounced.delete(p.id);
+    }
+    if (d <= SPEAK_TRIGGER_MI && !_speakAnnounced.has(p.id) && d < bestD) {
+      bestD = d;
+      best = p;
+    }
+  }
+  if (best) speakPoi(best);
+}
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.speak-btn');
+  if (!btn) return;
+  e.preventDefault();
+  _speakUnlock();
+  const poi = _speakFindPoi(btn.dataset.speakId, btn.dataset.speakName);
+  if (poi) speakPoi(poi);
+});
+window.addEventListener('storage', function(e) {
+  if (!e.key || e.key.indexOf('wca-speak-notes') !== 0) return;
+  const settings = window.WcaSpeakSettings && WcaSpeakSettings.read();
+  if (!settings || !settings.enabled) _speakCancel();
+});
+if (window.speechSynthesis) {
+  speechSynthesis.addEventListener('voiceschanged', function() {});
+}
+"""
+
+
+def _speak_engine_js(trip_data):
+    pois_json = json.dumps(collect_speakable_pois(trip_data), ensure_ascii=False)
+    return '<script>\n' + SPEAK_ENGINE_JS.replace('__POIS__', pois_json) + '\n</script>'
 
 
 def collect_poi_descriptions(data):
@@ -923,6 +1457,8 @@ def poi_row(p, day_id=None, allow_focus=False, scheduled=False, idx=0, day_mph=2
     else:
         name_html = name_text
     name_html += desc_button_html(p['name'], p.get('desc'))
+    speak_id = f'{day_id}-{idx}' if scheduled and day_id else ''
+    name_html += speak_button_html(p['name'], p.get('desc'), p.get('note'), speak_id)
     name_html += poi_page_link_html(p['name'])
     coords_html = ''
     if lat is not None and lon is not None:
@@ -1340,13 +1876,24 @@ tr.skipped-row .spur-hint{color:#8be9c0;font-style:normal}
 tr.skipped-row .spur-hint::before{content:"[Saving] "}
 .camp-eta{margin:6px 0;font-size:13px;color:var(--text)}
 .camp-eta strong{color:var(--accent)}
-.desc-btn{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;
+.desc-btn,.speak-btn{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;
   margin-left:4px;padding:0;border:1px solid var(--border);border-radius:4px;
   background:#1b1f23;color:var(--muted);cursor:pointer;vertical-align:-3px;
   transition:background 0.1s,color 0.1s,border-color 0.1s}
-.desc-btn:hover{background:#1f6feb;border-color:#1f6feb;color:#fff}
-.desc-btn:focus-visible{outline:2px solid #1f6feb;outline-offset:1px}
-.desc-btn svg{display:block}
+.desc-btn:hover,.speak-btn:hover{background:#1f6feb;border-color:#1f6feb;color:#fff}
+.desc-btn:focus-visible,.speak-btn:focus-visible{outline:2px solid #1f6feb;outline-offset:1px}
+.desc-btn svg,.speak-btn svg{display:block}
+#wca-speak-bar{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);
+  background:#21262d;color:#e6edf3;padding:10px 12px;border-radius:8px;
+  font:14px/1.4 system-ui,sans-serif;z-index:10000;
+  box-shadow:0 4px 14px rgba(0,0,0,.35);max-width:92vw;
+  display:flex;align-items:center;gap:12px;border:1px solid var(--border)}
+#wca-speak-bar[hidden]{display:none!important}
+#wca-speak-bar .speak-bar-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#wca-speak-bar .speak-bar-stop{min-height:44px;min-width:64px;padding:0 14px;
+  background:#da3633;border:0;border-radius:6px;color:#fff;
+  font:600 14px/1 system-ui,sans-serif;cursor:pointer}
+#wca-speak-bar .speak-bar-stop:hover{filter:brightness(1.08)}
 .poi-page-link{display:inline;margin-left:6px;font-size:12px;font-weight:600;white-space:nowrap}
 #poi-desc-dialog .dialog-body .poi-app-page{margin:0 0 12px;padding:10px 12px;
   background:#161b22;border:1px solid var(--border);border-radius:6px;font-weight:600}
@@ -1533,6 +2080,7 @@ def build_itinerary_html(variant=None):
         else:
             name_html = name_text
         name_html += desc_button_html(p['name'], p.get('desc'))
+        name_html += speak_button_html(p['name'], p.get('desc'), p.get('note'))
         name_html += poi_page_link_html(p['name'])
         if lat is not None and lon is not None:
             gm = f'https://www.google.com/maps/search/?api=1&query={lat},{lon}'
@@ -2165,6 +2713,7 @@ function _gpsApplyFix(pos, flyDayId) {{
     const z = Math.max(m.getZoom() || 0, 12);
     m.flyTo([lat, lon], z, {{duration: 0.6}});
   }}
+  if (typeof _speakOnGps === 'function') _speakOnGps(lat, lon);
 }}
 
 function _gpsErrorMessage(err) {{
@@ -2712,6 +3261,11 @@ document.querySelectorAll('.schedule-controls').forEach(attachSchedule);
 
 {poi_desc_dialog_js}
 
+</script>
+{SPEAK_SETTINGS_JS}
+{_speak_engine_js(data)}
+<script>
+
 // Leaflet is inlined in <head>. If the viewer's local calendar date matches a
 // trip leg's date_iso, open that day tab (first match when two legs share a date);
 // otherwise keep the default "Full route" tab and load its map.
@@ -2736,6 +3290,10 @@ document.querySelectorAll('.schedule-controls').forEach(attachSchedule);
   }}
 }})();
 setTimeout(function() {{ startMyLocationWatch(); }}, 800);
+if (window.WcaSpeakSettings && WcaSpeakSettings.read().enabled) {{
+  _speakUnlock();
+  _speakRequestWake();
+}}
 </script>
 {weather_scripts}
 {PWA_REGISTER_JS}
@@ -3058,6 +3616,8 @@ async function loadAlerts(){{
 loadAlerts();
 {ref_poi_desc_dialog_js}
 </script>
+{SPEAK_SETTINGS_JS}
+{_speak_engine_js(data)}
 {PWA_REGISTER_JS}
 </body></html>
 """
@@ -3230,6 +3790,7 @@ def main():
     # Standalone markdown -> HTML PWA pages (fuel, fire & closures, camping).
     write_planning_markdown_pages()
     write_weather_html()
+    write_settings_html()
 
 
 if __name__ == '__main__':

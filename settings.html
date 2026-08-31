@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8">
-<title>Fuel plan - WA Cascades</title>
+<title>Settings — WA Cascades</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0d1117">
 <meta name="description" content="Offline-first trip app for the September 8-13, 2026 Washington Cascades Adventure Route: a 325-mile Gifford Pinchot National Forest loop with daily itinerary, maps, campgrounds, fuel planning, weather and fire/closure tracking.">
@@ -149,8 +149,25 @@ article.md-page hr { border: none; border-top: 1px solid #30363d; margin: 22px 0
   article.md-page table { display: block; overflow-x: auto; max-width: 100vw; }
 }
 </style>
+<style>
+.settings-section{margin:8px 0 28px;padding:16px 16px 18px;background:#161b22;
+  border:1px solid #30363d;border-radius:10px}
+.settings-section h2{margin:0 0 8px;padding:0;border:0;font-size:18px;color:#f0f6fc}
+.settings-row{display:flex;align-items:flex-start;gap:12px;margin:12px 0;cursor:pointer;
+  min-height:44px}
+.settings-row input[type=checkbox]{margin-top:4px;width:18px;height:18px;flex:none}
+.settings-row span{flex:1;line-height:1.4}
+.settings-fieldset{border:1px solid #30363d;border-radius:8px;margin:14px 0;padding:10px 14px 12px}
+.settings-fieldset legend{padding:0 6px;color:#f0f6fc;font-weight:600}
+.settings-fieldset label{display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer}
+.settings-voice-label{display:block;margin:16px 0 6px;font-weight:600;color:#f0f6fc}
+#speak-voice{display:block;width:100%;max-width:520px;min-height:44px;padding:8px 10px;
+  background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:6px;font:inherit}
+#speak-voice:focus{outline:2px solid #58a6ff;outline-offset:1px}
+.settings-hint{color:#8b949e;font-size:14px;margin:12px 0 0}
+</style>
 </head><body>
-<header class="trip-chrome" data-trip-nav aria-label="Trip pages"><div class="trip-chrome-row1"><div class="trip-chrome-brand"><h1>Washington Cascades Adventure Route</h1><div class="meta">September 8-13, 2026 &middot; 6 vehicles &middot; Route: ~325 mi loop</div></div><button type="button" class="top-nav-menu-btn" aria-expanded="false" aria-controls="top-nav-list">Menu</button></div><div class="top-nav-backdrop" hidden aria-hidden="true"></div><ul class="top-nav-list" id="top-nav-list"><li><a href="trip-itinerary.html">Daily itinerary</a></li><li class="top-nav-li-active"><span class="top-nav-current" aria-current="page">Fuel plan</span></li><li><a href="weather.html">Weather</a></li><li><a href="fire-and-closures.html">Fire &amp; closures</a></li><li><a href="camping-plan.html">Camping plan</a></li><li><a href="lava-caves.html">Lava caves</a></li><li><a href="trip-reference.html">Full reference</a></li><li><a href="settings.html">Settings</a></li><li><a href="trip-plan.gpx" download>GPX</a></li></ul></header>
+<header class="trip-chrome" data-trip-nav aria-label="Trip pages"><div class="trip-chrome-row1"><div class="trip-chrome-brand"><h1>Washington Cascades Adventure Route</h1><div class="meta">September 8-13, 2026 &middot; 6 vehicles &middot; Route: ~325 mi loop</div></div><button type="button" class="top-nav-menu-btn" aria-expanded="false" aria-controls="top-nav-list">Menu</button></div><div class="top-nav-backdrop" hidden aria-hidden="true"></div><ul class="top-nav-list" id="top-nav-list"><li><a href="trip-itinerary.html">Daily itinerary</a></li><li><a href="fuel-plan.html">Fuel plan</a></li><li><a href="weather.html">Weather</a></li><li><a href="fire-and-closures.html">Fire &amp; closures</a></li><li><a href="camping-plan.html">Camping plan</a></li><li><a href="lava-caves.html">Lava caves</a></li><li><a href="trip-reference.html">Full reference</a></li><li class="top-nav-li-active"><span class="top-nav-current" aria-current="page">Settings</span></li><li><a href="trip-plan.gpx" download>GPX</a></li></ul></header>
 <script>
 (function(){
 function init(){
@@ -215,204 +232,218 @@ else init();
 })();
 </script>
 
-<article class="md-page">
-<h1>Fuel plan</h1>
-<p>The whole 325-mile loop burns roughly 20 gallons at a 16 mpg baseline, which sounds easy. The
-number that matters is not the total.</p>
-<blockquote>
-<p><strong>154 miles from Carson (mile 2) to Packwood (mile 156) with no fuel at all.</strong></p>
-</blockquote>
-<p>That single stretch, on Forest Service roads at degraded economy, is the binding constraint on this
-trip. Top off in Carson without exception.</p>
-<hr />
-<h2>Stations on and near the route</h2>
-<table>
-<thead>
-<tr>
-<th>Where</th>
-<th>Route mile</th>
-<th>Role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Carson, WA</strong></td>
-<td>2</td>
-<td><strong>Mandatory top-off.</strong> Last fuel for 154 route miles. Small-town station on Wind River Rd with a store. Verify hours — do not arrive at 9 PM expecting to fuel.</td>
-</tr>
-<tr>
-<td>Stevenson, WA</td>
-<td>off route, ~7 mi W on WA-14</td>
-<td>Backup for Carson. More stations and a full grocery store.</td>
-</tr>
-<tr>
-<td>Trout Lake, WA</td>
-<td>off route, ~12 mi SE via WA-141</td>
-<td>Optional mid-Day-1 insurance. Single small station, limited hours. A 24-mile round-trip detour. Not in the route GPX.</td>
-</tr>
-<tr>
-<td><strong>Packwood, WA</strong></td>
-<td>156</td>
-<td>First fuel since Carson. Multiple stations on US 12, plus food, a store and cell service.</td>
-</tr>
-<tr>
-<td><strong>Randle, WA</strong></td>
-<td>217</td>
-<td>Last fuel before the final 108 miles. Station and store on US 12; the Cowlitz Valley Ranger Station is here.</td>
-</tr>
-<tr>
-<td>Morton, WA</td>
-<td>off route, ~20 mi W of Randle</td>
-<td>Backup if Randle is closed. Also the nearest hospital.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2>The two gaps</h2>
-<h3>Carson (mile 2) to Packwood (mile 156) — 154 miles</h3>
-<p>Mostly forest road. At a degraded 13 mpg that is about <strong>12 gallons</strong>, which most rigs handle on one
-tank. The ones that should worry:</p>
-<ul>
-<li>small tanks (under 18 gallons usable)</li>
-<li>anything with a roof rack, roof tent, or a trailer</li>
-<li>35s and up on regeared axles</li>
-<li>anyone who habitually runs down to a quarter tank</li>
-</ul>
-<p>If you are in that group, <strong>carry a jerry can.</strong> The only bail-out is Trout Lake, and reaching it
-costs a 24-mile round-trip detour off Day 1.</p>
-<h3>Randle (mile 217) to the Gorge (mile 325) — 108 miles</h3>
-<p>Fill at Randle. The last 108 miles cross Elk Pass and the Lewis River country with nothing open.
-This is a smaller gap but there is no bail-out at all once you are south of Randle.</p>
-<hr />
-<h2>Surface and economy</h2>
-<table>
-<thead>
-<tr>
-<th>Surface</th>
-<th>Miles</th>
-<th>MPG factor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Paved highway (WA-14, US 12, paved FS 23 / FS 90 sections)</td>
-<td>95</td>
-<td>1.00</td>
-</tr>
-<tr>
-<td>Graded gravel</td>
-<td>175</td>
-<td>0.82</td>
-</tr>
-<tr>
-<td>Rough 2-track / narrow spur (High Rock, Burley Mtn, Walupt Lake Rd, Babyshoe gravel)</td>
-<td>45</td>
-<td>0.65</td>
-</tr>
-<tr>
-<td>Technical low-range</td>
-<td>10</td>
-<td>0.50</td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td><strong>325</strong></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Forest-road economy runs well below highway numbers. Plan on 65 to 82 percent of your normal mpg
-depending on surface, and worse if you are airing down and running low range.</p>
-<hr />
-<h2>Per-vehicle worksheet</h2>
-<p>Fill this in before departure. The column that matters is the last one.</p>
-<table>
-<thead>
-<tr>
-<th>Vehicle</th>
-<th>Usable tank (gal)</th>
-<th>Highway mpg</th>
-<th>Est. forest mpg (×0.75)</th>
-<th>Range on forest roads</th>
-<th>Clears the 154-mi gap?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Rule of thumb:</strong> you want at least <strong>200 miles</strong> of real forest-road range to run the
-Carson-to-Packwood leg with comfortable margin. Anything under 180 should carry extra fuel.</p>
-<hr />
-<h2>Travel days</h2>
-<p>The drive out and back is 376 and 368 highway miles respectively — about 7 hours of moving time
-each way.</p>
-<ul>
-<li>Fill in Nampa before departure.</li>
-<li>One fuel stop somewhere in eastern Oregon (Baker City, La Grande or Pendleton) covers the outbound
-  leg comfortably.</li>
-<li>Fuel again near the Gorge — Hood River or Stevenson — before turning up Wind River Road, so the
-  Carson top-off is genuinely a top-off rather than a fill from empty.</li>
-<li>On the return, fuel at Carson or Stevenson before getting on WA-14 eastbound.</li>
-</ul>
-<hr />
-<h2>Notes</h2>
-<ul>
-<li>Two full refuels on route: <strong>Packwood at mile 156</strong> and <strong>Randle at mile 217</strong>.</li>
-<li>Carry a funnel if you carry a can. Rotopax and NATO cans both pour badly into modern capless
-  fillers without one.</li>
-<li>Diesel is available at Packwood and Randle but confirm before relying on it at Carson.</li>
-<li>Nothing on this route requires premium.</li>
-<li>No water crossings on this route, so no fording-related fuel-system concerns.</li>
-</ul>
+<article class="md-page settings-page">
+<h1>Settings</h1>
+<p class="muted">Preferences stay on this device and work offline.</p>
+
+<section class="settings-section" aria-labelledby="speak-notes-heading">
+<h2 id="speak-notes-heading">Spoken notes</h2>
+<p>Read a stop’s description out loud as you approach it. Uses voices already on this phone, so it works offline. Keep the itinerary open — the phone will not speak if the app is in the background or the screen is locked.</p>
+
+<label class="settings-row">
+  <input type="checkbox" id="speak-enabled">
+  <span>Read descriptions as I approach</span>
+</label>
+
+<fieldset class="settings-fieldset">
+  <legend>Which stops</legend>
+  <label><input type="radio" name="speak-scope" value="all"> All POIs with a note or description</label>
+  <label><input type="radio" name="speak-scope" value="included"> Only included stops</label>
+</fieldset>
+
+<label class="settings-row">
+  <input type="checkbox" id="speak-landmarks">
+  <span>Include distant landmarks (Rainier, Adams, St Helens, and other summit markers)</span>
+</label>
+
+<label class="settings-row">
+  <input type="checkbox" id="speak-repeat">
+  <span>Repeat when I return (after leaving about 1.2 miles)</span>
+</label>
+
+<label class="settings-voice-label" for="speak-voice">Voice</label>
+<select id="speak-voice" aria-describedby="speak-voice-fallback"></select>
+<p id="speak-voice-fallback" class="muted" hidden>This browser cannot speak.</p>
+<p class="settings-hint">Auto-read only works while the itinerary is open. Use Listen on a stop row anytime. Tap Stop to cancel a readout.</p>
+</section>
 </article>
+<script>
+(function(global) {
+  var KEYS = {
+    enabled: 'wca-speak-notes',
+    scope: 'wca-speak-notes-scope',
+    landmarks: 'wca-speak-notes-landmarks',
+    repeat: 'wca-speak-notes-repeat',
+    voice: 'wca-speak-notes-voice'
+  };
+  function defaults() {
+    return { enabled: false, scope: 'all', landmarks: true, repeat: false, voice: '' };
+  }
+  function readBool(key, fallback) {
+    try {
+      var v = localStorage.getItem(key);
+      if (v === null) return fallback;
+      return v === '1' || v === 'true';
+    } catch (e) { return fallback; }
+  }
+  function readStr(key, fallback) {
+    try {
+      var v = localStorage.getItem(key);
+      return (v == null || v === '') ? fallback : v;
+    } catch (e) { return fallback; }
+  }
+  function write(key, val) {
+    try { localStorage.setItem(key, val); } catch (e) {}
+  }
+  global.WcaSpeakSettings = {
+    keys: KEYS,
+    sampleText: 'Washington Cascades. This is how notes will sound as you approach a stop.',
+    read: function() {
+      var d = defaults();
+      return {
+        enabled: readBool(KEYS.enabled, d.enabled),
+        scope: readStr(KEYS.scope, d.scope) === 'included' ? 'included' : 'all',
+        landmarks: readBool(KEYS.landmarks, d.landmarks),
+        repeat: readBool(KEYS.repeat, d.repeat),
+        voice: readStr(KEYS.voice, d.voice)
+      };
+    },
+    write: function(partial) {
+      var cur = this.read();
+      var next = Object.assign(cur, partial || {});
+      write(KEYS.enabled, next.enabled ? '1' : '0');
+      write(KEYS.scope, next.scope === 'included' ? 'included' : 'all');
+      write(KEYS.landmarks, next.landmarks ? '1' : '0');
+      write(KEYS.repeat, next.repeat ? '1' : '0');
+      write(KEYS.voice, next.voice || '');
+      return next;
+    }
+  };
+})(window);
+</script>
+
+<script>
+(function(){
+  var formEnabled = document.getElementById('speak-enabled');
+  var formLandmarks = document.getElementById('speak-landmarks');
+  var formRepeat = document.getElementById('speak-repeat');
+  var formVoice = document.getElementById('speak-voice');
+  var formFallback = document.getElementById('speak-voice-fallback');
+  var scopeAll = document.querySelector('input[name="speak-scope"][value="all"]');
+  var scopeInc = document.querySelector('input[name="speak-scope"][value="included"]');
+  if (!window.WcaSpeakSettings) return;
+
+  function applyForm(s) {
+    formEnabled.checked = !!s.enabled;
+    formLandmarks.checked = !!s.landmarks;
+    formRepeat.checked = !!s.repeat;
+    if (s.scope === 'included') scopeInc.checked = true;
+    else scopeAll.checked = true;
+  }
+  applyForm(WcaSpeakSettings.read());
+
+  function persistFromForm() {
+    return WcaSpeakSettings.write({
+      enabled: formEnabled.checked,
+      landmarks: formLandmarks.checked,
+      repeat: formRepeat.checked,
+      scope: scopeInc.checked ? 'included' : 'all',
+      voice: formVoice.value || WcaSpeakSettings.read().voice
+    });
+  }
+
+  function unlockTts() {
+    if (!window.speechSynthesis) return;
+    try {
+      var u = new SpeechSynthesisUtterance(' ');
+      u.volume = 0;
+      speechSynthesis.speak(u);
+      speechSynthesis.cancel();
+    } catch (e) {}
+  }
+
+  function defaultVoice(voices) {
+    var localEn = voices.filter(function(v){ return v.localService && /^en/i.test(v.lang || ''); });
+    if (localEn.length) {
+      return localEn.find(function(v){ return /en-US/i.test(v.lang || ''); }) || localEn[0];
+    }
+    var anyEn = voices.filter(function(v){ return /^en/i.test(v.lang || ''); });
+    if (anyEn.length) return anyEn[0];
+    return voices.find(function(v){ return v.default; }) || voices[0] || null;
+  }
+
+  function fillVoices() {
+    if (!window.speechSynthesis) {
+      formVoice.hidden = true;
+      formFallback.hidden = false;
+      return;
+    }
+    formFallback.hidden = true;
+    formVoice.hidden = false;
+    var voices = speechSynthesis.getVoices() || [];
+    var saved = WcaSpeakSettings.read().voice;
+    var scored = voices.map(function(v){
+      var local = !!v.localService;
+      var en = /^en/i.test(v.lang || '');
+      var score = (local && en) ? 0 : (local ? 1 : 2);
+      return {v: v, score: score, local: local};
+    }).sort(function(a, b){
+      if (a.score !== b.score) return a.score - b.score;
+      return String(a.v.name).localeCompare(String(b.v.name));
+    });
+    var prev = formVoice.value;
+    formVoice.innerHTML = '';
+    scored.forEach(function(item){
+      var opt = document.createElement('option');
+      opt.value = item.v.voiceURI;
+      opt.textContent = item.v.name + ' (' + (item.v.lang || '?') + ') — ' +
+        (item.local ? 'on this device' : 'needs network');
+      formVoice.appendChild(opt);
+    });
+    if (saved && Array.prototype.some.call(formVoice.options, function(o){ return o.value === saved; })) {
+      formVoice.value = saved;
+    } else if (prev && Array.prototype.some.call(formVoice.options, function(o){ return o.value === prev; })) {
+      formVoice.value = prev;
+    } else {
+      var pick = defaultVoice(voices);
+      if (pick) formVoice.value = pick.voiceURI;
+    }
+  }
+
+  function playSample() {
+    if (!window.speechSynthesis) return;
+    try { speechSynthesis.cancel(); } catch (e) {}
+    var uri = formVoice.value;
+    WcaSpeakSettings.write({voice: uri});
+    var u = new SpeechSynthesisUtterance(WcaSpeakSettings.sampleText);
+    var voices = speechSynthesis.getVoices() || [];
+    for (var i = 0; i < voices.length; i++) {
+      if (voices[i].voiceURI === uri) { u.voice = voices[i]; break; }
+    }
+    try { speechSynthesis.speak(u); } catch (e) {}
+  }
+
+  formEnabled.addEventListener('change', function(){
+    persistFromForm();
+    if (formEnabled.checked) unlockTts();
+    else if (window.speechSynthesis) { try { speechSynthesis.cancel(); } catch (e) {} }
+  });
+  formLandmarks.addEventListener('change', persistFromForm);
+  formRepeat.addEventListener('change', persistFromForm);
+  scopeAll.addEventListener('change', persistFromForm);
+  scopeInc.addEventListener('change', persistFromForm);
+  formVoice.addEventListener('change', function(){
+    persistFromForm();
+    playSample();
+  });
+
+  fillVoices();
+  if (window.speechSynthesis) {
+    speechSynthesis.addEventListener('voiceschanged', fillVoices);
+  }
+})();
+</script>
+
 <script>
 (function(){
   if (!('serviceWorker' in navigator)) return;
