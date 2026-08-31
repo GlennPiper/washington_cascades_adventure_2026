@@ -190,7 +190,7 @@ GEAR_NOTES = [
     ('Headlamp per person, plus a backup light and spare batteries',
      'The Falls Creek Lava Caves are a real lava tube on Day 4: pitch dark, uneven basalt '
      'floor, cold year round. One shared light for the group is not enough. Gloves and a '
-     'helmet or at minimum a beanie are worth having.'),
+     'helmet or at minimum a beanie are worth having. Full notes on the lava caves page.'),
     ('A gas stove, regardless of the forecast',
      'Gifford Pinchot runs tiered fire restrictions in late summer. Stage 1 allows fires only '
      'in developed campground rings, which every planned camp has. A Stage 2 order in a dry '
@@ -244,6 +244,10 @@ PERMITS_NOTE = [
      'No permit is needed for day hiking the trails on this route. Goat Rocks and Indian '
      'Heaven wilderness areas border the route, and self-issue permits apply if anyone '
      'walks in overnight.'),
+    ('Falls Creek Lava Caves',
+     'No cave-entry permit and no paid admission. This is not Ape Cave (that one needs a '
+     'timed ticket). Parking is an informal pullout on FR 6701; a Northwest Forest Pass is '
+     'still worth having for other trailheads that day. Full notes on the lava caves page.'),
     ('Dispersed camping',
      'Free on most Gifford Pinchot roads outside developed campgrounds and posted closures. '
      'Use existing sites, camp 100+ ft from water, and check current fire restrictions '

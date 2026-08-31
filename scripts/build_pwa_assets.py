@@ -66,6 +66,7 @@ def _build_version() -> str:
     raw = TRIP_DATA.read_bytes() if TRIP_DATA.exists() else b'no-data'
     extra_raw = b''
     for name in ('fuel_plan.md', 'fire_and_closures.md', 'camping_plan.md',
+                 'lava_caves.md',
                  'weather_forecast_points.json', 'highway_tracks.json'):
         pth = PLAN / name
         extra_raw += pth.read_bytes() if pth.exists() else b''
@@ -94,6 +95,7 @@ PRECACHE = [
     'fuel-plan.html',
     'fire-and-closures.html',
     'camping-plan.html',
+    'lava-caves.html',
     'weather.html',
     'weather-client.js',
     'trip-plan.gpx',
@@ -157,6 +159,13 @@ def write_manifest() -> None:
                 'short_name': 'Fire',
                 'description': 'Go/no-go checks: forest alerts, restrictions, smoke',
                 'url': './fire-and-closures.html',
+                'icons': [{'src': 'icons/icon-192.png', 'sizes': '192x192', 'type': 'image/png'}],
+            },
+            {
+                'name': 'Lava caves',
+                'short_name': 'Caves',
+                'description': 'Falls Creek lava tube: permits, gear, how to find them',
+                'url': './lava-caves.html',
                 'icons': [{'src': 'icons/icon-192.png', 'sizes': '192x192', 'type': 'image/png'}],
             },
             {

@@ -54,6 +54,7 @@ days 3 and 4 to be the long ones.
 | `camping-plan.html` | Booking priority order and availability snapshot |
 | `fuel-plan.html` | Station list, the two fuel gaps, per-vehicle range worksheet |
 | `fire-and-closures.html` | Go/no-go page: forest alerts, restriction stages, smoke thresholds |
+| `lava-caves.html` | Falls Creek Lava Caves: no permit, gear, white-nose decon, how to find them |
 | `weather.html` | Dual NWS + Open-Meteo forecast for every camp |
 | `trip-plan.gpx` | Derived route with day-split tracks and labeled camps, for Gaia / onX / CalTopo / Garmin |
 | `manifest.webmanifest`, `service-worker.js`, `icons/*` | PWA plumbing (generated, gitignored) |
@@ -66,17 +67,17 @@ campground options for that night ranked primary / secondary / tertiary.
 The **arrival-time scheduler** is the part worth understanding. Each stop has a
 checkbox and an editable stop duration. Given a break-camp time and a moving
 speed, the page computes a running ETA down the day and an arrival time at camp,
-and persists your edits to `localStorage`. Hikes deliberately start **unchecked**
-so the day's estimate begins as driving-only; you tick the ones you want and watch
-the arrival time move. That is the entire point — it turns "can we fit this?" into
-a number.
+and persists your edits to `localStorage`. Most hikes start **unchecked** so the
+day's estimate begins as driving-only; you tick the ones you want and watch the
+arrival time move. **Lava tubes and fire lookouts start checked** — they are on
+the day's plan; uncheck them to skip.
 
 POI statuses drive the badges and the scheduler defaults:
 
 | Status | Meaning | Checked by default |
 |---|---|---|
 | `primary` | Planned stop | yes |
-| `hike_candidate` | Hike or activity to triage | no |
+| `hike_candidate` | Hike or activity to triage | no, except lava tubes and lookouts |
 | `backup` | Lower-priority option | no |
 | `landmark` | A distant peak marker, not a place you drive to | no, and contributes zero miles |
 | `logistics` | Fuel and services | no |

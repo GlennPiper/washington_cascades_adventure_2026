@@ -15,8 +15,8 @@ typos.
 POI status values
 -----------------
 ``primary``         Planned stop. Checked by default in the ETA scheduler.
-``hike_candidate``  Hike or activity to triage. NOT checked by default, so the
-                    day's ETA starts realistic and the group opts in.
+``hike_candidate``  Hike or activity to triage. Not checked by default, except
+                    lava tubes and fire lookouts, which start on the day's plan.
 ``backup``          Lower-priority option. Not checked.
 ``landmark``        A distant peak or reference marker, not somewhere you drive
                     to. Zero stop minutes and never checked -- without this the
@@ -103,7 +103,7 @@ POI_STATUS: dict[str, tuple[str, str]] = {
     'DP - Curly Creek Falls':         ('primary', 'One of a tiny handful of waterfalls on earth with two natural basalt arches spanning its face. Short walk from the road.'),
     'Rush Creek Falls':               ('backup', 'Same pullout area as Curly Creek Falls.'),
     'Falls Creek Caves Trailhead':    ('skip', 'Trailhead marker; DP - Falls Creek Lava Caves is the destination.'),
-    'DP - Falls Creek Lava Caves':    ('hike_candidate', 'LAVA TUBE. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. Check for seasonal bat closures before entering.'),
+    'DP - Falls Creek Lava Caves':    ('hike_candidate', 'LAVA TUBE. No permit, no paid entry — this is not Ape Cave. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. See the lava caves page for decon, parking and how to find the pits.'),
     'Red Mountain Fire Lookout':      ('hike_candidate', 'Lookout at 4,965 ft on the Indian Heaven boundary; panorama of four volcanoes. ~1.7 mi off route.'),
     'DP - Panther Creek Falls':       ('primary', 'About 130 ft of tiered falls with a built viewing platform a short walk from the road. Final-night camp is just up the road.'),
 }
@@ -139,8 +139,8 @@ POI_SPUR_OVERRIDES: dict[str, float] = {
 
 
 # Stops that get checked by default in the itinerary scheduler.
-# hike_candidate is deliberately False: with a dozen hikes on the route, the
-# group triages which ones to do rather than starting from "all of them".
+# hike_candidate is False unless the stop is a lava tube or a lookout -- those
+# are on the day's plan; other hikes stay opt-in.
 DEFAULT_CHECKED_BY_STATUS = {
     'primary':         True,
     'conditional':     True,
@@ -151,6 +151,23 @@ DEFAULT_CHECKED_BY_STATUS = {
     'logistics':       False,
     'unclassified':    False,
 }
+
+
+def is_default_checked(name: str, status: str, sym: str = '') -> bool:
+    """Whether the scheduler checkbox starts ticked.
+
+    Lava tubes and fire lookouts are on the plan even when their catalog status
+    is hike_candidate (or backup). Skip and landmark never are.
+    """
+    if status in ('skip', 'landmark'):
+        return False
+    n = (name or '').lower()
+    s = (sym or '').lower()
+    if 'lava cave' in n or 'lava tube' in n:
+        return True
+    if 'lookout' in n or s == 'fire-lookout':
+        return True
+    return DEFAULT_CHECKED_BY_STATUS.get(status, False)
 
 # Statuses that contribute no driving detour and no stop time.
 ZERO_TIME_STATUSES = {'landmark'}
@@ -473,7 +490,8 @@ def build_payload(
             for p in d_copy['pois']:
                 p['default_minutes'] = default_minutes(
                     p['name'], p.get('sym'), p['status'], p.get('note'))
-                p['default_checked'] = DEFAULT_CHECKED_BY_STATUS.get(p['status'], False)
+                p['default_checked'] = is_default_checked(
+                    p['name'], p['status'], p.get('sym') or '')
 
         out_days.append(d_copy)
 

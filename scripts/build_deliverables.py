@@ -342,7 +342,7 @@ def _top_nav_html(
     a compact link-only bar.
 
     current highlights one page: 'itinerary' | 'reference' | 'weather' | 'fuel' |
-    'fire' | 'camping' | 'none'.
+    'fire' | 'camping' | 'caves' | 'none'.
 
     itinerary_href / weather_href / gpx_href override defaults for variant-specific pages.
     """
@@ -370,6 +370,7 @@ def _top_nav_html(
         li_link(weather_href, 'Weather', 'weather'),
         li_link('fire-and-closures.html', 'Fire & closures', 'fire'),
         li_link('camping-plan.html', 'Camping plan', 'camping'),
+        li_link('lava-caves.html', 'Lava caves', 'caves'),
         li_link('trip-reference.html', 'Full reference', 'reference'),
         li_link(gpx_href, 'GPX', '_gpx', download=True),
     ]
@@ -497,6 +498,12 @@ def write_planning_markdown_pages():
             OUT_DIR / 'camping-plan.html',
             f'Camping plan - {cfg.PWA_TITLE}',
             'camping',
+        ),
+        (
+            PLAN / 'lava_caves.md',
+            OUT_DIR / 'lava-caves.html',
+            f'Lava caves - {cfg.PWA_TITLE}',
+            'caves',
         ),
     ]
     for md_path, out_path, title, nav_key in pages:
@@ -720,6 +727,26 @@ def badge_html(status):
     return f'<span class="badge badge-{cls}">{esc(label)}</span>'
 
 
+# Companion pages reached from a stop inside the itinerary / reference, not
+# only from the top nav. Same-window links so they stay inside the installed PWA.
+POI_APP_PAGES = {
+    'DP - Falls Creek Lava Caves': {
+        'href': 'lava-caves.html',
+        'label': 'Cave notes',
+    },
+}
+
+
+def poi_page_link_html(name: str) -> str:
+    info = POI_APP_PAGES.get(name)
+    if not info:
+        return ''
+    return (
+        f' <a class="poi-page-link" href="{esc(info["href"])}">'
+        f'{esc(info["label"])}</a>'
+    )
+
+
 def desc_button_html(name, desc):
     """Return an inline 'notes' icon button that opens the POI description dialog,
     or '' if no description is available. The button is keyed by POI name; the
@@ -746,7 +773,7 @@ def collect_poi_descriptions(data):
             desc = (p.get('desc') or '').strip()
             if not desc or p['name'] in out:
                 continue
-            out[p['name']] = {
+            entry = {
                 'desc': desc,
                 'sym':  p.get('sym') or '',
                 'mile': p.get('mile'),
@@ -755,6 +782,10 @@ def collect_poi_descriptions(data):
                 'lon':  p.get('lon'),
                 'day':  d.get('label') or d.get('id'),
             }
+            page = POI_APP_PAGES.get(p['name'])
+            if page:
+                entry['page'] = page
+            out[p['name']] = entry
     return out
 
 
@@ -807,7 +838,14 @@ const POI_DESCRIPTIONS = {desc_json};
                 info.lat + ',' + info.lon + '" target="_blank" rel="noopener">Map It</a>');
     sub.innerHTML = bits.join(' &middot; ');
     const paragraphs = info.desc.split(/\\n\\s*\\n/).map(p => p.trim()).filter(Boolean);
-    body.innerHTML = paragraphs.map(p => '<p>' + escHTML(p).replace(/\\n/g, '<br>') + '</p>').join('') +
+    let pageLink = '';
+    if (info.page && info.page.href) {{
+      const lbl = escHTML(info.page.label || 'Open notes page');
+      pageLink = '<p class="poi-app-page"><a href="' + escHTML(info.page.href) + '">' +
+                 lbl + '</a> &mdash; in this app, works offline.</p>';
+    }}
+    body.innerHTML = pageLink +
+                     paragraphs.map(p => '<p>' + escHTML(p).replace(/\\n/g, '<br>') + '</p>').join('') +
                      '<div class="src">Source: original route GPX (On The Go Crew).</div>';
     return true;
   }}
@@ -861,6 +899,7 @@ def poi_row(p, day_id=None, allow_focus=False, scheduled=False, idx=0, day_mph=2
     else:
         name_html = name_text
     name_html += desc_button_html(p['name'], p.get('desc'))
+    name_html += poi_page_link_html(p['name'])
     coords_html = ''
     if lat is not None and lon is not None:
         gm = f'https://www.google.com/maps/search/?api=1&query={lat},{lon}'
@@ -1278,6 +1317,9 @@ tr.skipped-row .spur-hint::before{content:"[Saving] "}
 .desc-btn:hover{background:#1f6feb;border-color:#1f6feb;color:#fff}
 .desc-btn:focus-visible{outline:2px solid #1f6feb;outline-offset:1px}
 .desc-btn svg{display:block}
+.poi-page-link{display:inline;margin-left:6px;font-size:12px;font-weight:600;white-space:nowrap}
+#poi-desc-dialog .dialog-body .poi-app-page{margin:0 0 12px;padding:10px 12px;
+  background:#161b22;border:1px solid var(--border);border-radius:6px;font-weight:600}
 #poi-desc-dialog{max-width:640px;width:90vw;padding:0;background:#24292f;color:var(--text);
   border:1px solid var(--border);border-radius:8px;box-shadow:0 12px 48px rgba(0,0,0,0.75)}
 #poi-desc-dialog::backdrop{background:rgba(0,0,0,0.82);backdrop-filter:blur(3px)}
@@ -1461,6 +1503,7 @@ def build_itinerary_html(variant=None):
         else:
             name_html = name_text
         name_html += desc_button_html(p['name'], p.get('desc'))
+        name_html += poi_page_link_html(p['name'])
         if lat is not None and lon is not None:
             gm = f'https://www.google.com/maps/search/?api=1&query={lat},{lon}'
             coords_html = (
@@ -1602,25 +1645,37 @@ def build_itinerary_html(variant=None):
                 poi_tables.extend(poi_row(p, day_id=d['id'], allow_focus=day_has_map) for p in backup)
                 poi_tables.append('</tbody></table>')
 
-        # Hikes are opt-in: they start unchecked so the ETA is realistic, and the
-        # group ticks the ones it wants and watches the arrival time move.
+        # Lookouts and lava tubes start checked. Other hike_candidates stay opt-in.
         hike_warn = ''
-        hike_names = [p['name'] for p in pois if p.get('status') == 'hike_candidate']
-        if hike_names:
-            listed = ', '.join(f'<strong>{esc(n)}</strong>' for n in hike_names)
+        hike_pois = [p for p in pois if p.get('status') == 'hike_candidate']
+        if hike_pois:
+            planned = [p['name'] for p in hike_pois if p.get('default_checked')]
+            opt_in = [p['name'] for p in hike_pois if not p.get('default_checked')]
+            bits = []
+            if planned:
+                listed = ', '.join(f'<strong>{esc(n)}</strong>' for n in planned)
+                bits.append(
+                    f'<strong>On the plan:</strong> {listed}. Uncheck to skip '
+                    'and watch the ETA move.'
+                )
+            if opt_in:
+                listed = ', '.join(f'<strong>{esc(n)}</strong>' for n in opt_in)
+                bits.append(
+                    f'<strong>Optional:</strong> {listed}. These start '
+                    '<strong>unchecked</strong> so the day\'s arrival estimate '
+                    'reflects driving only. Tick the ones you want and watch the ETA move.'
+                )
             gear = ''
-            if any('Lava Cave' in n for n in hike_names):
+            if any('Lava Cave' in p['name'] for p in pois):
                 gear = (
                     ' <br><strong>Lava caves:</strong> every person going underground needs their own '
                     'headlamp plus a backup light and spare batteries. The cave is pitch dark and stays '
                     'cold year round; the floor is uneven basalt. Boots and gloves recommended. '
-                    'Check for seasonal bat closures before entering.'
+                    'No permit and no paid entry — see the <a href="lava-caves.html">lava caves page</a> '
+                    'for gear, white-nose decon, and how to find the pits.'
                 )
             hike_warn = (
-                f'<div class="warn"><strong>Hikes and activities to triage:</strong> {listed}. '
-                'These start <strong>unchecked</strong> so the day\'s arrival estimate reflects driving only. '
-                'Tick the ones you want and watch the ETA move — that is the whole point of the scheduler.'
-                f'{gear}</div>'
+                f'<div class="warn">{" ".join(bits)}{gear}</div>'
             )
 
         # Camps block
@@ -1690,6 +1745,10 @@ def build_itinerary_html(variant=None):
                 {'label': 'WSDOT mountain passes',    'url': 'https://wsdot.com/travel/real-time/mountainpasses'},
                 {'label': 'Fire & closures page',     'url': 'fire-and-closures.html'},
             ]
+            if d['id'] == 'day4_cascades':
+                quick_links.append(
+                    {'label': 'Falls Creek lava caves', 'url': 'lava-caves.html'},
+                )
 
         ql_html = ''
         if quick_links:
@@ -2512,7 +2571,10 @@ def build_reference_html():
     for cat, links in rt_by_cat.items():
         rt_html += f'<div class="cat-head">{esc(cat)}</div><div class="link-grid">'
         for l in links:
-            rt_html += f'<a href="{esc(l["url"])}" target="_blank">{esc(l["label"])}</a>'
+            href = l['url']
+            # Stay inside the installed PWA for relative trip pages.
+            blank = ' target="_blank"' if href.startswith('http') else ''
+            rt_html += f'<a href="{esc(href)}"{blank}>{esc(l["label"])}</a>'
         rt_html += '</div>'
 
     # Fuel section
@@ -2591,8 +2653,15 @@ def build_reference_html():
             off = pp.get('true_off_track_m') or 0
             if off > 400:
                 extra.append(f'{off / 1609.344:.1f} mi from the main track')
+            page = POI_APP_PAGES.get(pp['name'])
+            if page:
+                name_cell = (
+                    f'<a href="{esc(page["href"])}">{esc(pp["name"])}</a>'
+                )
+            else:
+                name_cell = '<strong>' + esc(pp['name']) + '</strong>'
             hike_rows.append(
-                '<tr><td><strong>' + esc(pp['name']) + '</strong></td>'
+                '<tr><td>' + name_cell + '</td>'
                 '<td>' + esc(d['label'].split(' - ')[0]) + '</td>'
                 '<td>' + esc(', '.join(extra) or '\u2014') + '</td>'
                 '<td>' + esc(pp.get('note') or '') + '</td></tr>'
@@ -2602,10 +2671,9 @@ def build_reference_html():
         hike_detail = (
             '<div class="card" id="hikes">'
             '<h2>Hikes &amp; Activities</h2>'
-            '<p class="muted">Every one of these starts <strong>unchecked</strong> in the itinerary '
-            'scheduler so each day\'s arrival estimate reflects driving only. Tick the ones the group '
-            'wants and watch the ETA move. Times below are the default stop budgets baked into the '
-            'scheduler, not hard estimates.</p>'
+            '<p class="muted">Lookouts and the lava caves start <strong>checked</strong>. '
+            'Other hikes start unchecked so each day\'s arrival estimate can opt them in. '
+            'Times below are the default stop budgets baked into the scheduler, not hard estimates.</p>'
             '<table><thead><tr><th>Hike / activity</th><th>Day</th><th>Budget</th><th>Notes</th></tr></thead>'
             '<tbody>' + ''.join(hike_rows) + '</tbody></table>'
             '<h3>Gear notes</h3>'
@@ -2613,7 +2681,7 @@ def build_reference_html():
             '<li><strong>Falls Creek Lava Caves:</strong> a real lava tube. One headlamp per person '
             '<em>plus</em> a backup light and spare batteries. Pitch dark, uneven basalt floor, cold '
             'year round. Boots and gloves recommended; a helmet or at minimum a beanie saves scalps. '
-            'Check for seasonal bat closures before entering.</li>'
+            'No permit, no paid entry. Full notes: <a href="lava-caves.html">lava caves page</a>.</li>'
             '<li><strong>High Rock Lookout:</strong> the lookout sits on a cliff edge with a serious '
             'drop. Fine for careful adults, worth thinking about with kids or dogs.</li>'
             '<li><strong>Northwest Forest Pass</strong> is required to park at most of these '
@@ -2650,8 +2718,10 @@ def build_reference_html():
         '<div class="card" id="gear">'
         '<h2>Trip-specific gear</h2>'
         '<p class="muted">Not a general camping list &mdash; these are the items this route and '
-        'season make non-obvious, pulled together from the fuel, camping and fire pages.</p>'
+        'season make non-obvious, pulled together from the fuel, camping, fire and lava-caves pages.</p>'
         '<ul class="clean">' + _gear_lis + '</ul>'
+        '<p><a href="lava-caves.html">Falls Creek Lava Caves notes</a> '
+        '&mdash; gear, permits, white-nose decon, how to find the pits. Cached in this app.</p>'
         '</div>'
     )
     emerg_html = (
@@ -2668,6 +2738,8 @@ def build_reference_html():
         '<div class="card" id="permits">'
         '<h2>Permits &amp; Passes</h2>'
         '<ul class="clean">' + _permit_lis + '</ul>'
+        '<p><a href="lava-caves.html">Falls Creek Lava Caves</a> need no entry permit. '
+        'The notes page is in this app and works offline.</p>'
         '</div>'
     )
 
@@ -2743,6 +2815,7 @@ Top off in Carson without exception.</p>
 <li><a href="camping-plan.html">Camping plan</a> (offline) &mdash; source <code>planning/camping_plan.md</code></li>
 <li><a href="fuel-plan.html">Fuel plan</a> (offline) &mdash; source <code>planning/fuel_plan.md</code></li>
 <li><a href="fire-and-closures.html">Fire &amp; closures</a> (offline) &mdash; source <code>planning/fire_and_closures.md</code></li>
+<li><a href="lava-caves.html">Lava caves</a> (offline) &mdash; source <code>planning/lava_caves.md</code></li>
 <li><code>scripts/trip_config.py</code> &mdash; trip identity: title, dates, contacts, map bbox</li>
 <li><code>scripts/build_trip_data.py</code> &mdash; day split, campground plan, fuel plan, live links</li>
 <li><code>scripts/trip_core.py</code> &mdash; POI catalog and scheduler stop-time defaults</li>

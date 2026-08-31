@@ -54,6 +54,10 @@
         "No permit is needed for day hiking the trails on this route. Goat Rocks and Indian Heaven wilderness areas border the route, and self-issue permits apply if anyone walks in overnight."
       ],
       [
+        "Falls Creek Lava Caves",
+        "No cave-entry permit and no paid admission. This is not Ape Cave (that one needs a timed ticket). Parking is an informal pullout on FR 6701; a Northwest Forest Pass is still worth having for other trailheads that day. Full notes on the lava caves page."
+      ],
+      [
         "Dispersed camping",
         "Free on most Gifford Pinchot roads outside developed campgrounds and posted closures. Use existing sites, camp 100+ ft from water, and check current fire restrictions before any campfire."
       ]
@@ -3332,7 +3336,7 @@
           "desc": "Steamboat Mountain is a prominent peak located in the Gifford Pinchot National Forest, situated northwest of Mount Adams in Skamania County, Washington, with an elevation of 5,424 feet. The peak is a distinctive feature of the local landscape and serves as a major viewpoint for the surrounding Cascade Mountains.\n\nThe mountain's summit was historically the location of the Steamboat Mountain Fire Lookout. Developed with a 14x14-foot cabin in 1928, the site was later upgraded. A 20-foot tall treated timber tower with an R-6 flattop cab was constructed in 1956. The lookout was actively staffed for several years but was subsequently decommissioned and removed around 1966, reflecting the Forest Service's shift from manned lookouts to aerial and satellite fire detection. Today, only the footings of the old fire tower remain, along with a 1937 USDA Forest Service brass survey marker.\n\nSteamboat Mountain is a popular hiking destination, particularly in the late summer, when the trail passes through dense, mature huckleberry bushes. The approximately half-mile trail to the summit (Trail #14, Steamboat Viewpoint) is often accessed via a network of Forest Service roads, including Forest Road 8851 and 8854, near the Big Tire intersection. The area is part of a non-motorized recreation zone and is known for its spectacular 360-degree views.\n\nFrom the exposed summit, hikers can attain panoramic views of the major Cascade volcanoes, including the imposing Mount Adams immediately to the east, as well as Mount Rainier, Mount St. Helens, and Mount Hood. Below the peak to the southeast is Steamboat Lake, and to the southwest is Big Mosquito Lake, adding to the scenic value of the viewpoint.\n\n\n\n\n\n\n\n\n\n\n\n\nTools",
           "spur_mi": 0.0,
           "default_minutes": 60,
-          "default_checked": false
+          "default_checked": true
         },
         {
           "name": "Mt Adams Viewpoint",
@@ -14699,7 +14703,7 @@
           "desc": "",
           "spur_mi": 4.6,
           "default_minutes": 15,
-          "default_checked": false
+          "default_checked": true
         },
         {
           "name": "Fuel - Packwood, WA",
@@ -14733,7 +14737,7 @@
           "desc": "High Rock Lookout is an iconic and historic fire lookout station located atop High Rock, the most prominent point along the Sawtooth Ridge in the Gifford Pinchot National Forest, Washington. Situated near the northern boundary of the forest, the lookout provides one of the most stunning panoramic views in the South Cascades, with a direct, in-your-face sightline of Mount Rainier only 13 air miles away, as well as clear views of the Tatoosh Range, Mount Adams, and Mount St. Helens.\n\nThe lookout structure, a 14x14-foot gable roof L-4 ground house, was originally constructed in 1929-1931 with materials hauled in by pack mule from Mineral, Washington. Its location at an elevation of 5,685 feet (1,732 meters), perched on the edge of a sheer cliff with a vertical 600-foot drop on its north face, made it a crucial and strategic fire detection post for the Forest Service until it was last staffed in 2004. The lookout is now listed on the National Historic Lookout Register.\n\nThe site is accessed via the popular and moderately steep High Rock Trail ($#$266), a 1.6-mile path that climbs approximately 1,350 feet from the Towhead Gap trailhead. Due to years of neglect, extreme weather, and vandalism, the lookout structure underwent a community-driven, multi-phased restoration effort that began in the 2020s. This effort required the temporary removal of the structure for off-site restoration and foundation work.",
           "spur_mi": 9.0,
           "default_minutes": 150,
-          "default_checked": false
+          "default_checked": true
         },
         {
           "name": "DP - Mt Rainier",
@@ -20857,11 +20861,11 @@
           "true_off_track_m": 908.5,
           "sym": "cave",
           "status": "hike_candidate",
-          "note": "LAVA TUBE. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. Check for seasonal bat closures before entering.",
+          "note": "LAVA TUBE. No permit, no paid entry — this is not Ape Cave. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. See the lava caves page for decon, parking and how to find the pits.",
           "desc": "Falls Creek Lava Caves (sometimes referred to collectively as the Falls Creek Cave System) is an extensive and highly significant geological feature located in the Wind River valley of the Gifford Pinchot National Forest, near Carson, Washington. This system is a large lava tube, formed during a basaltic flow from the nearby Big Lava Bed eruption approximately 8,200 years ago.\n\nThe main cave, Falls Creek Cave, is estimated to be over 1.2 miles (2,000 meters) long, making it one of the longer unmaintained lava tubes in Washington State. It is characterized by three distinct breakdown pits (collapsed sections of the tube) visible from the surface. The entrance is typically accessed through the second of these pits, requiring a challenging descent over piles of jagged boulders. The interior is generally unlit, pitch black, and features numerous side passages, slippery clay floors, and challenging scrambles over massive rockfalls, demanding caution and multiple reliable light sources.\n\nGeologically, the cave preserves unique features of its volcanic origin, including solidified lava drippings (known as lavacicles) and evidence of flow dynamics. The cave is part of a complex system where the surface creek, Falls Creek, seasonally sinks into the lava tube system through sinkholes and fissures before emerging further downstream. Due to its unmaintained status, the cave offers a rugged and challenging spelunking experience, contrasting with the more accessible and developed Ape Cave near Mount St. Helens.\n\nThe cave is located near the trailhead for the scenic Falls Creek Falls, and is often included in a longer recreational loop. Access is via a spur road off Wind River Road (Forest Road 30), and due to the high-elevation location and winter road closures, exploration is typically restricted to the snow-free season. The remote location and challenging nature of the cave require all visitors to be self-sufficient and practice strict Leave No Trace principles.\n\n\n\n\n\n\n\n\n\n\n\n\nTools",
           "spur_mi": 0.0,
           "default_minutes": 90,
-          "default_checked": false
+          "default_checked": true
         },
         {
           "name": "Red Mountain Fire Lookout",
@@ -20878,7 +20882,7 @@
           "desc": "The Red Mountain Fire Lookout is a historic and popular destination in the southern portion of the Gifford Pinchot National Forest, situated near the boundary of the Indian Heaven Wilderness in Skamania County, Washington. At an elevation of 4,965 feet, the lookout offers one of the most comprehensive panoramic views in the South Cascades, encompassing Mount Rainier, Mount St. Helens, Mount Adams, and Mount Hood.\n\nThe site on Red Mountain holds a distinguished place in the history of forest fire prevention for the region. The first lookout structure was established on the summit in 1910, making it the first lookout point identified in what was then the Columbia National Forest (now the Gifford Pinchot). The current structure is the fourth on the site, built in 1959, featuring a 10-foot timber tower with a standard Forest Service R-6 flattop cab. The site was historically critical; during World War II (1942-1943), it was staffed 24 hours a day as an Aircraft Warning Station to monitor for enemy aircraft. The original Civilian Conservation Corps (CCC) garage, converted to living quarters for the wartime spotters, still stands on the site.\n\nAlthough the lookout is no longer staffed by the Forest Service for fire detection (which is now primarily done via satellites), the structure has been preserved and is maintained by volunteer efforts, notably after a severe windstorm in 2006 caused significant damage. It is a key recreational destination, with hikers typically accessing the site via the Indian Racetrack Trail (#171), or by hiking a gated access road (Forest Road 6048). The trail passes through a unique landscape, including the Indian Racetrack meadow, an area rich in huckleberries, before climbing to the summit.",
           "spur_mi": 3.4,
           "default_minutes": 45,
-          "default_checked": false
+          "default_checked": true
         },
         {
           "name": "DP - Panther Creek Falls",
@@ -32411,6 +32415,11 @@
       "cat": "Camping/Permits",
       "label": "Skamania County parks (Home Valley)",
       "url": "https://www.skamaniacounty.org/community/parks-recreation"
+    },
+    {
+      "cat": "Camping/Permits",
+      "label": "Falls Creek lava caves (in this app)",
+      "url": "lava-caves.html"
     },
     {
       "cat": "Forest Service",

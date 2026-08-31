@@ -600,6 +600,8 @@ REALTIME_LINKS = [
      'url': 'https://www.fs.usda.gov/detail/r6/passes-permits/recreation/?cid=fsbdev2_027010'},
     {'cat': 'Camping/Permits', 'label': 'Skamania County parks (Home Valley)',
      'url': 'https://www.skamaniacounty.org/community/parks-recreation'},
+    {'cat': 'Camping/Permits', 'label': 'Falls Creek lava caves (in this app)',
+     'url': 'lava-caves.html'},
 
     # --- Land management ---
     {'cat': 'Forest Service', 'label': 'Gifford Pinchot National Forest',
