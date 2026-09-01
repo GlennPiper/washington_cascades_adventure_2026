@@ -161,9 +161,13 @@ article.md-page hr { border: none; border-top: 1px solid #30363d; margin: 22px 0
 .settings-fieldset legend{padding:0 6px;color:#f0f6fc;font-weight:600}
 .settings-fieldset label{display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer}
 .settings-voice-label{display:block;margin:16px 0 6px;font-weight:600;color:#f0f6fc}
-#speak-voice{display:block;width:100%;max-width:520px;min-height:44px;padding:8px 10px;
+.settings-voice-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;max-width:640px}
+#speak-voice{display:block;flex:1 1 220px;min-height:44px;padding:8px 10px;
   background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:6px;font:inherit}
 #speak-voice:focus{outline:2px solid #58a6ff;outline-offset:1px}
+#speak-voice-play{min-height:44px;padding:0 14px;background:#21262d;color:#e6edf3;
+  border:1px solid #30363d;border-radius:6px;font:inherit;cursor:pointer}
+#speak-voice-play:hover{border-color:#58a6ff}
 .settings-hint{color:#8b949e;font-size:14px;margin:12px 0 0}
 </style>
 </head><body>
@@ -262,9 +266,12 @@ else init();
 </label>
 
 <label class="settings-voice-label" for="speak-voice">Voice</label>
+<div class="settings-voice-row">
 <select id="speak-voice" aria-describedby="speak-voice-fallback"></select>
+<button type="button" id="speak-voice-play">Play sample</button>
+</div>
 <p id="speak-voice-fallback" class="muted" hidden>This browser cannot speak.</p>
-<p class="settings-hint">Auto-read only works while the itinerary is open. Use Listen on a stop row anytime. Tap Stop to cancel a readout.</p>
+<p class="settings-hint">Auto-read only works while the itinerary is open. Use Listen on a stop row anytime. Tap Stop to cancel a readout. If two list entries sound the same, they are usually the same engine with different language tags.</p>
 </section>
 </article>
 <script>
@@ -317,6 +324,54 @@ else init();
       write(KEYS.repeat, next.repeat ? '1' : '0');
       write(KEYS.voice, next.voice || '');
       return next;
+    },
+    // Android Chrome often leaves voiceURI blank or identical across voices.
+    // Name + lang is the stable identity; URI is only a tie-breaker.
+    voiceKey: function(v) {
+      if (!v) return '';
+      return [v.name || '', v.lang || '', v.voiceURI || ''].join('|');
+    },
+    findVoice: function(key) {
+      if (!window.speechSynthesis) return null;
+      var voices = speechSynthesis.getVoices() || [];
+      if (!voices.length) return null;
+      var i, v;
+      if (key) {
+        for (i = 0; i < voices.length; i++) {
+          if (this.voiceKey(voices[i]) === key) return voices[i];
+        }
+        var parts = String(key).split('|');
+        var name = parts[0] || '';
+        var lang = parts[1] || '';
+        var uri = parts.slice(2).join('|');
+        if (name || lang) {
+          for (i = 0; i < voices.length; i++) {
+            v = voices[i];
+            if ((v.name || '') === name && (v.lang || '') === lang) return v;
+          }
+        }
+        if (uri) {
+          var hits = [];
+          for (i = 0; i < voices.length; i++) {
+            if (voices[i].voiceURI === uri) hits.push(voices[i]);
+          }
+          if (hits.length === 1) return hits[0];
+        }
+      }
+      var localEn = voices.filter(function(v) {
+        return v.localService && /^en/i.test(v.lang || '');
+      });
+      if (localEn.length) {
+        return localEn.find(function(v) { return /en-US/i.test(v.lang || ''); }) || localEn[0];
+      }
+      var anyEn = voices.filter(function(v) { return /^en/i.test(v.lang || ''); });
+      if (anyEn.length) return anyEn[0];
+      return voices.find(function(v) { return v.default; }) || voices[0] || null;
+    },
+    applyVoice: function(utterance, voice) {
+      if (!utterance || !voice) return;
+      utterance.voice = voice;
+      if (voice.lang) utterance.lang = voice.lang;
     }
   };
 })(window);
@@ -391,36 +446,61 @@ else init();
       if (a.score !== b.score) return a.score - b.score;
       return String(a.v.name).localeCompare(String(b.v.name));
     });
-    var prev = formVoice.value;
-    formVoice.innerHTML = '';
+    var keys = [];
+    var seen = {};
     scored.forEach(function(item){
-      var opt = document.createElement('option');
-      opt.value = item.v.voiceURI;
-      opt.textContent = item.v.name + ' (' + (item.v.lang || '?') + ') — ' +
-        (item.local ? 'on this device' : 'needs network');
-      formVoice.appendChild(opt);
+      var key = WcaSpeakSettings.voiceKey(item.v);
+      if (!key || seen[key]) return;
+      seen[key] = true;
+      keys.push(key);
     });
-    if (saved && Array.prototype.some.call(formVoice.options, function(o){ return o.value === saved; })) {
-      formVoice.value = saved;
-    } else if (prev && Array.prototype.some.call(formVoice.options, function(o){ return o.value === prev; })) {
-      formVoice.value = prev;
-    } else {
-      var pick = defaultVoice(voices);
-      if (pick) formVoice.value = pick.voiceURI;
+    var listSig = keys.join('\n');
+    if (formVoice.dataset.voiceKeys !== listSig) {
+      var prev = formVoice.value;
+      var added = {};
+      formVoice.innerHTML = '';
+      scored.forEach(function(item){
+        var key = WcaSpeakSettings.voiceKey(item.v);
+        if (!key || added[key]) return;
+        added[key] = true;
+        var opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = item.v.name + ' (' + (item.v.lang || '?') + ') — ' +
+          (item.local ? 'on this device' : 'needs network');
+        formVoice.appendChild(opt);
+      });
+      formVoice.dataset.voiceKeys = listSig;
+      if (saved && Array.prototype.some.call(formVoice.options, function(o){ return o.value === saved; })) {
+        formVoice.value = saved;
+      } else if (prev && Array.prototype.some.call(formVoice.options, function(o){ return o.value === prev; })) {
+        formVoice.value = prev;
+      } else {
+        var pick = defaultVoice(voices);
+        if (pick) formVoice.value = WcaSpeakSettings.voiceKey(pick);
+      }
     }
   }
 
+  var _sampleTimer = null;
   function playSample() {
     if (!window.speechSynthesis) return;
+    var key = formVoice.value;
+    WcaSpeakSettings.write({voice: key});
+    var voice = WcaSpeakSettings.findVoice(key);
+    var busy = false;
+    try { busy = !!(speechSynthesis.speaking || speechSynthesis.pending); } catch (e) {}
     try { speechSynthesis.cancel(); } catch (e) {}
-    var uri = formVoice.value;
-    WcaSpeakSettings.write({voice: uri});
-    var u = new SpeechSynthesisUtterance(WcaSpeakSettings.sampleText);
-    var voices = speechSynthesis.getVoices() || [];
-    for (var i = 0; i < voices.length; i++) {
-      if (voices[i].voiceURI === uri) { u.voice = voices[i]; break; }
+    function go() {
+      _sampleTimer = null;
+      var u = new SpeechSynthesisUtterance(WcaSpeakSettings.sampleText);
+      WcaSpeakSettings.applyVoice(u, voice);
+      try { speechSynthesis.speak(u); } catch (e) {}
     }
-    try { speechSynthesis.speak(u); } catch (e) {}
+    if (_sampleTimer) clearTimeout(_sampleTimer);
+    // cancel() on Android can swallow a same-tick speak(); keep the first
+    // tap in the user-gesture turn when nothing is already playing.
+    if (busy) _sampleTimer = setTimeout(go, 80);
+    else go();
   }
 
   formEnabled.addEventListener('change', function(){
@@ -436,6 +516,8 @@ else init();
     persistFromForm();
     playSample();
   });
+  var playBtn = document.getElementById('speak-voice-play');
+  if (playBtn) playBtn.addEventListener('click', playSample);
 
   fillVoices();
   if (window.speechSynthesis) {

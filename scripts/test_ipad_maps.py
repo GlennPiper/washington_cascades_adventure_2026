@@ -96,6 +96,8 @@ def test_static_settings_page() -> None:
         ("landmarks toggle", "speak-landmarks"),
         ("repeat toggle", "speak-repeat"),
         ("voice select", 'id="speak-voice"'),
+        ("play sample", "speak-voice-play"),
+        ("voice identity helper", "voiceKey"),
         ("settings helper", "WcaSpeakSettings"),
         ("sample text", "This is how notes will sound"),
     ]
@@ -242,6 +244,12 @@ def _speech_mock_script() -> str:
         getVoices: function() { return window.__WCA_VOICES; },
         speak: function(u) {
           window.__WCA_SPOKE.push(u && u.text);
+          window.__WCA_LAST_UTTERANCE = {
+            text: u && u.text,
+            voiceURI: u && u.voice && u.voice.voiceURI,
+            lang: u && (u.lang || (u.voice && u.voice.lang)),
+            name: u && u.voice && u.voice.name
+          };
           this.speaking = true;
           this._current = u;
         },
@@ -456,10 +464,14 @@ def test_settings_persist_and_voice_sample(origin: str, browser) -> None:
         page.locator("#speak-landmarks").uncheck()
         page.locator("#speak-repeat").check()
         page.wait_for_function("() => document.querySelector('#speak-voice').options.length >= 2")
-        page.select_option("#speak-voice", "net-en")
+        net_key = "Network Voice|en-GB|net-en"
+        page.select_option("#speak-voice", net_key)
         page.wait_for_function(
             "() => (window.__WCA_SPOKE || []).some(t => t && String(t).indexOf('Washington Cascades') !== -1)"
         )
+        last = page.evaluate("() => window.__WCA_LAST_UTTERANCE")
+        assert last and last.get("name") == "Network Voice", last
+        assert last.get("lang") == "en-GB", last
         stored = page.evaluate(
             """() => ({
               enabled: localStorage.getItem('wca-speak-notes'),
@@ -473,7 +485,7 @@ def test_settings_persist_and_voice_sample(origin: str, browser) -> None:
         assert stored["scope"] == "included", stored
         assert stored["landmarks"] == "0", stored
         assert stored["repeat"] == "1", stored
-        assert stored["voice"] == "net-en", stored
+        assert stored["voice"] == net_key, stored
 
         page.goto(origin + "/trip-itinerary.html", wait_until="domcontentloaded")
         page.wait_for_selector(".leaflet-container", timeout=30000)
@@ -482,7 +494,58 @@ def test_settings_persist_and_voice_sample(origin: str, browser) -> None:
         assert flags["scope"] == "included"
         assert flags["landmarks"] is False
         assert flags["repeat"] is True
-        assert flags["voice"] == "net-en"
+        assert flags["voice"] == "Network Voice|en-GB|net-en"
+    finally:
+        context.close()
+
+
+def _android_blank_uri_voices_script() -> str:
+    """Android Chrome often exposes several voices with an empty voiceURI."""
+    return """
+    (function() {
+      window.__WCA_SPOKE = [];
+      window.__WCA_VOICES = [
+        {name:'English United States', lang:'en-US', localService:false, default:true, voiceURI:''},
+        {name:'English United Kingdom', lang:'en-GB', localService:false, default:false, voiceURI:''}
+      ];
+      function Utterance(text) {
+        this.text = text; this.voice = null; this.rate = 1; this.volume = 1; this.lang = '';
+      }
+      const synth = {
+        speaking: false, paused: false, pending: false, _current: null,
+        getVoices: function() { return window.__WCA_VOICES; },
+        speak: function(u) {
+          window.__WCA_SPOKE.push(u && u.text);
+          window.__WCA_LAST_UTTERANCE = {
+            text: u && u.text,
+            voiceURI: u && u.voice && u.voice.voiceURI,
+            lang: u && u.lang,
+            name: u && u.voice && u.voice.name
+          };
+          this.speaking = true; this._current = u;
+        },
+        cancel: function() { this.speaking = false; this._current = null; },
+        pause: function() {}, resume: function() {},
+        addEventListener: function() {}, removeEventListener: function() {}
+      };
+      window.SpeechSynthesisUtterance = Utterance;
+      Object.defineProperty(window, 'speechSynthesis', {
+        configurable: true, get: function() { return synth; }
+      });
+    })();
+    """
+
+
+def test_android_blank_voiceuri_uses_selected_voice(origin: str, browser) -> None:
+    context, page = _new_context(browser, [_android_blank_uri_voices_script()])
+    try:
+        page.goto(origin + "/settings.html", wait_until="domcontentloaded")
+        page.wait_for_function("() => document.querySelector('#speak-voice').options.length >= 2")
+        page.select_option("#speak-voice", value="English United Kingdom|en-GB|")
+        page.wait_for_function("() => window.__WCA_LAST_UTTERANCE && window.__WCA_LAST_UTTERANCE.name")
+        last = page.evaluate("() => window.__WCA_LAST_UTTERANCE")
+        assert last["name"] == "English United Kingdom", last
+        assert last["lang"] == "en-GB", last
     finally:
         context.close()
 
@@ -520,6 +583,7 @@ def _run_playwright(origin: str) -> None:
             ("Listen button speaks and Stop cancels", test_listen_button_starts_speech_and_stop_cancels),
             ("approach speaks when enabled", test_approach_speaks_when_enabled),
             ("Settings persist and voice sample", test_settings_persist_and_voice_sample),
+            ("Android blank voiceURI uses selected voice", test_android_blank_voiceuri_uses_selected_voice),
         ]
         browser = pw.chromium.launch(headless=True)
         failed = []

@@ -703,6 +703,54 @@ const POI_DESCRIPTIONS = {"DP - Columbia River Gorge": {"desc": "The Columbia Ri
       write(KEYS.repeat, next.repeat ? '1' : '0');
       write(KEYS.voice, next.voice || '');
       return next;
+    },
+    // Android Chrome often leaves voiceURI blank or identical across voices.
+    // Name + lang is the stable identity; URI is only a tie-breaker.
+    voiceKey: function(v) {
+      if (!v) return '';
+      return [v.name || '', v.lang || '', v.voiceURI || ''].join('|');
+    },
+    findVoice: function(key) {
+      if (!window.speechSynthesis) return null;
+      var voices = speechSynthesis.getVoices() || [];
+      if (!voices.length) return null;
+      var i, v;
+      if (key) {
+        for (i = 0; i < voices.length; i++) {
+          if (this.voiceKey(voices[i]) === key) return voices[i];
+        }
+        var parts = String(key).split('|');
+        var name = parts[0] || '';
+        var lang = parts[1] || '';
+        var uri = parts.slice(2).join('|');
+        if (name || lang) {
+          for (i = 0; i < voices.length; i++) {
+            v = voices[i];
+            if ((v.name || '') === name && (v.lang || '') === lang) return v;
+          }
+        }
+        if (uri) {
+          var hits = [];
+          for (i = 0; i < voices.length; i++) {
+            if (voices[i].voiceURI === uri) hits.push(voices[i]);
+          }
+          if (hits.length === 1) return hits[0];
+        }
+      }
+      var localEn = voices.filter(function(v) {
+        return v.localService && /^en/i.test(v.lang || '');
+      });
+      if (localEn.length) {
+        return localEn.find(function(v) { return /en-US/i.test(v.lang || ''); }) || localEn[0];
+      }
+      var anyEn = voices.filter(function(v) { return /^en/i.test(v.lang || ''); });
+      if (anyEn.length) return anyEn[0];
+      return voices.find(function(v) { return v.default; }) || voices[0] || null;
+    },
+    applyVoice: function(utterance, voice) {
+      if (!utterance || !voice) return;
+      utterance.voice = voice;
+      if (voice.lang) utterance.lang = voice.lang;
     }
   };
 })(window);
@@ -737,14 +785,12 @@ function _speakParagraphs(text) {
 function _speakBodyForPoi(poi) {
   return ((poi && poi.desc) || '').trim() || ((poi && poi.note) || '').trim();
 }
-function _speakPickVoice(uri) {
+function _speakPickVoice(key) {
+  if (window.WcaSpeakSettings && typeof WcaSpeakSettings.findVoice === 'function') {
+    return WcaSpeakSettings.findVoice(key);
+  }
   if (!window.speechSynthesis) return null;
   const voices = speechSynthesis.getVoices() || [];
-  if (uri) {
-    for (let i = 0; i < voices.length; i++) {
-      if (voices[i].voiceURI === uri) return voices[i];
-    }
-  }
   const localEn = voices.filter(v => v.localService && /^en/i.test(v.lang || ''));
   if (localEn.length) {
     return localEn.find(v => /en-US/i.test(v.lang || '')) || localEn[0];
@@ -835,7 +881,12 @@ function _speakStartUtterances(poi, texts) {
     }
     const chunk = _speakQueue.shift();
     const u = new SpeechSynthesisUtterance(chunk);
-    if (voice) u.voice = voice;
+    if (window.WcaSpeakSettings && WcaSpeakSettings.applyVoice) {
+      WcaSpeakSettings.applyVoice(u, voice);
+    } else if (voice) {
+      u.voice = voice;
+      if (voice.lang) u.lang = voice.lang;
+    }
     u.rate = 0.95;
     u.onend = function() { if (gen === _speakGen) next(); };
     u.onerror = function() { if (gen === _speakGen) next(); };
