@@ -188,9 +188,10 @@ DAYLIGHT = [
 # of which are otherwise buried on separate pages.
 GEAR_NOTES = [
     ('Headlamp per person, plus a backup light and spare batteries',
-     'The Falls Creek Lava Caves are a real lava tube on Day 4: pitch dark, uneven basalt '
-     'floor, cold year round. One shared light for the group is not enough. Gloves and a '
-     'helmet or at minimum a beanie are worth having. Full notes on the lava caves page.'),
+     'Two lava tubes: Guler Ice Cave on Day 1 (developed, ladder, $5 / Northwest Forest Pass) '
+     'and Falls Creek on Day 4 (wild, unmaintained). Both are pitch dark and cold. One shared '
+     'light for the group is not enough. Gloves and a helmet or at minimum a beanie are worth '
+     'having. Decontaminate boots and kit between the two caves. Full notes on the lava caves page.'),
     ('A gas stove, regardless of the forecast',
      'Gifford Pinchot runs tiered fire restrictions in late summer. Stage 1 allows fires only '
      'in developed campground rings. Primary nights are dispersed, so under Stage 1 there is '
@@ -204,7 +205,7 @@ GEAR_NOTES = [
      'days straight.'),
     ('Northwest Forest Pass, one per vehicle that parks at a trailhead',
      '$5/day or $30/year. An America the Beautiful pass also covers it. Required at most of '
-     'the trailheads on this route including High Rock, Council Bluff and Falls Creek.'),
+     'the trailheads on this route including High Rock, Council Bluff, Guler Ice Cave and Falls Creek.'),
     ('Extra fuel if your usable range is under about 200 forest-road miles',
      'There is no fuel for 154 miles between Carson and Packwood. Bring a funnel too -- '
      'both Rotopax and NATO cans pour badly into capless fillers without one.'),
@@ -235,7 +236,7 @@ GEAR_NOTES = [
 PERMITS_NOTE = [
     ('Northwest Forest Pass',
      'Required to park at most developed Gifford Pinchot trailheads, including High Rock, '
-     'Council Bluff, Langfield Falls and Falls Creek. $5/day or $30/year per vehicle. '
+     'Council Bluff, Langfield Falls, Guler Ice Cave and Falls Creek. $5/day or $30/year per vehicle. '
      'An America the Beautiful interagency pass also covers it. Every vehicle that parks '
      'at a trailhead needs its own pass displayed.'),
     ('Campground fees',
@@ -246,6 +247,11 @@ PERMITS_NOTE = [
      'No permit is needed for day hiking the trails on this route. Goat Rocks and Indian '
      'Heaven wilderness areas border the route, and self-issue permits apply if anyone '
      'walks in overnight.'),
+    ('Guler Ice Cave',
+     'Developed Forest Service picnic site. $5 day-use, Northwest Forest Pass, Digital Day Pass, '
+     'or an Interagency pass. Cash, check, or Recreation.gov Scan & Pay on site. No cave-entry '
+     'permit. Official page: fs.usda.gov Ice Cave Picnic Area (linked from the Day 1 stop and '
+     'the lava caves page).'),
     ('Falls Creek Lava Caves',
      'No cave-entry permit and no paid admission. This is not Ape Cave (that one needs a '
      'timed ticket). Parking is an informal pullout on FR 6701; a Northwest Forest Pass is '

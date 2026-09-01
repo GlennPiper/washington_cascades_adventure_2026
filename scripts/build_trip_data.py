@@ -71,12 +71,13 @@ DAYS = [
         'descr': (
             'The scenic-payoff day. Top off in Carson because there is no fuel for the next 154 '
             'route miles. Climb Wind River Road past the High Bridge, skirt the Big Lava Bed, '
-            'and work north through Goose Lake and the Forlorn Lakes into the Indian Heaven '
-            'country and the Sawtooth Berry Fields. Huckleberries should still be on in early '
-            'September. Over Babyshoe Pass to Takhlakh Lake, where Mount Adams reflects in '
-            'the water - the signature view of the whole route. Overnight in the free High '
-            'Lakes cluster (Council, Olallie, Chain of Lakes, Horseshoe) rather than the paid '
-            'Takhlakh campground.'
+            'and work north through Goose Lake. Peel east on FR 24 for Guler Ice Cave, a '
+            'developed 650-ft lava tube (Northwest Forest Pass; ice is often gone by September), '
+            'then back to the Forlorn Lakes and up into Indian Heaven and the Sawtooth Berry '
+            'Fields. Huckleberries should still be on in early September. Over Babyshoe Pass to '
+            'Takhlakh Lake, where Mount Adams reflects in the water - the signature view of the '
+            'whole route. Overnight in the free High Lakes cluster (Council, Olallie, Chain of '
+            'Lakes, Horseshoe) rather than the paid Takhlakh campground.'
         ),
         'mi_lo': 0.0,
         'mi_hi': 84.5,
@@ -765,7 +766,9 @@ REALTIME_LINKS = [
      'url': 'https://www.fs.usda.gov/detail/r6/passes-permits/recreation/?cid=fsbdev2_027010'},
     {'cat': 'Camping/Permits', 'label': 'Skamania County parks (Home Valley)',
      'url': 'https://www.skamaniacounty.org/community/parks-recreation'},
-    {'cat': 'Camping/Permits', 'label': 'Falls Creek lava caves (in this app)',
+    {'cat': 'Camping/Permits', 'label': 'Ice Cave Picnic Area (Guler) — fees and passes',
+     'url': 'https://www.fs.usda.gov/r06/giffordpinchot/recreation/site-ice-cave-picnic-area'},
+    {'cat': 'Camping/Permits', 'label': 'Lava caves (in this app)',
      'url': 'lava-caves.html'},
 
     # --- Land management ---

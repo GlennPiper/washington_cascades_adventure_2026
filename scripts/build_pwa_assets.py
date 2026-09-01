@@ -165,7 +165,7 @@ def write_manifest() -> None:
             {
                 'name': 'Lava caves',
                 'short_name': 'Caves',
-                'description': 'Falls Creek lava tube: permits, gear, how to find them',
+                'description': 'Guler Ice Cave and Falls Creek lava tube: permits, gear, how to find them',
                 'url': './lava-caves.html',
                 'icons': [{'src': 'icons/icon-192.png', 'sizes': '192x192', 'type': 'image/png'}],
             },

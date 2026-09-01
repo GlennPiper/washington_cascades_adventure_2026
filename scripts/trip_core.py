@@ -53,6 +53,7 @@ POI_STATUS: dict[str, tuple[str, str]] = {
     'DP - Big Lava Bed':              ('primary', 'Rugged 8,200-year-old basalt flow from the Indian Heaven volcanic field.'),
     'Monte Cristo Slab':              ('backup', 'Rock-climbing crag ~1.9 mi off route.'),
     'DP - Goose Lake':                ('primary', 'Lava-dammed lake; the Big Lava Bed flow created it.'),
+    'DP - Guler Ice Cave':            ('hike_candidate', 'Developed 650-ft lava tube west of Trout Lake. $5 day-use / Northwest Forest Pass. Ladder entry; ice features are often gone by September. About 4.5 mi off route (9 mi round trip). Decontaminate kit before Falls Creek on Saturday.'),
     'Interpretive Site: Peterson Prairie': ('backup', '~3.4 mi off route, next to Peterson Prairie Campground.'),
     'DP - Forlorn Lakes':             ('primary', 'Chain of about a dozen small lakes at ~3,700 ft.'),
     'Indian Viewpoint':               ('primary', 'Roadside viewpoint on the Indian Heaven shoulder.'),
@@ -103,7 +104,7 @@ POI_STATUS: dict[str, tuple[str, str]] = {
     'DP - Curly Creek Falls':         ('primary', 'One of a tiny handful of waterfalls on earth with two natural basalt arches spanning its face. Short walk from the road.'),
     'Rush Creek Falls':               ('backup', 'Same pullout area as Curly Creek Falls.'),
     'Falls Creek Caves Trailhead':    ('skip', 'Trailhead marker; DP - Falls Creek Lava Caves is the destination.'),
-    'DP - Falls Creek Lava Caves':    ('hike_candidate', 'LAVA TUBE. No permit, no paid entry — this is not Ape Cave. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. See the lava caves page for decon, parking and how to find the pits.'),
+    'DP - Falls Creek Lava Caves':    ('hike_candidate', 'LAVA TUBE. No permit, no paid entry — this is not Ape Cave. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. Decontaminate kit first if you went in Guler Ice Cave on Wednesday. See the lava caves page for parking and how to find the pits.'),
     'Red Mountain Fire Lookout':      ('hike_candidate', 'Lookout at 4,965 ft on the Indian Heaven boundary; panorama of four volcanoes. ~1.7 mi off route.'),
     'DP - Panther Creek Falls':       ('primary', 'About 130 ft of tiered falls with a built viewing platform a short walk from the road. First and last night are the free pullouts just up this road.'),
 }
@@ -132,15 +133,51 @@ POI_SPUR_OVERRIDES: dict[str, float] = {
     'Red Mountain Fire Lookout': 3.4,
     'DP - Burley Mountain Fire Lookout': 6.0,
     'Interpretive Site: Peterson Prairie': 6.8,
+    'DP - Guler Ice Cave': 9.0,
     'Monte Cristo Slab': 3.8,
     'Goat Ridge Lookout': 4.6,
     'DP - Hamilton Buttes': 2.5,
 }
 
 
+# Planned stops that are not in the source GPX. Merged onto the main track in
+# load_route() so they get a route mile and off-track distance like any other
+# waypoint. Re-parsing the Gaia export does not wipe these.
+EXTRA_WAYPOINTS: list[dict[str, Any]] = [
+    {
+        'name': 'DP - Guler Ice Cave',
+        'lat': 45.961424,
+        'lon': -121.631396,
+        'ele': None,
+        'sym': 'cave',
+        'desc': (
+            'Guler Ice Cave (also called Ice Cave Picnic Area) is a developed 650-foot lava '
+            'tube in Gifford Pinchot National Forest, west of Trout Lake, Washington, at about '
+            '2,820 feet. The tube formed from lava that issued 12,000 to 18,000 years ago from '
+            'the crater now occupied by Lake Wapiki in the Indian Heaven volcanic field.\n\n'
+            'The cave was known to Native Americans, who used the cold interior to store '
+            'huckleberries, and to early settlers in the Trout Lake valley, who cut ice from it '
+            'and hauled it by wagon to towns along the Columbia. Later it was a commercial ice '
+            'and produce cellar managed by Christian Guler, the namesake of the nearby community.\n\n'
+            'The Forest Service site has picnic tables, fire rings, and a ladder into the tube. '
+            'Parking is a $5 day-use fee or a Northwest Forest Pass. Inside: pitch dark, near '
+            'freezing year-round, and often icy or muddy underfoot. Ice stalactites and '
+            'stalagmites are the draw in spring and early summer; by early September most of '
+            'that ice is usually gone, but the lava bridges and the "Crystal Grotto" remain. '
+            'Bring a headlamp plus a backup light. Dogs are not allowed in the cave.\n\n'
+            'From the driving corridor this is a side trip east of Goose Lake on FR 24 / '
+            'Carson-Guler Road, about 4.5 miles off the track at route mile 36 (roughly 9 miles '
+            'round trip). The Saturday Falls Creek caves are a different, wilder tube. '
+            'Decontaminate boots and kit between the two stops so white-nose fungus is not '
+            'carried from one cave to the other.'
+        ),
+    },
+]
+
+
 # Stops that get checked by default in the itinerary scheduler.
-# hike_candidate is False unless the stop is a lava tube or a lookout -- those
-# are on the day's plan; other hikes stay opt-in.
+# hike_candidate is False unless the stop is a lava tube, ice cave, or a
+# lookout -- those are on the day's plan; other hikes stay opt-in.
 DEFAULT_CHECKED_BY_STATUS = {
     'primary':         True,
     'conditional':     True,
@@ -156,14 +193,14 @@ DEFAULT_CHECKED_BY_STATUS = {
 def is_default_checked(name: str, status: str, sym: str = '') -> bool:
     """Whether the scheduler checkbox starts ticked.
 
-    Lava tubes and fire lookouts are on the plan even when their catalog status
-    is hike_candidate (or backup). Skip and landmark never are.
+    Lava tubes, ice caves and fire lookouts are on the plan even when their
+    catalog status is hike_candidate (or backup). Skip and landmark never are.
     """
     if status in ('skip', 'landmark'):
         return False
     n = (name or '').lower()
     s = (sym or '').lower()
-    if 'lava cave' in n or 'lava tube' in n:
+    if 'lava cave' in n or 'lava tube' in n or 'ice cave' in n:
         return True
     if 'lookout' in n or s == 'fire-lookout':
         return True
@@ -185,6 +222,7 @@ def default_minutes(name: str, sym: str, status: str, note: str) -> int:
     if 'high rock lookout' in n:            return 150
     if 'hamilton buttes' in n:              return 120
     if 'falls creek lava caves' in n:       return 90
+    if 'guler ice cave' in n:               return 45
     if 'council bluff' in n:                return 75
     if 'steamboat mountain' in n:           return 60
     if 'bishop falls' in n:                 return 60
@@ -245,6 +283,44 @@ def load_highway_tracks(planning_dir: pathlib.Path) -> dict[str, Any]:
     return json.loads(p.read_text(encoding='utf-8'))
 
 
+def _nearest_on_track(
+    pt: tuple[float, float], pts: list, cum_mi: list[float]
+) -> tuple[int, float, float]:
+    """Return (index, dist_m, mile) of the nearest main-track point."""
+    best_i = 0
+    best_d = float('inf')
+    for i, tp in enumerate(pts):
+        d = _haversine_m(pt, tp)
+        if d < best_d:
+            best_d = d
+            best_i = i
+    return best_i, best_d, cum_mi[best_i]
+
+
+def _merge_extra_waypoints(route: dict[str, Any]) -> None:
+    """Project EXTRA_WAYPOINTS onto the main track and insert them in mile order."""
+    pts = route['main_points']
+    cum_mi = route['cum_mi']
+    ordered = route['ordered']
+    by_name = route['by_name']
+    existing = {w.get('name') for w in ordered}
+    for extra in EXTRA_WAYPOINTS:
+        nm = extra.get('name') or ''
+        if nm in existing:
+            continue
+        i, d_m, mi = _nearest_on_track((extra['lat'], extra['lon']), pts, cum_mi)
+        w = {
+            **extra,
+            'mile': round(mi, 3),
+            'track_index': i,
+            'dist_to_track_m': round(d_m, 1),
+        }
+        ordered.append(w)
+        by_name.setdefault(nm, []).append(w)
+        existing.add(nm)
+    ordered.sort(key=lambda x: x.get('mile') or 0)
+
+
 def load_route(plan_dir: pathlib.Path) -> dict[str, Any]:
     """Load route_analysis.json + route_tracks.json and precompute cum_mi."""
     analysis = json.loads((plan_dir / 'route_analysis.json').read_text(encoding='utf-8'))
@@ -262,12 +338,12 @@ def load_route(plan_dir: pathlib.Path) -> dict[str, Any]:
     for i in range(1, len(pts)):
         cum_mi.append(cum_mi[-1] + _haversine_m(pts[i - 1], pts[i]) / 1609.344)
 
-    ordered = analysis['waypoints_ordered']
+    ordered = list(analysis['waypoints_ordered'])
     by_name: dict[str, list[dict]] = {}
     for w in ordered:
         by_name.setdefault(w.get('name') or '', []).append(w)
 
-    return {
+    route = {
         'main_track': main_track,
         'main_points': pts,
         'cum_mi': cum_mi,
@@ -275,6 +351,8 @@ def load_route(plan_dir: pathlib.Path) -> dict[str, Any]:
         'by_name': by_name,
         'total_mi': analysis['track_miles'],
     }
+    _merge_extra_waypoints(route)
+    return route
 
 
 def slice_track(route: dict[str, Any], mi_lo: float | None, mi_hi: float | None) -> list[list[float]]:

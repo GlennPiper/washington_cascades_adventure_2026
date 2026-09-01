@@ -43,7 +43,7 @@
     "permits": [
       [
         "Northwest Forest Pass",
-        "Required to park at most developed Gifford Pinchot trailheads, including High Rock, Council Bluff, Langfield Falls and Falls Creek. $5/day or $30/year per vehicle. An America the Beautiful interagency pass also covers it. Every vehicle that parks at a trailhead needs its own pass displayed."
+        "Required to park at most developed Gifford Pinchot trailheads, including High Rock, Council Bluff, Langfield Falls, Guler Ice Cave and Falls Creek. $5/day or $30/year per vehicle. An America the Beautiful interagency pass also covers it. Every vehicle that parks at a trailhead needs its own pass displayed."
       ],
       [
         "Campground fees",
@@ -52,6 +52,10 @@
       [
         "Wilderness",
         "No permit is needed for day hiking the trails on this route. Goat Rocks and Indian Heaven wilderness areas border the route, and self-issue permits apply if anyone walks in overnight."
+      ],
+      [
+        "Guler Ice Cave",
+        "Developed Forest Service picnic site. $5 day-use, Northwest Forest Pass, Digital Day Pass, or an Interagency pass. Cash, check, or Recreation.gov Scan & Pay on site. No cave-entry permit. Official page: fs.usda.gov Ice Cave Picnic Area (linked from the Day 1 stop and the lava caves page)."
       ],
       [
         "Falls Creek Lava Caves",
@@ -3104,7 +3108,7 @@
       "date_iso": "2026-09-09",
       "title": "Day 1: Columbia Gorge -> Indian Heaven -> Takhlakh Lake",
       "type": "overland",
-      "descr": "The scenic-payoff day. Top off in Carson because there is no fuel for the next 154 route miles. Climb Wind River Road past the High Bridge, skirt the Big Lava Bed, and work north through Goose Lake and the Forlorn Lakes into the Indian Heaven country and the Sawtooth Berry Fields. Huckleberries should still be on in early September. Over Babyshoe Pass to Takhlakh Lake, where Mount Adams reflects in the water - the signature view of the whole route. Overnight in the free High Lakes cluster (Council, Olallie, Chain of Lakes, Horseshoe) rather than the paid Takhlakh campground.",
+      "descr": "The scenic-payoff day. Top off in Carson because there is no fuel for the next 154 route miles. Climb Wind River Road past the High Bridge, skirt the Big Lava Bed, and work north through Goose Lake. Peel east on FR 24 for Guler Ice Cave, a developed 650-ft lava tube (Northwest Forest Pass; ice is often gone by September), then back to the Forlorn Lakes and up into Indian Heaven and the Sawtooth Berry Fields. Huckleberries should still be on in early September. Over Babyshoe Pass to Takhlakh Lake, where Mount Adams reflects in the water - the signature view of the whole route. Overnight in the free High Lakes cluster (Council, Olallie, Chain of Lakes, Horseshoe) rather than the paid Takhlakh campground.",
       "mi_lo": 0.0,
       "mi_hi": 84.5,
       "miles": 85,
@@ -3262,6 +3266,23 @@
           "spur_mi": 6.8,
           "default_minutes": 15,
           "default_checked": false
+        },
+        {
+          "name": "DP - Guler Ice Cave",
+          "gpx_name": "DP - Guler Ice Cave",
+          "lat": 45.961424,
+          "lon": -121.631396,
+          "ele": null,
+          "mile": 36.0,
+          "dist_to_track_m": 7162.1,
+          "true_off_track_m": 7162.1,
+          "sym": "cave",
+          "status": "hike_candidate",
+          "note": "Developed 650-ft lava tube west of Trout Lake. $5 day-use / Northwest Forest Pass. Ladder entry; ice features are often gone by September. About 4.5 mi off route (9 mi round trip). Decontaminate kit before Falls Creek on Saturday.",
+          "desc": "Guler Ice Cave (also called Ice Cave Picnic Area) is a developed 650-foot lava tube in Gifford Pinchot National Forest, west of Trout Lake, Washington, at about 2,820 feet. The tube formed from lava that issued 12,000 to 18,000 years ago from the crater now occupied by Lake Wapiki in the Indian Heaven volcanic field.\n\nThe cave was known to Native Americans, who used the cold interior to store huckleberries, and to early settlers in the Trout Lake valley, who cut ice from it and hauled it by wagon to towns along the Columbia. Later it was a commercial ice and produce cellar managed by Christian Guler, the namesake of the nearby community.\n\nThe Forest Service site has picnic tables, fire rings, and a ladder into the tube. Parking is a $5 day-use fee or a Northwest Forest Pass. Inside: pitch dark, near freezing year-round, and often icy or muddy underfoot. Ice stalactites and stalagmites are the draw in spring and early summer; by early September most of that ice is usually gone, but the lava bridges and the \"Crystal Grotto\" remain. Bring a headlamp plus a backup light. Dogs are not allowed in the cave.\n\nFrom the driving corridor this is a side trip east of Goose Lake on FR 24 / Carson-Guler Road, about 4.5 miles off the track at route mile 36 (roughly 9 miles round trip). The Saturday Falls Creek caves are a different, wilder tube. Decontaminate boots and kit between the two stops so white-nose fungus is not carried from one cave to the other.",
+          "spur_mi": 9.0,
+          "default_minutes": 45,
+          "default_checked": true
         },
         {
           "name": "DP - Forlorn Lakes",
@@ -21228,7 +21249,7 @@
           "true_off_track_m": 908.5,
           "sym": "cave",
           "status": "hike_candidate",
-          "note": "LAVA TUBE. No permit, no paid entry — this is not Ape Cave. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. See the lava caves page for decon, parking and how to find the pits.",
+          "note": "LAVA TUBE. No permit, no paid entry — this is not Ape Cave. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. Decontaminate kit first if you went in Guler Ice Cave on Wednesday. See the lava caves page for parking and how to find the pits.",
           "desc": "Falls Creek Lava Caves (sometimes referred to collectively as the Falls Creek Cave System) is an extensive and highly significant geological feature located in the Wind River valley of the Gifford Pinchot National Forest, near Carson, Washington. This system is a large lava tube, formed during a basaltic flow from the nearby Big Lava Bed eruption approximately 8,200 years ago.\n\nThe main cave, Falls Creek Cave, is estimated to be over 1.2 miles (2,000 meters) long, making it one of the longer unmaintained lava tubes in Washington State. It is characterized by three distinct breakdown pits (collapsed sections of the tube) visible from the surface. The entrance is typically accessed through the second of these pits, requiring a challenging descent over piles of jagged boulders. The interior is generally unlit, pitch black, and features numerous side passages, slippery clay floors, and challenging scrambles over massive rockfalls, demanding caution and multiple reliable light sources.\n\nGeologically, the cave preserves unique features of its volcanic origin, including solidified lava drippings (known as lavacicles) and evidence of flow dynamics. The cave is part of a complex system where the surface creek, Falls Creek, seasonally sinks into the lava tube system through sinkholes and fissures before emerging further downstream. Due to its unmaintained status, the cave offers a rugged and challenging spelunking experience, contrasting with the more accessible and developed Ape Cave near Mount St. Helens.\n\nThe cave is located near the trailhead for the scenic Falls Creek Falls, and is often included in a longer recreational loop. Access is via a spur road off Wind River Road (Forest Road 30), and due to the high-elevation location and winter road closures, exploration is typically restricted to the snow-free season. The remote location and challenging nature of the cave require all visitors to be self-sufficient and practice strict Leave No Trace principles.\n\n\n\n\n\n\n\n\n\n\n\n\nTools",
           "spur_mi": 0.0,
           "default_minutes": 90,
@@ -32663,7 +32684,12 @@
     },
     {
       "cat": "Camping/Permits",
-      "label": "Falls Creek lava caves (in this app)",
+      "label": "Ice Cave Picnic Area (Guler) — fees and passes",
+      "url": "https://www.fs.usda.gov/r06/giffordpinchot/recreation/site-ice-cave-picnic-area"
+    },
+    {
+      "cat": "Camping/Permits",
+      "label": "Lava caves (in this app)",
       "url": "lava-caves.html"
     },
     {

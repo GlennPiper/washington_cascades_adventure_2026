@@ -1096,8 +1096,16 @@ def badge_html(status):
 # only from the top nav. Same-window links so they stay inside the installed PWA.
 POI_APP_PAGES = {
     'DP - Falls Creek Lava Caves': {
-        'href': 'lava-caves.html',
+        'href': 'lava-caves.html#falls-creek',
         'label': 'Cave notes',
+    },
+    'DP - Guler Ice Cave': {
+        'href': 'lava-caves.html#guler',
+        'label': 'Cave notes',
+        'official': {
+            'href': 'https://www.fs.usda.gov/r06/giffordpinchot/recreation/site-ice-cave-picnic-area',
+            'label': 'FS site / passes',
+        },
     },
 }
 
@@ -1106,10 +1114,19 @@ def poi_page_link_html(name: str) -> str:
     info = POI_APP_PAGES.get(name)
     if not info:
         return ''
-    return (
-        f' <a class="poi-page-link" href="{esc(info["href"])}">'
-        f'{esc(info["label"])}</a>'
-    )
+    bits = []
+    if info.get('href'):
+        bits.append(
+            f' <a class="poi-page-link" href="{esc(info["href"])}">'
+            f'{esc(info["label"])}</a>'
+        )
+    official = info.get('official')
+    if official:
+        bits.append(
+            f' <a class="poi-page-link" href="{esc(official["href"])}" '
+            f'target="_blank" rel="noopener">{esc(official["label"])}</a>'
+        )
+    return ''.join(bits)
 
 
 def desc_button_html(name, desc):
@@ -1486,6 +1503,13 @@ const POI_DESCRIPTIONS = {desc_json};
       const lbl = escHTML(info.page.label || 'Open notes page');
       pageLink = '<p class="poi-app-page"><a href="' + escHTML(info.page.href) + '">' +
                  lbl + '</a> &mdash; in this app, works offline.</p>';
+    }}
+    if (info.page && info.page.official && info.page.official.href) {{
+      const off = info.page.official;
+      pageLink += '<p class="poi-app-page"><a href="' + escHTML(off.href) +
+                  '" target="_blank" rel="noopener">' +
+                  escHTML(off.label || 'Official site') +
+                  '</a> &mdash; Forest Service: fees, passes, current status (needs signal).</p>';
     }}
     body.innerHTML = pageLink +
                      paragraphs.map(p => '<p>' + escHTML(p).replace(/\\n/g, '<br>') + '</p>').join('') +
@@ -2347,13 +2371,26 @@ def build_itinerary_html(variant=None):
                     'reflects driving only. Tick the ones you want and watch the ETA move.'
                 )
             gear = ''
-            if any('Lava Cave' in p['name'] for p in pois):
+            cave_pois = [
+                p for p in pois
+                if 'Lava Cave' in (p.get('name') or '') or 'Ice Cave' in (p.get('name') or '')
+            ]
+            if cave_pois:
+                names = ' / '.join(p['name'].replace('DP - ', '') for p in cave_pois)
+                has_guler = any('Guler' in (p.get('name') or '') for p in cave_pois)
+                fee = (
+                    ' Guler Ice Cave is a developed $5 day-use site (Northwest Forest Pass). '
+                    'Decontaminate kit before Saturday\'s cave.'
+                    if has_guler else
+                    ' No permit and no paid entry at Falls Creek.'
+                )
                 gear = (
-                    ' <br><strong>Lava caves:</strong> every person going underground needs their own '
-                    'headlamp plus a backup light and spare batteries. The cave is pitch dark and stays '
-                    'cold year round; the floor is uneven basalt. Boots and gloves recommended. '
-                    'No permit and no paid entry — see the <a href="lava-caves.html">lava caves page</a> '
-                    'for gear, white-nose decon, and how to find the pits.'
+                    f' <br><strong>Lava caves ({esc(names)}):</strong> every person going '
+                    'underground needs their own headlamp plus a backup light and spare batteries. '
+                    'The cave is pitch dark and stays cold year round.'
+                    f'{fee} '
+                    'See the <a href="lava-caves.html">lava caves page</a> for gear, '
+                    'white-nose decon, and how to find them.'
                 )
             hike_warn = (
                 f'<div class="warn">{" ".join(bits)}{gear}</div>'
@@ -3548,10 +3585,17 @@ def build_reference_html():
             '<tbody>' + ''.join(hike_rows) + '</tbody></table>'
             '<h3>Gear notes</h3>'
             '<ul class="clean">'
+            '<li><strong>Guler Ice Cave:</strong> developed 650-ft lava tube on Day 1. Ladder '
+            'entry. $5 day-use, Northwest Forest Pass, Digital Day Pass, or Interagency; cash, '
+            'check, or Recreation.gov Scan & Pay. Ice features are often melted by September. '
+            'Headlamp plus a backup. Decontaminate kit before Falls Creek. '
+            '<a href="lava-caves.html#guler">Notes in this app</a> · '
+            '<a href="https://www.fs.usda.gov/r06/giffordpinchot/recreation/site-ice-cave-picnic-area" '
+            'target="_blank" rel="noopener">FS site / passes</a>.</li>'
             '<li><strong>Falls Creek Lava Caves:</strong> a real lava tube. One headlamp per person '
             '<em>plus</em> a backup light and spare batteries. Pitch dark, uneven basalt floor, cold '
             'year round. Boots and gloves recommended; a helmet or at minimum a beanie saves scalps. '
-            'No permit, no paid entry. Full notes: <a href="lava-caves.html">lava caves page</a>.</li>'
+            'No permit, no paid entry. Full notes: <a href="lava-caves.html#falls-creek">lava caves page</a>.</li>'
             '<li><strong>High Rock Lookout:</strong> the lookout sits on a cliff edge with a serious '
             'drop. Fine for careful adults, worth thinking about with kids or dogs.</li>'
             '<li><strong>Northwest Forest Pass</strong> is required to park at most of these '
@@ -3590,8 +3634,9 @@ def build_reference_html():
         '<p class="muted">Not a general camping list &mdash; these are the items this route and '
         'season make non-obvious, pulled together from the fuel, camping, fire and lava-caves pages.</p>'
         '<ul class="clean">' + _gear_lis + '</ul>'
-        '<p><a href="lava-caves.html">Falls Creek Lava Caves notes</a> '
-        '&mdash; gear, permits, white-nose decon, how to find the pits. Cached in this app.</p>'
+        '<p><a href="lava-caves.html">Lava caves notes</a> '
+        '&mdash; Guler Ice Cave (Wed) and Falls Creek (Sat): gear, permits, white-nose decon, '
+        'how to find them. Cached in this app.</p>'
         '</div>'
     )
     emerg_html = (
@@ -3608,8 +3653,8 @@ def build_reference_html():
         '<div class="card" id="permits">'
         '<h2>Permits &amp; Passes</h2>'
         '<ul class="clean">' + _permit_lis + '</ul>'
-        '<p><a href="lava-caves.html">Falls Creek Lava Caves</a> need no entry permit. '
-        'The notes page is in this app and works offline.</p>'
+        '<p><a href="lava-caves.html">Lava caves</a>: Guler Ice Cave needs a Northwest Forest Pass '
+        'to park; Falls Creek needs no entry permit. The notes page is in this app and works offline.</p>'
         '</div>'
     )
 

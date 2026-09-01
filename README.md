@@ -54,7 +54,7 @@ backups.
 | `camping-plan.html` | Free-first nights, along-route overflow, and paid-backup availability |
 | `fuel-plan.html` | Station list, the two fuel gaps, per-vehicle range worksheet |
 | `fire-and-closures.html` | Go/no-go page: forest alerts, restriction stages, smoke thresholds |
-| `lava-caves.html` | Falls Creek Lava Caves: no permit, gear, white-nose decon, how to find them |
+| `lava-caves.html` | Guler Ice Cave (Wed) and Falls Creek Lava Caves (Sat): fees, gear, white-nose decon, how to find them |
 | `weather.html` | Dual NWS + Open-Meteo forecast for every camp |
 | `settings.html` | Trip preferences, including offline spoken notes as you approach a stop |
 | `trip-plan.gpx` | Derived route with day-split tracks and labeled camps, for Gaia / onX / CalTopo / Garmin |
@@ -70,7 +70,7 @@ checkbox and an editable stop duration. Given a break-camp time and a moving
 speed, the page computes a running ETA down the day and an arrival time at camp,
 and persists your edits to `localStorage`. Most hikes start **unchecked** so the
 day's estimate begins as driving-only; you tick the ones you want and watch the
-arrival time move. **Lava tubes and fire lookouts start checked** — they are on
+arrival time move. **Lava tubes, ice caves and fire lookouts start checked** — they are on
 the day's plan; uncheck them to skip.
 
 POI statuses drive the badges and the scheduler defaults:
@@ -78,7 +78,7 @@ POI statuses drive the badges and the scheduler defaults:
 | Status | Meaning | Checked by default |
 |---|---|---|
 | `primary` | Planned stop | yes |
-| `hike_candidate` | Hike or activity to triage | no, except lava tubes and lookouts |
+| `hike_candidate` | Hike or activity to triage | no, except lava tubes, ice caves and lookouts |
 | `backup` | Lower-priority option | no |
 | `landmark` | A distant peak marker, not a place you drive to | no, and contributes zero miles |
 | `logistics` | Fuel and services | no |
@@ -167,7 +167,7 @@ wa-cascades-adv-route-2025.gpx
 |---|---|
 | `scripts/trip_config.py` | **Trip identity.** Title, dates, source GPX, main track name, map bbox, meet point, agency and hospital contacts, cell dead zones, daylight table, gear notes, permits |
 | `scripts/build_trip_data.py` | Day split, campground plan, fuel plan, live-conditions links |
-| `scripts/trip_core.py` | POI catalog (status + note per waypoint), scheduler stop-time defaults, payload assembly |
+| `scripts/trip_core.py` | POI catalog (status + note per waypoint), extra planned stops not in the source GPX, scheduler stop-time defaults, payload assembly |
 | `scripts/build_deliverables.py` | All HTML and GPX generation |
 | `planning/*.md` | Source text for the companion pages |
 | `planning/weather_forecast_points.json` | One forecast point per day, placed at each night's camp |
