@@ -1686,6 +1686,19 @@ def _collect_route_overview_markers(days_list):
     return markers
 
 
+def _fee_tag_html(kind: str, cost: str) -> str:
+    """Return a small coloured badge indicating whether the site is free, low-fee, or paid."""
+    cost_lc = (cost or '').lower()
+    if 'free or low fee' in cost_lc:
+        return '<span class="fee-tag fee-tag-lowfee">Free / low fee</span>'
+    if cost_lc.startswith('free') or cost_lc == 'free':
+        return '<span class="fee-tag fee-tag-free">Free</span>'
+    kind_lc = (kind or '').lower()
+    if 'primitive' in kind_lc and 'free' in cost_lc:
+        return '<span class="fee-tag fee-tag-free">Free</span>'
+    return '<span class="fee-tag fee-tag-paid">Fee required</span>'
+
+
 def camp_block(camps, title='Campsites', day_id=None, allow_focus=False, scheduled=False):
     if not camps:
         return ''
@@ -1721,9 +1734,10 @@ def camp_block(camps, title='Campsites', day_id=None, allow_focus=False, schedul
                 f' data-lat="{lat}" data-lon="{lon}"'
             )
         tier_label = _tier_label(key, idx, total)
+        fee_tag = _fee_tag_html(c.get('kind', ''), c.get('cost', ''))
         parts.append(
             f'<div class="camp camp-{key}"{camp_data_attrs}>'
-            f'<div class="camp-head"><strong>{esc(tier_label)}</strong>: {name_html}</div>'
+            f'<div class="camp-head"><strong>{esc(tier_label)}</strong>: {name_html}{fee_tag}</div>'
             f'<div class="camp-meta">{esc(c.get("kind", ""))} &middot; {esc(c.get("cost", ""))}{reserve}{gmap_link}</div>'
             f'{coords_line}'
             f'{eta_line}'
@@ -1825,6 +1839,11 @@ td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .badge-backup{background:var(--backup)}
 .badge-skip{background:var(--skip);opacity:0.5}
 .badge-hike{background:var(--hike)}
+.fee-tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;font-weight:700;
+  letter-spacing:0.4px;text-transform:uppercase;vertical-align:middle;margin-left:6px}
+.fee-tag-free{background:#0d3b1f;color:#3fb950;border:1px solid #238636}
+.fee-tag-lowfee{background:#0d2b3b;color:#58a6ff;border:1px solid #1f6feb}
+.fee-tag-paid{background:#2d1a00;color:#e3a008;border:1px solid #9e6a03}
 .badge-conditional{background:var(--conditional)}
 .badge-logistics{background:var(--logistics)}
 .badge-unclassified{background:var(--unclassified);opacity:0.6}
