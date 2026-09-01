@@ -1699,14 +1699,15 @@ def _fee_tag_html(kind: str, cost: str) -> str:
     return '<span class="fee-tag fee-tag-paid">Fee required</span>'
 
 
-def camp_block(camps, title='Campsites', day_id=None, allow_focus=False, scheduled=False):
+def camp_block(camps, title='Campsites (free dispersed first)', day_id=None, allow_focus=False, scheduled=False):
     if not camps:
         return ''
     parts = [f'<h3>{esc(title)}</h3><div class="camp-grid">']
     for key, idx, total, c in _iter_camp_entries(camps):
         reserve = ''
         if c.get('reserve_url'):
-            reserve = f' &middot; <a href="{esc(c["reserve_url"])}" target="_blank">Reserve</a>'
+            label = 'Listing' if 'freecampsites.net' in c['reserve_url'] else 'Reserve'
+            reserve = f' &middot; <a href="{esc(c["reserve_url"])}" target="_blank">{label}</a>'
         lat, lon = c.get('lat'), c.get('lon')
         gmap = f'https://www.google.com/maps/search/?api=1&query={lat},{lon}' if lat and lon else ''
         gmap_link = f' &middot; <a href="{gmap}" target="_blank">Map It</a>' if gmap else ''
@@ -3494,7 +3495,7 @@ def build_reference_html():
                 + '</tbody></table>'
             )
 
-        camps_html = camp_block(d.get('camps'), 'Camping options (primary / secondary / tertiary)') if d.get('camps') else ''
+        camps_html = camp_block(d.get('camps'), 'Camping options (free dispersed first, paid as backup)') if d.get('camps') else ''
 
         day_sections.append(
             f'<div class="card" id="{d["id"]}">'

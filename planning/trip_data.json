@@ -59,7 +59,7 @@
       ],
       [
         "Dispersed camping",
-        "Free on most Gifford Pinchot roads outside developed campgrounds and posted closures. Use existing sites, camp 100+ ft from water, and check current fire restrictions before any campfire."
+        "Primary nights are free first-come sites on Gifford Pinchot roads. Use existing sites, camp 100+ ft from water, and check current fire restrictions before any campfire. Six vehicles will need several adjacent pullouts in the same cluster."
       ]
     ],
     "emergency_contacts": [
@@ -139,7 +139,7 @@
       "Usable signal: Carson, Trout Lake (detour), Packwood, Randle, US 12 corridor"
     ],
     "satellite_comms_note": "The group carries satellite communication. Confirm before departure who has a device, share the check-in schedule, and load the emergency contacts above into it. Assume no cellular coverage anywhere between Carson and Packwood.",
-    "reservations_status": "NOTHING IS BOOKED. Availability figures in the camp notes are a Recreation.gov snapshot from 2026-08-31 and will drift. Book in this order: North Fork Elk Group Camp (Fri + Sat), Takhlakh Lake (Wed), Panther Creek (Tue + Sat), Walupt Lake (Thu)."
+    "reservations_status": "Nothing is reserved. Nights are free dispersed / primitive first-come sites; paid Recreation.gov campgrounds are backups if a cluster is full or you want water. Six vehicles will need several adjacent pullouts. Stage 1 fire restrictions typically ban campfires at dispersed sites."
   },
   "group_counts": {
     "vehicles": 6,
@@ -153,7 +153,7 @@
       "date_iso": "2026-09-08",
       "title": "Nampa, ID -> Carson, WA (Panther Creek camp)",
       "type": "travel",
-      "descr": "Meet at the Sinclair Stinker Station, 1902 N Franklin Blvd, Nampa at 8:00 AM MDT; roll out by 8:15. I-84 west through Oregon, then up the Columbia River Gorge and across into Washington. About 376 miles and 7 hours of moving time, so plan on 8.5 to 9 hours with fuel and food stops for a six-vehicle group. You gain an hour crossing into Pacific time, which puts arrival in camp around 3:30 to 4:30 PM PDT. Camp at Panther Creek, roughly 11 miles up Wind River Road from Carson, and start the loop from mile 0 in the morning.",
+      "descr": "Meet at the Sinclair Stinker Station, 1902 N Franklin Blvd, Nampa at 8:00 AM MDT; roll out by 8:15. I-84 west through Oregon, then up the Columbia River Gorge and across into Washington. About 376 miles and 7 hours of moving time, so plan on 8.5 to 9 hours with fuel and food stops for a six-vehicle group. You gain an hour crossing into Pacific time, which puts arrival in camp around 3:30 to 4:30 PM PDT. Camp the free pullouts along Panther Creek Road (FS 65 / 6513), roughly 11 miles up Wind River Road from Carson, and start the loop from mile 0 in the morning. The developed Panther Creek campground is the paid backup.",
       "mi_lo": null,
       "mi_hi": null,
       "miles": 376,
@@ -3022,30 +3022,68 @@
         ]
       ],
       "camps": {
-        "primary": {
+        "primary": [
+          {
+            "name": "Panther Creek Dispersed #2",
+            "lat": 45.834828,
+            "lon": -121.870893,
+            "status": "primary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Fire pit. No toilet, no water. Small-rig friendly.",
+            "notes": "Closest of the three named pullouts to the developed campground (~0.3 mi off the loop at mile 308, and the same road you drive Tuesday evening). Most reviewed of the cluster. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "access": "Panther Creek Rd (FS 65 / 6513) off Wind River Rd, north of the developed campground.",
+            "reserve_url": "https://freecampsites.net/panther-creek-dispersed-2/"
+          },
+          {
+            "name": "Panther Creek Dispersed #1",
+            "lat": 45.84326,
+            "lon": -121.85922,
+            "status": "primary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "No amenities. One of several pullouts along Panther Creek.",
+            "notes": "About a mile further up the same road as #2. Use it when #2 is taken or to spread the group. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "access": "FS 65 / 6513, continuing north from the developed campground.",
+            "reserve_url": "https://freecampsites.net/panther-creek-dispersed-1/"
+          },
+          {
+            "name": "Upper Panther Creek Dispersed",
+            "lat": 45.84941,
+            "lon": -121.85544,
+            "status": "primary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Large, fairly flat grassy pullout with a fire ring. Unmaintained.",
+            "notes": "The roomiest of the three. Same arrival corridor Tuesday evening. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "access": "NF-6513 off Panther Creek Rd.",
+            "reserve_url": "https://freecampsites.net/upper-panther-creek-dispersed/"
+          }
+        ],
+        "secondary": {
           "name": "Panther Creek Campground (Recreation.gov 233103)",
           "lat": 45.81972,
           "lon": -121.87972,
-          "status": "primary",
+          "status": "secondary",
           "kind": "developed_reservable",
           "cost": "Per-site fee; 9 of 33 sites are first-come",
           "facilities": "Vault toilets, potable water, tables, fire rings. No hookups.",
-          "notes": "NOT BOOKED. 19 of 33 sites showed available for Sep 8 as of 2026-08-31. Forest campground about 11 miles up Wind River Rd from Carson, so it is a short backtrack to mile 0 in the morning. Same camp as the final night, which means the group only has to learn one site. Reserve several adjacent numbered sites for six rigs.",
+          "notes": "Paid backup. 19 of 33 sites showed available for Sep 8 as of 2026-08-31. Use it if the pullouts are full or you want water and a toilet after the drive from Nampa.",
           "access": "WA-14 to Carson, north on Wind River Rd, right on Panther Creek Rd (FS 65).",
           "reserve_url": "https://www.recreation.gov/camping/campgrounds/233103"
         },
-        "secondary": {
-          "name": "Home Valley Campground (Skamania County park)",
-          "lat": 45.7087,
-          "lon": -121.77348,
-          "status": "secondary",
-          "kind": "developed_county",
-          "cost": "County park fee",
-          "facilities": "Showers, potable water, toilets - the only showers near the route.",
-          "notes": "Booked through Skamania County, not Recreation.gov. Right on the Columbia and only 2.9 miles from route mile 0, and it is the first campground you reach driving in from the east. Trade-off: it sits between WA-14 and the BNSF main line, so expect highway and train noise.",
-          "access": "Directly off WA-14 at Home Valley, east of Carson."
-        },
         "tertiary": [
+          {
+            "name": "Home Valley Campground (Skamania County park)",
+            "lat": 45.7087,
+            "lon": -121.77348,
+            "status": "tertiary",
+            "kind": "developed_county",
+            "cost": "County park fee",
+            "facilities": "Showers, potable water, toilets - the only showers near the route.",
+            "notes": "Paid. Right on the Columbia and only 2.9 miles from route mile 0. Sits between WA-14 and the BNSF main line, so expect highway and train noise.",
+            "access": "Directly off WA-14 at Home Valley, east of Carson."
+          },
           {
             "name": "Moss Creek Campground",
             "lat": 45.79501,
@@ -3054,18 +3092,7 @@
             "kind": "developed_fcfs",
             "cost": "Per-site fee",
             "facilities": "Vault toilets, water",
-            "notes": "First-come. On the Little White Salmon, about 20 route miles in - useful only if the group decides to bank miles on arrival evening.",
-            "access": "FS 18 north from Willard."
-          },
-          {
-            "name": "Big Cedars County Park",
-            "lat": 45.80154,
-            "lon": -121.64364,
-            "status": "tertiary",
-            "kind": "developed_county",
-            "cost": "County park fee",
-            "facilities": "Toilets, water",
-            "notes": "Skamania County site adjacent to Moss Creek; same purpose as a mile-banking option.",
+            "notes": "Paid first-come on the Little White Salmon. Only if the group banks miles on arrival evening.",
             "access": "FS 18 north from Willard."
           }
         ]
@@ -3077,7 +3104,7 @@
       "date_iso": "2026-09-09",
       "title": "Day 1: Columbia Gorge -> Indian Heaven -> Takhlakh Lake",
       "type": "overland",
-      "descr": "The scenic-payoff day. Top off in Carson because there is no fuel for the next 154 route miles. Climb Wind River Road past the High Bridge, skirt the Big Lava Bed, and work north through Goose Lake and the Forlorn Lakes into the Indian Heaven country and the Sawtooth Berry Fields. Huckleberries should still be on in early September. Over Babyshoe Pass and finish at Takhlakh Lake, where Mount Adams reflects in the water - the signature view of the whole route.",
+      "descr": "The scenic-payoff day. Top off in Carson because there is no fuel for the next 154 route miles. Climb Wind River Road past the High Bridge, skirt the Big Lava Bed, and work north through Goose Lake and the Forlorn Lakes into the Indian Heaven country and the Sawtooth Berry Fields. Huckleberries should still be on in early September. Over Babyshoe Pass to Takhlakh Lake, where Mount Adams reflects in the water - the signature view of the whole route. Overnight in the free High Lakes cluster (Council, Olallie, Chain of Lakes, Horseshoe) rather than the paid Takhlakh campground.",
       "mi_lo": 0.0,
       "mi_hi": 84.5,
       "miles": 85,
@@ -3451,7 +3478,7 @@
           "true_off_track_m": 302.4,
           "sym": "lake",
           "status": "primary",
-          "note": "The signature view of the route: Mount Adams reflected in the lake. Day 1 camp is here.",
+          "note": "The signature view of the route: Mount Adams reflected in the lake. Day 1 overnight is the free High Lakes cluster (Council, Olallie and nearby pullouts), not the paid campground.",
           "desc": "Takhlakh Lake is a stunning, natural, high-elevation lake situated at 4,390 feet in the Cowlitz Valley Ranger District of the Gifford Pinchot National Forest, approximately 7.3 miles northwest of Mount Adams in Washington State. The lake is the centerpiece of the popular Midway High Lakes Area and is renowned for offering one of the most picturesque and classic views of Mount Adams, whose snowy cone is perfectly reflected in the lake's still, non-motorized waters on clear mornings.\n\nThe lake itself is a direct product of the volcanic history of Mount Adams. It was formed when the Takh Takh Lava Flow—a significant eruption that occurred on the mountain’s flank approximately 3,500 to 1,000 years ago—flowed downhill and naturally dammed the drainage basin of a small tributary feeding into the Cispus River system. The resulting basin filled with water to create the 33-acre lake. The name Takhlakh originates from a Native American word, takh, meaning \"meadows,\" referring to the adjacent, often swampy Takh Takh Meadows that bloom with wildflowers.\n\nTakhlakh Lake is a highly sought-after recreational destination, offering a popular campground with 54 sites that are generally open from early July through September. The lake is reserved exclusively for non-motorized uses, attracting anglers, kayakers, and canoeists. An accessible, 1.1-mile loop trail, the Takhlakh Loop Trail (#134), encircles the lake, providing multiple viewpoints of the mountain and access to the Takh Takh Meadows Trail (#136), which climbs onto the ancient lava flow itself.",
           "spur_mi": 0.0,
           "default_minutes": 30,
@@ -11145,48 +11172,46 @@
         ]
       ],
       "camps": {
-        "primary": {
-          "name": "Takhlakh Lake Campground (Recreation.gov 232861)",
-          "lat": 46.28083,
-          "lon": -121.59861,
-          "status": "primary",
-          "kind": "developed_reservable",
-          "cost": "Per-site fee; 18 of 54 sites are first-come",
-          "facilities": "Vault toilets, potable water, tables, fire rings. No hookups. Non-motorised boating only.",
-          "notes": "NOT BOOKED, AND THIS IS THE ONE TO GRAB. 22 of 54 sites showed available for Sep 9 as of 2026-08-31, but ZERO for Fri Sep 11 and Sat Sep 12 - which is exactly why Day 1 ends here on a Wednesday. Mount Adams reflected in the lake is the signature view of the route. Sites in the 30s and 40s were the most open; book adjacent ones for six rigs.",
-          "access": "FS 23 over Babyshoe Pass, then FS 2329. Paved most of the way with a gravel stretch over the pass.",
-          "reserve_url": "https://www.recreation.gov/camping/campgrounds/232861"
-        },
-        "secondary": [
+        "primary": [
           {
             "name": "Council Lake Campground",
             "lat": 46.26327,
             "lon": -121.63178,
-            "status": "secondary",
+            "status": "primary",
             "kind": "primitive_fcfs",
             "cost": "Free or low fee",
             "facilities": "Vault toilet. No potable water.",
-            "notes": "First-come, not reservable, roughly 5 route miles before Takhlakh. Small and rustic - good fallback for part of the group, not all six rigs.",
-            "access": "Short rough spur off FS 2334."
+            "notes": "On-route at mile 79.2, about 5 miles before Takhlakh. The best-documented free High Lakes camp. Small — not six rigs in one loop. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "access": "Short rough spur off FS 2334.",
+            "reserve_url": "https://freecampsites.net/council-lake/"
           },
           {
             "name": "Olallie Lake Campground",
             "lat": 46.28868,
             "lon": -121.61949,
-            "status": "secondary",
+            "status": "primary",
             "kind": "primitive_fcfs",
             "cost": "Free or low fee",
             "facilities": "Vault toilet. No potable water.",
-            "notes": "First-come. Very small, in the same Midway High Lakes cluster as Takhlakh.",
+            "notes": "First-come. Very small, same Midway High Lakes cluster as Takhlakh.",
             "access": "Spur off FS 2329."
-          }
-        ],
-        "tertiary": [
+          },
+          {
+            "name": "Chain of Lakes Campground",
+            "lat": 46.2931,
+            "lon": -121.59633,
+            "status": "primary",
+            "kind": "primitive_fcfs",
+            "cost": "Free or low fee",
+            "facilities": "Vault toilet. No potable water.",
+            "notes": "First-come, rough access road. Spillover for the High Lakes cluster.",
+            "access": "Rough spur off FS 2329."
+          },
           {
             "name": "Horseshoe Lake Campground",
             "lat": 46.30978,
             "lon": -121.56663,
-            "status": "tertiary",
+            "status": "primary",
             "kind": "primitive_fcfs",
             "cost": "Free or low fee",
             "facilities": "Vault toilet. No potable water.",
@@ -11194,17 +11219,92 @@
             "access": "FS 2329 spur."
           },
           {
-            "name": "Chain of Lakes Campground",
-            "lat": 46.2931,
-            "lon": -121.59633,
-            "status": "tertiary",
-            "kind": "primitive_fcfs",
-            "cost": "Free or low fee",
-            "facilities": "Vault toilet. No potable water.",
-            "notes": "First-come, rough access road. Last-resort spillover for the High Lakes area.",
-            "access": "Rough spur off FS 2329."
+            "name": "Orr Creek Sno-Park",
+            "lat": 46.350466,
+            "lon": -121.597704,
+            "status": "primary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Vault toilet (sun vault). No potable water.",
+            "notes": "On FS 23 at mile 96.6, about 12 route miles past Takhlakh toward Adams Fork. Push here only if High Lakes is slammed; it shortens Thursday. Elk sometimes pass through. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "access": "FS 23 north of Takhlakh / south of Adams Fork.",
+            "reserve_url": "https://freecampsites.net/orr-creek-sno-park/"
           }
-        ]
+        ],
+        "secondary": [
+          {
+            "name": "Near Lava Beds",
+            "lat": 45.91383,
+            "lon": -121.695408,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Informal pullouts near a pond on the way to Big Lava Bed. No facilities.",
+            "notes": "On-route at mile 30.8, Day 1 afternoon. Early-stop option, not the High Lakes night. 10 community reviews.",
+            "access": "Paved approach toward Big Lava Bed, ~45 min from the Columbia.",
+            "reserve_url": "https://freecampsites.net/near-lava-beds/"
+          },
+          {
+            "name": "Forest Route 60",
+            "lat": 45.924556,
+            "lon": -121.774469,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Several pullouts along FS 60. No facilities. Some spots are tight for larger rigs.",
+            "notes": "On-route at mile 34.2 near Goose Lake / the lava-bed edge. Unrated listing.",
+            "access": "FS 60 through the Indian Heaven / lava-bed corridor.",
+            "reserve_url": "https://freecampsites.net/forest-route-60/"
+          },
+          {
+            "name": "Huckleberry Access",
+            "lat": 46.091105,
+            "lon": -121.79985,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Paved viewpoint with room for RVs. No toilet listed.",
+            "notes": "On-route at mile 54.5. Mount St Helens view and seasonal huckleberries. May be day-use — read posted signs before overnighting.",
+            "access": "FS 23 / berry-fields corridor.",
+            "reserve_url": "https://freecampsites.net/huckleberry-access/"
+          },
+          {
+            "name": "Forest Road 9705",
+            "lat": 46.18798,
+            "lon": -121.82302,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Several pullouts past Lewis River Horse Camp with rock fire pits. Room for cars. Quiet road. No toilet listed.",
+            "notes": "About 4.7 miles off the track near mile 57, on the Lewis River side of Day 1. Early-stop / overflow, not the High Lakes night.",
+            "access": "Forest Road 9705 past the Lewis River Horse Camp.",
+            "reserve_url": "https://freecampsites.net/forest-road-9705/"
+          },
+          {
+            "name": "Flattop Sno-Park",
+            "lat": 46.056878,
+            "lon": -121.628389,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Winter lot used as a free dispersed site in summer. No reviews on file.",
+            "notes": "About 3.3 miles off the track near mile 46. Unconfirmed; scout before committing.",
+            "access": "Trout Lake / FS 23 side roads.",
+            "reserve_url": "https://freecampsites.net/flattop-sno-park/"
+          }
+        ],
+        "tertiary": {
+          "name": "Takhlakh Lake Campground (Recreation.gov 232861)",
+          "lat": 46.28083,
+          "lon": -121.59861,
+          "status": "tertiary",
+          "kind": "developed_reservable",
+          "cost": "Per-site fee; 18 of 54 sites are first-come",
+          "facilities": "Vault toilets, potable water, tables, fire rings. No hookups. Non-motorised boating only.",
+          "notes": "Paid backup at the signature lake. 22 of 54 sites showed available for Sep 9 as of 2026-08-31; zero Friday and Saturday. Use it if the free High Lakes cluster is full or you want potable water.",
+          "access": "FS 23 over Babyshoe Pass, then FS 2329.",
+          "reserve_url": "https://www.recreation.gov/camping/campgrounds/232861"
+        }
       },
       "schedule": {
         "break_camp_time": "08:00",
@@ -11220,11 +11320,11 @@
       "date_iso": "2026-09-10",
       "title": "Day 2: Takh Takh lava -> Upper Cispus -> Walupt Lake",
       "type": "overland",
-      "descr": "The short day, and deliberately so: 49 route miles leaves real time for the waterfalls and the Goat Rocks edge. Start on the Takh Takh lava flow, drop into the Upper Cispus, and pass Hamilton Buttes and Bishop Falls. Finish at Walupt Lake, the deepest lake in the county and the trailhead gateway to the Goat Rocks Wilderness. The Walupt Lake access road is long and rough - budget for it.",
+      "descr": "The short day: 57 route miles leaves real time for the waterfalls and the Goat Rocks edge. Start on the Takh Takh lava flow, drop into the Upper Cispus, and pass Hamilton Buttes and Bishop Falls. Finish at Walupt Lake, the deepest lake in the county and the trailhead gateway to the Goat Rocks Wilderness. The Walupt Lake access road is long and rough - budget for it. Night is at Chambers Lake, the free first-come camp about 8 miles past Walupt.",
       "mi_lo": 84.5,
-      "mi_hi": 133.5,
-      "miles": 49,
-      "driving_hours_est": 4.5,
+      "mi_hi": 141.0,
+      "miles": 57,
+      "driving_hours_est": 5.2,
       "pois": [
         {
           "name": "DP - Takh Takh Lava Flow",
@@ -11356,7 +11456,7 @@
           "true_off_track_m": 1056.9,
           "sym": "lake",
           "status": "primary",
-          "note": "Second-largest lake in the forest and the deepest in the county. Day 2 camp; Goat Rocks trailheads start here.",
+          "note": "Second-largest lake in the forest and the deepest in the county. Visit for the lake and Goat Rocks trailheads; Thursday night is Chambers Lake (free), with Walupt CG as the paid backup.",
           "desc": "Walupt Lake is a large, freshwater ribbon lake located at an elevation of 3,927 feet (1,197 meters) in Lewis County, Washington, near the town of Packwood. It is the second-largest lake in the Gifford Pinchot National Forest, covering an area of approximately 350 acres (140 hectares), and is the deepest lake in the county, plunging to a maximum depth of 300 feet. The lake lies at the end of a long, glaciated valley and was formed by an ancient landslide that slid down from the northwest end of the ridge, creating a natural dam that allowed the basin to fill with water.\n\nThe lake is a central feature of the rugged landscape surrounding the Goat Rocks Wilderness; its eastern half is technically within the Wilderness boundary. Its name, Walupt, is of Yakama origin, given by surveyor Albert Hale Sylvester, who learned from Native Americans that it was the traditional Yakama name for the region. Walupt Creek is both the main inflow (fed by perennial snowmelt) and the outflow, exiting the lake on its northwestern corner and flowing toward the Cispus River.\n\nWalupt Lake is a highly popular, high-elevation destination for recreation, typically accessible by vehicle only from late May to late October due to snow. The Walupt Lake Campground is a major staging area for the Goat Rocks Wilderness, with the Nannie Ridge Trail ($#98)andWaluptLakeTrail(#$101) providing access to the Pacific Crest National Scenic Trail (PCT). The lake itself is known for excellent fishing for Rainbow and Cutthroat Trout, and non-motorized activities such as boating, kayaking, and swimming are common on its clear mountain waters.",
           "spur_mi": 0.0,
           "default_minutes": 20,
@@ -14616,219 +14716,6 @@
         [
           46.42537,
           -121.486309
-        ]
-      ],
-      "camps": {
-        "primary": {
-          "name": "Walupt Lake Campground (Recreation.gov 232860)",
-          "lat": 46.42306,
-          "lon": -121.47361,
-          "status": "primary",
-          "kind": "developed_reservable",
-          "cost": "Per-site fee; 14 of 42 sites are first-come",
-          "facilities": "Vault toilets, potable water, boat launch. No hookups.",
-          "notes": "NOT BOOKED. 7 of 42 sites showed available for Sep 10 as of 2026-08-31 - thinner than Takhlakh, so this is the second priority to reserve. Only 1 site was open for Fri Sep 11, so the Thursday timing matters. Goat Rocks trailheads leave from the campground. The access road in is long and rough.",
-          "access": "FS 21 then FS 2160 east - roughly 16 miles of gravel off the main route.",
-          "reserve_url": "https://www.recreation.gov/camping/campgrounds/232860"
-        },
-        "secondary": {
-          "name": "Chambers Lake Campground",
-          "lat": 46.46549,
-          "lon": -121.53183,
-          "status": "secondary",
-          "kind": "primitive_fcfs",
-          "cost": "Free or low fee",
-          "facilities": "Vault toilet. No potable water.",
-          "notes": "First-come and not on Recreation.gov, so availability cannot be checked in advance. About 8 route miles past Walupt near the Goat Rocks boundary. Reasonable Plan B if Walupt is full on arrival.",
-          "access": "FS 21 spur north of the Walupt junction."
-        },
-        "tertiary": [
-          {
-            "name": "Adams Fork Campground (Recreation.gov 232857)",
-            "lat": 46.33889,
-            "lon": -121.64694,
-            "status": "tertiary",
-            "kind": "developed_reservable",
-            "cost": "Per-site fee; 7 of 23 sites are first-come",
-            "facilities": "Vault toilets, tables, fire rings. No potable water.",
-            "notes": "16 of 23 sites showed available for Sep 10. Sits at route mile 99.6, so choosing it shortens Day 2 to 15 miles and lengthens Day 3 to 127 - use it only if the group wants an easy Thursday or Walupt falls through.",
-            "access": "On FS 21 beside the Cispus River.",
-            "reserve_url": "https://www.recreation.gov/camping/campgrounds/232857"
-          },
-          {
-            "name": "Cat Creek Campground",
-            "lat": 46.34855,
-            "lon": -121.62496,
-            "status": "tertiary",
-            "kind": "primitive_fcfs",
-            "cost": "Free",
-            "facilities": "Vault toilet. No potable water.",
-            "notes": "First-come only, very small. Route mile 101. Overflow for Adams Fork.",
-            "access": "FS 2160 just east of Adams Fork."
-          }
-        ]
-      },
-      "schedule": {
-        "break_camp_time": "08:30",
-        "moving_mph": 20,
-        "start_lat": 46.271064,
-        "start_lon": -121.589692,
-        "mi_lo": 0.0
-      }
-    },
-    {
-      "id": "day3_cascades",
-      "label": "Sep 11 (Fri) - Day 3: Walupt -> North Fork",
-      "date_iso": "2026-09-11",
-      "title": "Day 3: Packwood fuel -> High Rock Lookout -> Randle -> North Fork",
-      "type": "overland",
-      "descr": "The longest day at 93 miles, but a good share of it is paved US 12, so it moves faster than the number suggests. Fuel at Packwood around mile 156 - the first pump since Carson. The centrepiece is High Rock Lookout: about 3 miles round trip to a historic lookout on a cliff edge with Mount Rainier only 13 air miles away. Fuel again at Randle, then Layser Cave and Camp Creek Falls on the way into camp on the Cispus.",
-      "mi_lo": 133.5,
-      "mi_hi": 226.5,
-      "miles": 93,
-      "driving_hours_est": 7.0,
-      "pois": [
-        {
-          "name": "Goat Ridge Lookout",
-          "gpx_name": "Goat Ridge Lookout",
-          "lat": 46.4811976,
-          "lon": -121.5152929,
-          "ele": null,
-          "mile": 8.08,
-          "dist_to_track_m": 3681.5,
-          "true_off_track_m": 3681.5,
-          "sym": "binoculars",
-          "status": "backup",
-          "note": "~2.3 mi off route.",
-          "desc": "",
-          "spur_mi": 4.6,
-          "default_minutes": 15,
-          "default_checked": true
-        },
-        {
-          "name": "Fuel - Packwood, WA",
-          "gpx_name": "Gas Station",
-          "lat": 46.6042132,
-          "lon": -121.6727858,
-          "ele": null,
-          "mile": 22.48,
-          "dist_to_track_m": 100.4,
-          "true_off_track_m": 100.4,
-          "sym": "fuel-24",
-          "status": "logistics",
-          "note": "First fuel since Carson. Packwood also has food and a store.",
-          "desc": "",
-          "spur_mi": 0.0,
-          "default_minutes": 25,
-          "default_checked": false
-        },
-        {
-          "name": "DP - High Rock Lookout",
-          "gpx_name": "DP - High Rock Lookout",
-          "lat": 46.6844957,
-          "lon": -121.9013926,
-          "ele": null,
-          "mile": 43.9,
-          "dist_to_track_m": 898.9,
-          "true_off_track_m": 898.9,
-          "sym": "fire-lookout",
-          "status": "hike_candidate",
-          "note": "About 3 miles round trip to a historic lookout perched over a cliff, with Mount Rainier only 13 air miles away. The best view on the route and the single most worthwhile hike. Access road is rough; the last stretch is narrow.",
-          "desc": "High Rock Lookout is an iconic and historic fire lookout station located atop High Rock, the most prominent point along the Sawtooth Ridge in the Gifford Pinchot National Forest, Washington. Situated near the northern boundary of the forest, the lookout provides one of the most stunning panoramic views in the South Cascades, with a direct, in-your-face sightline of Mount Rainier only 13 air miles away, as well as clear views of the Tatoosh Range, Mount Adams, and Mount St. Helens.\n\nThe lookout structure, a 14x14-foot gable roof L-4 ground house, was originally constructed in 1929-1931 with materials hauled in by pack mule from Mineral, Washington. Its location at an elevation of 5,685 feet (1,732 meters), perched on the edge of a sheer cliff with a vertical 600-foot drop on its north face, made it a crucial and strategic fire detection post for the Forest Service until it was last staffed in 2004. The lookout is now listed on the National Historic Lookout Register.\n\nThe site is accessed via the popular and moderately steep High Rock Trail ($#$266), a 1.6-mile path that climbs approximately 1,350 feet from the Towhead Gap trailhead. Due to years of neglect, extreme weather, and vandalism, the lookout structure underwent a community-driven, multi-phased restoration effort that began in the 2020s. This effort required the temporary removal of the structure for off-site restoration and foundation work.",
-          "spur_mi": 9.0,
-          "default_minutes": 150,
-          "default_checked": true
-        },
-        {
-          "name": "DP - Mt Rainier",
-          "gpx_name": "DP - Mt Rainier",
-          "lat": 46.8522657,
-          "lon": -121.7605771,
-          "ele": null,
-          "mile": 50.19,
-          "dist_to_track_m": 0.0,
-          "true_off_track_m": 20707.0,
-          "sym": "volcano",
-          "status": "landmark",
-          "note": "Reference marker for the 14,410 ft summit - view it, do not drive to it.",
-          "desc": "Mount Rainier (known as Tahoma or Takhoma by the Puyallup and other Indigenous tribes, meaning \"the great snowy mountain\") is the highest mountain in the U.S. state of Washington and the tallest peak in the entire Cascade Volcanic Arc, rising to an officially recognized summit elevation of 14,410 feet (4,392 meters) at the Columbia Crest. Located approximately 60 miles southeast of Seattle, the massive stratovolcano is the centerpiece of Mount Rainier National Park, which was established on March 2, 1899, as the fifth national park in the country.\n\nThe mountain is a highly active volcano that began building its present cone approximately 500,000 years ago. Geologically, it is the most topographically prominent mountain in the contiguous United States, rising abruptly from its surrounding landscape. Its complex history includes multiple eruptions, lava flows, and destructive lahars (volcanic mudflows). The most significant lahar was the Osceola Mudflow approximately 5,600 years ago, which sent a torrent of mud and debris all the way to Puget Sound and may have carried away much of the mountain's original summit. Today, the U.S. Geological Survey (USGS) extensively monitors the volcano to provide advance warning of future hazards.\n\nMount Rainier is the most heavily glaciated peak in the contiguous United States, covered by an extensive system of 25 named glaciers and large permanent snowfields that total about 35 square miles (91 km$&$sup2;). These glaciers, which include the largest by area (Emmons Glacier) and largest by volume (Carbon Glacier), are vital water sources, feeding the headwaters of five major rivers, including the Nisqually, Puyallup, and Cowlitz rivers. Scientists rely on the mountain's glaciers as sensitive indicators of climatic change, noting that the mountain has lost approximately 40$%$ of its glacier area since the 1900s.\n\nThe entire area encompasses a dramatic ecological gradient. Below the permanent ice line, the mountain features high-elevation forests dominated by subalpine fir and mountain hemlock, which transition into spectacular subalpine meadows that erupt in a famous display of wildflowers during the short summer season (typically mid-July to mid-August). The mountain is a world-class destination for mountaineering, with the Disappointment Cleaver route being the most common, non-technical ascent route to the summit.",
-          "spur_mi": 0.0,
-          "default_minutes": 0,
-          "default_checked": false
-        },
-        {
-          "name": "Fuel - Randle, WA",
-          "gpx_name": "Gas Station",
-          "lat": 46.5356434,
-          "lon": -121.9569947,
-          "ele": null,
-          "mile": 83.12,
-          "dist_to_track_m": 39.8,
-          "true_off_track_m": 39.8,
-          "sym": "fuel-24",
-          "status": "logistics",
-          "note": "Randle. Last fuel before the final 108 miles back to the Gorge.",
-          "desc": "",
-          "spur_mi": 0.0,
-          "default_minutes": 25,
-          "default_checked": false
-        },
-        {
-          "name": "DP - Cowlitz River",
-          "gpx_name": "DP - Cowlitz River",
-          "lat": 46.5324678,
-          "lon": -121.9561945,
-          "ele": null,
-          "mile": 83.43,
-          "dist_to_track_m": 177.4,
-          "true_off_track_m": 177.4,
-          "sym": "water",
-          "status": "backup",
-          "note": "Glacier-fed Cowlitz, alongside US 12.",
-          "desc": "The Cowlitz River is a historically and ecologically significant waterway in southwest Washington, a major tributary of the Columbia River. The river’s source is fed by the glaciers of Mount Rainier and it gathers wild runoff from the slopes of both Mount Adams and Mount St. Helens. The Cowlitz is approximately 105 miles (169 km) long and drains an expansive 2,586-square-mile (6,698 km$&$sup2;) basin that extends across the Cascade Range.\n\nHistorically, the river valley was the home of the Upper Cowlitz (Taidnapam) Indians, with a large village situated near the present-day town of Packwood. The Cowlitz Trail, an ancient Native American travel route, followed the river and connected the Cowlitz Valley with the Yakima River drainage across the Cascades.\n\nToday, the lower Cowlitz River is heavily impacted by hydroelectric power generation. Two major dams—Mayfield Dam and Mossyrock Dam (forming Riffe Lake)—impound the river, creating large reservoirs that have altered the natural flow regime and blocked historical fish migration. However, the river remains one of Washington’s most important systems for recovering imperiled native fish, supporting runs of Chinook salmon, coho salmon, and summer and winter steelhead, which compete with large hatchery runs.\n\nA significant portion of its headwaters and main tributaries, particularly the Cispus River and the Clear Fork Cowlitz River, flow through the Cowlitz Valley Ranger District of the Gifford Pinchot National Forest. This area, which includes the Goat Rocks Wilderness, offers diverse recreational opportunities, including hiking, camping, and wildlife viewing, featuring old-growth forests and important habitat for elk. The Cowlitz is best known among sport fishermen for the stretch below the Barrier Dam, where it is often one of the state's most productive fishing rivers year-round.",
-          "spur_mi": 0.0,
-          "default_minutes": 10,
-          "default_checked": false
-        },
-        {
-          "name": "Layser Cave",
-          "gpx_name": "Layser Cave",
-          "lat": 46.4601156,
-          "lon": -121.8604313,
-          "ele": null,
-          "mile": 90.92,
-          "dist_to_track_m": 390.4,
-          "true_off_track_m": 390.4,
-          "sym": "cave",
-          "status": "primary",
-          "note": "Interpreted rock shelter above the Cispus valley and one of the most significant archaeological sites in the western Cascades. Short walk from the parking area.",
-          "desc": "ayser Cave (or the Layser Cave Archaeological Interpretive Area) is a small but highly significant natural rock shelter located in the Cowlitz Valley Ranger District of the Gifford Pinchot National Forest, situated above the Cispus River valley south of Randle, Washington. The site is recognized as one of the most extensive and important archaeological sites in the western Cascade Range, providing a continuous record of human use dating back at least 7,000 years (5000 BCE).\n\nThe cave’s geological formation is a subject of debate among experts. While it was initially suspected to be a lava tube due to the region's volcanic nature, geological evidence suggests it is a pseudokarst—a feature formed by the structural folding and fissuring of the underlying basalt rock during the Miocene uplift of the Cascade Range, not by flowing lava. The rock shelter is small, measuring approximately 20 feet wide and 32 feet deep, with a low ceiling, and its floor contains distinct layers of volcanic ash (tephra), including layers from ancient Mount St. Helens eruptions.\n\nFor thousands of years, the cave served as a long-term communal shelter and seasonal work site for the Indigenous peoples of the region, notably the Upper Cowlitz (Taitnapam) Indians. Archaeological excavations, which began after the cave's rediscovery by Forest Service employee Tim Layser in 1982, uncovered thousands of artifacts, including stone tools, animal bones (primarily deer and elk), and even obsidian arrowheads sourced from Oregon, providing evidence of trade and early Holocene migration patterns.\n\nThe archaeological record shows a notable period of abandonment between approximately 2,000 and 4,000 years ago, which is hypothesized to have occurred suddenly around 3,400 to 3,500 years ago, coinciding with a massive eruption of Mount St. Helens that buried settlements under a thick layer of pumice. Today, the site is managed by the U.S. Forest Service, which has installed interpretive signs along a short (0.25 mile), steep trail to explain the cave’s history and significance, offering visitors a unique perspective on the long human history of the Gifford Pinchot National Forest.",
-          "spur_mi": 0.0,
-          "default_minutes": 30,
-          "default_checked": true
-        },
-        {
-          "name": "Camp Creek Falls",
-          "gpx_name": "Camp Creek Falls",
-          "lat": 46.4514302,
-          "lon": -121.8312832,
-          "ele": null,
-          "mile": 92.31,
-          "dist_to_track_m": 840.9,
-          "true_off_track_m": 840.9,
-          "sym": "waterfall",
-          "status": "primary",
-          "note": "Short roadside waterfall stop.",
-          "desc": "",
-          "spur_mi": 0.0,
-          "default_minutes": 20,
-          "default_checked": true
-        }
-      ],
-      "track_points": [
-        [
-          46.42537,
-          -121.486309
         ],
         [
           46.425797,
@@ -15286,6 +15173,222 @@
           46.462062,
           -121.556876
         ],
+        [
+          46.463112,
+          -121.557303
+        ]
+      ],
+      "camps": {
+        "primary": [
+          {
+            "name": "Chambers Lake Campground",
+            "lat": 46.46549,
+            "lon": -121.53183,
+            "status": "primary",
+            "kind": "primitive_fcfs",
+            "cost": "Free or low fee",
+            "facilities": "Vault toilet. No potable water.",
+            "notes": "Free first-come camp at mile 140.5, about 8 miles past Walupt near the Goat Rocks boundary. The actual Thursday night. Availability cannot be checked in advance. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "access": "FS 21 spur north of the Walupt junction.",
+            "reserve_url": "https://freecampsites.net/chambers-lake/"
+          },
+          {
+            "name": "Cat Creek Campground",
+            "lat": 46.34855,
+            "lon": -121.62496,
+            "status": "primary",
+            "kind": "primitive_fcfs",
+            "cost": "Free",
+            "facilities": "Vault toilet. No potable water.",
+            "notes": "First-come, very small, route mile 101. Early-stop option that shortens Thursday and lengthens Friday. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "access": "FS 2160 just east of Adams Fork."
+          }
+        ],
+        "tertiary": [
+          {
+            "name": "Walupt Lake Campground (Recreation.gov 232860)",
+            "lat": 46.42306,
+            "lon": -121.47361,
+            "status": "tertiary",
+            "kind": "developed_reservable",
+            "cost": "Per-site fee; 14 of 42 sites are first-come",
+            "facilities": "Vault toilets, potable water, boat launch. No hookups.",
+            "notes": "Paid backup at the lake itself. 7 of 42 sites showed available for Sep 10 as of 2026-08-31. Goat Rocks trailheads leave from the campground. The access road in is long and rough.",
+            "access": "FS 21 then FS 2160 east - roughly 16 miles of gravel off the main route.",
+            "reserve_url": "https://www.recreation.gov/camping/campgrounds/232860"
+          },
+          {
+            "name": "Adams Fork Campground (Recreation.gov 232857)",
+            "lat": 46.33889,
+            "lon": -121.64694,
+            "status": "tertiary",
+            "kind": "developed_reservable",
+            "cost": "Per-site fee; 7 of 23 sites are first-come",
+            "facilities": "Vault toilets, tables, fire rings. No potable water.",
+            "notes": "Paid early-stop at mile 99.6. 16 of 23 sites showed available for Sep 10. Choosing it shortens Thursday and lengthens Friday.",
+            "access": "On FS 21 beside the Cispus River.",
+            "reserve_url": "https://www.recreation.gov/camping/campgrounds/232857"
+          }
+        ]
+      },
+      "schedule": {
+        "break_camp_time": "08:30",
+        "moving_mph": 20,
+        "start_lat": 46.271064,
+        "start_lon": -121.589692,
+        "mi_lo": 0.0
+      }
+    },
+    {
+      "id": "day3_cascades",
+      "label": "Sep 11 (Fri) - Day 3: Walupt -> North Fork",
+      "date_iso": "2026-09-11",
+      "title": "Day 3: Packwood fuel -> High Rock Lookout -> Randle -> North Fork",
+      "type": "overland",
+      "descr": "Still the long day at 91 miles, but a good share of it is paved US 12, so it moves faster than the number suggests. Fuel at Packwood around mile 156 - the first pump since Carson. The centrepiece is High Rock Lookout: about 3 miles round trip to a historic lookout on a cliff edge with Mount Rainier only 13 air miles away. Fuel again at Randle, then Layser Cave and Camp Creek Falls on the way into the free Greenhorn Creek pullouts south of Randle on the FS 25 side of the Cispus.",
+      "mi_lo": 141.0,
+      "mi_hi": 232.0,
+      "miles": 91,
+      "driving_hours_est": 6.8,
+      "pois": [
+        {
+          "name": "Goat Ridge Lookout",
+          "gpx_name": "Goat Ridge Lookout",
+          "lat": 46.4811976,
+          "lon": -121.5152929,
+          "ele": null,
+          "mile": 0.58,
+          "dist_to_track_m": 3681.5,
+          "true_off_track_m": 3681.5,
+          "sym": "binoculars",
+          "status": "backup",
+          "note": "~2.3 mi off route.",
+          "desc": "",
+          "spur_mi": 4.6,
+          "default_minutes": 15,
+          "default_checked": true
+        },
+        {
+          "name": "Fuel - Packwood, WA",
+          "gpx_name": "Gas Station",
+          "lat": 46.6042132,
+          "lon": -121.6727858,
+          "ele": null,
+          "mile": 14.98,
+          "dist_to_track_m": 100.4,
+          "true_off_track_m": 100.4,
+          "sym": "fuel-24",
+          "status": "logistics",
+          "note": "First fuel since Carson. Packwood also has food and a store.",
+          "desc": "",
+          "spur_mi": 0.0,
+          "default_minutes": 25,
+          "default_checked": false
+        },
+        {
+          "name": "DP - High Rock Lookout",
+          "gpx_name": "DP - High Rock Lookout",
+          "lat": 46.6844957,
+          "lon": -121.9013926,
+          "ele": null,
+          "mile": 36.4,
+          "dist_to_track_m": 898.9,
+          "true_off_track_m": 898.9,
+          "sym": "fire-lookout",
+          "status": "hike_candidate",
+          "note": "About 3 miles round trip to a historic lookout perched over a cliff, with Mount Rainier only 13 air miles away. The best view on the route and the single most worthwhile hike. Access road is rough; the last stretch is narrow.",
+          "desc": "High Rock Lookout is an iconic and historic fire lookout station located atop High Rock, the most prominent point along the Sawtooth Ridge in the Gifford Pinchot National Forest, Washington. Situated near the northern boundary of the forest, the lookout provides one of the most stunning panoramic views in the South Cascades, with a direct, in-your-face sightline of Mount Rainier only 13 air miles away, as well as clear views of the Tatoosh Range, Mount Adams, and Mount St. Helens.\n\nThe lookout structure, a 14x14-foot gable roof L-4 ground house, was originally constructed in 1929-1931 with materials hauled in by pack mule from Mineral, Washington. Its location at an elevation of 5,685 feet (1,732 meters), perched on the edge of a sheer cliff with a vertical 600-foot drop on its north face, made it a crucial and strategic fire detection post for the Forest Service until it was last staffed in 2004. The lookout is now listed on the National Historic Lookout Register.\n\nThe site is accessed via the popular and moderately steep High Rock Trail ($#$266), a 1.6-mile path that climbs approximately 1,350 feet from the Towhead Gap trailhead. Due to years of neglect, extreme weather, and vandalism, the lookout structure underwent a community-driven, multi-phased restoration effort that began in the 2020s. This effort required the temporary removal of the structure for off-site restoration and foundation work.",
+          "spur_mi": 9.0,
+          "default_minutes": 150,
+          "default_checked": true
+        },
+        {
+          "name": "DP - Mt Rainier",
+          "gpx_name": "DP - Mt Rainier",
+          "lat": 46.8522657,
+          "lon": -121.7605771,
+          "ele": null,
+          "mile": 42.69,
+          "dist_to_track_m": 0.0,
+          "true_off_track_m": 20707.0,
+          "sym": "volcano",
+          "status": "landmark",
+          "note": "Reference marker for the 14,410 ft summit - view it, do not drive to it.",
+          "desc": "Mount Rainier (known as Tahoma or Takhoma by the Puyallup and other Indigenous tribes, meaning \"the great snowy mountain\") is the highest mountain in the U.S. state of Washington and the tallest peak in the entire Cascade Volcanic Arc, rising to an officially recognized summit elevation of 14,410 feet (4,392 meters) at the Columbia Crest. Located approximately 60 miles southeast of Seattle, the massive stratovolcano is the centerpiece of Mount Rainier National Park, which was established on March 2, 1899, as the fifth national park in the country.\n\nThe mountain is a highly active volcano that began building its present cone approximately 500,000 years ago. Geologically, it is the most topographically prominent mountain in the contiguous United States, rising abruptly from its surrounding landscape. Its complex history includes multiple eruptions, lava flows, and destructive lahars (volcanic mudflows). The most significant lahar was the Osceola Mudflow approximately 5,600 years ago, which sent a torrent of mud and debris all the way to Puget Sound and may have carried away much of the mountain's original summit. Today, the U.S. Geological Survey (USGS) extensively monitors the volcano to provide advance warning of future hazards.\n\nMount Rainier is the most heavily glaciated peak in the contiguous United States, covered by an extensive system of 25 named glaciers and large permanent snowfields that total about 35 square miles (91 km$&$sup2;). These glaciers, which include the largest by area (Emmons Glacier) and largest by volume (Carbon Glacier), are vital water sources, feeding the headwaters of five major rivers, including the Nisqually, Puyallup, and Cowlitz rivers. Scientists rely on the mountain's glaciers as sensitive indicators of climatic change, noting that the mountain has lost approximately 40$%$ of its glacier area since the 1900s.\n\nThe entire area encompasses a dramatic ecological gradient. Below the permanent ice line, the mountain features high-elevation forests dominated by subalpine fir and mountain hemlock, which transition into spectacular subalpine meadows that erupt in a famous display of wildflowers during the short summer season (typically mid-July to mid-August). The mountain is a world-class destination for mountaineering, with the Disappointment Cleaver route being the most common, non-technical ascent route to the summit.",
+          "spur_mi": 0.0,
+          "default_minutes": 0,
+          "default_checked": false
+        },
+        {
+          "name": "Fuel - Randle, WA",
+          "gpx_name": "Gas Station",
+          "lat": 46.5356434,
+          "lon": -121.9569947,
+          "ele": null,
+          "mile": 75.62,
+          "dist_to_track_m": 39.8,
+          "true_off_track_m": 39.8,
+          "sym": "fuel-24",
+          "status": "logistics",
+          "note": "Randle. Last fuel before the final 108 miles back to the Gorge.",
+          "desc": "",
+          "spur_mi": 0.0,
+          "default_minutes": 25,
+          "default_checked": false
+        },
+        {
+          "name": "DP - Cowlitz River",
+          "gpx_name": "DP - Cowlitz River",
+          "lat": 46.5324678,
+          "lon": -121.9561945,
+          "ele": null,
+          "mile": 75.93,
+          "dist_to_track_m": 177.4,
+          "true_off_track_m": 177.4,
+          "sym": "water",
+          "status": "backup",
+          "note": "Glacier-fed Cowlitz, alongside US 12.",
+          "desc": "The Cowlitz River is a historically and ecologically significant waterway in southwest Washington, a major tributary of the Columbia River. The river’s source is fed by the glaciers of Mount Rainier and it gathers wild runoff from the slopes of both Mount Adams and Mount St. Helens. The Cowlitz is approximately 105 miles (169 km) long and drains an expansive 2,586-square-mile (6,698 km$&$sup2;) basin that extends across the Cascade Range.\n\nHistorically, the river valley was the home of the Upper Cowlitz (Taidnapam) Indians, with a large village situated near the present-day town of Packwood. The Cowlitz Trail, an ancient Native American travel route, followed the river and connected the Cowlitz Valley with the Yakima River drainage across the Cascades.\n\nToday, the lower Cowlitz River is heavily impacted by hydroelectric power generation. Two major dams—Mayfield Dam and Mossyrock Dam (forming Riffe Lake)—impound the river, creating large reservoirs that have altered the natural flow regime and blocked historical fish migration. However, the river remains one of Washington’s most important systems for recovering imperiled native fish, supporting runs of Chinook salmon, coho salmon, and summer and winter steelhead, which compete with large hatchery runs.\n\nA significant portion of its headwaters and main tributaries, particularly the Cispus River and the Clear Fork Cowlitz River, flow through the Cowlitz Valley Ranger District of the Gifford Pinchot National Forest. This area, which includes the Goat Rocks Wilderness, offers diverse recreational opportunities, including hiking, camping, and wildlife viewing, featuring old-growth forests and important habitat for elk. The Cowlitz is best known among sport fishermen for the stretch below the Barrier Dam, where it is often one of the state's most productive fishing rivers year-round.",
+          "spur_mi": 0.0,
+          "default_minutes": 10,
+          "default_checked": false
+        },
+        {
+          "name": "Layser Cave",
+          "gpx_name": "Layser Cave",
+          "lat": 46.4601156,
+          "lon": -121.8604313,
+          "ele": null,
+          "mile": 83.42,
+          "dist_to_track_m": 390.4,
+          "true_off_track_m": 390.4,
+          "sym": "cave",
+          "status": "primary",
+          "note": "Interpreted rock shelter above the Cispus valley and one of the most significant archaeological sites in the western Cascades. Short walk from the parking area.",
+          "desc": "ayser Cave (or the Layser Cave Archaeological Interpretive Area) is a small but highly significant natural rock shelter located in the Cowlitz Valley Ranger District of the Gifford Pinchot National Forest, situated above the Cispus River valley south of Randle, Washington. The site is recognized as one of the most extensive and important archaeological sites in the western Cascade Range, providing a continuous record of human use dating back at least 7,000 years (5000 BCE).\n\nThe cave’s geological formation is a subject of debate among experts. While it was initially suspected to be a lava tube due to the region's volcanic nature, geological evidence suggests it is a pseudokarst—a feature formed by the structural folding and fissuring of the underlying basalt rock during the Miocene uplift of the Cascade Range, not by flowing lava. The rock shelter is small, measuring approximately 20 feet wide and 32 feet deep, with a low ceiling, and its floor contains distinct layers of volcanic ash (tephra), including layers from ancient Mount St. Helens eruptions.\n\nFor thousands of years, the cave served as a long-term communal shelter and seasonal work site for the Indigenous peoples of the region, notably the Upper Cowlitz (Taitnapam) Indians. Archaeological excavations, which began after the cave's rediscovery by Forest Service employee Tim Layser in 1982, uncovered thousands of artifacts, including stone tools, animal bones (primarily deer and elk), and even obsidian arrowheads sourced from Oregon, providing evidence of trade and early Holocene migration patterns.\n\nThe archaeological record shows a notable period of abandonment between approximately 2,000 and 4,000 years ago, which is hypothesized to have occurred suddenly around 3,400 to 3,500 years ago, coinciding with a massive eruption of Mount St. Helens that buried settlements under a thick layer of pumice. Today, the site is managed by the U.S. Forest Service, which has installed interpretive signs along a short (0.25 mile), steep trail to explain the cave’s history and significance, offering visitors a unique perspective on the long human history of the Gifford Pinchot National Forest.",
+          "spur_mi": 0.0,
+          "default_minutes": 30,
+          "default_checked": true
+        },
+        {
+          "name": "Camp Creek Falls",
+          "gpx_name": "Camp Creek Falls",
+          "lat": 46.4514302,
+          "lon": -121.8312832,
+          "ele": null,
+          "mile": 84.81,
+          "dist_to_track_m": 840.9,
+          "true_off_track_m": 840.9,
+          "sym": "waterfall",
+          "status": "primary",
+          "note": "Short roadside waterfall stop.",
+          "desc": "",
+          "spur_mi": 0.0,
+          "default_minutes": 20,
+          "default_checked": true
+        }
+      ],
+      "track_points": [
         [
           46.463112,
           -121.557303
@@ -20657,255 +20760,6 @@
         [
           46.436226,
           -121.837575
-        ]
-      ],
-      "camps": {
-        "primary": {
-          "name": "North Fork Elk Group Camp (Recreation.gov 232898)",
-          "lat": 46.4525,
-          "lon": -121.78889,
-          "status": "primary",
-          "kind": "developed_group_reservable",
-          "cost": "Single group-site fee for the whole party",
-          "facilities": "Vault toilets, potable water, group shelter area, tables, fire rings.",
-          "notes": "NOT BOOKED, AND THE MOST TIME-SENSITIVE RESERVATION OF THE TRIP. This is a single reservable group site, which is what six vehicles actually want, and as of 2026-08-31 it was open on both Fri Sep 11 and Sat Sep 12 - the two nights when nearly everything else in the forest is booked. One booking covers the whole group. If it goes, Tower Rock is the fallback.",
-          "access": "FS 23 south from Randle along the Cispus, near North Fork Campground.",
-          "reserve_url": "https://www.recreation.gov/camping/campgrounds/232898"
-        },
-        "secondary": {
-          "name": "Tower Rock Campground (Recreation.gov 232855)",
-          "lat": 46.445,
-          "lon": -121.86806,
-          "status": "secondary",
-          "kind": "developed_reservable",
-          "cost": "Per-site fee; 6 of 20 sites are first-come",
-          "facilities": "Vault toilets, potable water, tables, fire rings.",
-          "notes": "The best weekend availability found anywhere on the route: 10 of 20 sites open for Fri Sep 11 and 8 for Sat Sep 12 as of 2026-08-31. Route mile 228.6, about 2 miles past North Fork. Book several adjacent sites if the Elk group site is gone.",
-          "access": "FS 23 / FS 28 along the Cispus, south of Randle.",
-          "reserve_url": "https://www.recreation.gov/camping/campgrounds/232855"
-        },
-        "tertiary": [
-          {
-            "name": "North Fork Bear Group Camp (Recreation.gov 232896)",
-            "lat": 46.45083,
-            "lon": -121.78778,
-            "status": "tertiary",
-            "kind": "developed_group_reservable",
-            "cost": "Single group-site fee",
-            "facilities": "Same complex as Elk Group.",
-            "notes": "The other group site at North Fork. It was open Sep 8 through 10 but ALREADY TAKEN for Fri Sep 11 and Sat Sep 12, so it does not work for this itinerary unless the day split changes.",
-            "access": "Same as Elk Group.",
-            "reserve_url": "https://www.recreation.gov/camping/campgrounds/232896"
-          },
-          {
-            "name": "North Fork Campground (Recreation.gov 232852)",
-            "lat": 46.45109,
-            "lon": -121.7876,
-            "status": "tertiary",
-            "kind": "developed_reservable",
-            "cost": "Per-site fee; 7 of 19 sites are first-come",
-            "facilities": "Vault toilets, potable water.",
-            "notes": "Only 1 site open for Fri Sep 11 and none for Sat Sep 12 as of 2026-08-31 - not viable for six rigs on the weekend, but listed because the first-come sites could still absorb one or two vehicles.",
-            "access": "FS 23 south from Randle.",
-            "reserve_url": "https://www.recreation.gov/camping/campgrounds/232852"
-          }
-        ]
-      },
-      "schedule": {
-        "break_camp_time": "07:30",
-        "moving_mph": 28,
-        "start_lat": 46.42537,
-        "start_lon": -121.486309,
-        "mi_lo": 0.0
-      }
-    },
-    {
-      "id": "day4_cascades",
-      "label": "Sep 12 (Sat) - Day 4: North Fork -> Panther Creek",
-      "date_iso": "2026-09-12",
-      "title": "Day 4: Burley Mountain -> Elk Pass -> lava caves -> Panther Creek",
-      "type": "overland",
-      "descr": "The volcano-and-lava day, 82 miles. Burley Mountain Lookout takes in Rainier, Adams, St Helens and Hood from one spot. South over Elk Pass with Mount St Helens filling the window, then down the Lewis River past Curly Creek Falls and its twin natural basalt arches. Late in the day, the Falls Creek Lava Caves: a genuine lava tube from the Big Lava Bed eruption. Everyone going underground needs their own headlamp plus a backup. Finish at Panther Creek Falls and camp where the trip started.",
-      "mi_lo": 226.5,
-      "mi_hi": 308.5,
-      "miles": 82,
-      "driving_hours_est": 6.5,
-      "pois": [
-        {
-          "name": "DP - Burley Mountain Fire Lookout",
-          "gpx_name": "DP - Burley Mountain Fire Lookout",
-          "lat": 46.4073397,
-          "lon": -121.8658948,
-          "ele": null,
-          "mile": 10.93,
-          "dist_to_track_m": 318.3,
-          "true_off_track_m": 318.3,
-          "sym": "fire-lookout",
-          "status": "primary",
-          "note": "Historic lookout at 5,154 ft with a 360-degree view taking in Rainier, Adams, St Helens and Hood. Drivable to near the top; narrow road.",
-          "desc": "Burley Mountain Fire Lookout is a historic fire lookout station located on Burley Mountain in the Cowlitz Valley Ranger District of the Gifford Pinchot National Forest, Washington. Situated at an elevation of 5,154 feet (1,571 meters), the lookout stands at a central position in the southern Cascades, offering spectacular 360-degree views that encompass four major volcanoes: Mount Rainier to the north, Mount Adams to the east, Mount St. Helens to the southwest, and Mount Hood to the south.\n\nThe structure is a classic, 14-by-14-foot L-4 ground house built in 1934 by the U.S. Forest Service as part of the massive fire detection network established following the devastating \"Big Blowup\" fires of 1910. Burley Mountain was historically a crucial sentinel, and although the Forest Service phased out most manned lookouts by the 1960s, Burley was one of only three lookouts remaining on the Gifford Pinchot by 1973. The site was added to the National Historic Lookout Register in 2000.\n\nThe mountain's surrounding forest is a testament to the region's fire history, being largely composed of even-aged second-growth that sprung up after the massive fires in the Cispus Valley in the early 1900s. The trail to the lookout itself climbs through a landscape noted for its abundant huckleberries and wildflowers in late summer. The lookout is still occasionally staffed for fire detection during the summer season and, at times, has been made available for overnight rentals.",
-          "spur_mi": 6.0,
-          "default_minutes": 45,
-          "default_checked": true
-        },
-        {
-          "name": "DP - Pinto Rock",
-          "gpx_name": "DP - Pinto Rock",
-          "lat": 46.3266906,
-          "lon": -121.9236918,
-          "ele": null,
-          "mile": 19.21,
-          "dist_to_track_m": 136.5,
-          "true_off_track_m": 136.5,
-          "sym": "cliff",
-          "status": "primary",
-          "note": "Striking welded-tuff breccia crag at 5,123 ft.",
-          "desc": "Pinto Rock is a prominent geological feature and popular rock climbing crag located in the Cowlitz Valley Ranger District of the Gifford Pinchot National Forest, situated east of the Mount St. Helens National Volcanic Monument. The peak reaches an elevation of 5,123 feet (1,561 meters).\n\nGeologically, Pinto Rock is a striking formation of welded-tuff breccia, a type of volcanic rock characterized by a rough surface heavily studded with knobs and blocks. This feature is responsible for the peak's renown as a climbing area. The cliff walls, which are up to 400 feet high, offer a unique combination of sport and traditional climbing routes. The climbing is often described as high-exposure friction climbing, with the most popular multi-pitch route being the Bowling Alley (Regular Route), rated at 5.4.\n\nPinto Rock is accessible via a network of rough, high-clearance Forest Service roads, including NF-25 and NF-77, and sits near the Boundary Trail (#1). Its isolated position contributes to an alpine feel, despite its modest elevation. From the summit, visitors are rewarded with a superb 360-degree panoramic view that includes the major Cascade volcanoes: Mount Adams, Mount Hood, Mount St. Helens, and Mount Rainier, making it a highly desirable viewpoint in the southern Cascades.\n\nThe area is also associated with Pinto Rock Falls, a small, unofficially named waterfall located on an unnamed stream to the south of the rock formation. The falls, a 44-foot vertical curtain over a basalt ledge, are a secondary feature of the remote, rugged landscape near the Cispus River watershed.",
-          "spur_mi": 0.0,
-          "default_minutes": 20,
-          "default_checked": true
-        },
-        {
-          "name": "Elk Pass",
-          "gpx_name": "Elk Pass",
-          "lat": 46.288818,
-          "lon": -121.96659,
-          "ele": null,
-          "mile": 25.88,
-          "dist_to_track_m": 0.0,
-          "true_off_track_m": 0.0,
-          "sym": "attraction",
-          "status": "primary",
-          "note": "High point on the route between the Cispus and Lewis drainages.",
-          "desc": "",
-          "spur_mi": 0.0,
-          "default_minutes": 10,
-          "default_checked": true
-        },
-        {
-          "name": "DP - Mt St Helens",
-          "gpx_name": "DP - Mt St Helens",
-          "lat": 46.1919593,
-          "lon": -122.1912594,
-          "ele": null,
-          "mile": 39.18,
-          "dist_to_track_m": 0.0,
-          "true_off_track_m": 14446.5,
-          "sym": "volcano",
-          "status": "landmark",
-          "note": "Reference marker for the volcano - view it, do not drive to it.",
-          "desc": "Mount St. Helens (known as Lawetlat'la by the Cowlitz and Loowit or Louwala-Clough, the 'Smoking Mountain,' by the Klickitat) is a highly active stratovolcano in the Cascade Range of Washington. Before its catastrophic 1980 eruption, the mountain stood at 9,677 feet (2,950 meters) and was admired for its symmetrical, snow-capped cone, earning it the nickname \"Mount Fuji of America.\" The mountain is the central feature of the Mount St. Helens National Volcanic Monument, established in 1982 to preserve the area for scientific study, recreation, and education.\n\nThe volcano’s modern cone formed within the last 4,000 years, making it the youngest major volcano in the Cascades. Its most defining moment occurred on the morning of May 18, 1980. After weeks of precursory earthquakes and the rapid outward growth of a large bulge on its north flank, a magnitude 5.1 earthquake triggered the largest subaerial landslide in recorded history. This collapse suddenly relieved the pressure inside the volcano, resulting in a massive, high-velocity lateral blast of gas, steam, and rock debris that was directed north, devastating an area of nearly 600 square kilometers.\n\nThe eruption reduced the mountain's summit elevation by over 1,300 feet to its current height of 8,363 feet (2,549 meters), replacing the symmetrical cone with a massive, horseshoe-shaped crater that opens to the north. The blast and subsequent pyroclastic flows and lahars (volcanic mudflows) killed 57 people, destroyed vast tracts of forest (over 4 billion board feet of timber), and caused over $1 billion in damage. Lahars traveled down the Toutle and Cowlitz Rivers, sending sediment all the way to the Columbia River.\n\nFollowing the 1980 eruption, a new lava dome began to slowly grow within the crater, a process that continues intermittently. The area is now a unique ecological laboratory where scientists study how life recovers from immense natural devastation. While the volcano’s dramatic topography and geology have stabilized since the end of its last eruptive episode in 2008, the entire area remains under constant monitoring by the U.S. Geological Survey (USGS) due to its high potential for future activity.",
-          "spur_mi": 0.0,
-          "default_minutes": 0,
-          "default_checked": false
-        },
-        {
-          "name": "Miller Creek Falls",
-          "gpx_name": "Miller Creek Falls",
-          "lat": 46.0575512,
-          "lon": -121.975125,
-          "ele": null,
-          "mile": 50.68,
-          "dist_to_track_m": 452.8,
-          "true_off_track_m": 452.8,
-          "sym": "waterfall",
-          "status": "backup",
-          "note": "Near the Curly Creek pullout.",
-          "desc": "",
-          "spur_mi": 0.0,
-          "default_minutes": 15,
-          "default_checked": false
-        },
-        {
-          "name": "DP - Curly Creek Falls",
-          "gpx_name": "DP - Curly Creek Falls",
-          "lat": 46.0581617,
-          "lon": -121.9723141,
-          "ele": null,
-          "mile": 50.71,
-          "dist_to_track_m": 272.5,
-          "true_off_track_m": 272.5,
-          "sym": "waterfall",
-          "status": "primary",
-          "note": "One of a tiny handful of waterfalls on earth with two natural basalt arches spanning its face. Short walk from the road.",
-          "desc": "Curly Creek Falls is one of the most geologically unique waterfalls in the Pacific Northwest, located on Curly Creek just upstream from its confluence with the Lewis River, within the Gifford Pinchot National Forest in Washington. The falls are most famous for being one of the very few waterfalls in the world—perhaps only a handful—that has two natural basalt rock arches spanning its face, a feature resulting from the erosion of volcanic rock. In conditions of very low flow, a third arch may sometimes become visible.\n\nThe falls are a dramatic tiered plunge, estimated to drop approximately 78 to 86 feet in total. The unique geology suggests that the creek may have cut through an ancient lava tube or a highly fractured basalt structure. The flow is highly seasonal; the water level is greatest during spring melt (May and June), when the lower arch can be inundated and disappear beneath the water. In contrast, the creek is prone to running completely dry in late summer and early fall, as its flow is often diverted into sinkholes or lava tubes upstream.\n\nThe falls are an easily accessible destination via a short, gentle trail (part of the Lewis River Trail system) from the Curly Creek Falls Trailhead. The trail leads to a viewpoint across the Lewis River where visitors can look across the canyon at the unique rock arches. Located in the Lewis River Recreation Area, the falls are situated in a deep canyon surrounded by a magnificent old-growth forest of Douglas fir, western red cedar, and big leaf maple.",
-          "spur_mi": 0.0,
-          "default_minutes": 25,
-          "default_checked": true
-        },
-        {
-          "name": "Rush Creek Falls",
-          "gpx_name": "Rush Creek Falls",
-          "lat": 46.0670247,
-          "lon": -121.9278136,
-          "ele": null,
-          "mile": 52.93,
-          "dist_to_track_m": 291.4,
-          "true_off_track_m": 291.4,
-          "sym": "waterfall",
-          "status": "backup",
-          "note": "Same pullout area as Curly Creek Falls.",
-          "desc": "",
-          "spur_mi": 0.0,
-          "default_minutes": 20,
-          "default_checked": false
-        },
-        {
-          "name": "DP - Falls Creek Lava Caves",
-          "gpx_name": "DP - Falls Creek Lava Caves",
-          "lat": 45.9447262,
-          "lon": -121.8680716,
-          "ele": null,
-          "mile": 71.87,
-          "dist_to_track_m": 908.5,
-          "true_off_track_m": 908.5,
-          "sym": "cave",
-          "status": "hike_candidate",
-          "note": "LAVA TUBE. No permit, no paid entry — this is not Ape Cave. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. See the lava caves page for decon, parking and how to find the pits.",
-          "desc": "Falls Creek Lava Caves (sometimes referred to collectively as the Falls Creek Cave System) is an extensive and highly significant geological feature located in the Wind River valley of the Gifford Pinchot National Forest, near Carson, Washington. This system is a large lava tube, formed during a basaltic flow from the nearby Big Lava Bed eruption approximately 8,200 years ago.\n\nThe main cave, Falls Creek Cave, is estimated to be over 1.2 miles (2,000 meters) long, making it one of the longer unmaintained lava tubes in Washington State. It is characterized by three distinct breakdown pits (collapsed sections of the tube) visible from the surface. The entrance is typically accessed through the second of these pits, requiring a challenging descent over piles of jagged boulders. The interior is generally unlit, pitch black, and features numerous side passages, slippery clay floors, and challenging scrambles over massive rockfalls, demanding caution and multiple reliable light sources.\n\nGeologically, the cave preserves unique features of its volcanic origin, including solidified lava drippings (known as lavacicles) and evidence of flow dynamics. The cave is part of a complex system where the surface creek, Falls Creek, seasonally sinks into the lava tube system through sinkholes and fissures before emerging further downstream. Due to its unmaintained status, the cave offers a rugged and challenging spelunking experience, contrasting with the more accessible and developed Ape Cave near Mount St. Helens.\n\nThe cave is located near the trailhead for the scenic Falls Creek Falls, and is often included in a longer recreational loop. Access is via a spur road off Wind River Road (Forest Road 30), and due to the high-elevation location and winter road closures, exploration is typically restricted to the snow-free season. The remote location and challenging nature of the cave require all visitors to be self-sufficient and practice strict Leave No Trace principles.\n\n\n\n\n\n\n\n\n\n\n\n\nTools",
-          "spur_mi": 0.0,
-          "default_minutes": 90,
-          "default_checked": true
-        },
-        {
-          "name": "Red Mountain Fire Lookout",
-          "gpx_name": "Red Mountain Fire Lookout",
-          "lat": 45.9356072,
-          "lon": -121.821375,
-          "ele": null,
-          "mile": 72.06,
-          "dist_to_track_m": 2768.0,
-          "true_off_track_m": 2768.0,
-          "sym": "fire-lookout",
-          "status": "hike_candidate",
-          "note": "Lookout at 4,965 ft on the Indian Heaven boundary; panorama of four volcanoes. ~1.7 mi off route.",
-          "desc": "The Red Mountain Fire Lookout is a historic and popular destination in the southern portion of the Gifford Pinchot National Forest, situated near the boundary of the Indian Heaven Wilderness in Skamania County, Washington. At an elevation of 4,965 feet, the lookout offers one of the most comprehensive panoramic views in the South Cascades, encompassing Mount Rainier, Mount St. Helens, Mount Adams, and Mount Hood.\n\nThe site on Red Mountain holds a distinguished place in the history of forest fire prevention for the region. The first lookout structure was established on the summit in 1910, making it the first lookout point identified in what was then the Columbia National Forest (now the Gifford Pinchot). The current structure is the fourth on the site, built in 1959, featuring a 10-foot timber tower with a standard Forest Service R-6 flattop cab. The site was historically critical; during World War II (1942-1943), it was staffed 24 hours a day as an Aircraft Warning Station to monitor for enemy aircraft. The original Civilian Conservation Corps (CCC) garage, converted to living quarters for the wartime spotters, still stands on the site.\n\nAlthough the lookout is no longer staffed by the Forest Service for fire detection (which is now primarily done via satellites), the structure has been preserved and is maintained by volunteer efforts, notably after a severe windstorm in 2006 caused significant damage. It is a key recreational destination, with hikers typically accessing the site via the Indian Racetrack Trail (#171), or by hiking a gated access road (Forest Road 6048). The trail passes through a unique landscape, including the Indian Racetrack meadow, an area rich in huckleberries, before climbing to the summit.",
-          "spur_mi": 3.4,
-          "default_minutes": 45,
-          "default_checked": true
-        },
-        {
-          "name": "DP - Panther Creek Falls",
-          "gpx_name": "DP - Panther Creek Falls",
-          "lat": 45.8671944,
-          "lon": -121.8288441,
-          "ele": null,
-          "mile": 78.13,
-          "dist_to_track_m": 84.8,
-          "true_off_track_m": 84.8,
-          "sym": "waterfall",
-          "status": "primary",
-          "note": "About 130 ft of tiered falls with a built viewing platform a short walk from the road. Final-night camp is just up the road.",
-          "desc": "Panther Creek Falls is one of the most impressive and complex waterfalls in the Wind River Valley, located within the Gifford Pinchot National Forest, north of Carson, Washington. It is a highly popular and easily accessible destination in the Mt. Adams Ranger District. The total drop of the falls is estimated to be approximately 130 to 136 feet over a series of steps and plunges, distinguishing it from many single-drop waterfalls in the region.\n\nThe falls are characterized by a unique, multi-channel flow where Panther Creek and a large spring converge over a steep, mossy cliff face. Most of the creek's flow is channeled into a deep groove that steers the water over a two-tier plunge, while a separate, significant portion of water emerges from the canyon wall as a broad veil of springs, cascading down a sheer, moss-laden rock face before merging with the creek’s main flow in the plunge pool below. This complexity of water sources and varied drops makes for a mesmerizing, high-volume spectacle, particularly during high water.\n\nThe area is maintained by the U.S. Forest Service (Trail $#$137) and offers a very short, downhill hike (less than 0.7 miles round-trip) to two distinct viewpoints. The upper viewpoint provides a dramatic view of the convergence of the water over the upper tier, while the lower viewpoint (which is a more technical descent) offers a magnificent, close-up perspective of the main plunge and the mossy rock walls.",
-          "spur_mi": 0.0,
-          "default_minutes": 30,
-          "default_checked": true
-        }
-      ],
-      "track_points": [
-        [
-          46.436226,
-          -121.837575
         ],
         [
           46.435698,
@@ -21139,6 +20993,283 @@
           46.428959,
           -121.896842
         ],
+        [
+          46.428694,
+          -121.896343
+        ]
+      ],
+      "camps": {
+        "primary": [
+          {
+            "name": "Greenhorn Creek",
+            "lat": 46.433576,
+            "lon": -121.940737,
+            "status": "primary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Three shaded creek sites. No toilet listed. Spots can fit a ~24 ft rig.",
+            "notes": "On the FS 25 side of the Cispus at mile 230.8, a few miles past North Fork / Tower Rock. Best genuine dispersed night for Friday. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "access": "South of Randle on FS 25 / Greenhorn Creek.",
+            "reserve_url": "https://freecampsites.net/greenhorn-creek/"
+          }
+        ],
+        "secondary": [
+          {
+            "name": "Skate Creek Sno-Park",
+            "lat": 46.63837,
+            "lon": -121.71165,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Pull-offs along the road; most have a fire pit. River sites exist.",
+            "notes": "On-route at mile 160.7 near Packwood. Early-stop / overflow, not the Friday night unless the day is running long.",
+            "access": "Skate Creek Rd (FS 52) near Packwood.",
+            "reserve_url": "https://freecampsites.net/skate-creek-sno-park/"
+          },
+          {
+            "name": "Packwood WA NF",
+            "lat": 46.63448,
+            "lon": -121.679917,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "End-of-road site in an old quarry. No facilities.",
+            "notes": "On-route at mile 158.6. Same Packwood-area overflow idea as Skate Creek.",
+            "access": "National forest road at the edge of Packwood.",
+            "reserve_url": "https://freecampsites.net/packwood-wa-nf/"
+          },
+          {
+            "name": "Iron Creek Dispersed",
+            "lat": 46.427984,
+            "lon": -121.98043,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Pullouts about 1/4 mile past the official Iron Creek campground.",
+            "notes": "The developed Iron Creek campground is CLOSED the entire trip week. These pullouts may still be open — or may be wrapped into the closure. Confirm with Cowlitz Valley Ranger District before counting on it.",
+            "access": "FS 25 toward Mt St Helens, past the closed Iron Creek campground.",
+            "reserve_url": "https://freecampsites.net/iron-creek-dispersed-campsite/"
+          }
+        ],
+        "tertiary": [
+          {
+            "name": "North Fork Elk Group Camp (Recreation.gov 232898)",
+            "lat": 46.4525,
+            "lon": -121.78889,
+            "status": "tertiary",
+            "kind": "developed_group_reservable",
+            "cost": "Single group-site fee for the whole party",
+            "facilities": "Vault toilets, potable water, group shelter area, tables, fire rings.",
+            "notes": "Paid backup that actually fits six vehicles in one booking. As of 2026-08-31 it was open Fri Sep 11 and Sat Sep 12. Worth considering if the group wants to stay together with water and a shelter.",
+            "access": "FS 23 south from Randle along the Cispus, near North Fork Campground.",
+            "reserve_url": "https://www.recreation.gov/camping/campgrounds/232898"
+          },
+          {
+            "name": "Tower Rock Campground (Recreation.gov 232855)",
+            "lat": 46.445,
+            "lon": -121.86806,
+            "status": "tertiary",
+            "kind": "developed_reservable",
+            "cost": "Per-site fee; 6 of 20 sites are first-come",
+            "facilities": "Vault toilets, potable water, tables, fire rings.",
+            "notes": "Paid backup at mile 228.6. Best weekend availability found on the paid list: 10 of 20 Friday, 8 Saturday as of 2026-08-31.",
+            "access": "FS 23 / FS 28 along the Cispus, south of Randle.",
+            "reserve_url": "https://www.recreation.gov/camping/campgrounds/232855"
+          }
+        ]
+      },
+      "schedule": {
+        "break_camp_time": "07:30",
+        "moving_mph": 28,
+        "start_lat": 46.463112,
+        "start_lon": -121.557303,
+        "mi_lo": 0.0
+      }
+    },
+    {
+      "id": "day4_cascades",
+      "label": "Sep 12 (Sat) - Day 4: North Fork -> Panther Creek",
+      "date_iso": "2026-09-12",
+      "title": "Day 4: Burley Mountain -> Elk Pass -> lava caves -> Panther Creek",
+      "type": "overland",
+      "descr": "The volcano-and-lava day, 77 miles. Burley Mountain Lookout takes in Rainier, Adams, St Helens and Hood from one spot. South over Elk Pass with Mount St Helens filling the window, then down the Lewis River past Curly Creek Falls and its twin natural basalt arches. Late in the day, the Falls Creek Lava Caves: a genuine lava tube from the Big Lava Bed eruption. Everyone going underground needs their own headlamp plus a backup. Finish at Panther Creek Falls and camp the same free pullouts the trip started at.",
+      "mi_lo": 232.0,
+      "mi_hi": 308.5,
+      "miles": 77,
+      "driving_hours_est": 6.1,
+      "pois": [
+        {
+          "name": "DP - Burley Mountain Fire Lookout",
+          "gpx_name": "DP - Burley Mountain Fire Lookout",
+          "lat": 46.4073397,
+          "lon": -121.8658948,
+          "ele": null,
+          "mile": 5.43,
+          "dist_to_track_m": 318.3,
+          "true_off_track_m": 318.3,
+          "sym": "fire-lookout",
+          "status": "primary",
+          "note": "Historic lookout at 5,154 ft with a 360-degree view taking in Rainier, Adams, St Helens and Hood. Drivable to near the top; narrow road.",
+          "desc": "Burley Mountain Fire Lookout is a historic fire lookout station located on Burley Mountain in the Cowlitz Valley Ranger District of the Gifford Pinchot National Forest, Washington. Situated at an elevation of 5,154 feet (1,571 meters), the lookout stands at a central position in the southern Cascades, offering spectacular 360-degree views that encompass four major volcanoes: Mount Rainier to the north, Mount Adams to the east, Mount St. Helens to the southwest, and Mount Hood to the south.\n\nThe structure is a classic, 14-by-14-foot L-4 ground house built in 1934 by the U.S. Forest Service as part of the massive fire detection network established following the devastating \"Big Blowup\" fires of 1910. Burley Mountain was historically a crucial sentinel, and although the Forest Service phased out most manned lookouts by the 1960s, Burley was one of only three lookouts remaining on the Gifford Pinchot by 1973. The site was added to the National Historic Lookout Register in 2000.\n\nThe mountain's surrounding forest is a testament to the region's fire history, being largely composed of even-aged second-growth that sprung up after the massive fires in the Cispus Valley in the early 1900s. The trail to the lookout itself climbs through a landscape noted for its abundant huckleberries and wildflowers in late summer. The lookout is still occasionally staffed for fire detection during the summer season and, at times, has been made available for overnight rentals.",
+          "spur_mi": 6.0,
+          "default_minutes": 45,
+          "default_checked": true
+        },
+        {
+          "name": "DP - Pinto Rock",
+          "gpx_name": "DP - Pinto Rock",
+          "lat": 46.3266906,
+          "lon": -121.9236918,
+          "ele": null,
+          "mile": 13.71,
+          "dist_to_track_m": 136.5,
+          "true_off_track_m": 136.5,
+          "sym": "cliff",
+          "status": "primary",
+          "note": "Striking welded-tuff breccia crag at 5,123 ft.",
+          "desc": "Pinto Rock is a prominent geological feature and popular rock climbing crag located in the Cowlitz Valley Ranger District of the Gifford Pinchot National Forest, situated east of the Mount St. Helens National Volcanic Monument. The peak reaches an elevation of 5,123 feet (1,561 meters).\n\nGeologically, Pinto Rock is a striking formation of welded-tuff breccia, a type of volcanic rock characterized by a rough surface heavily studded with knobs and blocks. This feature is responsible for the peak's renown as a climbing area. The cliff walls, which are up to 400 feet high, offer a unique combination of sport and traditional climbing routes. The climbing is often described as high-exposure friction climbing, with the most popular multi-pitch route being the Bowling Alley (Regular Route), rated at 5.4.\n\nPinto Rock is accessible via a network of rough, high-clearance Forest Service roads, including NF-25 and NF-77, and sits near the Boundary Trail (#1). Its isolated position contributes to an alpine feel, despite its modest elevation. From the summit, visitors are rewarded with a superb 360-degree panoramic view that includes the major Cascade volcanoes: Mount Adams, Mount Hood, Mount St. Helens, and Mount Rainier, making it a highly desirable viewpoint in the southern Cascades.\n\nThe area is also associated with Pinto Rock Falls, a small, unofficially named waterfall located on an unnamed stream to the south of the rock formation. The falls, a 44-foot vertical curtain over a basalt ledge, are a secondary feature of the remote, rugged landscape near the Cispus River watershed.",
+          "spur_mi": 0.0,
+          "default_minutes": 20,
+          "default_checked": true
+        },
+        {
+          "name": "Elk Pass",
+          "gpx_name": "Elk Pass",
+          "lat": 46.288818,
+          "lon": -121.96659,
+          "ele": null,
+          "mile": 20.38,
+          "dist_to_track_m": 0.0,
+          "true_off_track_m": 0.0,
+          "sym": "attraction",
+          "status": "primary",
+          "note": "High point on the route between the Cispus and Lewis drainages.",
+          "desc": "",
+          "spur_mi": 0.0,
+          "default_minutes": 10,
+          "default_checked": true
+        },
+        {
+          "name": "DP - Mt St Helens",
+          "gpx_name": "DP - Mt St Helens",
+          "lat": 46.1919593,
+          "lon": -122.1912594,
+          "ele": null,
+          "mile": 33.68,
+          "dist_to_track_m": 0.0,
+          "true_off_track_m": 14446.5,
+          "sym": "volcano",
+          "status": "landmark",
+          "note": "Reference marker for the volcano - view it, do not drive to it.",
+          "desc": "Mount St. Helens (known as Lawetlat'la by the Cowlitz and Loowit or Louwala-Clough, the 'Smoking Mountain,' by the Klickitat) is a highly active stratovolcano in the Cascade Range of Washington. Before its catastrophic 1980 eruption, the mountain stood at 9,677 feet (2,950 meters) and was admired for its symmetrical, snow-capped cone, earning it the nickname \"Mount Fuji of America.\" The mountain is the central feature of the Mount St. Helens National Volcanic Monument, established in 1982 to preserve the area for scientific study, recreation, and education.\n\nThe volcano’s modern cone formed within the last 4,000 years, making it the youngest major volcano in the Cascades. Its most defining moment occurred on the morning of May 18, 1980. After weeks of precursory earthquakes and the rapid outward growth of a large bulge on its north flank, a magnitude 5.1 earthquake triggered the largest subaerial landslide in recorded history. This collapse suddenly relieved the pressure inside the volcano, resulting in a massive, high-velocity lateral blast of gas, steam, and rock debris that was directed north, devastating an area of nearly 600 square kilometers.\n\nThe eruption reduced the mountain's summit elevation by over 1,300 feet to its current height of 8,363 feet (2,549 meters), replacing the symmetrical cone with a massive, horseshoe-shaped crater that opens to the north. The blast and subsequent pyroclastic flows and lahars (volcanic mudflows) killed 57 people, destroyed vast tracts of forest (over 4 billion board feet of timber), and caused over $1 billion in damage. Lahars traveled down the Toutle and Cowlitz Rivers, sending sediment all the way to the Columbia River.\n\nFollowing the 1980 eruption, a new lava dome began to slowly grow within the crater, a process that continues intermittently. The area is now a unique ecological laboratory where scientists study how life recovers from immense natural devastation. While the volcano’s dramatic topography and geology have stabilized since the end of its last eruptive episode in 2008, the entire area remains under constant monitoring by the U.S. Geological Survey (USGS) due to its high potential for future activity.",
+          "spur_mi": 0.0,
+          "default_minutes": 0,
+          "default_checked": false
+        },
+        {
+          "name": "Miller Creek Falls",
+          "gpx_name": "Miller Creek Falls",
+          "lat": 46.0575512,
+          "lon": -121.975125,
+          "ele": null,
+          "mile": 45.18,
+          "dist_to_track_m": 452.8,
+          "true_off_track_m": 452.8,
+          "sym": "waterfall",
+          "status": "backup",
+          "note": "Near the Curly Creek pullout.",
+          "desc": "",
+          "spur_mi": 0.0,
+          "default_minutes": 15,
+          "default_checked": false
+        },
+        {
+          "name": "DP - Curly Creek Falls",
+          "gpx_name": "DP - Curly Creek Falls",
+          "lat": 46.0581617,
+          "lon": -121.9723141,
+          "ele": null,
+          "mile": 45.21,
+          "dist_to_track_m": 272.5,
+          "true_off_track_m": 272.5,
+          "sym": "waterfall",
+          "status": "primary",
+          "note": "One of a tiny handful of waterfalls on earth with two natural basalt arches spanning its face. Short walk from the road.",
+          "desc": "Curly Creek Falls is one of the most geologically unique waterfalls in the Pacific Northwest, located on Curly Creek just upstream from its confluence with the Lewis River, within the Gifford Pinchot National Forest in Washington. The falls are most famous for being one of the very few waterfalls in the world—perhaps only a handful—that has two natural basalt rock arches spanning its face, a feature resulting from the erosion of volcanic rock. In conditions of very low flow, a third arch may sometimes become visible.\n\nThe falls are a dramatic tiered plunge, estimated to drop approximately 78 to 86 feet in total. The unique geology suggests that the creek may have cut through an ancient lava tube or a highly fractured basalt structure. The flow is highly seasonal; the water level is greatest during spring melt (May and June), when the lower arch can be inundated and disappear beneath the water. In contrast, the creek is prone to running completely dry in late summer and early fall, as its flow is often diverted into sinkholes or lava tubes upstream.\n\nThe falls are an easily accessible destination via a short, gentle trail (part of the Lewis River Trail system) from the Curly Creek Falls Trailhead. The trail leads to a viewpoint across the Lewis River where visitors can look across the canyon at the unique rock arches. Located in the Lewis River Recreation Area, the falls are situated in a deep canyon surrounded by a magnificent old-growth forest of Douglas fir, western red cedar, and big leaf maple.",
+          "spur_mi": 0.0,
+          "default_minutes": 25,
+          "default_checked": true
+        },
+        {
+          "name": "Rush Creek Falls",
+          "gpx_name": "Rush Creek Falls",
+          "lat": 46.0670247,
+          "lon": -121.9278136,
+          "ele": null,
+          "mile": 47.43,
+          "dist_to_track_m": 291.4,
+          "true_off_track_m": 291.4,
+          "sym": "waterfall",
+          "status": "backup",
+          "note": "Same pullout area as Curly Creek Falls.",
+          "desc": "",
+          "spur_mi": 0.0,
+          "default_minutes": 20,
+          "default_checked": false
+        },
+        {
+          "name": "DP - Falls Creek Lava Caves",
+          "gpx_name": "DP - Falls Creek Lava Caves",
+          "lat": 45.9447262,
+          "lon": -121.8680716,
+          "ele": null,
+          "mile": 66.37,
+          "dist_to_track_m": 908.5,
+          "true_off_track_m": 908.5,
+          "sym": "cave",
+          "status": "hike_candidate",
+          "note": "LAVA TUBE. No permit, no paid entry — this is not Ape Cave. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. See the lava caves page for decon, parking and how to find the pits.",
+          "desc": "Falls Creek Lava Caves (sometimes referred to collectively as the Falls Creek Cave System) is an extensive and highly significant geological feature located in the Wind River valley of the Gifford Pinchot National Forest, near Carson, Washington. This system is a large lava tube, formed during a basaltic flow from the nearby Big Lava Bed eruption approximately 8,200 years ago.\n\nThe main cave, Falls Creek Cave, is estimated to be over 1.2 miles (2,000 meters) long, making it one of the longer unmaintained lava tubes in Washington State. It is characterized by three distinct breakdown pits (collapsed sections of the tube) visible from the surface. The entrance is typically accessed through the second of these pits, requiring a challenging descent over piles of jagged boulders. The interior is generally unlit, pitch black, and features numerous side passages, slippery clay floors, and challenging scrambles over massive rockfalls, demanding caution and multiple reliable light sources.\n\nGeologically, the cave preserves unique features of its volcanic origin, including solidified lava drippings (known as lavacicles) and evidence of flow dynamics. The cave is part of a complex system where the surface creek, Falls Creek, seasonally sinks into the lava tube system through sinkholes and fissures before emerging further downstream. Due to its unmaintained status, the cave offers a rugged and challenging spelunking experience, contrasting with the more accessible and developed Ape Cave near Mount St. Helens.\n\nThe cave is located near the trailhead for the scenic Falls Creek Falls, and is often included in a longer recreational loop. Access is via a spur road off Wind River Road (Forest Road 30), and due to the high-elevation location and winter road closures, exploration is typically restricted to the snow-free season. The remote location and challenging nature of the cave require all visitors to be self-sufficient and practice strict Leave No Trace principles.\n\n\n\n\n\n\n\n\n\n\n\n\nTools",
+          "spur_mi": 0.0,
+          "default_minutes": 90,
+          "default_checked": true
+        },
+        {
+          "name": "Red Mountain Fire Lookout",
+          "gpx_name": "Red Mountain Fire Lookout",
+          "lat": 45.9356072,
+          "lon": -121.821375,
+          "ele": null,
+          "mile": 66.56,
+          "dist_to_track_m": 2768.0,
+          "true_off_track_m": 2768.0,
+          "sym": "fire-lookout",
+          "status": "hike_candidate",
+          "note": "Lookout at 4,965 ft on the Indian Heaven boundary; panorama of four volcanoes. ~1.7 mi off route.",
+          "desc": "The Red Mountain Fire Lookout is a historic and popular destination in the southern portion of the Gifford Pinchot National Forest, situated near the boundary of the Indian Heaven Wilderness in Skamania County, Washington. At an elevation of 4,965 feet, the lookout offers one of the most comprehensive panoramic views in the South Cascades, encompassing Mount Rainier, Mount St. Helens, Mount Adams, and Mount Hood.\n\nThe site on Red Mountain holds a distinguished place in the history of forest fire prevention for the region. The first lookout structure was established on the summit in 1910, making it the first lookout point identified in what was then the Columbia National Forest (now the Gifford Pinchot). The current structure is the fourth on the site, built in 1959, featuring a 10-foot timber tower with a standard Forest Service R-6 flattop cab. The site was historically critical; during World War II (1942-1943), it was staffed 24 hours a day as an Aircraft Warning Station to monitor for enemy aircraft. The original Civilian Conservation Corps (CCC) garage, converted to living quarters for the wartime spotters, still stands on the site.\n\nAlthough the lookout is no longer staffed by the Forest Service for fire detection (which is now primarily done via satellites), the structure has been preserved and is maintained by volunteer efforts, notably after a severe windstorm in 2006 caused significant damage. It is a key recreational destination, with hikers typically accessing the site via the Indian Racetrack Trail (#171), or by hiking a gated access road (Forest Road 6048). The trail passes through a unique landscape, including the Indian Racetrack meadow, an area rich in huckleberries, before climbing to the summit.",
+          "spur_mi": 3.4,
+          "default_minutes": 45,
+          "default_checked": true
+        },
+        {
+          "name": "DP - Panther Creek Falls",
+          "gpx_name": "DP - Panther Creek Falls",
+          "lat": 45.8671944,
+          "lon": -121.8288441,
+          "ele": null,
+          "mile": 72.63,
+          "dist_to_track_m": 84.8,
+          "true_off_track_m": 84.8,
+          "sym": "waterfall",
+          "status": "primary",
+          "note": "About 130 ft of tiered falls with a built viewing platform a short walk from the road. First and last night are the free pullouts just up this road.",
+          "desc": "Panther Creek Falls is one of the most impressive and complex waterfalls in the Wind River Valley, located within the Gifford Pinchot National Forest, north of Carson, Washington. It is a highly popular and easily accessible destination in the Mt. Adams Ranger District. The total drop of the falls is estimated to be approximately 130 to 136 feet over a series of steps and plunges, distinguishing it from many single-drop waterfalls in the region.\n\nThe falls are characterized by a unique, multi-channel flow where Panther Creek and a large spring converge over a steep, mossy cliff face. Most of the creek's flow is channeled into a deep groove that steers the water over a two-tier plunge, while a separate, significant portion of water emerges from the canyon wall as a broad veil of springs, cascading down a sheer, moss-laden rock face before merging with the creek’s main flow in the plunge pool below. This complexity of water sources and varied drops makes for a mesmerizing, high-volume spectacle, particularly during high water.\n\nThe area is maintained by the U.S. Forest Service (Trail $#$137) and offers a very short, downhill hike (less than 0.7 miles round-trip) to two distinct viewpoints. The upper viewpoint provides a dramatic view of the convergence of the water over the upper tier, while the lower viewpoint (which is a more technical descent) offers a magnificent, close-up perspective of the main plunge and the mossy rock walls.",
+          "spur_mi": 0.0,
+          "default_minutes": 30,
+          "default_checked": true
+        }
+      ],
+      "track_points": [
         [
           46.428694,
           -121.896343
@@ -27693,46 +27824,160 @@
         ]
       ],
       "camps": {
-        "primary": {
-          "name": "Panther Creek Campground (Recreation.gov 233103)",
-          "lat": 45.81972,
-          "lon": -121.87972,
-          "status": "primary",
-          "kind": "developed_reservable",
-          "cost": "Per-site fee; 9 of 33 sites are first-come",
-          "facilities": "Vault toilets, potable water, tables, fire rings.",
-          "notes": "NOT BOOKED. Only 5 of 33 sites showed available for Sat Sep 12 as of 2026-08-31, so book this at the same time as the first night. Route mile 308.4, right after Panther Creek Falls, and it leaves only 16 miles of loop to close on Sunday morning.",
-          "access": "Panther Creek Rd (FS 65) off Wind River Rd.",
-          "reserve_url": "https://www.recreation.gov/camping/campgrounds/233103"
-        },
-        "secondary": {
-          "name": "Crest Camp",
-          "lat": 45.90889,
-          "lon": -121.80103,
-          "status": "secondary",
-          "kind": "primitive_fcfs",
-          "cost": "Free",
-          "facilities": "None. No water, no toilet.",
-          "notes": "Small primitive site at route mile 302.7 near the Pacific Crest Trail crossing. First-come. Fits a couple of rigs at most - a bail-out, not a plan.",
-          "access": "FS 60 near the PCT trailhead."
-        },
-        "tertiary": {
-          "name": "Home Valley Campground (Skamania County park)",
-          "lat": 45.7087,
-          "lon": -121.77348,
-          "status": "tertiary",
-          "kind": "developed_county",
-          "cost": "County park fee",
-          "facilities": "Showers, potable water, toilets.",
-          "notes": "Worth considering deliberately rather than as a fallback: finishing the full loop to Triangle Pass on Saturday and dropping to Home Valley makes Saturday about 117 miles, but it means hot showers before the drive home and nothing left to do on Sunday but leave.",
-          "access": "Directly off WA-14 at Home Valley."
-        }
+        "primary": [
+          {
+            "name": "Panther Creek Dispersed #2",
+            "lat": 45.834828,
+            "lon": -121.870893,
+            "status": "primary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Fire pit. No toilet, no water. Small-rig friendly.",
+            "notes": "Same Saturday night as Tuesday: closest named pullout after Panther Creek Falls (mile 308.4). Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "access": "Panther Creek Rd (FS 65 / 6513) off Wind River Rd.",
+            "reserve_url": "https://freecampsites.net/panther-creek-dispersed-2/"
+          },
+          {
+            "name": "Panther Creek Dispersed #1",
+            "lat": 45.84326,
+            "lon": -121.85922,
+            "status": "primary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "No amenities. One of several pullouts along Panther Creek.",
+            "notes": "Same cluster as #2. Spread the group here if #2 is full.",
+            "access": "FS 65 / 6513, north of the developed campground.",
+            "reserve_url": "https://freecampsites.net/panther-creek-dispersed-1/"
+          },
+          {
+            "name": "Upper Panther Creek Dispersed",
+            "lat": 45.84941,
+            "lon": -121.85544,
+            "status": "primary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Large grassy pullout with a fire ring. Unmaintained.",
+            "notes": "Roomiest of the three Panther Creek pullouts. Same Saturday cluster.",
+            "access": "NF-6513 off Panther Creek Rd.",
+            "reserve_url": "https://freecampsites.net/upper-panther-creek-dispersed/"
+          },
+          {
+            "name": "Crest Camp",
+            "lat": 45.90889,
+            "lon": -121.80103,
+            "status": "primary",
+            "kind": "primitive_fcfs",
+            "cost": "Free",
+            "facilities": "None. No water, no toilet.",
+            "notes": "Primitive site at mile 302.7 near the PCT crossing. Fits a couple of rigs. Earlier Saturday stop if Panther Creek pullouts are full.",
+            "access": "FS 60 near the PCT trailhead."
+          }
+        ],
+        "secondary": [
+          {
+            "name": "FR-7708",
+            "lat": 46.336418,
+            "lon": -121.967987,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Creek-side site with a cold pool. No facilities.",
+            "notes": "On-route at mile 244.5, Saturday morning after Greenhorn / Iron Creek.",
+            "access": "Gifford Pinchot, FS 7708 off the Cispus / Lewis divide.",
+            "reserve_url": "https://freecampsites.net/fr-7708/"
+          },
+          {
+            "name": "Forest Route 9039",
+            "lat": 46.110056,
+            "lon": -121.99432,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Several tucked sites. A couple will take a trailer. No facilities.",
+            "notes": "On-route at mile 272, Lewis River / Cougar side. Hunting-area notes in reviews. Early Saturday stop that leaves loop miles for Sunday.",
+            "access": "FS 9039 off the Lewis River corridor.",
+            "reserve_url": "https://freecampsites.net/forest-route-9039/"
+          },
+          {
+            "name": "Dispersed campsite off NF-90",
+            "lat": 46.125331,
+            "lon": -121.909858,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Dispersed site off NF-90. Confirm the area is open before leaving cell service.",
+            "notes": "On-route at mile 281.6 on the Lewis River. Same early-stop idea as FS 9039.",
+            "access": "NF-90, Gifford Pinchot.",
+            "reserve_url": "https://freecampsites.net/dispersed-campsite-off-nf-90/"
+          },
+          {
+            "name": "Lone Butte Sno-Park",
+            "lat": 46.044029,
+            "lon": -121.859371,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Winter lot; free dispersed in summer. Unrated.",
+            "notes": "On-route at mile 288.1, Wind River high country approaching Panther Creek.",
+            "access": "FS 30 / 60 corridor west of Indian Heaven.",
+            "reserve_url": "https://freecampsites.net/lone-butte-sno-park/"
+          },
+          {
+            "name": "Rush Creek Sno-Park",
+            "lat": 46.035354,
+            "lon": -121.880896,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Winter lot; free dispersed in summer. Unrated.",
+            "notes": "On-route at mile 289.4, same corridor as Lone Butte and Curley Creek.",
+            "access": "FS 30 / 60 corridor.",
+            "reserve_url": "https://freecampsites.net/rush-creek-sno-park/"
+          },
+          {
+            "name": "Curley Creek Sno-Park",
+            "lat": 46.026705,
+            "lon": -121.891036,
+            "status": "secondary",
+            "kind": "dispersed_fcfs",
+            "cost": "Free",
+            "facilities": "Winter lot; free dispersed in summer. Unrated.",
+            "notes": "On-route at mile 289.6. Third of the three sno-park pullouts in this cluster.",
+            "access": "FS 30 / 60 corridor.",
+            "reserve_url": "https://freecampsites.net/curley-creek-sno-park/"
+          }
+        ],
+        "tertiary": [
+          {
+            "name": "Panther Creek Campground (Recreation.gov 233103)",
+            "lat": 45.81972,
+            "lon": -121.87972,
+            "status": "tertiary",
+            "kind": "developed_reservable",
+            "cost": "Per-site fee; 9 of 33 sites are first-come",
+            "facilities": "Vault toilets, potable water, tables, fire rings.",
+            "notes": "Paid backup. Only 5 of 33 sites showed available for Sat Sep 12 as of 2026-08-31. Use it if the pullouts are full or you want water.",
+            "access": "Panther Creek Rd (FS 65) off Wind River Rd.",
+            "reserve_url": "https://www.recreation.gov/camping/campgrounds/233103"
+          },
+          {
+            "name": "Home Valley Campground (Skamania County park)",
+            "lat": 45.7087,
+            "lon": -121.77348,
+            "status": "tertiary",
+            "kind": "developed_county",
+            "cost": "County park fee",
+            "facilities": "Showers, potable water, toilets.",
+            "notes": "Paid. Finishing the full loop to Triangle Pass and dropping here makes Saturday longer but buys hot showers before the drive home.",
+            "access": "Directly off WA-14 at Home Valley."
+          }
+        ]
       },
       "schedule": {
         "break_camp_time": "07:30",
         "moving_mph": 22,
-        "start_lat": 46.436226,
-        "start_lon": -121.837575,
+        "start_lat": 46.428694,
+        "start_lon": -121.896343,
         "mi_lo": 0.0
       }
     },
@@ -32383,27 +32628,27 @@
     },
     {
       "cat": "Camping/Permits",
-      "label": "Takhlakh Lake Campground (Day 1)",
+      "label": "Takhlakh Lake Campground (Day 1 paid backup)",
       "url": "https://www.recreation.gov/camping/campgrounds/232861"
     },
     {
       "cat": "Camping/Permits",
-      "label": "Walupt Lake Campground (Day 2)",
+      "label": "Walupt Lake Campground (Day 2 paid backup)",
       "url": "https://www.recreation.gov/camping/campgrounds/232860"
     },
     {
       "cat": "Camping/Permits",
-      "label": "North Fork Elk Group Camp (Day 3)",
+      "label": "North Fork Elk Group Camp (Day 3 paid backup)",
       "url": "https://www.recreation.gov/camping/campgrounds/232898"
     },
     {
       "cat": "Camping/Permits",
-      "label": "Tower Rock Campground (Day 3 backup)",
+      "label": "Tower Rock Campground (Day 3 paid backup)",
       "url": "https://www.recreation.gov/camping/campgrounds/232855"
     },
     {
       "cat": "Camping/Permits",
-      "label": "Panther Creek Campground (Days 0 and 4)",
+      "label": "Panther Creek Campground (Tue/Sat paid backup)",
       "url": "https://www.recreation.gov/camping/campgrounds/233103"
     },
     {
@@ -32478,5 +32723,5 @@
     }
   ],
   "generated_at": "2026-08-31",
-  "intro_html": "<p>A 325-mile loop through Gifford Pinchot National Forest, starting and ending in the Columbia River Gorge at Carson. The route runs north along the Mount Adams flank, touches the Goat Rocks at Walupt Lake, reaches its northern limit at High Rock Lookout looking straight at Mount Rainier, then swings back south past Mount St Helens and down the Lewis River to close the loop at Triangle Pass.</p><p>Four driving days on route, bracketed by two 370-mile highway days to and from Nampa. Day mileages are 85, 49, 93 and 82 - the split is dictated by where developed campgrounds actually exist, since there is an 85-mile stretch in the middle of the route with nothing established.</p><p><strong>Nothing is reserved yet.</strong> Campground notes in each day carry a live availability snapshot from 2026-08-31 and a priority order for booking. The North Fork Elk Group Camp for Friday and Saturday is the most time-sensitive one.</p>"
+  "intro_html": "<p>A 325-mile loop through Gifford Pinchot National Forest, starting and ending in the Columbia River Gorge at Carson. The route runs north along the Mount Adams flank, touches the Goat Rocks at Walupt Lake, reaches its northern limit at High Rock Lookout looking straight at Mount Rainier, then swings back south past Mount St Helens and down the Lewis River to close the loop at Triangle Pass.</p><p>Four driving days on route, bracketed by two 370-mile highway days to and from Nampa. Day mileages are 85, 57, 91 and 77. Nights target free dispersed clusters on the track; paid developed campgrounds stay in each day as backups.</p><p><strong>Nothing is reserved.</strong> The plan prefers free first-come pullouts. Six vehicles will need several adjacent sites in the same cluster. Stage 1 fire restrictions typically ban campfires at dispersed sites &mdash; bring a gas stove. Paid Recreation.gov camps remain listed if a cluster is full or you want water.</p>"
 }

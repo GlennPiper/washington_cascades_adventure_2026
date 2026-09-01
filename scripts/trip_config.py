@@ -193,11 +193,12 @@ GEAR_NOTES = [
      'helmet or at minimum a beanie are worth having. Full notes on the lava caves page.'),
     ('A gas stove, regardless of the forecast',
      'Gifford Pinchot runs tiered fire restrictions in late summer. Stage 1 allows fires only '
-     'in developed campground rings, which every planned camp has. A Stage 2 order in a dry '
-     'year removes campfires everywhere. Do not plan a meal that depends on a fire.'),
+     'in developed campground rings. Primary nights are dispersed, so under Stage 1 there is '
+     'usually no legal fire at camp. A Stage 2 order removes campfires everywhere. Do not plan '
+     'a meal that depends on a fire.'),
     ('Bedding rated well below the forecast low',
-     'Takhlakh sits at 4,390 ft and Walupt at 3,927 ft. Frost and near-freezing overnight '
-     'lows are normal in mid-September even when daytime highs are in the 70s.'),
+     'Council / High Lakes and Chambers sit around 4,000-4,400 ft. Frost and near-freezing '
+     'overnight lows are normal in mid-September even when daytime highs are in the 70s.'),
     ('Rain gear that actually works',
      'This is the west side of the Cascades. September can be dry or it can rain for three '
      'days straight.'),
@@ -215,8 +216,9 @@ GEAR_NOTES = [
      'Forest orders during fire season frequently require these of anyone driving off '
      'pavement. Check the current order before departure.'),
     ('Water for a dry camp',
-     'The developed camps on the plan have potable water, but the primitive High Lakes '
-     'fallbacks (Council, Olallie, Chain of Lakes, Horseshoe, Cat Creek, Chambers) do not.'),
+     'The primary nights are free dispersed / primitive sites with no potable water. Carry '
+     'enough that a dry camp is the plan, not a surprise. Paid backups (Takhlakh, Walupt, '
+     'North Fork, Panther Creek, Tower Rock) have water if you fall back to them.'),
     ('Tire repair kit and a real spare',
      'Basalt and pumice on forest roads are hard on sidewalls, and the nearest tire shop is '
      'Packwood, Randle or Morton.'),
@@ -249,7 +251,7 @@ PERMITS_NOTE = [
      'timed ticket). Parking is an informal pullout on FR 6701; a Northwest Forest Pass is '
      'still worth having for other trailheads that day. Full notes on the lava caves page.'),
     ('Dispersed camping',
-     'Free on most Gifford Pinchot roads outside developed campgrounds and posted closures. '
-     'Use existing sites, camp 100+ ft from water, and check current fire restrictions '
-     'before any campfire.'),
+     'Primary nights are free first-come sites on Gifford Pinchot roads. Use existing sites, '
+     'camp 100+ ft from water, and check current fire restrictions before any campfire. Six '
+     'vehicles will need several adjacent pullouts in the same cluster.'),
 ]

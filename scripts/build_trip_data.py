@@ -37,10 +37,9 @@ PLAN = BASE / 'planning'
 # ---------------------------------------------------------------------------
 # Day split
 # ---------------------------------------------------------------------------
-# Mile windows along the 324.8-mile main track. The split is driven by where
-# established campgrounds actually sit: there is a dense cluster from mile 34
-# to 141, then an 85-mile gap with nothing developed until North Fork at 226,
-# which forces days 3 and 4 to be the long ones.
+# Mile windows along the 324.8-mile main track. Overnight targets are free
+# dispersed clusters on the track (High Lakes, Chambers, Greenhorn, Panther
+# Creek pullouts). Paid developed campgrounds stay in the tables as backups.
 DAYS = [
     {
         'id': 'sep8_travel',
@@ -54,8 +53,9 @@ DAYS = [
             'across into Washington. About 376 miles and 7 hours of moving time, so plan on '
             '8.5 to 9 hours with fuel and food stops for a six-vehicle group. You gain an hour '
             'crossing into Pacific time, which puts arrival in camp around 3:30 to 4:30 PM PDT. '
-            'Camp at Panther Creek, roughly 11 miles up Wind River Road from Carson, and start '
-            'the loop from mile 0 in the morning.'
+            'Camp the free pullouts along Panther Creek Road (FS 65 / 6513), roughly 11 miles '
+            'up Wind River Road from Carson, and start the loop from mile 0 in the morning. '
+            'The developed Panther Creek campground is the paid backup.'
         ),
         'mi_lo': None,
         'mi_hi': None,
@@ -73,8 +73,10 @@ DAYS = [
             'route miles. Climb Wind River Road past the High Bridge, skirt the Big Lava Bed, '
             'and work north through Goose Lake and the Forlorn Lakes into the Indian Heaven '
             'country and the Sawtooth Berry Fields. Huckleberries should still be on in early '
-            'September. Over Babyshoe Pass and finish at Takhlakh Lake, where Mount Adams '
-            'reflects in the water - the signature view of the whole route.'
+            'September. Over Babyshoe Pass to Takhlakh Lake, where Mount Adams reflects in '
+            'the water - the signature view of the whole route. Overnight in the free High '
+            'Lakes cluster (Council, Olallie, Chain of Lakes, Horseshoe) rather than the paid '
+            'Takhlakh campground.'
         ),
         'mi_lo': 0.0,
         'mi_hi': 84.5,
@@ -88,16 +90,17 @@ DAYS = [
         'title': 'Day 2: Takh Takh lava -> Upper Cispus -> Walupt Lake',
         'type': 'overland',
         'descr': (
-            'The short day, and deliberately so: 49 route miles leaves real time for the '
+            'The short day: 57 route miles leaves real time for the '
             'waterfalls and the Goat Rocks edge. Start on the Takh Takh lava flow, drop into '
             'the Upper Cispus, and pass Hamilton Buttes and Bishop Falls. Finish at Walupt '
             'Lake, the deepest lake in the county and the trailhead gateway to the Goat Rocks '
-            'Wilderness. The Walupt Lake access road is long and rough - budget for it.'
+            'Wilderness. The Walupt Lake access road is long and rough - budget for it. Night '
+            'is at Chambers Lake, the free first-come camp about 8 miles past Walupt.'
         ),
         'mi_lo': 84.5,
-        'mi_hi': 133.5,
-        'miles': 49,
-        'driving_hours_est': 4.5,
+        'mi_hi': 141.0,
+        'miles': 57,
+        'driving_hours_est': 5.2,
     },
     {
         'id': 'day3_cascades',
@@ -106,17 +109,17 @@ DAYS = [
         'title': 'Day 3: Packwood fuel -> High Rock Lookout -> Randle -> North Fork',
         'type': 'overland',
         'descr': (
-            'The longest day at 93 miles, but a good share of it is paved US 12, so it moves '
+            'Still the long day at 91 miles, but a good share of it is paved US 12, so it moves '
             'faster than the number suggests. Fuel at Packwood around mile 156 - the first '
             'pump since Carson. The centrepiece is High Rock Lookout: about 3 miles round trip '
             'to a historic lookout on a cliff edge with Mount Rainier only 13 air miles away. '
-            'Fuel again at Randle, then Layser Cave and Camp Creek Falls on the way into camp '
-            'on the Cispus.'
+            'Fuel again at Randle, then Layser Cave and Camp Creek Falls on the way into the '
+            'free Greenhorn Creek pullouts south of Randle on the FS 25 side of the Cispus.'
         ),
-        'mi_lo': 133.5,
-        'mi_hi': 226.5,
-        'miles': 93,
-        'driving_hours_est': 7.0,
+        'mi_lo': 141.0,
+        'mi_hi': 232.0,
+        'miles': 91,
+        'driving_hours_est': 6.8,
     },
     {
         'id': 'day4_cascades',
@@ -125,18 +128,18 @@ DAYS = [
         'title': 'Day 4: Burley Mountain -> Elk Pass -> lava caves -> Panther Creek',
         'type': 'overland',
         'descr': (
-            'The volcano-and-lava day, 82 miles. Burley Mountain Lookout takes in Rainier, '
+            'The volcano-and-lava day, 77 miles. Burley Mountain Lookout takes in Rainier, '
             'Adams, St Helens and Hood from one spot. South over Elk Pass with Mount St Helens '
             'filling the window, then down the Lewis River past Curly Creek Falls and its twin '
             'natural basalt arches. Late in the day, the Falls Creek Lava Caves: a genuine lava '
             'tube from the Big Lava Bed eruption. Everyone going underground needs their own '
-            'headlamp plus a backup. Finish at Panther Creek Falls and camp where the trip '
-            'started.'
+            'headlamp plus a backup. Finish at Panther Creek Falls and camp the same free '
+            'pullouts the trip started at.'
         ),
-        'mi_lo': 226.5,
+        'mi_lo': 232.0,
         'mi_hi': 308.5,
-        'miles': 82,
-        'driving_hours_est': 6.5,
+        'miles': 77,
+        'driving_hours_est': 6.1,
     },
     {
         'id': 'sep13_return',
@@ -163,45 +166,100 @@ DAYS = [
 # ---------------------------------------------------------------------------
 # Campground plan
 # ---------------------------------------------------------------------------
-# Availability figures are a snapshot taken 2026-08-31 from Recreation.gov for
-# the relevant night. NOTHING IS BOOKED. Friday Sep 11 and Saturday Sep 12 are
-# the scarce nights because they fall on a weekend.
+# Preference: free dispersed / primitive first, paid developed campgrounds as
+# backups. Inclusion rule for the FreeCampsites.net dump: Free fee, within 3.5
+# miles of the main track, not a rest area / "no camping" pin / generic
+# corridor listing / obvious off-route detour. Forest Road 9705 (4.7 mi off)
+# is the one extra — Lewis River Horse Camp pullouts on the Day 1 corridor.
+# Six vehicles will not fit on one pullout — the group should expect to occupy
+# several adjacent sites in the same cluster. Stage 1 fire restrictions
+# typically ban campfires at dispersed sites; bring a gas stove.
 #
-# For six vehicles: ordinary Gifford Pinchot sites hold one or two rigs, so the
-# group needs either a group site or several adjacent numbered sites.
+# Paid Recreation.gov availability (snapshot 2026-08-31) is kept on the backup
+# cards only. Nothing is reserved.
 _RESGOV = 'https://www.recreation.gov/camping/campgrounds/'
+_FCS = 'https://freecampsites.net/'
+
+
+def _camp(name, lat, lon, status, kind, cost, facilities, notes, access, url=None):
+    """One campsite dict for CAMPSITES."""
+    d = {
+        'name': name,
+        'lat': lat,
+        'lon': lon,
+        'status': status,
+        'kind': kind,
+        'cost': cost,
+        'facilities': facilities,
+        'notes': notes,
+        'access': access,
+    }
+    if url:
+        d['reserve_url'] = url
+    return d
+
+
+_SPLIT_NOTE = (
+    'Six vehicles will not share one pullout. Scout on arrival and take several '
+    'adjacent existing sites in the same cluster.'
+)
 
 CAMPSITES = {
     'sep8_travel': {
-        'primary': {
+        'primary': [
+            _camp(
+                'Panther Creek Dispersed #2', 45.834828, -121.870893,
+                'primary', 'dispersed_fcfs', 'Free',
+                'Fire pit. No toilet, no water. Small-rig friendly.',
+                ('Closest of the three named pullouts to the developed campground (~0.3 mi off '
+                 'the loop at mile 308, and the same road you drive Tuesday evening). Most '
+                 'reviewed of the cluster. ' + _SPLIT_NOTE),
+                'Panther Creek Rd (FS 65 / 6513) off Wind River Rd, north of the developed campground.',
+                _FCS + 'panther-creek-dispersed-2/',
+            ),
+            _camp(
+                'Panther Creek Dispersed #1', 45.84326, -121.85922,
+                'primary', 'dispersed_fcfs', 'Free',
+                'No amenities. One of several pullouts along Panther Creek.',
+                ('About a mile further up the same road as #2. Use it when #2 is taken or to '
+                 'spread the group. ' + _SPLIT_NOTE),
+                'FS 65 / 6513, continuing north from the developed campground.',
+                _FCS + 'panther-creek-dispersed-1/',
+            ),
+            _camp(
+                'Upper Panther Creek Dispersed', 45.84941, -121.85544,
+                'primary', 'dispersed_fcfs', 'Free',
+                'Large, fairly flat grassy pullout with a fire ring. Unmaintained.',
+                ('The roomiest of the three. Same arrival corridor Tuesday evening. ' + _SPLIT_NOTE),
+                'NF-6513 off Panther Creek Rd.',
+                _FCS + 'upper-panther-creek-dispersed/',
+            ),
+        ],
+        'secondary': {
             'name': 'Panther Creek Campground (Recreation.gov 233103)',
             'lat': 45.81972, 'lon': -121.87972,
-            'status': 'primary',
+            'status': 'secondary',
             'kind': 'developed_reservable',
             'cost': 'Per-site fee; 9 of 33 sites are first-come',
             'facilities': 'Vault toilets, potable water, tables, fire rings. No hookups.',
-            'notes': ('NOT BOOKED. 19 of 33 sites showed available for Sep 8 as of 2026-08-31. '
-                      'Forest campground about 11 miles up Wind River Rd from Carson, so it is a '
-                      'short backtrack to mile 0 in the morning. Same camp as the final night, '
-                      'which means the group only has to learn one site. Reserve several adjacent '
-                      'numbered sites for six rigs.'),
+            'notes': ('Paid backup. 19 of 33 sites showed available for Sep 8 as of 2026-08-31. '
+                      'Use it if the pullouts are full or you want water and a toilet after the '
+                      'drive from Nampa.'),
             'access': 'WA-14 to Carson, north on Wind River Rd, right on Panther Creek Rd (FS 65).',
             'reserve_url': _RESGOV + '233103',
         },
-        'secondary': {
-            'name': 'Home Valley Campground (Skamania County park)',
-            'lat': 45.70870, 'lon': -121.77348,
-            'status': 'secondary',
-            'kind': 'developed_county',
-            'cost': 'County park fee',
-            'facilities': 'Showers, potable water, toilets - the only showers near the route.',
-            'notes': ('Booked through Skamania County, not Recreation.gov. Right on the Columbia '
-                      'and only 2.9 miles from route mile 0, and it is the first campground you '
-                      'reach driving in from the east. Trade-off: it sits between WA-14 and the '
-                      'BNSF main line, so expect highway and train noise.'),
-            'access': 'Directly off WA-14 at Home Valley, east of Carson.',
-        },
         'tertiary': [
+            {
+                'name': 'Home Valley Campground (Skamania County park)',
+                'lat': 45.70870, 'lon': -121.77348,
+                'status': 'tertiary',
+                'kind': 'developed_county',
+                'cost': 'County park fee',
+                'facilities': 'Showers, potable water, toilets - the only showers near the route.',
+                'notes': ('Paid. Right on the Columbia and only 2.9 miles from route mile 0. '
+                          'Sits between WA-14 and the BNSF main line, so expect highway and train noise.'),
+                'access': 'Directly off WA-14 at Home Valley, east of Carson.',
+            },
             {
                 'name': 'Moss Creek Campground',
                 'lat': 45.79501, 'lon': -121.63444,
@@ -209,110 +267,148 @@ CAMPSITES = {
                 'kind': 'developed_fcfs',
                 'cost': 'Per-site fee',
                 'facilities': 'Vault toilets, water',
-                'notes': 'First-come. On the Little White Salmon, about 20 route miles in - useful only if the group decides to bank miles on arrival evening.',
-                'access': 'FS 18 north from Willard.',
-            },
-            {
-                'name': 'Big Cedars County Park',
-                'lat': 45.80154, 'lon': -121.64364,
-                'status': 'tertiary',
-                'kind': 'developed_county',
-                'cost': 'County park fee',
-                'facilities': 'Toilets, water',
-                'notes': 'Skamania County site adjacent to Moss Creek; same purpose as a mile-banking option.',
+                'notes': 'Paid first-come on the Little White Salmon. Only if the group banks miles on arrival evening.',
                 'access': 'FS 18 north from Willard.',
             },
         ],
     },
     'day1_cascades': {
-        'primary': {
+        'primary': [
+            _camp(
+                'Council Lake Campground', 46.26327, -121.63178,
+                'primary', 'primitive_fcfs', 'Free or low fee',
+                'Vault toilet. No potable water.',
+                ('On-route at mile 79.2, about 5 miles before Takhlakh. The best-documented free '
+                 'High Lakes camp. Small — not six rigs in one loop. ' + _SPLIT_NOTE),
+                'Short rough spur off FS 2334.',
+                _FCS + 'council-lake/',
+            ),
+            _camp(
+                'Olallie Lake Campground', 46.28868, -121.61949,
+                'primary', 'primitive_fcfs', 'Free or low fee',
+                'Vault toilet. No potable water.',
+                'First-come. Very small, same Midway High Lakes cluster as Takhlakh.',
+                'Spur off FS 2329.',
+            ),
+            _camp(
+                'Chain of Lakes Campground', 46.29310, -121.59633,
+                'primary', 'primitive_fcfs', 'Free or low fee',
+                'Vault toilet. No potable water.',
+                'First-come, rough access road. Spillover for the High Lakes cluster.',
+                'Rough spur off FS 2329.',
+            ),
+            _camp(
+                'Horseshoe Lake Campground', 46.30978, -121.56663,
+                'primary', 'primitive_fcfs', 'Free or low fee',
+                'Vault toilet. No potable water.',
+                'First-come, just under a mile off route past Takhlakh.',
+                'FS 2329 spur.',
+            ),
+            _camp(
+                'Orr Creek Sno-Park', 46.350466, -121.597704,
+                'primary', 'dispersed_fcfs', 'Free',
+                'Vault toilet (sun vault). No potable water.',
+                ('On FS 23 at mile 96.6, about 12 route miles past Takhlakh toward Adams Fork. '
+                 'Push here only if High Lakes is slammed; it shortens Thursday. Elk sometimes '
+                 'pass through. ' + _SPLIT_NOTE),
+                'FS 23 north of Takhlakh / south of Adams Fork.',
+                _FCS + 'orr-creek-sno-park/',
+            ),
+        ],
+        'secondary': [
+            _camp(
+                'Near Lava Beds', 45.91383, -121.695408,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Informal pullouts near a pond on the way to Big Lava Bed. No facilities.',
+                ('On-route at mile 30.8, Day 1 afternoon. Early-stop option, not the High Lakes '
+                 'night. 10 community reviews.'),
+                'Paved approach toward Big Lava Bed, ~45 min from the Columbia.',
+                _FCS + 'near-lava-beds/',
+            ),
+            _camp(
+                'Forest Route 60', 45.924556, -121.774469,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Several pullouts along FS 60. No facilities. Some spots are tight for larger rigs.',
+                'On-route at mile 34.2 near Goose Lake / the lava-bed edge. Unrated listing.',
+                'FS 60 through the Indian Heaven / lava-bed corridor.',
+                _FCS + 'forest-route-60/',
+            ),
+            _camp(
+                'Huckleberry Access', 46.091105, -121.79985,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Paved viewpoint with room for RVs. No toilet listed.',
+                ('On-route at mile 54.5. Mount St Helens view and seasonal huckleberries. May be '
+                 'day-use — read posted signs before overnighting.'),
+                'FS 23 / berry-fields corridor.',
+                _FCS + 'huckleberry-access/',
+            ),
+            _camp(
+                'Forest Road 9705', 46.18798, -121.82302,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Several pullouts past Lewis River Horse Camp with rock fire pits. Room for cars. Quiet road. No toilet listed.',
+                ('About 4.7 miles off the track near mile 57, on the Lewis River side of Day 1. '
+                 'Early-stop / overflow, not the High Lakes night.'),
+                'Forest Road 9705 past the Lewis River Horse Camp.',
+                _FCS + 'forest-road-9705/',
+            ),
+            _camp(
+                'Flattop Sno-Park', 46.056878, -121.628389,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Winter lot used as a free dispersed site in summer. No reviews on file.',
+                'About 3.3 miles off the track near mile 46. Unconfirmed; scout before committing.',
+                'Trout Lake / FS 23 side roads.',
+                _FCS + 'flattop-sno-park/',
+            ),
+        ],
+        'tertiary': {
             'name': 'Takhlakh Lake Campground (Recreation.gov 232861)',
             'lat': 46.28083, 'lon': -121.59861,
-            'status': 'primary',
+            'status': 'tertiary',
             'kind': 'developed_reservable',
             'cost': 'Per-site fee; 18 of 54 sites are first-come',
             'facilities': 'Vault toilets, potable water, tables, fire rings. No hookups. Non-motorised boating only.',
-            'notes': ('NOT BOOKED, AND THIS IS THE ONE TO GRAB. 22 of 54 sites showed available '
-                      'for Sep 9 as of 2026-08-31, but ZERO for Fri Sep 11 and Sat Sep 12 - which '
-                      'is exactly why Day 1 ends here on a Wednesday. Mount Adams reflected in the '
-                      'lake is the signature view of the route. Sites in the 30s and 40s were the '
-                      'most open; book adjacent ones for six rigs.'),
-            'access': 'FS 23 over Babyshoe Pass, then FS 2329. Paved most of the way with a gravel stretch over the pass.',
+            'notes': ('Paid backup at the signature lake. 22 of 54 sites showed available for '
+                      'Sep 9 as of 2026-08-31; zero Friday and Saturday. Use it if the free High '
+                      'Lakes cluster is full or you want potable water.'),
+            'access': 'FS 23 over Babyshoe Pass, then FS 2329.',
             'reserve_url': _RESGOV + '232861',
         },
-        'secondary': [
-            {
-                'name': 'Council Lake Campground',
-                'lat': 46.26327, 'lon': -121.63178,
-                'status': 'secondary',
-                'kind': 'primitive_fcfs',
-                'cost': 'Free or low fee',
-                'facilities': 'Vault toilet. No potable water.',
-                'notes': 'First-come, not reservable, roughly 5 route miles before Takhlakh. Small and rustic - good fallback for part of the group, not all six rigs.',
-                'access': 'Short rough spur off FS 2334.',
-            },
-            {
-                'name': 'Olallie Lake Campground',
-                'lat': 46.28868, 'lon': -121.61949,
-                'status': 'secondary',
-                'kind': 'primitive_fcfs',
-                'cost': 'Free or low fee',
-                'facilities': 'Vault toilet. No potable water.',
-                'notes': 'First-come. Very small, in the same Midway High Lakes cluster as Takhlakh.',
-                'access': 'Spur off FS 2329.',
-            },
-        ],
-        'tertiary': [
-            {
-                'name': 'Horseshoe Lake Campground',
-                'lat': 46.30978, 'lon': -121.56663,
-                'status': 'tertiary',
-                'kind': 'primitive_fcfs',
-                'cost': 'Free or low fee',
-                'facilities': 'Vault toilet. No potable water.',
-                'notes': 'First-come, just under a mile off route past Takhlakh.',
-                'access': 'FS 2329 spur.',
-            },
-            {
-                'name': 'Chain of Lakes Campground',
-                'lat': 46.29310, 'lon': -121.59633,
-                'status': 'tertiary',
-                'kind': 'primitive_fcfs',
-                'cost': 'Free or low fee',
-                'facilities': 'Vault toilet. No potable water.',
-                'notes': 'First-come, rough access road. Last-resort spillover for the High Lakes area.',
-                'access': 'Rough spur off FS 2329.',
-            },
-        ],
     },
     'day2_cascades': {
-        'primary': {
-            'name': 'Walupt Lake Campground (Recreation.gov 232860)',
-            'lat': 46.42306, 'lon': -121.47361,
-            'status': 'primary',
-            'kind': 'developed_reservable',
-            'cost': 'Per-site fee; 14 of 42 sites are first-come',
-            'facilities': 'Vault toilets, potable water, boat launch. No hookups.',
-            'notes': ('NOT BOOKED. 7 of 42 sites showed available for Sep 10 as of 2026-08-31 - '
-                      'thinner than Takhlakh, so this is the second priority to reserve. Only 1 '
-                      'site was open for Fri Sep 11, so the Thursday timing matters. Goat Rocks '
-                      'trailheads leave from the campground. The access road in is long and rough.'),
-            'access': 'FS 21 then FS 2160 east - roughly 16 miles of gravel off the main route.',
-            'reserve_url': _RESGOV + '232860',
-        },
-        'secondary': {
-            'name': 'Chambers Lake Campground',
-            'lat': 46.46549, 'lon': -121.53183,
-            'status': 'secondary',
-            'kind': 'primitive_fcfs',
-            'cost': 'Free or low fee',
-            'facilities': 'Vault toilet. No potable water.',
-            'notes': ('First-come and not on Recreation.gov, so availability cannot be checked in '
-                      'advance. About 8 route miles past Walupt near the Goat Rocks boundary. '
-                      'Reasonable Plan B if Walupt is full on arrival.'),
-            'access': 'FS 21 spur north of the Walupt junction.',
-        },
+        'primary': [
+            _camp(
+                'Chambers Lake Campground', 46.46549, -121.53183,
+                'primary', 'primitive_fcfs', 'Free or low fee',
+                'Vault toilet. No potable water.',
+                ('Free first-come camp at mile 140.5, about 8 miles past Walupt near the Goat '
+                 'Rocks boundary. The actual Thursday night. Availability cannot be checked in '
+                 'advance. ' + _SPLIT_NOTE),
+                'FS 21 spur north of the Walupt junction.',
+                _FCS + 'chambers-lake/',
+            ),
+            _camp(
+                'Cat Creek Campground', 46.34855, -121.62496,
+                'primary', 'primitive_fcfs', 'Free',
+                'Vault toilet. No potable water.',
+                ('First-come, very small, route mile 101. Early-stop option that shortens '
+                 'Thursday and lengthens Friday. ' + _SPLIT_NOTE),
+                'FS 2160 just east of Adams Fork.',
+            ),
+        ],
         'tertiary': [
+            {
+                'name': 'Walupt Lake Campground (Recreation.gov 232860)',
+                'lat': 46.42306, 'lon': -121.47361,
+                'status': 'tertiary',
+                'kind': 'developed_reservable',
+                'cost': 'Per-site fee; 14 of 42 sites are first-come',
+                'facilities': 'Vault toilets, potable water, boat launch. No hookups.',
+                'notes': ('Paid backup at the lake itself. 7 of 42 sites showed available for '
+                          'Sep 10 as of 2026-08-31. Goat Rocks trailheads leave from the campground. '
+                          'The access road in is long and rough.'),
+                'access': 'FS 21 then FS 2160 east - roughly 16 miles of gravel off the main route.',
+                'reserve_url': _RESGOV + '232860',
+            },
             {
                 'name': 'Adams Fork Campground (Recreation.gov 232857)',
                 'lat': 46.33889, 'lon': -121.64694,
@@ -320,124 +416,193 @@ CAMPSITES = {
                 'kind': 'developed_reservable',
                 'cost': 'Per-site fee; 7 of 23 sites are first-come',
                 'facilities': 'Vault toilets, tables, fire rings. No potable water.',
-                'notes': ('16 of 23 sites showed available for Sep 10. Sits at route mile 99.6, so '
-                          'choosing it shortens Day 2 to 15 miles and lengthens Day 3 to 127 - use '
-                          'it only if the group wants an easy Thursday or Walupt falls through.'),
+                'notes': ('Paid early-stop at mile 99.6. 16 of 23 sites showed available for Sep 10. '
+                          'Choosing it shortens Thursday and lengthens Friday.'),
                 'access': 'On FS 21 beside the Cispus River.',
                 'reserve_url': _RESGOV + '232857',
-            },
-            {
-                'name': 'Cat Creek Campground',
-                'lat': 46.34855, 'lon': -121.62496,
-                'status': 'tertiary',
-                'kind': 'primitive_fcfs',
-                'cost': 'Free',
-                'facilities': 'Vault toilet. No potable water.',
-                'notes': 'First-come only, very small. Route mile 101. Overflow for Adams Fork.',
-                'access': 'FS 2160 just east of Adams Fork.',
             },
         ],
     },
     'day3_cascades': {
-        'primary': {
-            'name': 'North Fork Elk Group Camp (Recreation.gov 232898)',
-            'lat': 46.45250, 'lon': -121.78889,
-            'status': 'primary',
-            'kind': 'developed_group_reservable',
-            'cost': 'Single group-site fee for the whole party',
-            'facilities': 'Vault toilets, potable water, group shelter area, tables, fire rings.',
-            'notes': ('NOT BOOKED, AND THE MOST TIME-SENSITIVE RESERVATION OF THE TRIP. This is a '
-                      'single reservable group site, which is what six vehicles actually want, and '
-                      'as of 2026-08-31 it was open on both Fri Sep 11 and Sat Sep 12 - the two '
-                      'nights when nearly everything else in the forest is booked. One booking '
-                      'covers the whole group. If it goes, Tower Rock is the fallback.'),
-            'access': 'FS 23 south from Randle along the Cispus, near North Fork Campground.',
-            'reserve_url': _RESGOV + '232898',
-        },
-        'secondary': {
-            'name': 'Tower Rock Campground (Recreation.gov 232855)',
-            'lat': 46.44500, 'lon': -121.86806,
-            'status': 'secondary',
-            'kind': 'developed_reservable',
-            'cost': 'Per-site fee; 6 of 20 sites are first-come',
-            'facilities': 'Vault toilets, potable water, tables, fire rings.',
-            'notes': ('The best weekend availability found anywhere on the route: 10 of 20 sites '
-                      'open for Fri Sep 11 and 8 for Sat Sep 12 as of 2026-08-31. Route mile 228.6, '
-                      'about 2 miles past North Fork. Book several adjacent sites if the Elk group '
-                      'site is gone.'),
-            'access': 'FS 23 / FS 28 along the Cispus, south of Randle.',
-            'reserve_url': _RESGOV + '232855',
-        },
+        'primary': [
+            _camp(
+                'Greenhorn Creek', 46.433576, -121.940737,
+                'primary', 'dispersed_fcfs', 'Free',
+                'Three shaded creek sites. No toilet listed. Spots can fit a ~24 ft rig.',
+                ('On the FS 25 side of the Cispus at mile 230.8, a few miles past North Fork / '
+                 'Tower Rock. Best genuine dispersed night for Friday. ' + _SPLIT_NOTE),
+                'South of Randle on FS 25 / Greenhorn Creek.',
+                _FCS + 'greenhorn-creek/',
+            ),
+        ],
+        'secondary': [
+            _camp(
+                'Skate Creek Sno-Park', 46.63837, -121.71165,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Pull-offs along the road; most have a fire pit. River sites exist.',
+                ('On-route at mile 160.7 near Packwood. Early-stop / overflow, not the Friday '
+                 'night unless the day is running long.'),
+                'Skate Creek Rd (FS 52) near Packwood.',
+                _FCS + 'skate-creek-sno-park/',
+            ),
+            _camp(
+                'Packwood WA NF', 46.63448, -121.679917,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'End-of-road site in an old quarry. No facilities.',
+                'On-route at mile 158.6. Same Packwood-area overflow idea as Skate Creek.',
+                'National forest road at the edge of Packwood.',
+                _FCS + 'packwood-wa-nf/',
+            ),
+            _camp(
+                'Iron Creek Dispersed', 46.427984, -121.98043,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Pullouts about 1/4 mile past the official Iron Creek campground.',
+                ('The developed Iron Creek campground is CLOSED the entire trip week. These '
+                 'pullouts may still be open — or may be wrapped into the closure. Confirm with '
+                 'Cowlitz Valley Ranger District before counting on it.'),
+                'FS 25 toward Mt St Helens, past the closed Iron Creek campground.',
+                _FCS + 'iron-creek-dispersed-campsite/',
+            ),
+        ],
         'tertiary': [
             {
-                'name': 'North Fork Bear Group Camp (Recreation.gov 232896)',
-                'lat': 46.45083, 'lon': -121.78778,
+                'name': 'North Fork Elk Group Camp (Recreation.gov 232898)',
+                'lat': 46.45250, 'lon': -121.78889,
                 'status': 'tertiary',
                 'kind': 'developed_group_reservable',
-                'cost': 'Single group-site fee',
-                'facilities': 'Same complex as Elk Group.',
-                'notes': ('The other group site at North Fork. It was open Sep 8 through 10 but '
-                          'ALREADY TAKEN for Fri Sep 11 and Sat Sep 12, so it does not work for '
-                          'this itinerary unless the day split changes.'),
-                'access': 'Same as Elk Group.',
-                'reserve_url': _RESGOV + '232896',
+                'cost': 'Single group-site fee for the whole party',
+                'facilities': 'Vault toilets, potable water, group shelter area, tables, fire rings.',
+                'notes': ('Paid backup that actually fits six vehicles in one booking. As of '
+                          '2026-08-31 it was open Fri Sep 11 and Sat Sep 12. Worth considering '
+                          'if the group wants to stay together with water and a shelter.'),
+                'access': 'FS 23 south from Randle along the Cispus, near North Fork Campground.',
+                'reserve_url': _RESGOV + '232898',
             },
             {
-                # Recreation.gov reports this facility at the same coordinate as
-                # Bear Group Camp; use the source GPX campground waypoint instead
-                # so the two don't land on top of each other on the map and in GPX.
-                'name': 'North Fork Campground (Recreation.gov 232852)',
-                'lat': 46.45109, 'lon': -121.78760,
+                'name': 'Tower Rock Campground (Recreation.gov 232855)',
+                'lat': 46.44500, 'lon': -121.86806,
                 'status': 'tertiary',
                 'kind': 'developed_reservable',
-                'cost': 'Per-site fee; 7 of 19 sites are first-come',
-                'facilities': 'Vault toilets, potable water.',
-                'notes': ('Only 1 site open for Fri Sep 11 and none for Sat Sep 12 as of 2026-08-31 '
-                          '- not viable for six rigs on the weekend, but listed because the '
-                          'first-come sites could still absorb one or two vehicles.'),
-                'access': 'FS 23 south from Randle.',
-                'reserve_url': _RESGOV + '232852',
+                'cost': 'Per-site fee; 6 of 20 sites are first-come',
+                'facilities': 'Vault toilets, potable water, tables, fire rings.',
+                'notes': ('Paid backup at mile 228.6. Best weekend availability found on the paid '
+                          'list: 10 of 20 Friday, 8 Saturday as of 2026-08-31.'),
+                'access': 'FS 23 / FS 28 along the Cispus, south of Randle.',
+                'reserve_url': _RESGOV + '232855',
             },
         ],
     },
     'day4_cascades': {
-        'primary': {
-            'name': 'Panther Creek Campground (Recreation.gov 233103)',
-            'lat': 45.81972, 'lon': -121.87972,
-            'status': 'primary',
-            'kind': 'developed_reservable',
-            'cost': 'Per-site fee; 9 of 33 sites are first-come',
-            'facilities': 'Vault toilets, potable water, tables, fire rings.',
-            'notes': ('NOT BOOKED. Only 5 of 33 sites showed available for Sat Sep 12 as of '
-                      '2026-08-31, so book this at the same time as the first night. Route mile '
-                      '308.4, right after Panther Creek Falls, and it leaves only 16 miles of loop '
-                      'to close on Sunday morning.'),
-            'access': 'Panther Creek Rd (FS 65) off Wind River Rd.',
-            'reserve_url': _RESGOV + '233103',
-        },
-        'secondary': {
-            'name': 'Crest Camp',
-            'lat': 45.90889, 'lon': -121.80103,
-            'status': 'secondary',
-            'kind': 'primitive_fcfs',
-            'cost': 'Free',
-            'facilities': 'None. No water, no toilet.',
-            'notes': 'Small primitive site at route mile 302.7 near the Pacific Crest Trail crossing. First-come. Fits a couple of rigs at most - a bail-out, not a plan.',
-            'access': 'FS 60 near the PCT trailhead.',
-        },
-        'tertiary': {
-            'name': 'Home Valley Campground (Skamania County park)',
-            'lat': 45.70870, 'lon': -121.77348,
-            'status': 'tertiary',
-            'kind': 'developed_county',
-            'cost': 'County park fee',
-            'facilities': 'Showers, potable water, toilets.',
-            'notes': ('Worth considering deliberately rather than as a fallback: finishing the '
-                      'full loop to Triangle Pass on Saturday and dropping to Home Valley makes '
-                      'Saturday about 117 miles, but it means hot showers before the drive home '
-                      'and nothing left to do on Sunday but leave.'),
-            'access': 'Directly off WA-14 at Home Valley.',
-        },
+        'primary': [
+            _camp(
+                'Panther Creek Dispersed #2', 45.834828, -121.870893,
+                'primary', 'dispersed_fcfs', 'Free',
+                'Fire pit. No toilet, no water. Small-rig friendly.',
+                ('Same Saturday night as Tuesday: closest named pullout after Panther Creek Falls '
+                 '(mile 308.4). ' + _SPLIT_NOTE),
+                'Panther Creek Rd (FS 65 / 6513) off Wind River Rd.',
+                _FCS + 'panther-creek-dispersed-2/',
+            ),
+            _camp(
+                'Panther Creek Dispersed #1', 45.84326, -121.85922,
+                'primary', 'dispersed_fcfs', 'Free',
+                'No amenities. One of several pullouts along Panther Creek.',
+                'Same cluster as #2. Spread the group here if #2 is full.',
+                'FS 65 / 6513, north of the developed campground.',
+                _FCS + 'panther-creek-dispersed-1/',
+            ),
+            _camp(
+                'Upper Panther Creek Dispersed', 45.84941, -121.85544,
+                'primary', 'dispersed_fcfs', 'Free',
+                'Large grassy pullout with a fire ring. Unmaintained.',
+                'Roomiest of the three Panther Creek pullouts. Same Saturday cluster.',
+                'NF-6513 off Panther Creek Rd.',
+                _FCS + 'upper-panther-creek-dispersed/',
+            ),
+            _camp(
+                'Crest Camp', 45.90889, -121.80103,
+                'primary', 'primitive_fcfs', 'Free',
+                'None. No water, no toilet.',
+                'Primitive site at mile 302.7 near the PCT crossing. Fits a couple of rigs. Earlier Saturday stop if Panther Creek pullouts are full.',
+                'FS 60 near the PCT trailhead.',
+            ),
+        ],
+        'secondary': [
+            _camp(
+                'FR-7708', 46.336418, -121.967987,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Creek-side site with a cold pool. No facilities.',
+                'On-route at mile 244.5, Saturday morning after Greenhorn / Iron Creek.',
+                'Gifford Pinchot, FS 7708 off the Cispus / Lewis divide.',
+                _FCS + 'fr-7708/',
+            ),
+            _camp(
+                'Forest Route 9039', 46.110056, -121.99432,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Several tucked sites. A couple will take a trailer. No facilities.',
+                ('On-route at mile 272, Lewis River / Cougar side. Hunting-area notes in reviews. '
+                 'Early Saturday stop that leaves loop miles for Sunday.'),
+                'FS 9039 off the Lewis River corridor.',
+                _FCS + 'forest-route-9039/',
+            ),
+            _camp(
+                'Dispersed campsite off NF-90', 46.125331, -121.909858,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Dispersed site off NF-90. Confirm the area is open before leaving cell service.',
+                'On-route at mile 281.6 on the Lewis River. Same early-stop idea as FS 9039.',
+                'NF-90, Gifford Pinchot.',
+                _FCS + 'dispersed-campsite-off-nf-90/',
+            ),
+            _camp(
+                'Lone Butte Sno-Park', 46.044029, -121.859371,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Winter lot; free dispersed in summer. Unrated.',
+                'On-route at mile 288.1, Wind River high country approaching Panther Creek.',
+                'FS 30 / 60 corridor west of Indian Heaven.',
+                _FCS + 'lone-butte-sno-park/',
+            ),
+            _camp(
+                'Rush Creek Sno-Park', 46.035354, -121.880896,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Winter lot; free dispersed in summer. Unrated.',
+                'On-route at mile 289.4, same corridor as Lone Butte and Curley Creek.',
+                'FS 30 / 60 corridor.',
+                _FCS + 'rush-creek-sno-park/',
+            ),
+            _camp(
+                'Curley Creek Sno-Park', 46.026705, -121.891036,
+                'secondary', 'dispersed_fcfs', 'Free',
+                'Winter lot; free dispersed in summer. Unrated.',
+                'On-route at mile 289.6. Third of the three sno-park pullouts in this cluster.',
+                'FS 30 / 60 corridor.',
+                _FCS + 'curley-creek-sno-park/',
+            ),
+        ],
+        'tertiary': [
+            {
+                'name': 'Panther Creek Campground (Recreation.gov 233103)',
+                'lat': 45.81972, 'lon': -121.87972,
+                'status': 'tertiary',
+                'kind': 'developed_reservable',
+                'cost': 'Per-site fee; 9 of 33 sites are first-come',
+                'facilities': 'Vault toilets, potable water, tables, fire rings.',
+                'notes': ('Paid backup. Only 5 of 33 sites showed available for Sat Sep 12 as of '
+                          '2026-08-31. Use it if the pullouts are full or you want water.'),
+                'access': 'Panther Creek Rd (FS 65) off Wind River Rd.',
+                'reserve_url': _RESGOV + '233103',
+            },
+            {
+                'name': 'Home Valley Campground (Skamania County park)',
+                'lat': 45.70870, 'lon': -121.77348,
+                'status': 'tertiary',
+                'kind': 'developed_county',
+                'cost': 'County park fee',
+                'facilities': 'Showers, potable water, toilets.',
+                'notes': ('Paid. Finishing the full loop to Triangle Pass and dropping here makes '
+                          'Saturday longer but buys hot showers before the drive home.'),
+                'access': 'Directly off WA-14 at Home Valley.',
+            },
+        ],
     },
 }
 
@@ -586,15 +751,15 @@ REALTIME_LINKS = [
     # --- Camping and permits ---
     {'cat': 'Camping/Permits', 'label': 'Recreation.gov alerts',
      'url': 'https://www.recreation.gov/alerts'},
-    {'cat': 'Camping/Permits', 'label': 'Takhlakh Lake Campground (Day 1)',
+    {'cat': 'Camping/Permits', 'label': 'Takhlakh Lake Campground (Day 1 paid backup)',
      'url': _RESGOV + '232861'},
-    {'cat': 'Camping/Permits', 'label': 'Walupt Lake Campground (Day 2)',
+    {'cat': 'Camping/Permits', 'label': 'Walupt Lake Campground (Day 2 paid backup)',
      'url': _RESGOV + '232860'},
-    {'cat': 'Camping/Permits', 'label': 'North Fork Elk Group Camp (Day 3)',
+    {'cat': 'Camping/Permits', 'label': 'North Fork Elk Group Camp (Day 3 paid backup)',
      'url': _RESGOV + '232898'},
-    {'cat': 'Camping/Permits', 'label': 'Tower Rock Campground (Day 3 backup)',
+    {'cat': 'Camping/Permits', 'label': 'Tower Rock Campground (Day 3 paid backup)',
      'url': _RESGOV + '232855'},
-    {'cat': 'Camping/Permits', 'label': 'Panther Creek Campground (Days 0 and 4)',
+    {'cat': 'Camping/Permits', 'label': 'Panther Creek Campground (Tue/Sat paid backup)',
      'url': _RESGOV + '233103'},
     {'cat': 'Camping/Permits', 'label': 'Northwest Forest Pass',
      'url': 'https://www.fs.usda.gov/detail/r6/passes-permits/recreation/?cid=fsbdev2_027010'},
@@ -638,12 +803,12 @@ INTRO_HTML = (
     'straight at Mount Rainier, then swings back south past Mount St Helens and down the Lewis '
     'River to close the loop at Triangle Pass.</p>'
     '<p>Four driving days on route, bracketed by two 370-mile highway days to and from Nampa. '
-    'Day mileages are 85, 49, 93 and 82 - the split is dictated by where developed campgrounds '
-    'actually exist, since there is an 85-mile stretch in the middle of the route with nothing '
-    'established.</p>'
-    '<p><strong>Nothing is reserved yet.</strong> Campground notes in each day carry a live '
-    'availability snapshot from 2026-08-31 and a priority order for booking. The North Fork Elk '
-    'Group Camp for Friday and Saturday is the most time-sensitive one.</p>'
+    'Day mileages are 85, 57, 91 and 77. Nights target free dispersed clusters on the track; '
+    'paid developed campgrounds stay in each day as backups.</p>'
+    '<p><strong>Nothing is reserved.</strong> The plan prefers free first-come pullouts. '
+    'Six vehicles will need several adjacent sites in the same cluster. Stage 1 fire '
+    'restrictions typically ban campfires at dispersed sites &mdash; bring a gas stove. '
+    'Paid Recreation.gov camps remain listed if a cluster is full or you want water.</p>'
 )
 
 
@@ -691,9 +856,10 @@ def main() -> None:
             'cell_dead_zones': cfg.CELL_DEAD_ZONES,
             'satellite_comms_note': cfg.SATELLITE_COMMS_NOTE,
             'reservations_status': (
-                'NOTHING IS BOOKED. Availability figures in the camp notes are a Recreation.gov '
-                'snapshot from 2026-08-31 and will drift. Book in this order: North Fork Elk Group '
-                'Camp (Fri + Sat), Takhlakh Lake (Wed), Panther Creek (Tue + Sat), Walupt Lake (Thu).'
+                'Nothing is reserved. Nights are free dispersed / primitive first-come sites; '
+                'paid Recreation.gov campgrounds are backups if a cluster is full or you want '
+                'water. Six vehicles will need several adjacent pullouts. Stage 1 fire '
+                'restrictions typically ban campfires at dispersed sites.'
             ),
         },
         group_counts=cfg.GROUP_COUNTS,

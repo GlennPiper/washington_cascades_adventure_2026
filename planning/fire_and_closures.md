@@ -60,15 +60,16 @@ rather than assuming, but in general:
 - **No restrictions** — campfires allowed in fire rings at developed campgrounds and at existing
   dispersed sites.
 - **Stage 1** — campfires only inside metal fire rings at designated developed campgrounds. This
-  is the most likely state for early September, and it means the developed campgrounds on this
-  itinerary are fine but dispersed campfires are not.
+  is the most likely state for early September, and it means the **paid backups** on this
+  itinerary can still have a fire but the **primary dispersed nights cannot**.
 - **Stage 2** — no campfires anywhere, including developed campgrounds. Gas stoves with a shutoff
   valve are usually still permitted.
 - **Area or forest closure** — no entry.
 
-**Bring a gas stove regardless.** Do not plan any meal that depends on a campfire. Every camp on
-this itinerary is a developed campground with a fire ring, which is the best case, but a Stage 2
-order in a dry year would still take fires away.
+**Bring a gas stove regardless.** Do not plan any meal that depends on a campfire. Primary
+nights are free dispersed / primitive sites. Under Stage 1 those usually cannot have a
+campfire at all; only the paid developed backups keep a legal ring. A Stage 2 order removes
+fires everywhere.
 
 Also worth carrying: a shovel and a fire extinguisher or a few gallons of water per vehicle. Some
 forest orders require them for anyone operating off pavement during fire season.

@@ -17,8 +17,8 @@ We need to do several things:
 - Find and surface live sources for closures, fires, smoke, and extreme weather, and show
   those links in the documentation. Fire and smoke deserve their own page.
 - Pick primary campsites for each night, then secondary options in case the primary is full
-  or cannot hold the group, then a last-ditch fallback list per area. Prefer **established
-  campgrounds** where possible.
+  or cannot hold the group, then a last-ditch fallback list per area. Prefer **free
+  dispersed and primitive sites** on the route; paid developed campgrounds are backups.
   * The GPX marks 49 campsite waypoints. We are not limited to these, but they are a starting
     point. Take travel time into account so we can reach camp with daylight while still seeing
     things along the way, and still finish the route in the days available.
@@ -52,19 +52,17 @@ and feel free to suggest other actions worth considering.
 Recorded here so the reasoning survives. See `README.md` for how the app is built and
 `planning/` for the detail.
 
-**Day split.** Four route days at 85 / 49 / 93 / 82 miles. The shape is dictated by
-campground placement, not by preference: developed campgrounds cluster from route mile 34 to
-141, then there is an 85-mile stretch with nothing established until North Fork at 226. That
-forces days 3 and 4 to be the long ones. Day 3 is the longest at 93 miles but a good share of
-it is paved US 12, so it moves faster than the number suggests.
+**Day split.** Four route days at 85 / 57 / 91 / 77 miles. Nights target free dispersed
+clusters on the track: Panther Creek pullouts, the High Lakes primitive sites, Chambers
+Lake, and Greenhorn Creek. Paid developed campgrounds stay in each day as backups.
 
-**Why Takhlakh Lake on Wednesday.** It is the signature camp of the area — Mount Adams
-reflected in the lake — and Recreation.gov showed 22 sites open on Wednesday September 9 but
-**zero** on Friday or Saturday. The whole split is arranged around reaching it midweek.
+**Why free first.** The group prefers dispersed over paid campgrounds. Six vehicles will
+not share one pullout — occupy several adjacent existing sites in the same cluster. Stage 1
+fire restrictions typically ban campfires at those sites, so a gas stove is required.
 
-**Why North Fork Elk Group Camp on Friday.** Friday and Saturday are a weekend and the forest
-is largely booked. Elk Group is a single reservable group site, which is the right shape for
-six vehicles, and it was open on both weekend nights when almost nothing else was.
+**Paid backups worth knowing.** Takhlakh (Wednesday), Walupt (Thursday), North Fork Elk
+Group and Tower Rock (Friday), Panther Creek CG (Tuesday and Saturday). Elk Group is the
+only single booking that fits the whole party if Greenhorn is full on the weekend.
 
 **Pages built.** Itinerary, reference, camping plan, fuel plan, weather, and fire/closures.
 Dropped from the previous trip: alternate route variants, and the hazard-specific pages

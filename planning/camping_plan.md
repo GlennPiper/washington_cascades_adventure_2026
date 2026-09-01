@@ -1,168 +1,141 @@
 # Camping plan
 
-**Nothing is reserved.** Every availability figure below is a Recreation.gov snapshot taken on
-**2026-08-31** and it will drift. This page exists so whoever does the booking has the whole
-picture on one screen.
+**Nothing is reserved.** Primary nights are **free first-come dispersed and primitive
+sites** on the route. Paid Recreation.gov campgrounds stay in each day's list as backups
+if a cluster is full or you want water and a toilet.
 
-Two facts drive the entire plan:
+Two facts still matter:
 
-1. **Friday Sep 11 and Saturday Sep 12 are a weekend**, and Gifford Pinchot campgrounds are
-   largely booked out on those nights. Availability on Tuesday through Thursday is comfortable;
-   on the weekend it collapses.
-2. **Ordinary Forest Service sites hold one or two vehicles.** Six rigs need either a reservable
-   group site or several adjacent numbered sites.
+1. **Ordinary pullouts hold one or two vehicles.** Six rigs need several adjacent existing
+   sites in the same cluster. That is expected, not a failure — scout on arrival and spread
+   out. Do not build new fire rings or flatten new pads.
+2. **Stage 1 fire restrictions** (the usual September state) typically allow campfires only
+   in metal rings at developed campgrounds. Primary nights may have **no legal fire**. Bring
+   a gas stove. See [fire and closures](fire-and-closures.html).
+
+Paid-site availability below is a Recreation.gov snapshot from **2026-08-31** and will
+drift. You do not need it unless you fall back to a developed campground.
 
 ---
 
-## Book in this order
+## How the nights are stacked
 
-| Priority | Night | Campground | Why it is urgent |
+| Night | Primary (free) | Along-route overflow | Paid backup |
 |---|---|---|---|
-| **1** | Fri Sep 11 **and** Sat Sep 12 | [North Fork **Elk Group Camp**](https://www.recreation.gov/camping/campgrounds/232898) | A single group site that covers the whole party, and it was open on **both** weekend nights when almost nothing else was. One booking solves the two hardest nights. If this goes, everything gets harder. |
-| **2** | Wed Sep 9 | [Takhlakh Lake](https://www.recreation.gov/camping/campgrounds/232861) | The signature camp of the route — Mount Adams reflected in the lake. 22 sites open Wednesday, **zero** on Fri or Sat. The whole day split is arranged around getting here midweek. |
-| **3** | Tue Sep 8 **and** Sat Sep 12 | [Panther Creek](https://www.recreation.gov/camping/campgrounds/233103) | First and last night. 19 sites open Tuesday but only 5 on Saturday, so book both at once. |
-| **4** | Thu Sep 10 | [Walupt Lake](https://www.recreation.gov/camping/campgrounds/232860) | Only 7 sites open Thursday — thinner than Takhlakh. Goat Rocks trailheads leave from the campground. |
+| **Tue Sep 8** | Panther Creek Dispersed #2, #1, Upper | — | Panther Creek CG · Home Valley |
+| **Wed Sep 9** | Council, Olallie, Chain of Lakes, Horseshoe, Orr Creek | Near Lava Beds · FS 60 · Huckleberry Access · FR 9705 · Flattop Sno-Park | Takhlakh Lake CG |
+| **Thu Sep 10** | Chambers Lake · Cat Creek | — | Walupt Lake CG · Adams Fork |
+| **Fri Sep 11** | Greenhorn Creek | Skate Creek · Packwood NF · Iron Creek Dispersed (caution) | North Fork Elk Group · Tower Rock |
+| **Sat Sep 12** | Panther Creek Dispersed #2, #1, Upper · Crest Camp | FR-7708 · FS 9039 · NF-90 · Lone Butte / Rush / Curley sno-parks | Panther Creek CG · Home Valley |
 
-If the Elk Group site is already gone, fall back to
-[Tower Rock](https://www.recreation.gov/camping/campgrounds/232855) for Friday. It had the best
-weekend availability found anywhere on the route (10 sites Friday, 8 Saturday) and sits only two
-miles further along at route mile 228.6.
-
----
-
-## Availability snapshot, 2026-08-31
-
-Reservable sites showing as available, by night. Watch the cliff between Thursday and Friday.
-
-| Campground | Route mi | Sep 8 | Sep 9 | Sep 10 | Sep 11 | Sep 12 |
-|---|---|---|---|---|---|---|
-| Peterson Prairie | 36.0 | 17 | 17 | 18 | 12 | 12 |
-| Takhlakh Lake | 83.5 | 16 | **22** | 18 | **0** | **0** |
-| Adams Fork | 99.6 | 15 | 16 | 16 | 8 | 6 |
-| Walupt Lake | 132.8 | 17 | 16 | **7** | **1** | **1** |
-| North Fork | 226.2 | 10 | 9 | 7 | **1** | **0** |
-| North Fork **Bear Group** | 226 | open | open | open | **taken** | **taken** |
-| North Fork **Elk Group** | 226 | open | taken | taken | **open** | **open** |
-| Tower Rock | 228.6 | 14 | 14 | 14 | **10** | **8** |
-| Iron Creek | 230.8 | **closed all week** | | | | |
-| Panther Creek | 308.4 | **19** | 17 | 18 | **5** | **5** |
-
-Two things worth flagging beyond the numbers:
-
-- **Iron Creek is closed** for the entire trip window. It is a well-known campground on this stretch
-  and it is not available, so do not plan around it.
-- Most of these campgrounds also hold **first-come sites** that never appear in the reservable
-  counts: Takhlakh has 18, Walupt 14, Panther Creek 9, Peterson Prairie 9, North Fork 7, Adams Fork
-  7, Tower Rock 6. That is real backup capacity for a rig or two, but it is not something to rely on
-  for six vehicles arriving together on a Friday.
-
----
-
-## Free vs. paid at a glance
-
-Every campsite in the plan falls into one of two buckets. The primitive sites are the ones you
-target if reservations fall through — they have vault toilets but no potable water.
-
-| Night | Primary | Backups (free / primitive) |
-|---|---|---|
-| **Tue Sep 8** | Panther Creek — **Fee** (Recreation.gov) | *(Moss Creek — Fee; Big Cedars — Fee; Home Valley — Fee)* |
-| **Wed Sep 9** | Takhlakh Lake — **Fee** (Recreation.gov) | Council Lake — **Free/low fee** · Olallie Lake — **Free/low fee** · Horseshoe Lake — **Free/low fee** · Chain of Lakes — **Free/low fee** |
-| **Thu Sep 10** | Walupt Lake — **Fee** (Recreation.gov) | Chambers Lake — **Free/low fee** · Cat Creek — **Free** · Adams Fork — **Fee** (Recreation.gov) |
-| **Fri Sep 11** | North Fork Elk Group — **Fee** (Recreation.gov) | Tower Rock — **Fee** (Recreation.gov) |
-| **Sat Sep 12** | Panther Creek — **Fee** (Recreation.gov) | Crest Camp — **Free** (primitive, fits 2 rigs max) · Home Valley — **Fee** (county) |
-
-The four Wednesday High Lakes backups (Council, Olallie, Horseshoe, Chain of Lakes) are all
-free-or-low-fee primitive sites with vault toilets but no water. They are first-come only and
-each holds just a few rigs — useful for overflow, not a plan for six vehicles.
+Inclusion rule for the downloaded FreeCampsites.net dump: **Free**, within about **3.5 miles
+of the main track**, and not a rest area, “no camping” pin, generic corridor listing, or
+off-route detour. Forest Road 9705 is the one extra at 4.7 miles — pullouts past Lewis River
+Horse Camp on the Day 1 corridor. Unrated sno-parks on the track are listed so they show on
+the map; treat them as unconfirmed until you see them.
 
 ---
 
 ## The plan, night by night
 
-### Tue Sep 8 — Panther Creek Campground (route mile 308.4) · **Fee required**
+### Tue Sep 8 — Panther Creek dispersed cluster · **Free**
 
-Arriving from Nampa around 3:30 to 4:30 PM Pacific. Panther Creek is a forest campground about
-11 miles up Wind River Road from Carson, which means a short backtrack to route mile 0 in the
-morning. Worth it: it is the same camp as the final night, so the group only learns one site, and
-it had the best Tuesday availability of anything nearby.
+Arriving from Nampa around 3:30 to 4:30 PM Pacific. Three named pullouts sit 1–2 miles up
+Panther Creek Road (FS 65 / 6513) from the developed campground — the same road you would
+have used anyway. Dispersed #2 is the closest and the most reviewed; Upper is the roomiest.
 
-**Alternative: Home Valley Campground (Fee — Skamania County park)** — directly on the Columbia
-and only 2.9 miles from route mile 0. It is the first campground you reach driving in from the
-east and it has the only showers near the route. The trade-off is that it sits between WA-14 and
-the BNSF main line, so expect highway and train noise. Booked through Skamania County, not
-Recreation.gov.
+**Paid backup: Panther Creek Campground** — vault toilets and potable water. 19 sites showed
+open Tuesday as of 2026-08-31.
 
-**Not recommended:** pushing 35 miles onto the route Tuesday evening to bank miles. It does not
-shorten the days that are actually long, and it puts camp setup at dusk after a nine-hour travel day.
+**Paid last-resort: Home Valley** — showers, but highway and train noise on the Columbia.
 
-### Wed Sep 9 — Takhlakh Lake Campground (route mile 83.5) · **Fee required**
+### Wed Sep 9 — High Lakes free cluster (Council / Olallie / Chain of Lakes / Horseshoe) · **Free / low fee**
 
-The best camp on the route and the reason Day 1 is 85 miles. Mount Adams sits directly across the
-lake. Non-motorised boating only, which keeps it quiet. Sites in the 30s and 40s showed the most
-availability; book adjacent ones.
+Visit Takhlakh for the Mount Adams reflection, then camp the free primitive sites in the
+same basin. Council is on-route at mile 79.2 and is the best-documented. None of these hold
+six rigs; split the group across the cluster. No potable water.
 
-Backups nearby, all **free or low fee**, all first-come and all small:
-Council Lake (mile 79.2), Olallie Lake (82.8), Chain of Lakes (83.2), Horseshoe Lake (89.5).
-Any of them can absorb an overflow rig but none can take six. None have potable water.
+**Orr Creek Sno-Park** is 12 route miles past Takhlakh on FS 23, with a vault toilet. Push
+there only if High Lakes is slammed — it shortens Thursday.
 
-### Thu Sep 10 — Walupt Lake Campground (route mile 132.8) · **Fee required**
+Along Day 1 the map also shows Near Lava Beds, Forest Route 60, Huckleberry Access,
+Forest Road 9705, and Flattop Sno-Park. Those are afternoon / early-stop pins, not the
+High Lakes night.
 
-Second-largest lake in the forest and the deepest in the county, at the end of a long rough access
-road — budget for the drive in. Goat Rocks Wilderness trailheads leave from the campground, so this
-is the camp to pick if anyone wants to walk further than the day's POIs.
+**Paid backup: Takhlakh Lake Campground** — 22 sites open Wednesday as of 2026-08-31, zero
+Friday or Saturday.
 
-**Backup: Chambers Lake (Free/low fee)** at mile 140.5 — first-come, not on Recreation.gov,
-vault toilet but no water. Availability cannot be checked in advance; a reasonable Plan B on arrival.
+### Thu Sep 10 — Chambers Lake · **Free / low fee**
 
-**Alternative shape:** camping at Adams Fork (mile 99.6, **Fee**) instead shortens Thursday to
-15 miles and lengthens Friday to 127. Only do this if the group wants a very easy Thursday, or if
-Walupt falls through entirely.
+Still visit Walupt (lake, Goat Rocks trailheads, rough access road), then continue about 8
+miles to Chambers Lake, the free first-come camp at mile 140.5. Vault toilet, no water.
+Availability cannot be checked in advance.
 
-### Fri Sep 11 — North Fork Elk Group Camp (route mile 226.2) · **Fee required**
+**Cat Creek** (mile 101, free) is an early-stop that shortens Thursday and lengthens Friday.
 
-The most important reservation of the trip. A single reservable group site on the Cispus with a
-group shelter area, which is exactly the right shape for six vehicles, and it was open on both
-Friday and Saturday when the rest of the forest was not.
+**Paid backups:** Walupt Lake CG (7 sites open Thursday as of 2026-08-31) and Adams Fork.
 
-**Backup: Tower Rock (Fee)** at mile 228.6, booking several adjacent numbered sites.
+### Fri Sep 11 — Greenhorn Creek · **Free**
 
-**Do not plan on:** North Fork Bear Group (already taken both weekend nights) or North Fork
-Campground proper (1 site Friday, 0 Saturday).
+Three shaded creek sites on the FS 25 side of the Cispus at mile 230.8. Best genuine
+dispersed night for the weekend. Still only a few rigs — split the group.
 
-### Sat Sep 12 — Panther Creek Campground (route mile 308.4) · **Fee required**
+Along Friday the map also shows Skate Creek Sno-Park and Packwood NF (Packwood-area
+pullouts) and Iron Creek Dispersed. **Iron Creek’s developed campground is closed all
+week**; the pullouts past it may or may not be legal. Confirm with Cowlitz Valley Ranger
+District before using them.
 
-Right after Panther Creek Falls, and it leaves only 16 miles of loop to close on Sunday morning.
-Only 5 reservable sites showed open, so book it early alongside the Tuesday night.
+**Paid backups that actually fit the group:** North Fork Elk Group (one booking, open both
+weekend nights as of 2026-08-31) and Tower Rock (10 sites Friday, 8 Saturday).
 
-**Worth considering instead:** run the full loop to Triangle Pass on Saturday and drop 21 miles down
-to Home Valley Campground (Fee — Skamania County). That makes Saturday about 117 miles instead of
-82, but it buys hot showers before a 368-mile drive and leaves nothing to do Sunday but leave. This
-is a real trade, not a fallback — decide as a group.
+### Sat Sep 12 — Panther Creek dispersed cluster · **Free**
 
-**Bail-out only: Crest Camp (Free)** at mile 302.7 — primitive, no water, no toilet, fits a couple
-of rigs at most.
+Same three pullouts as Tuesday, plus Crest Camp at mile 302.7 (no facilities, couple of
+rigs). Along Saturday the map shows FR-7708, Forest Route 9039, NF-90, and the Lone Butte /
+Rush Creek / Curley Creek sno-parks — early-stop options if the day is running long.
+
+**Paid backup: Panther Creek Campground** — only 5 reservable sites showed open Saturday.
+**Home Valley** if you want showers before the drive home.
+
+---
+
+## Paid-site availability snapshot, 2026-08-31
+
+Only relevant if you fall back to a developed campground. Watch the cliff between Thursday
+and Friday.
+
+| Campground | Route mi | Sep 8 | Sep 9 | Sep 10 | Sep 11 | Sep 12 |
+|---|---|---|---|---|---|---|
+| Takhlakh Lake | 83.5 | 16 | **22** | 18 | **0** | **0** |
+| Adams Fork | 99.6 | 15 | 16 | 16 | 8 | 6 |
+| Walupt Lake | 132.8 | 17 | 16 | **7** | **1** | **1** |
+| North Fork | 226.2 | 10 | 9 | 7 | **1** | **0** |
+| North Fork **Elk Group** | 226 | open | taken | taken | **open** | **open** |
+| Tower Rock | 228.6 | 14 | 14 | 14 | **10** | **8** |
+| Iron Creek | 230.8 | **closed all week** | | | | |
+| Panther Creek | 308.4 | **19** | 17 | 18 | **5** | **5** |
+
+**Iron Creek is closed** for the entire trip window. Do not plan on the developed
+campground; treat the dispersed pullouts past it as unconfirmed.
 
 ---
 
 ## Practical notes
 
-- **Water.** Takhlakh, Walupt, North Fork, Tower Rock and Panther Creek all have potable water.
-  The primitive High Lakes sites (Council, Olallie, Chain of Lakes, Horseshoe, Cat Creek, Chambers)
-  do **not**. Carry enough that a dry camp is survivable.
-- **Fees.** All five primary camps (Panther Creek, Takhlakh, Walupt, Elk Group, Panther Creek again)
-  are paid Recreation.gov reservations. The primitive backup sites — Council, Olallie, Horseshoe,
-  Chain of Lakes, Chambers Lake, and Cat Creek — are free or low-fee first-come sites with a fee
-  tube if anything; bring small bills. Crest Camp is free and has no facilities. Home Valley is a
-  county park with its own fee structure.
-- **Elevation and cold.** Takhlakh sits at 4,390 ft and Walupt at 3,927 ft. Frost and near-freezing
-  overnight lows are normal in mid-September. Plan bedding for the low 30s even if the forecast
-  looks mild.
-- **Fire rings.** Every planned camp is a developed campground with a ring, which is the best case
-  under a Stage 1 fire restriction. A Stage 2 order removes fires everywhere, so bring a gas stove
-  regardless. See [fire and closures](fire-and-closures.html).
-- **Northwest Forest Pass.** Not needed for camping, but required to park at most trailheads on
-  this route. Every vehicle that parks at a trailhead needs its own.
-- **Trailers.** Small adventure trailers are fine at all of these. The rough access roads to Walupt
-  Lake and the High Rock spur are the places to be careful.
-- **Arrival discipline.** On the weekend nights especially, send one vehicle ahead to claim and
-  confirm the site while the rest of the group finishes the day's POIs.
+- **Water.** Primary nights are dry. Carry enough that a dry camp is survivable. Paid
+  backups (Takhlakh, Walupt, North Fork, Tower Rock, Panther Creek) have potable water.
+- **Fees.** Primary sites are free or a fee-tube if anything. Bring small bills only for
+  paid backups and trailhead pass machines.
+- **Elevation and cold.** Council / High Lakes and Chambers sit around 4,000–4,400 ft.
+  Frost and near-freezing overnight lows are normal in mid-September.
+- **Fire rings.** Existing rings at dispersed sites are still subject to the current forest
+  order. Stage 1 usually means no dispersed fires. Stage 2 means no fires anywhere. Gas
+  stove either way.
+- **Northwest Forest Pass.** Not needed for dispersed camping, but required to park at most
+  trailheads. Every vehicle that parks at a trailhead needs its own.
+- **Trailers.** Small adventure trailers are fine at most of these. Walupt’s access road and
+  the High Rock spur are the rough ones. Some FS 60 and FS 9039 pullouts are tight.
+- **Arrival discipline.** Send one vehicle ahead to claim adjacent pullouts while the rest
+  of the group finishes the day's POIs — especially Friday and Saturday.
+- **Leave no trace.** Use existing sites, camp 100+ ft from water, pack out trash. Do not
+  cut new pads or rings.

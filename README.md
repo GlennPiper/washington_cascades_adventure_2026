@@ -24,23 +24,23 @@ matters, because there is none between Carson and Packwood.
 
 ### Day split
 
-The split is dictated by where developed campgrounds actually exist. There is an
-85-mile stretch in the middle of the route with nothing established, which forces
-days 3 and 4 to be the long ones.
+The split is dictated by free dispersed clusters on the track (High Lakes, Chambers,
+Greenhorn, Panther Creek pullouts). Paid developed campgrounds stay in the tables as
+backups.
 
 | Day | Route miles | Distance | Camp |
 |---|---|---|---|
-| Tue Sep 8 | travel | 376 mi highway | Panther Creek CG |
-| Wed Sep 9 | 0 → 84.5 | 85 mi | **Takhlakh Lake CG** |
-| Thu Sep 10 | 84.5 → 133.5 | 49 mi | Walupt Lake CG |
-| Fri Sep 11 | 133.5 → 226.5 | 93 mi | **North Fork Elk Group Camp** |
-| Sat Sep 12 | 226.5 → 308.5 | 82 mi | Panther Creek CG |
+| Tue Sep 8 | travel | 376 mi highway | **Panther Creek dispersed** |
+| Wed Sep 9 | 0 → 84.5 | 85 mi | **High Lakes free cluster** (Council / Olallie) |
+| Thu Sep 10 | 84.5 → 141 | 57 mi | **Chambers Lake** |
+| Fri Sep 11 | 141 → 232 | 91 mi | **Greenhorn Creek** |
+| Sat Sep 12 | 232 → 308.5 | 77 mi | **Panther Creek dispersed** |
 | Sun Sep 13 | 308.5 → 324.8 | 16 mi + 368 mi home | — |
 
-> **Nothing is booked.** See [`planning/camping_plan.md`](planning/camping_plan.md)
-> for the Recreation.gov availability snapshot and the booking priority order.
-> Friday and Saturday are a weekend and most of the forest is already full on
-> those nights.
+> **Nothing is reserved.** Primary nights are free first-come sites. See
+> [`planning/camping_plan.md`](planning/camping_plan.md). Six vehicles will need several
+> adjacent pullouts in the same cluster. Stage 1 fire restrictions typically ban campfires
+> at dispersed sites.
 
 ---
 
@@ -51,7 +51,7 @@ days 3 and 4 to be the long ones.
 | `index.html` | Landing page with per-platform install instructions and a QR code |
 | `trip-itinerary.html` | **The main app.** Tabbed day-by-day itinerary with Leaflet maps, POI tables, campground cards, and a live arrival-time scheduler |
 | `trip-reference.html` | Everything in one linear document: overview, live links, fuel, every day, hikes, emergency contacts, permits |
-| `camping-plan.html` | Booking priority order and availability snapshot |
+| `camping-plan.html` | Free-first nights, along-route overflow, and paid-backup availability |
 | `fuel-plan.html` | Station list, the two fuel gaps, per-vehicle range worksheet |
 | `fire-and-closures.html` | Go/no-go page: forest alerts, restriction stages, smoke thresholds |
 | `lava-caves.html` | Falls Creek Lava Caves: no permit, gear, white-nose decon, how to find them |

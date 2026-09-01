@@ -5,37 +5,37 @@
       {
         "day_id": "sep8_travel",
         "date_iso": "2026-09-08",
-        "lat": 45.8197,
-        "lon": -121.8797,
-        "location_label": "Panther Creek camp, Wind River (1,000 ft)"
+        "lat": 45.8348,
+        "lon": -121.8709,
+        "location_label": "Panther Creek dispersed, Wind River (1,000 ft)"
       },
       {
         "day_id": "day1_cascades",
         "date_iso": "2026-09-09",
-        "lat": 46.2808,
-        "lon": -121.5986,
-        "location_label": "Takhlakh Lake camp (4,390 ft)"
+        "lat": 46.2633,
+        "lon": -121.6318,
+        "location_label": "Council Lake camp (4,200 ft)"
       },
       {
         "day_id": "day2_cascades",
         "date_iso": "2026-09-10",
-        "lat": 46.4231,
-        "lon": -121.4736,
-        "location_label": "Walupt Lake camp (3,927 ft)"
+        "lat": 46.4655,
+        "lon": -121.5318,
+        "location_label": "Chambers Lake camp (Goat Rocks, ~4,400 ft)"
       },
       {
         "day_id": "day3_cascades",
         "date_iso": "2026-09-11",
-        "lat": 46.4525,
-        "lon": -121.7889,
-        "location_label": "North Fork camp, Cispus River (1,500 ft)"
+        "lat": 46.4336,
+        "lon": -121.9407,
+        "location_label": "Greenhorn Creek camp, Cispus / FS 25 (1,500 ft)"
       },
       {
         "day_id": "day4_cascades",
         "date_iso": "2026-09-12",
-        "lat": 45.8197,
-        "lon": -121.8797,
-        "location_label": "Panther Creek camp, Wind River (1,000 ft)"
+        "lat": 45.8348,
+        "lon": -121.8709,
+        "location_label": "Panther Creek dispersed, Wind River (1,000 ft)"
       },
       {
         "day_id": "sep13_return",

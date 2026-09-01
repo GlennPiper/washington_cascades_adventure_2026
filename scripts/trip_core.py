@@ -69,7 +69,7 @@ POI_STATUS: dict[str, tuple[str, str]] = {
     'DP - Council Bluff':             ('hike_candidate', 'Short steep climb to a ~4,800 ft summit with a panoramic payoff. Historic council site.'),
     'Council Bluff trailhead':        ('skip', 'Trailhead marker; DP - Council Bluff is the destination.'),
     'DP - Babyshoe Pass':             ('primary', '~4,350 ft pass on FS 23. Gravel over the top.'),
-    'DP - Takhlakh Lake':             ('primary', 'The signature view of the route: Mount Adams reflected in the lake. Day 1 camp is here.'),
+    'DP - Takhlakh Lake':             ('primary', 'The signature view of the route: Mount Adams reflected in the lake. Day 1 overnight is the free High Lakes cluster (Council, Olallie and nearby pullouts), not the paid campground.'),
 
     # --- Day 2: Takhlakh -> Walupt Lake (mi 84.5-133.5) -----------------
     'DP - Takh Takh Lava Flow':       ('primary', 'Young basalt flow off Mount Adams, right beside Takhlakh Lake.'),
@@ -80,7 +80,7 @@ POI_STATUS: dict[str, tuple[str, str]] = {
     'DP - Bishop Falls':              ('hike_candidate', 'Hidden multi-tier falls in a steep, remote canyon. Access is rough - scout before committing.'),
     'DP - Walupt Creek Falls':        ('hike_candidate', 'Roughly 220-245 ft of tiered falls.'),
     'Walupt Creek Falls Trailhead':   ('skip', 'Trailhead marker; DP - Walupt Creek Falls is the destination.'),
-    'DP - Walupt Lake':               ('primary', 'Second-largest lake in the forest and the deepest in the county. Day 2 camp; Goat Rocks trailheads start here.'),
+    'DP - Walupt Lake':               ('primary', 'Second-largest lake in the forest and the deepest in the county. Visit for the lake and Goat Rocks trailheads; Thursday night is Chambers Lake (free), with Walupt CG as the paid backup.'),
     'DP - Gilbert Peak':              ('landmark', 'Reference marker for the 8,184 ft high point of the Goat Rocks.'),
 
     # --- Day 3: Walupt -> North Fork (mi 133.5-226.5) -------------------
@@ -105,7 +105,7 @@ POI_STATUS: dict[str, tuple[str, str]] = {
     'Falls Creek Caves Trailhead':    ('skip', 'Trailhead marker; DP - Falls Creek Lava Caves is the destination.'),
     'DP - Falls Creek Lava Caves':    ('hike_candidate', 'LAVA TUBE. No permit, no paid entry — this is not Ape Cave. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. See the lava caves page for decon, parking and how to find the pits.'),
     'Red Mountain Fire Lookout':      ('hike_candidate', 'Lookout at 4,965 ft on the Indian Heaven boundary; panorama of four volcanoes. ~1.7 mi off route.'),
-    'DP - Panther Creek Falls':       ('primary', 'About 130 ft of tiered falls with a built viewing platform a short walk from the road. Final-night camp is just up the road.'),
+    'DP - Panther Creek Falls':       ('primary', 'About 130 ft of tiered falls with a built viewing platform a short walk from the road. First and last night are the free pullouts just up this road.'),
 }
 
 
