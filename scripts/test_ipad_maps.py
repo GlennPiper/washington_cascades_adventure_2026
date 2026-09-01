@@ -68,6 +68,7 @@ def test_static_fixes_present() -> None:
         ("iOS fullscreen capability check", "_fsNativeEnabled"),
         ("CSS fallback class", "is-fullscreen-fallback"),
         ("fallback above iPad nav", "z-index:20000"),
+        ("day picker hidden in map fullscreen", "html.map-fs-open .day-nav"),
         ("GPS marker class", "wca-my-location"),
         ("locate button", "map-loc-btn"),
         ("safe-area viewport", "viewport-fit=cover"),
@@ -328,6 +329,14 @@ def test_fullscreen_fallback_when_api_disabled(origin: str, browser) -> None:
             }"""
         )
         assert int(z) > int(nav_z or 0), f"map z-index {z} not above nav {nav_z}"
+
+        day_nav_display = page.evaluate(
+            """() => {
+              const n = document.querySelector('.day-nav');
+              return n ? getComputedStyle(n).display : '';
+            }"""
+        )
+        assert day_nav_display == "none", f"day-nav visible in fullscreen: {day_nav_display}"
 
         btn.click()
         page.wait_for_timeout(200)

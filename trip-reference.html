@@ -94,6 +94,23 @@ a:hover{text-decoration:underline}
 }
 
 main{max-width:1400px;margin:0 auto;padding:12px}
+/* Itinerary-only: one sticky unit (trip chrome + day picker/tabs). Inner
+   .trip-chrome sticky is redundant and can fight nested-sticky on iOS, so
+   it becomes a normal block inside the shell. z-index matches chrome so
+   the shell stays above in-flow Leaflet maps while remaining under the
+   Menu overlay (10052) and map fullscreen fallback (20000). */
+.itinerary-sticky-shell{position:sticky;top:0;z-index:10050;background:#0d1117}
+.itinerary-sticky-shell .trip-chrome[data-trip-nav]{position:relative;top:auto;border-bottom:0}
+.day-nav{background:#0d1117;border-bottom:1px solid #30363d;padding:8px 18px 10px}
+.itinerary-sticky-shell ~ main .card,
+.itinerary-sticky-shell ~ main .map-wrap,
+.itinerary-sticky-shell ~ main .map{scroll-margin-top:var(--itinerary-sticky-h,8rem)}
+html:has(.itinerary-sticky-shell){scroll-padding-top:var(--itinerary-sticky-h,8rem)}
+/* Hide day switching in both native fullscreen and the iPad fixed fallback.
+   Do not rely on z-index: sticky chrome already sat on top of the map
+   until fallback was raised to 20000. html/body.map-fs-open is toggled
+   by _fsLockScroll for both paths. */
+html.map-fs-open .day-nav,body.map-fs-open .day-nav{display:none!important}
 /* Mobile-only native day picker. Hidden on desktop where the .tabs strip
    shines; promoted on narrow screens so users get a familiar OS picker.
    Wrapper + label make the control discoverable for first-time visitors;
@@ -108,10 +125,10 @@ main{max-width:1400px;margin:0 auto;padding:12px}
   font:600 16px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   -webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer}
 .day-picker:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
-.tabs{display:flex;flex-wrap:wrap;gap:2px;border-bottom:1px solid var(--border);
-  margin-bottom:16px;background:var(--panel);padding:4px;border-radius:6px;}
+.tabs{display:flex;flex-wrap:nowrap;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:0;background:transparent;padding:4px 0;border:0;border-radius:0}
 .tab-btn{background:transparent;color:var(--muted);border:0;padding:9px 14px;cursor:pointer;
-  border-radius:4px;font:inherit;font-size:13px;}
+  border-radius:4px;font:inherit;font-size:13px;flex:0 0 auto;white-space:nowrap}
 .tab-btn:hover{color:var(--text);background:#30363d}
 .tab-btn.active{background:var(--accent);color:#000;font-weight:600}
 .tab-pane{display:none}
@@ -338,7 +355,8 @@ tr.skipped-row .spur-hint::before{content:"[Saving] "}
      CSS is kept (overflow-x:auto + edge mask) for the rare case the
      select is unavailable, but it's hidden by default at this width. */
   .tabs{display:none}
-  .day-picker-wrap{display:block;margin:4px 0 14px}
+  .day-nav{padding:8px 14px 10px}
+  .day-picker-wrap{display:block;margin:0}
   .day-picker{display:block}
 
   /* POI tables: table -> stacked cards. We hide the <thead>, convert each
@@ -411,7 +429,8 @@ tr.skipped-row .spur-hint::before{content:"[Saving] "}
 }
 
 @media print{
-  .tabs,.tab-btn,.day-picker-wrap,.day-picker{display:none}
+  .itinerary-sticky-shell{position:static}
+  .day-nav,.tabs,.tab-btn,.day-picker-wrap,.day-picker{display:none}
   .tab-pane{display:block!important;page-break-before:always}
   .tab-pane:first-child{page-break-before:auto}
   body{background:#fff;color:#000}

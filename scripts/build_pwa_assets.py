@@ -70,7 +70,8 @@ def _build_version() -> str:
                  'weather_forecast_points.json', 'highway_tracks.json'):
         pth = PLAN / name
         extra_raw += pth.read_bytes() if pth.exists() else b''
-    for name in ('weather.html', 'weather-client.js', 'index.html', 'settings.html'):
+    for name in ('weather.html', 'weather-client.js', 'index.html', 'settings.html',
+                 'trip-itinerary.html', 'trip-reference.html'):
         pth = BASE / name
         extra_raw += pth.read_bytes() if pth.exists() else b''
     short = hashlib.sha1(raw + extra_raw).hexdigest()[:10]
