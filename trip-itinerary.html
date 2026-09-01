@@ -989,7 +989,20 @@ tr.skipped-row .spur-hint::before{content:"[Saving] "}
   color:var(--muted);font-size:11.5px;font-style:italic}
 .leaflet-div-icon.marker-icon{background:transparent!important;border:0!important}
 .map-legend{background:rgba(13,17,23,0.88);border:1px solid var(--border);border-radius:6px;
-  padding:6px 9px;color:var(--text);font-size:12px;line-height:1.4;backdrop-filter:blur(4px)}
+  padding:4px 8px;color:var(--text);font-size:12px;line-height:1.4;backdrop-filter:blur(4px)}
+.map-legend .legend-toggle{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  width:100%;min-height:44px;margin:0;padding:0 2px;background:transparent;border:0;color:inherit;
+  font:600 12px/1.2 system-ui,sans-serif;cursor:pointer;text-align:left}
+.map-legend .legend-toggle:hover,.map-legend .legend-toggle:focus-visible{color:#fff}
+.map-legend .legend-chevron{display:inline-block;font-size:11px;opacity:0.85}
+.map-legend .legend-body{display:none;padding:2px 2px 4px}
+.map-legend.is-open .legend-body{display:block}
+.map-wrap:fullscreen .map-legend .legend-body,
+.map-wrap:-webkit-full-screen .map-legend .legend-body,
+.map-wrap.is-fullscreen-fallback .map-legend .legend-body{display:block}
+.map-wrap:fullscreen .map-legend.is-collapsed .legend-body,
+.map-wrap:-webkit-full-screen .map-legend.is-collapsed .legend-body,
+.map-wrap.is-fullscreen-fallback .map-legend.is-collapsed .legend-body{display:none}
 .map-legend .legend-row{display:flex;align-items:center;gap:8px;margin:2px 0}
 .map-legend .legend-swatch{display:inline-flex;align-items:center;justify-content:center;width:18px}
 .map-legend .legend-dot{display:inline-block;width:12px;height:12px;border-radius:50%;
@@ -1581,7 +1594,7 @@ function addLegend(m) {
     const row = (swatch, text) =>
       '<div class="legend-row"><span class="legend-swatch">' + swatch + '</span>' +
       '<span>' + text + '</span></div>';
-    div.innerHTML =
+    const rows =
       row('<span class="legend-dot" style="background:#238636"></span>', 'Primary stop / hike') +
       row('<span class="legend-dot" style="background:#f0883e;width:11px;height:11px;border-radius:2px;display:inline-block"></span>', 'Trailhead') +
       row('<span class="legend-dot" style="background:#1f6feb"></span>', 'Trail landmark') +
@@ -1596,7 +1609,36 @@ function addLegend(m) {
         '<span class="legend-dot" style="background:#2f80ff;border:2px solid #fff;box-sizing:border-box"></span>',
         'You (GPS, if browser allows)'
       );
+    div.innerHTML =
+      '<button type="button" class="legend-toggle" aria-expanded="false" aria-label="Toggle map legend">' +
+        '<span>Legend</span><span class="legend-chevron" aria-hidden="true">&#9656;</span>' +
+      '</button>' +
+      '<div class="legend-body">' + rows + '</div>';
     L.DomEvent.disableClickPropagation(div);
+    const btn = div.querySelector('.legend-toggle');
+    const legendInFs = (wrap) => !!(wrap && (
+      wrap.classList.contains('is-fullscreen') ||
+      wrap.classList.contains('is-fullscreen-fallback')
+    ));
+    const legendExpanded = () => {
+      const wrap = div.closest('.map-wrap');
+      if (legendInFs(wrap)) return !div.classList.contains('is-collapsed');
+      return div.classList.contains('is-open');
+    };
+    const syncToggle = () => {
+      const open = legendExpanded();
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      const chev = btn.querySelector('.legend-chevron');
+      if (chev) chev.innerHTML = open ? '&#9662;' : '&#9656;';
+    };
+    L.DomEvent.on(btn, 'click', function(ev) {
+      L.DomEvent.stop(ev);
+      const wrap = div.closest('.map-wrap');
+      if (legendInFs(wrap)) div.classList.toggle('is-collapsed');
+      else div.classList.toggle('is-open');
+      syncToggle();
+    });
+    m.on('resize', syncToggle);
     return div;
   };
   legend.addTo(m);

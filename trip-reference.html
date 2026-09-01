@@ -327,7 +327,20 @@ tr.skipped-row .spur-hint::before{content:"[Saving] "}
   color:var(--muted);font-size:11.5px;font-style:italic}
 .leaflet-div-icon.marker-icon{background:transparent!important;border:0!important}
 .map-legend{background:rgba(13,17,23,0.88);border:1px solid var(--border);border-radius:6px;
-  padding:6px 9px;color:var(--text);font-size:12px;line-height:1.4;backdrop-filter:blur(4px)}
+  padding:4px 8px;color:var(--text);font-size:12px;line-height:1.4;backdrop-filter:blur(4px)}
+.map-legend .legend-toggle{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  width:100%;min-height:44px;margin:0;padding:0 2px;background:transparent;border:0;color:inherit;
+  font:600 12px/1.2 system-ui,sans-serif;cursor:pointer;text-align:left}
+.map-legend .legend-toggle:hover,.map-legend .legend-toggle:focus-visible{color:#fff}
+.map-legend .legend-chevron{display:inline-block;font-size:11px;opacity:0.85}
+.map-legend .legend-body{display:none;padding:2px 2px 4px}
+.map-legend.is-open .legend-body{display:block}
+.map-wrap:fullscreen .map-legend .legend-body,
+.map-wrap:-webkit-full-screen .map-legend .legend-body,
+.map-wrap.is-fullscreen-fallback .map-legend .legend-body{display:block}
+.map-wrap:fullscreen .map-legend.is-collapsed .legend-body,
+.map-wrap:-webkit-full-screen .map-legend.is-collapsed .legend-body,
+.map-wrap.is-fullscreen-fallback .map-legend.is-collapsed .legend-body{display:none}
 .map-legend .legend-row{display:flex;align-items:center;gap:8px;margin:2px 0}
 .map-legend .legend-swatch{display:inline-flex;align-items:center;justify-content:center;width:18px}
 .map-legend .legend-dot{display:inline-block;width:12px;height:12px;border-radius:50%;

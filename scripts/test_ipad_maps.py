@@ -80,6 +80,8 @@ def test_static_fixes_present() -> None:
         ("settings helper", "WcaSpeakSettings"),
         ("approach hook", "_speakOnGps"),
         ("settings nav link", "settings.html"),
+        ("collapsible map legend", "legend-toggle"),
+        ("legend body wrap", "legend-body"),
     ]
     missing = [name for name, needle in required if needle not in html]
     if missing:
@@ -351,6 +353,30 @@ def test_fullscreen_fallback_when_api_disabled(origin: str, browser) -> None:
         context.close()
 
 
+def test_legend_collapsed_until_fullscreen(origin: str, browser) -> None:
+    context, page = _new_page(browser, origin, [_ios_fullscreen_noop_script()])
+    try:
+        wrap = page.locator(ACTIVE_WRAP)
+        legend = wrap.locator(".map-legend")
+        body = legend.locator(".legend-body")
+        toggle = legend.locator(".legend-toggle")
+        page.wait_for_selector(ACTIVE_WRAP + " .legend-toggle")
+        display = body.evaluate("el => getComputedStyle(el).display")
+        assert display == "none", f"embedded legend should start collapsed, got {display}"
+        toggle.click()
+        display = body.evaluate("el => getComputedStyle(el).display")
+        assert display != "none", f"legend did not expand after toggle, got {display}"
+        toggle.click()
+        display = body.evaluate("el => getComputedStyle(el).display")
+        assert display == "none", f"legend did not collapse after second toggle, got {display}"
+        wrap.locator(".map-fs-btn").click()
+        page.wait_for_selector(ACTIVE_WRAP + ".is-fullscreen-fallback")
+        display = body.evaluate("el => getComputedStyle(el).display")
+        assert display != "none", f"fullscreen legend should be expanded, got {display}"
+    finally:
+        context.close()
+
+
 def test_fullscreen_fallback_when_webkit_is_noop(origin: str, browser) -> None:
     context, page = _new_page(browser, origin, [_ios_fullscreen_silent_webkit_script()])
     try:
@@ -585,6 +611,7 @@ def _run_playwright(origin: str) -> None:
         tests = [
             ("fullscreen fallback when API disabled", test_fullscreen_fallback_when_api_disabled),
             ("fullscreen fallback when webkit is a no-op", test_fullscreen_fallback_when_webkit_is_noop),
+            ("legend collapsed in embedded map, expanded in fullscreen", test_legend_collapsed_until_fullscreen),
             ("GPS marker from auto-watch", test_gps_marker_from_auto_watch),
             ("locate button recenters off-map fix", test_locate_button_recenters_off_map_fix),
             ("high-accuracy timeout retries low accuracy", test_high_accuracy_timeout_retries_low_accuracy),
