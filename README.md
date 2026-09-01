@@ -56,6 +56,7 @@ days 3 and 4 to be the long ones.
 | `fire-and-closures.html` | Go/no-go page: forest alerts, restriction stages, smoke thresholds |
 | `lava-caves.html` | Falls Creek Lava Caves: no permit, gear, white-nose decon, how to find them |
 | `weather.html` | Dual NWS + Open-Meteo forecast for every camp |
+| `settings.html` | Trip preferences, including offline spoken notes as you approach a stop |
 | `trip-plan.gpx` | Derived route with day-split tracks and labeled camps, for Gaia / onX / CalTopo / Garmin |
 | `manifest.webmanifest`, `service-worker.js`, `icons/*` | PWA plumbing (generated, gitignored) |
 
@@ -218,7 +219,8 @@ python scripts/check_availability.py
 
 **6. Rewrite `planning/*.md`** for the companion pages, and delete or add pages by
 editing the `pages` list in `write_planning_markdown_pages()` plus the nav list in
-`_top_nav_html()`, both in `build_deliverables.py`.
+`_top_nav_html()`, both in `build_deliverables.py`. `settings.html` is generated
+by `write_settings_html()` in the same module (not from markdown).
 
 **7. Regenerate `planning/weather_forecast_points.json`** — one entry per day,
 with `day_id` matching the day ids in `build_trip_data.py`.

@@ -34,6 +34,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 ITINERARY = ROOT / "trip-itinerary.html"
+SETTINGS = ROOT / "settings.html"
+
+# Takhlakh Lake — within 0.5 mi of CASCADE_GPS so auto-read can be asserted.
+TAKHLAKH_GPS = {"latitude": 46.2782671, "longitude": -121.5963891}
 
 IPAD_VIEWPORT = {"width": 834, "height": 1194}
 IPAD_UA = (
@@ -69,10 +73,35 @@ def test_static_fixes_present() -> None:
         ("safe-area viewport", "viewport-fit=cover"),
         ("high-accuracy timeout retry", "enableHighAccuracy: false"),
         ("Escape exits fallback", "is-fullscreen-fallback"),
+        ("speakable catalog", "const SPEAKABLE_POIS"),
+        ("listen button class", "speak-btn"),
+        ("stop bar id", "wca-speak-bar"),
+        ("settings helper", "WcaSpeakSettings"),
+        ("approach hook", "_speakOnGps"),
+        ("settings nav link", "settings.html"),
     ]
     missing = [name for name, needle in required if needle not in html]
     if missing:
         raise AssertionError("generated HTML is missing iPad fixes: " + ", ".join(missing))
+
+
+def test_static_settings_page() -> None:
+    if not SETTINGS.is_file():
+        raise SystemExit(f"missing {SETTINGS} — run python scripts/build_deliverables.py first")
+    html = SETTINGS.read_text(encoding="utf-8")
+    required = [
+        ("spoken notes heading", "Spoken notes"),
+        ("enable checkbox", "speak-enabled"),
+        ("scope radios", 'name="speak-scope"'),
+        ("landmarks toggle", "speak-landmarks"),
+        ("repeat toggle", "speak-repeat"),
+        ("voice select", 'id="speak-voice"'),
+        ("settings helper", "WcaSpeakSettings"),
+        ("sample text", "This is how notes will sound"),
+    ]
+    missing = [name for name, needle in required if needle not in html]
+    if missing:
+        raise AssertionError("settings.html is missing spoken-notes UI: " + ", ".join(missing))
 
 
 # ---------------------------------------------------------------------------
@@ -188,7 +217,64 @@ def _geo_timeout_then_low_accuracy_script(lat: float, lon: float) -> str:
     """
 
 
-def _new_page(browser, origin: str, init_scripts: list[str]):
+def _speech_mock_script() -> str:
+    """On-device voices + a speak() log. Utterances stay open so Stop can fire."""
+    return """
+    (function() {
+      window.__WCA_SPOKE = [];
+      window.__WCA_VOICES = [
+        {name:'Samantha', lang:'en-US', localService:true, default:true, voiceURI:'samantha'},
+        {name:'Network Voice', lang:'en-GB', localService:false, default:false, voiceURI:'net-en'}
+      ];
+      function Utterance(text) {
+        this.text = text;
+        this.voice = null;
+        this.rate = 1;
+        this.volume = 1;
+        this.onend = null;
+        this.onerror = null;
+      }
+      const synth = {
+        speaking: false,
+        paused: false,
+        pending: false,
+        _current: null,
+        getVoices: function() { return window.__WCA_VOICES; },
+        speak: function(u) {
+          window.__WCA_SPOKE.push(u && u.text);
+          this.speaking = true;
+          this._current = u;
+        },
+        cancel: function() {
+          this.speaking = false;
+          this._current = null;
+          window.__WCA_SPOKE.push('__cancel__');
+        },
+        pause: function() {},
+        resume: function() {},
+        addEventListener: function() {},
+        removeEventListener: function() {}
+      };
+      window.SpeechSynthesisUtterance = Utterance;
+      Object.defineProperty(window, 'speechSynthesis', {
+        configurable: true, get: function() { return synth; }
+      });
+    })();
+    """
+
+
+def _enable_speak_notes_script() -> str:
+    return """
+    try {
+      localStorage.setItem('wca-speak-notes', '1');
+      localStorage.setItem('wca-speak-notes-scope', 'all');
+      localStorage.setItem('wca-speak-notes-landmarks', '1');
+      localStorage.setItem('wca-speak-notes-repeat', '0');
+    } catch (e) {}
+    """
+
+
+def _new_context(browser, init_scripts: list[str]):
     context = browser.new_context(
         viewport=IPAD_VIEWPORT,
         user_agent=IPAD_UA,
@@ -200,6 +286,11 @@ def _new_page(browser, origin: str, init_scripts: list[str]):
         context.add_init_script(script)
     page = context.new_page()
     page.set_default_timeout(30000)
+    return context, page
+
+
+def _new_page(browser, origin: str, init_scripts: list[str]):
+    context, page = _new_context(browser, init_scripts)
     page.goto(origin + "/trip-itinerary.html", wait_until="domcontentloaded")
     page.wait_for_selector(".leaflet-container", timeout=30000)
     return context, page
@@ -314,6 +405,88 @@ def test_locate_button_touch_target(origin: str, browser) -> None:
         context.close()
 
 
+def test_listen_button_starts_speech_and_stop_cancels(origin: str, browser) -> None:
+    context, page = _new_page(browser, origin, [_speech_mock_script()])
+    try:
+        btn = page.locator(".speak-btn").first
+        btn.wait_for()
+        name = btn.get_attribute("data-speak-name")
+        btn.click()
+        page.wait_for_function("() => (window.__WCA_SPOKE || []).some(t => t && t !== '__cancel__')")
+        spoke = page.evaluate("() => window.__WCA_SPOKE")
+        assert any(name and name in (t or "") for t in spoke), spoke
+        page.wait_for_selector("#wca-speak-bar:not([hidden])")
+        page.locator("#wca-speak-bar .speak-bar-stop").click()
+        page.wait_for_function("() => (window.__WCA_SPOKE || []).includes('__cancel__')")
+        hidden = page.evaluate(
+            "() => { const b = document.getElementById('wca-speak-bar'); return !b || b.hidden; }"
+        )
+        assert hidden is True
+    finally:
+        context.close()
+
+
+def test_approach_speaks_when_enabled(origin: str, browser) -> None:
+    context, page = _new_page(
+        browser,
+        origin,
+        [
+            _speech_mock_script(),
+            _enable_speak_notes_script(),
+            _geo_script(TAKHLAKH_GPS["latitude"], TAKHLAKH_GPS["longitude"]),
+        ],
+    )
+    try:
+        page.wait_for_function(
+            "() => (window.__WCA_SPOKE || []).some(t => t && String(t).indexOf('Takhlakh') !== -1)",
+            timeout=8000,
+        )
+        page.wait_for_selector("#wca-speak-bar:not([hidden])")
+    finally:
+        context.close()
+
+
+def test_settings_persist_and_voice_sample(origin: str, browser) -> None:
+    context, page = _new_context(browser, [_speech_mock_script()])
+    try:
+        page.goto(origin + "/settings.html", wait_until="domcontentloaded")
+        page.wait_for_selector("#speak-enabled")
+        page.locator("#speak-enabled").check()
+        page.locator('input[name="speak-scope"][value="included"]').check()
+        page.locator("#speak-landmarks").uncheck()
+        page.locator("#speak-repeat").check()
+        page.wait_for_function("() => document.querySelector('#speak-voice').options.length >= 2")
+        page.select_option("#speak-voice", "net-en")
+        page.wait_for_function(
+            "() => (window.__WCA_SPOKE || []).some(t => t && String(t).indexOf('Washington Cascades') !== -1)"
+        )
+        stored = page.evaluate(
+            """() => ({
+              enabled: localStorage.getItem('wca-speak-notes'),
+              scope: localStorage.getItem('wca-speak-notes-scope'),
+              landmarks: localStorage.getItem('wca-speak-notes-landmarks'),
+              repeat: localStorage.getItem('wca-speak-notes-repeat'),
+              voice: localStorage.getItem('wca-speak-notes-voice'),
+            })"""
+        )
+        assert stored["enabled"] == "1", stored
+        assert stored["scope"] == "included", stored
+        assert stored["landmarks"] == "0", stored
+        assert stored["repeat"] == "1", stored
+        assert stored["voice"] == "net-en", stored
+
+        page.goto(origin + "/trip-itinerary.html", wait_until="domcontentloaded")
+        page.wait_for_selector(".leaflet-container", timeout=30000)
+        flags = page.evaluate("() => window.WcaSpeakSettings && WcaSpeakSettings.read()")
+        assert flags["enabled"] is True
+        assert flags["scope"] == "included"
+        assert flags["landmarks"] is False
+        assert flags["repeat"] is True
+        assert flags["voice"] == "net-en"
+    finally:
+        context.close()
+
+
 def _run_playwright(origin: str) -> None:
     try:
         from playwright.sync_api import sync_playwright
@@ -344,6 +517,9 @@ def _run_playwright(origin: str) -> None:
             ("locate button recenters off-map fix", test_locate_button_recenters_off_map_fix),
             ("high-accuracy timeout retries low accuracy", test_high_accuracy_timeout_retries_low_accuracy),
             ("locate/fullscreen 44px touch targets", test_locate_button_touch_target),
+            ("Listen button speaks and Stop cancels", test_listen_button_starts_speech_and_stop_cancels),
+            ("approach speaks when enabled", test_approach_speaks_when_enabled),
+            ("Settings persist and voice sample", test_settings_persist_and_voice_sample),
         ]
         browser = pw.chromium.launch(headless=True)
         failed = []
@@ -372,7 +548,9 @@ def main() -> int:
 
     print("Static checks on trip-itinerary.html")
     test_static_fixes_present()
-    print("  PASS  generated HTML includes iPad GPS + fullscreen fixes")
+    print("  PASS  generated HTML includes iPad GPS + fullscreen + spoken-notes hooks")
+    test_static_settings_page()
+    print("  PASS  settings.html includes Spoken notes controls")
 
     if args.static_only:
         return 0

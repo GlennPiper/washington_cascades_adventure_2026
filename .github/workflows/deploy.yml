@@ -75,7 +75,7 @@ jobs:
           mkdir -p _publish
           cp index.html trip-itinerary.html trip-reference.html \
              fuel-plan.html fire-and-closures.html camping-plan.html \
-             lava-caves.html weather.html weather-client.js \
+             lava-caves.html weather.html settings.html weather-client.js \
              trip-plan.gpx _publish/
           cp manifest.webmanifest service-worker.js robots.txt _publish/
           cp -r icons _publish/
