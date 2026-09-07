@@ -22,6 +22,7 @@ Check these the week before departure, the morning you leave, and every morning 
 | [WA DNR wildfires](https://www.dnr.wa.gov/Wildfires) | State-lands fires and statewide burn restrictions |
 | [WA Smoke Information blog](https://wasmoke.blogspot.com/) | Plain-language smoke forecast discussion from state agencies |
 | [Northwest Interagency Coordination Center](https://gacc.nifc.gov/nwcc/) | Regional situation report and preparedness level |
+| [High Lava Fire closure order (GPNF)](https://www.fs.usda.gov/r06/giffordpinchot/alerts/high-lava-fire-closure?reload=true) | The specific area closure and closure map for the active incident nearest this trip |
 
 Phone, when the web is ambiguous:
 
@@ -30,6 +31,23 @@ Phone, when the web is ambiguous:
 
 Ranger district offices keep limited hours and are often closed Tuesday, Thursday and weekends.
 Call early in the week before departure, not the day before.
+
+---
+
+## Active incident watch: High Lava Fire
+
+This is the nearest active incident to this route right now, so treat it as a dedicated morning
+check, not just background context.
+
+| Monitor | Link |
+|---|---|
+| Forest closure order + map (official) | [GPNF High Lava closure](https://www.fs.usda.gov/r06/giffordpinchot/alerts/high-lava-fire-closure?reload=true) |
+| Incident updates / situation page | [InciWeb (search: High Lava)](https://inciweb.wildfire.gov/?searchTerm=high%20lava) |
+| Live perimeter feed (GeoJSON, updates online) | [WFIGS live perimeter query](https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Interagency_Perimeters_Current/FeatureServer/0/query?where=poly_IncidentName%20like%20%27%25LAVA%25%27%20AND%20attr_POOState%3D%27US-WA%27&outFields=poly_IncidentName%2Cpoly_GISAcres%2Cattr_PercentContained%2Cpoly_DateCurrent%2Cattr_ModifiedOnDateTime_dt&outSR=4326&geometryPrecision=5&returnGeometry=true&f=geojson) |
+
+The trip itinerary maps now include this live perimeter as an optional overlay when you have
+signal. It is fetched fresh when the page reloads online; offline mode keeps the rest of the
+route map usable but cannot refresh the perimeter.
 
 ---
 

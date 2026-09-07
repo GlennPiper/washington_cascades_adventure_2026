@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="build_deliverables.py" xmlns="http://www.topografix.com/GPX/1/1">
-<metadata><name>Washington Cascades Adventure Route Trip Plan</name><desc>Day-split tracks, POIs, and primary/backup campgrounds for the September 8-13, 2026 trip.</desc><time>2026-08-31T00:00:00Z</time></metadata>
+<metadata><name>Washington Cascades Adventure Route Trip Plan</name><desc>Day-split tracks, POIs, and primary/backup campgrounds for the September 8-13, 2026 trip.</desc><time>2026-09-07T00:00:00Z</time></metadata>
 <wpt lat="45.7083642" lon="-121.8266111"><name>DP - Columbia River Gorge</name><desc>Trip start. Only sea-level breach of the Cascade Range.</desc><sym>water</sym></wpt>
 <wpt lat="45.758434" lon="-121.8372234"><name>DP - High Bridge</name><desc>Wind River Rd crossing high above the canyon.</desc><sym>bridge</sym></wpt>
 <wpt lat="45.7593874" lon="-121.835913"><name>[BACKUP] DP - Wind River</name><desc>Same pullout as High Bridge.</desc><sym>water</sym></wpt>

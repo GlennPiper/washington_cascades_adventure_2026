@@ -265,6 +265,10 @@ Terrain is not the risk on this trip. Fire, smoke and closures are.</p>
 <td><a href="https://gacc.nifc.gov/nwcc/">Northwest Interagency Coordination Center</a></td>
 <td>Regional situation report and preparedness level</td>
 </tr>
+<tr>
+<td><a href="https://www.fs.usda.gov/r06/giffordpinchot/alerts/high-lava-fire-closure?reload=true">High Lava Fire closure order (GPNF)</a></td>
+<td>The specific area closure and closure map for the active incident nearest this trip</td>
+</tr>
 </tbody>
 </table>
 <p>Phone, when the web is ambiguous:</p>
@@ -274,6 +278,35 @@ Terrain is not the risk on this trip. Fire, smoke and closures are.</p>
 </ul>
 <p>Ranger district offices keep limited hours and are often closed Tuesday, Thursday and weekends.
 Call early in the week before departure, not the day before.</p>
+<hr />
+<h2>Active incident watch: High Lava Fire</h2>
+<p>This is the nearest active incident to this route right now, so treat it as a dedicated morning
+check, not just background context.</p>
+<table>
+<thead>
+<tr>
+<th>Monitor</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forest closure order + map (official)</td>
+<td><a href="https://www.fs.usda.gov/r06/giffordpinchot/alerts/high-lava-fire-closure?reload=true">GPNF High Lava closure</a></td>
+</tr>
+<tr>
+<td>Incident updates / situation page</td>
+<td><a href="https://inciweb.wildfire.gov/?searchTerm=high%20lava">InciWeb (search: High Lava)</a></td>
+</tr>
+<tr>
+<td>Live perimeter feed (GeoJSON, updates online)</td>
+<td><a href="https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Interagency_Perimeters_Current/FeatureServer/0/query?where=poly_IncidentName%20like%20%27%25LAVA%25%27%20AND%20attr_POOState%3D%27US-WA%27&amp;outFields=poly_IncidentName%2Cpoly_GISAcres%2Cattr_PercentContained%2Cpoly_DateCurrent%2Cattr_ModifiedOnDateTime_dt&amp;outSR=4326&amp;geometryPrecision=5&amp;returnGeometry=true&amp;f=geojson">WFIGS live perimeter query</a></td>
+</tr>
+</tbody>
+</table>
+<p>The trip itinerary maps now include this live perimeter as an optional overlay when you have
+signal. It is fetched fresh when the page reloads online; offline mode keeps the rest of the
+route map usable but cannot refresh the perimeter.</p>
 <hr />
 <h2>What a closure actually does to this route</h2>
 <p>The loop has few alternates. Most of it is a single road corridor, so a closure usually means

@@ -497,6 +497,7 @@ def build_payload(
     group_counts: dict[str, Any],
     fuel_plan: dict[str, Any],
     realtime_links: list[dict[str, str]],
+    live_fire_overlays: list[dict[str, Any]] | None = None,
     generated_at: str,
     suppress_names: set[str] | None = None,
     poi_status: dict[str, tuple[str, str]] | None = None,
@@ -581,6 +582,8 @@ def build_payload(
         'realtime_links': realtime_links,
         'generated_at': generated_at,
     }
+    if live_fire_overlays:
+        payload['live_fire_overlays'] = live_fire_overlays
     if intro_html:
         payload['intro_html'] = intro_html
     return payload

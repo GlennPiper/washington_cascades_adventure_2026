@@ -32539,6 +32539,16 @@
     },
     {
       "cat": "Fire/Smoke",
+      "label": "High Lava Fire closure order (GPNF)",
+      "url": "https://www.fs.usda.gov/r06/giffordpinchot/alerts/high-lava-fire-closure?reload=true"
+    },
+    {
+      "cat": "Fire/Smoke",
+      "label": "High Lava Fire perimeter (live GeoJSON)",
+      "url": "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Interagency_Perimeters_Current/FeatureServer/0/query?where=poly_IncidentName%20like%20%27%25LAVA%25%27%20AND%20attr_POOState%3D%27US-WA%27&outFields=poly_IncidentName%2Cpoly_GISAcres%2Cattr_PercentContained%2Cpoly_DateCurrent%2Cattr_ModifiedOnDateTime_dt&outSR=4326&geometryPrecision=5&returnGeometry=true&f=geojson"
+    },
+    {
+      "cat": "Fire/Smoke",
       "label": "WA Smoke Information blog",
       "url": "https://wasmoke.blogspot.com/"
     },
@@ -32748,6 +32758,23 @@
       "url": "tel:+13604971103"
     }
   ],
-  "generated_at": "2026-08-31",
+  "generated_at": "2026-09-07",
+  "live_fire_overlays": [
+    {
+      "id": "high-lava-live-perimeter",
+      "label": "High Lava Fire perimeter",
+      "geojson_url": "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Interagency_Perimeters_Current/FeatureServer/0/query?where=poly_IncidentName%20like%20%27%25LAVA%25%27%20AND%20attr_POOState%3D%27US-WA%27&outFields=poly_IncidentName%2Cpoly_GISAcres%2Cattr_PercentContained%2Cpoly_DateCurrent%2Cattr_ModifiedOnDateTime_dt&outSR=4326&geometryPrecision=5&returnGeometry=true&f=geojson",
+      "source": "NIFC WFIGS current interagency perimeters",
+      "incident_url": "https://inciweb.wildfire.gov/?searchTerm=high%20lava",
+      "closure_url": "https://www.fs.usda.gov/r06/giffordpinchot/alerts/high-lava-fire-closure?reload=true",
+      "default_visible": true,
+      "style": {
+        "color": "#ff4d4f",
+        "weight": 2,
+        "fillColor": "#ff4d4f",
+        "fillOpacity": 0.15
+      }
+    }
+  ],
   "intro_html": "<p>A 325-mile loop through Gifford Pinchot National Forest, starting and ending in the Columbia River Gorge at Carson. The route runs north along the Mount Adams flank, touches the Goat Rocks at Walupt Lake, reaches its northern limit at High Rock Lookout looking straight at Mount Rainier, then swings back south past Mount St Helens and down the Lewis River to close the loop at Triangle Pass.</p><p>Four driving days on route, bracketed by two 370-mile highway days to and from Nampa. Day mileages are 85, 57, 91 and 77. Nights target free dispersed clusters on the track; paid developed campgrounds stay in each day as backups.</p><p><strong>Nothing is reserved.</strong> The plan prefers free first-come pullouts. Six vehicles will need several adjacent sites in the same cluster. Stage 1 fire restrictions typically ban campfires at dispersed sites &mdash; bring a gas stove. Paid Recreation.gov camps remain listed if a cluster is full or you want water.</p>"
 }

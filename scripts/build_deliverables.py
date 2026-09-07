@@ -2516,6 +2516,7 @@ def build_itinerary_html(variant=None):
                 {'label': 'GPNF alerts & closures',   'url': 'https://www.fs.usda.gov/r06/giffordpinchot/alerts'},
                 {'label': 'GPNF road conditions',     'url': 'https://www.fs.usda.gov/r06/giffordpinchot/conditions'},
                 {'label': 'InciWeb active fires',     'url': 'https://inciweb.wildfire.gov/'},
+                {'label': 'High Lava closure order',  'url': 'https://www.fs.usda.gov/r06/giffordpinchot/alerts/high-lava-fire-closure?reload=true'},
                 {'label': 'AirNow fire & smoke',      'url': 'https://fire.airnow.gov/'},
                 {'label': 'WSDOT mountain passes',    'url': 'https://wsdot.com/travel/real-time/mountainpasses'},
                 {'label': 'Fire & closures page',     'url': 'fire-and-closures.html'},
@@ -2651,6 +2652,7 @@ def build_itinerary_html(variant=None):
     }
 
     map_json = json.dumps(map_payload)
+    live_fire_overlays_json = json.dumps(data.get('live_fire_overlays') or [], ensure_ascii=False)
     # Calendar day -> tab id for "open today's leg" on load (browser local date).
     # If several legs share one date_iso, the first in itinerary order wins.
     day_tab_dates = [
@@ -2755,6 +2757,7 @@ if (DAY_PICKER) {{
 }})();
 
 const MAP_DATA = {map_json};
+const LIVE_FIRE_OVERLAYS = {live_fire_overlays_json};
 const MAPS = {{}};
 // dayId -> {{ schedPoiId: Leaflet layer }} for backup stops toggled by row checkboxes.
 const BACKUP_MARKER_REGISTRY = {{}};
@@ -2792,6 +2795,87 @@ const OfflineTileLayer = L.TileLayer.extend({{
     return OFFLINE_TILES[key] || TRANSPARENT_PNG;
   }}
 }});
+const LIVE_FIRE_OVERLAY_DATA_PROMISES = {{}};
+
+function _liveFireEsc(s) {{
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function(c) {{
+    return ({{'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}})[c];
+  }});
+}}
+
+function _liveFirePopupHtml(def, props) {{
+  const p = props || {{}};
+  const name = p.poly_IncidentName || p.attr_IncidentName || def.label || 'Fire perimeter';
+  const acres = Number(p.poly_GISAcres);
+  const contained = Number(p.attr_PercentContained);
+  const ts = Number(p.poly_DateCurrent || p.attr_ModifiedOnDateTime_dt || 0);
+  const when = (Number.isFinite(ts) && ts > 0) ? new Date(ts).toLocaleString() : '';
+  const bits = [];
+  if (Number.isFinite(acres)) bits.push(acres.toLocaleString(undefined, {{maximumFractionDigits: 0}}) + ' acres');
+  if (Number.isFinite(contained)) bits.push(contained.toLocaleString(undefined, {{maximumFractionDigits: 0}}) + '% contained');
+  if (when) bits.push('updated ' + when);
+  let links = '';
+  if (def.incident_url) links += '<a href="' + _liveFireEsc(def.incident_url) + '" target="_blank" rel="noopener">Incident updates</a>';
+  if (def.closure_url) {{
+    if (links) links += ' &middot; ';
+    links += '<a href="' + _liveFireEsc(def.closure_url) + '" target="_blank" rel="noopener">Closure order</a>';
+  }}
+  return '<strong>' + _liveFireEsc(name) + '</strong>'
+    + (bits.length ? '<div class="muted" style="margin-top:4px">' + _liveFireEsc(bits.join(' · ')) + '</div>' : '')
+    + (links ? '<div style="margin-top:8px;font-size:12px">' + links + '</div>' : '');
+}}
+
+function _fetchLiveFireOverlay(def) {{
+  const key = String((def && (def.id || def.label || def.geojson_url)) || '');
+  if (!key || !def || !def.geojson_url) return Promise.resolve({{type: 'FeatureCollection', features: []}});
+  if (LIVE_FIRE_OVERLAY_DATA_PROMISES[key]) return LIVE_FIRE_OVERLAY_DATA_PROMISES[key];
+  LIVE_FIRE_OVERLAY_DATA_PROMISES[key] = fetch(def.geojson_url, {{
+    headers: {{'Accept': 'application/geo+json, application/json'}},
+  }})
+    .then((r) => {{
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }})
+    .then((j) => {{
+      if (!j || j.type !== 'FeatureCollection' || !Array.isArray(j.features)) {{
+        throw new Error('Expected GeoJSON FeatureCollection');
+      }}
+      return j;
+    }})
+    .catch((err) => {{
+      console.warn('Live fire overlay fetch failed:', key, err);
+      return {{type: 'FeatureCollection', features: []}};
+    }});
+  return LIVE_FIRE_OVERLAY_DATA_PROMISES[key];
+}}
+
+function _attachLiveFireOverlays(m, overlayLayers) {{
+  if (!Array.isArray(LIVE_FIRE_OVERLAYS) || !LIVE_FIRE_OVERLAYS.length) return;
+  LIVE_FIRE_OVERLAYS.forEach((def) => {{
+    if (!def || !def.geojson_url) return;
+    const st = def.style || {{}};
+    const layer = L.geoJSON(null, {{
+      style: function() {{
+        return {{
+          color: st.color || '#ff4d4f',
+          weight: st.weight == null ? 2 : st.weight,
+          fillColor: st.fillColor || st.color || '#ff4d4f',
+          fillOpacity: st.fillOpacity == null ? 0.15 : st.fillOpacity,
+        }};
+      }},
+      onEachFeature: function(feature, lyr) {{
+        lyr.bindPopup(_liveFirePopupHtml(def, feature && feature.properties));
+      }},
+    }});
+    overlayLayers[(def.label || 'Fire perimeter') + ' (live)'] = layer;
+    if (def.default_visible !== false) layer.addTo(m);
+    _fetchLiveFireOverlay(def).then((fc) => {{
+      if (!fc || !Array.isArray(fc.features) || !fc.features.length) return;
+      layer.clearLayers();
+      layer.addData(fc);
+    }});
+  }});
+}}
 
 function ensureMap(dayId) {{
   if (typeof L === 'undefined') return;
@@ -2819,9 +2903,18 @@ function ensureMap(dayId) {{
   const imagery = esriLayer('World_Imagery');
   const streets = esriLayer('World_Street_Map');
   topo.addTo(m);
+  const baseLayers = {{
+    'Topo (online)': topo,
+    'Satellite (online)': imagery,
+    'Street (online)': streets,
+  }};
+  const overlayLayers = {{
+    'Offline baseline (always on)': offline,
+  }};
+  _attachLiveFireOverlays(m, overlayLayers);
   L.control.layers(
-    {{'Topo (online)': topo, 'Satellite (online)': imagery, 'Street (online)': streets}},
-    {{'Offline baseline (always on)': offline}},
+    baseLayers,
+    overlayLayers,
     {{collapsed: true, position: 'topright'}}
   ).addTo(m);
   // Build an extensible bounds object so we can frame track + markers together.

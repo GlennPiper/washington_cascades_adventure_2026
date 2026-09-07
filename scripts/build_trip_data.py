@@ -689,6 +689,34 @@ FUEL_PLAN_SUMMARY = {
 # Live-conditions links
 # ---------------------------------------------------------------------------
 _NWS_POINT = 'https://forecast.weather.gov/MapClick.php?lat={lat}&lon={lon}'
+_WFIGS_CURRENT_PERIMETERS_QUERY = (
+    'https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/'
+    'WFIGS_Interagency_Perimeters_Current/FeatureServer/0/query'
+)
+_HIGH_LAVA_WFIGS_GEOJSON = (
+    _WFIGS_CURRENT_PERIMETERS_QUERY
+    + '?where=poly_IncidentName%20like%20%27%25LAVA%25%27%20AND%20attr_POOState%3D%27US-WA%27'
+    + '&outFields=poly_IncidentName%2Cpoly_GISAcres%2Cattr_PercentContained%2Cpoly_DateCurrent%2Cattr_ModifiedOnDateTime_dt'
+    + '&outSR=4326&geometryPrecision=5&returnGeometry=true&f=geojson'
+)
+
+LIVE_FIRE_OVERLAYS = [
+    {
+        'id': 'high-lava-live-perimeter',
+        'label': 'High Lava Fire perimeter',
+        'geojson_url': _HIGH_LAVA_WFIGS_GEOJSON,
+        'source': 'NIFC WFIGS current interagency perimeters',
+        'incident_url': 'https://inciweb.wildfire.gov/?searchTerm=high%20lava',
+        'closure_url': 'https://www.fs.usda.gov/r06/giffordpinchot/alerts/high-lava-fire-closure?reload=true',
+        'default_visible': True,
+        'style': {
+            'color': '#ff4d4f',
+            'weight': 2,
+            'fillColor': '#ff4d4f',
+            'fillOpacity': 0.15,
+        },
+    },
+]
 
 REALTIME_LINKS = [
     # --- Fire and smoke: the primary go/no-go risk for a September trip ---
@@ -702,6 +730,10 @@ REALTIME_LINKS = [
      'url': 'https://fire.airnow.gov/'},
     {'cat': 'Fire/Smoke', 'label': 'WA DNR wildfire dashboard',
      'url': 'https://www.dnr.wa.gov/Wildfires'},
+    {'cat': 'Fire/Smoke', 'label': 'High Lava Fire closure order (GPNF)',
+     'url': 'https://www.fs.usda.gov/r06/giffordpinchot/alerts/high-lava-fire-closure?reload=true'},
+    {'cat': 'Fire/Smoke', 'label': 'High Lava Fire perimeter (live GeoJSON)',
+     'url': _HIGH_LAVA_WFIGS_GEOJSON},
     {'cat': 'Fire/Smoke', 'label': 'WA Smoke Information blog',
      'url': 'https://wasmoke.blogspot.com/'},
     {'cat': 'Fire/Smoke', 'label': 'Northwest Interagency Coordination Center',
@@ -868,7 +900,8 @@ def main() -> None:
         group_counts=cfg.GROUP_COUNTS,
         fuel_plan=FUEL_PLAN_SUMMARY,
         realtime_links=REALTIME_LINKS,
-        generated_at='2026-08-31',
+        live_fire_overlays=LIVE_FIRE_OVERLAYS,
+        generated_at='2026-09-07',
         intro_html=INTRO_HTML,
     )
 
