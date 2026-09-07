@@ -10,6 +10,25 @@ Check these the week before departure, the morning you leave, and every morning 
 
 ---
 
+## Active fire: High Lava
+
+The **High Lava Fire** is burning approximately 10–11 miles northwest of Stabler, WA, in the Gifford Pinchot National Forest between Mt. St. Helens and Mt. Rainier. Lightning ignited it on July 23, 2026. As of early September it is smoldering with no perimeter growth; recent rain has aided containment.
+
+**Status as of September 7, 2026:** ~2,899 acres · 63% contained · Stage 2 fire restrictions in effect across all of GPNF
+
+| Resource | What it covers |
+|---|---|
+| [InciWeb — High Lava](https://inciweb.wildfire.gov/incident-information/wafnf-high-lava) | Official incident overview and situation reports |
+| [GPNF closure order](https://www.fs.usda.gov/r06/giffordpinchot/alerts/high-lava-fire-closure) | Roads, trails and area closed through October 31, 2026 |
+| [GPNF fire restrictions](https://www.fs.usda.gov/r06/giffordpinchot/alerts/fire-restrictions) | Current Stage 2 order — all open campfires banned across the forest |
+| [Wildfire Explorer map](https://fires.cornea.is/fire/washington_high-lava_2026-07-24-030247) | Live perimeter and community impact |
+
+**Impact on this itinerary:** The closure covers Wind River, Trapper Creek, Canyon Creek, Siouxon Creek, and the Soda Peaks and West Crater trailheads — the far western fringe of GPNF, well away from the main route corridor. FS 23, FS 25, Elk Pass, Takhlakh, Walupt, and High Rock are all outside the closure boundary. **No planned stops on this itinerary are inside the closed area.** The fire is the direct cause of the Stage 2 restrictions that ban all campfires, including at dispersed sites.
+
+The perimeter map below is embedded from NIFC/WFIGS and can be refreshed to the current boundary when you have signal.
+
+---
+
 ## Check these first
 
 | Source | What it tells you |

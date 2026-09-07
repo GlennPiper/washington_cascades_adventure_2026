@@ -580,6 +580,224 @@ article.md-page hr { border: none; border-top: 1px solid #30363d; margin: 22px 0
   article.md-page table { display: block; overflow-x: auto; max-width: 100vw; }
 }
 """
+
+# Additional CSS injected only into the fire page for the perimeter map section.
+_FIRE_MAP_CSS = """
+.fire-map-section { margin-top: 28px; padding-top: 12px; border-top: 1px solid #21262d; }
+.fire-map-section h2 { font-size: 18px; color: #f0f6fc; margin: 0 0 10px; }
+.fire-map-status-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+  margin-bottom: 8px;
+}
+.fire-map-status { font-size: 13px; color: #8b949e; flex: 1 1 auto; }
+.fire-map-refresh-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 5px 12px; border: 1px solid #484f58; border-radius: 6px;
+  background: #21262d; color: #c9d1d9; font: 13px/1 system-ui, sans-serif;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0;
+}
+.fire-map-refresh-btn:hover:not(:disabled) { border-color: #ff9d45; color: #ff9d45; }
+.fire-map-refresh-btn:disabled { opacity: 0.55; cursor: default; }
+.fire-map-container {
+  height: 420px; border-radius: 8px; overflow: hidden;
+  border: 1px solid #30363d; margin-bottom: 8px;
+}
+.fire-map-caption { font-size: 12px; color: #8b949e; margin: 4px 0 0; }
+.fire-map-caption a { color: #58a6ff; }
+@media (max-width: 640px) {
+  .fire-map-container { height: 300px; }
+}
+"""
+
+
+def _build_fire_map_block() -> tuple[str, str, str]:
+    """Build the Leaflet-based fire perimeter map block for fire-and-closures.html.
+
+    Returns (extra_head, map_html, footer_js) where:
+      extra_head  -- Leaflet CSS + fire map CSS injected into <head>
+      map_html    -- the map section HTML inserted after the markdown <article> body
+      footer_js   -- Leaflet JS + map initialisation injected before </body>
+
+    Fire perimeter data is read from planning/high_lava_perimeter.json (simplified
+    GeoJSON from NIFC WFIGS, baked in at build time so the page works offline).
+    A "Refresh from NIFC" button fetches the live perimeter when online and caches
+    it in localStorage so subsequent offline loads use the fresher copy.
+    """
+    import math
+
+    perimeter_path = PLAN / 'high_lava_perimeter.json'
+    if perimeter_path.exists():
+        perimeter_json = perimeter_path.read_text(encoding='utf-8')
+    else:
+        perimeter_json = '{"type":"FeatureCollection","features":[]}'
+
+    # Filter offline tiles to just those that cover the High Lava fire bounding box
+    # (~45.844–45.903 N, 122.148–122.073 W) at zoom 7–10, to keep the page size down.
+    def _tile_for(lat: float, lon: float, zoom: int) -> str:
+        lat_r = math.radians(lat)
+        n = 2 ** zoom
+        x = int((lon + 180.0) / 360.0 * n)
+        y = int((1.0 - math.asinh(math.tan(lat_r)) / math.pi) / 2.0 * n)
+        return f'{zoom}/{x}/{y}'
+
+    fire_lat_min, fire_lat_max = 45.844, 45.903
+    fire_lon_min, fire_lon_max = -122.148, -122.073
+    fire_tile_keys: set[str] = set()
+    for z in (7, 8, 9, 10):
+        for lat in (fire_lat_min, fire_lat_max):
+            for lon in (fire_lon_min, fire_lon_max):
+                fire_tile_keys.add(_tile_for(lat, lon, z))
+    fire_tiles = {k: v for k, v in OFFLINE_TILES.items() if k in fire_tile_keys}
+    fire_tiles_json = json.dumps(fire_tiles)
+    max_tile_zoom = max(cfg.TILE_ZOOMS) if OFFLINE_TILES else 10
+
+    extra_head = (
+        f'<style>{LEAFLET_CSS}\n{_FIRE_MAP_CSS}</style>'
+    )
+
+    map_html = (
+        '<div class="fire-map-section">\n'
+        '<h2>High Lava Fire \u2014 Perimeter Map</h2>\n'
+        '<div class="fire-map-status-row">\n'
+        '  <span id="hlf-status-text" class="fire-map-status"></span>\n'
+        '  <button id="hlf-refresh-btn" class="fire-map-refresh-btn"'
+        ' onclick="refreshHighLavaPerimeter()"'
+        ' title="Fetch latest perimeter from NIFC when you have signal">'
+        '&#8635; Refresh from NIFC</button>\n'
+        '</div>\n'
+        '<div id="high-lava-map" class="fire-map-container"></div>\n'
+        '<p class="fire-map-caption">Orange polygon: fire perimeter from '
+        '<a href="https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-current-interagency-fire-perimeters/about"'
+        ' target="_blank" rel="noopener">NIFC\u202fWFIGS</a>. '
+        'Embedded at build time; tap <em>Refresh</em> when online for the current boundary. '
+        'Official updates: '
+        '<a href="https://inciweb.wildfire.gov/incident-information/wafnf-high-lava"'
+        ' target="_blank" rel="noopener">InciWeb</a>'
+        ' &middot; '
+        '<a href="https://www.fs.usda.gov/r06/giffordpinchot/alerts/high-lava-fire-closure"'
+        ' target="_blank" rel="noopener">GPNF closure order</a></p>\n'
+        '</div>'
+    )
+
+    # JavaScript uses {{ / }} so f-string literal braces don't collide.
+    footer_js = f"""<script>{LEAFLET_JS}</script>
+<script>
+(function () {{
+  'use strict';
+  var HLF_PERIMETER_EMBEDDED = {perimeter_json};
+  var TRANSPARENT_PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+  var HLF_OFFLINE_TILES = {fire_tiles_json};
+  var HLF_MAX_NATIVE_ZOOM = {max_tile_zoom};
+
+  var HlfOfflineTileLayer = L.TileLayer.extend({{
+    getTileUrl: function (coords) {{
+      var key = coords.z + '/' + coords.x + '/' + coords.y;
+      return HLF_OFFLINE_TILES[key] || TRANSPARENT_PNG;
+    }}
+  }});
+
+  function esriFireLayer(name) {{
+    return L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/' + name + '/MapServer/tile/{{z}}/{{y}}/{{x}}',
+      {{ attribution: 'Tiles &copy; Esri', maxZoom: 19, errorTileUrl: TRANSPARENT_PNG, crossOrigin: true }}
+    );
+  }}
+
+  var _hlfMap = null;
+  var _hlfPerimLayer = null;
+
+  function _formatDate(ms) {{
+    if (!ms) return 'unknown';
+    try {{
+      return new Date(ms).toLocaleDateString('en-US', {{ month: 'short', day: 'numeric', year: 'numeric' }});
+    }} catch (e) {{ return String(ms); }}
+  }}
+
+  function _updateStatus(props) {{
+    var el = document.getElementById('hlf-status-text');
+    if (!el || !props) return;
+    var size = props.attr_IncidentSize != null ? Math.round(props.attr_IncidentSize).toLocaleString() : '?';
+    var pct  = props.attr_PercentContained != null ? props.attr_PercentContained : '?';
+    var dt   = _formatDate(props.attr_ModifiedOnDateTime_dt);
+    el.textContent = '\u223c' + size + ' acres \u00b7 ' + pct + '% contained \u00b7 Updated ' + dt;
+  }}
+
+  function _displayPerimeter(geojson) {{
+    if (!_hlfMap || !geojson) return;
+    if (_hlfPerimLayer) {{ _hlfMap.removeLayer(_hlfPerimLayer); _hlfPerimLayer = null; }}
+    _hlfPerimLayer = L.geoJSON(geojson, {{
+      style: {{ color: '#c0392b', weight: 2, fillColor: '#e74c3c', fillOpacity: 0.30 }}
+    }}).addTo(_hlfMap);
+    var bounds = _hlfPerimLayer.getBounds();
+    if (bounds.isValid()) _hlfMap.fitBounds(bounds, {{ padding: [24, 24] }});
+    var feat = geojson.features && geojson.features[0];
+    if (feat) _updateStatus(feat.properties);
+  }}
+
+  function initHighLavaMap() {{
+    if (typeof L === 'undefined') return;
+    var el = document.getElementById('high-lava-map');
+    if (!el) return;
+    _hlfMap = L.map('high-lava-map');
+    _hlfMap.createPane('offlinePane');
+    _hlfMap.getPane('offlinePane').style.zIndex = 150;
+    new HlfOfflineTileLayer('', {{
+      pane: 'offlinePane', minZoom: 0, maxZoom: 19, maxNativeZoom: HLF_MAX_NATIVE_ZOOM,
+      attribution: 'Offline baseline: &copy; OpenStreetMap contributors (cached)',
+    }}).addTo(_hlfMap);
+    var topo = esriFireLayer('World_Topo_Map');
+    var sat  = esriFireLayer('World_Imagery');
+    topo.addTo(_hlfMap);
+    L.control.layers(
+      {{'Topo (online)': topo, 'Satellite (online)': sat}},
+      {{}},
+      {{ collapsed: true, position: 'topright' }}
+    ).addTo(_hlfMap);
+    // Use a cached (refreshed) perimeter if available, otherwise use the build-time copy.
+    var saved = null;
+    try {{ saved = JSON.parse(localStorage.getItem('hlf_perimeter') || 'null'); }} catch (e) {{}}
+    _displayPerimeter(saved || HLF_PERIMETER_EMBEDDED);
+  }}
+
+  window.refreshHighLavaPerimeter = function () {{
+    var btn = document.getElementById('hlf-refresh-btn');
+    if (btn) {{ btn.disabled = true; btn.textContent = '\u29d7 Fetching\u2026'; }}
+    var url = 'https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services'
+            + '/WFIGS_Interagency_Perimeters_Current/FeatureServer/0/query'
+            + '?f=geojson&returnGeometry=true'
+            + '&outFields=attr_IncidentName,attr_IncidentSize,attr_PercentContained,attr_ModifiedOnDateTime_dt'
+            + '&outSR=4326&where=UPPER(attr_IncidentName)+LIKE+\'%25HIGH+LAVA%25\'';
+    fetch(url)
+      .then(function (r) {{
+        if (!r.ok) throw new Error('HTTP\u202f' + r.status);
+        return r.json();
+      }})
+      .then(function (data) {{
+        if (!data.features || !data.features.length) {{
+          throw new Error('Fire not in current perimeters \u2014 may be 100% contained');
+        }}
+        try {{ localStorage.setItem('hlf_perimeter', JSON.stringify(data)); }} catch (e) {{}}
+        _displayPerimeter(data);
+        if (btn) {{ btn.textContent = '\u2713 Updated'; btn.disabled = false; }}
+        setTimeout(function () {{ if (btn) btn.textContent = '\u8635 Refresh from NIFC'; }}, 4000);
+      }})
+      .catch(function (e) {{
+        if (btn) {{ btn.textContent = '\u2717 ' + e.message; btn.disabled = false; }}
+        setTimeout(function () {{ if (btn) btn.textContent = '\u8635 Refresh from NIFC'; }}, 6000);
+      }});
+  }};
+
+  if (document.readyState === 'loading') {{
+    document.addEventListener('DOMContentLoaded', initHighLavaMap);
+  }} else {{
+    initHighLavaMap();
+  }}
+}})();
+</script>"""
+
+    return extra_head, map_html, footer_js
+
+
 def write_planning_markdown_pages():
     """Emit the standalone companion pages from planning/*.md (PWA-offline)."""
     try:
@@ -623,6 +841,12 @@ def write_planning_markdown_pages():
         raw = md_path.read_text(encoding='utf-8')
         body = markdown.markdown(raw, extensions=ext)
         nav = _top_nav_html(nav_key, brand_html=TRIP_BRAND_SHARED_HTML)
+
+        if nav_key == 'fire':
+            fire_extra_head, fire_map_html, fire_footer_js = _build_fire_map_block()
+        else:
+            fire_extra_head = fire_map_html = fire_footer_js = ''
+
         html_page = f"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8">
@@ -630,12 +854,15 @@ def write_planning_markdown_pages():
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {PWA_HEAD}
 <style>{STATIC_MD_PAGE_CSS}</style>
+{fire_extra_head}
 </head><body>
 {nav}
 <article class="md-page">
 {body}
+{fire_map_html}
 </article>
 {PWA_REGISTER_JS}
+{fire_footer_js}
 </body></html>
 """
         out_path.write_text(html_page, encoding='utf-8')
