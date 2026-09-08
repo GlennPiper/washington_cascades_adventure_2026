@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="build_deliverables.py" xmlns="http://www.topografix.com/GPX/1/1">
 <metadata><name>Washington Cascades Adventure Route Trip Plan</name><desc>Day-split tracks, POIs, and primary/backup campgrounds for the September 8-13, 2026 trip.</desc><time>2026-09-07T00:00:00Z</time></metadata>
-<wpt lat="45.7083642" lon="-121.8266111"><name>DP - Columbia River Gorge</name><desc>Trip start. Only sea-level breach of the Cascade Range.</desc><sym>water</sym></wpt>
-<wpt lat="45.758434" lon="-121.8372234"><name>DP - High Bridge</name><desc>Wind River Rd crossing high above the canyon.</desc><sym>bridge</sym></wpt>
+<wpt lat="45.7083642" lon="-121.8266111"><name>DP - Columbia River Gorge</name><desc>Trip start. Only sea-level breach of the Cascade Range. Tuesday stop on the drive in from Nampa.</desc><sym>water</sym></wpt>
+<wpt lat="45.7410648" lon="-121.8213691"><name>Fuel - Carson, WA</name><desc>TOP OFF HERE. Last fuel for 154 route miles until Packwood at mi 156.</desc><sym>fuel-24</sym></wpt>
+<wpt lat="45.758434" lon="-121.8372234"><name>DP - High Bridge</name><desc>Wind River Rd crossing high above the canyon. Tuesday stop after fuelling in Carson.</desc><sym>bridge</sym></wpt>
 <wpt lat="45.7593874" lon="-121.835913"><name>[BACKUP] DP - Wind River</name><desc>Same pullout as High Bridge.</desc><sym>water</sym></wpt>
 <wpt lat="45.7855023" lon="-121.7365882"><name>[BACKUP] Triangle Pass</name><desc>Loop junction. The route returns through here at mi 324.8 on the final day.</desc><sym>attraction</sym></wpt>
 <wpt lat="45.8532238" lon="-121.7203839"><name>DP - Big Lava Bed</name><desc>Rugged 8,200-year-old basalt flow from the Indian Heaven volcanic field.</desc><sym>volcano</sym></wpt>
@@ -926,33 +927,6 @@
 <trkpt lat="45.78578" lon="-121.75022"></trkpt>
 </trkseg></trk>
 <trk><name>Sep 9 (Wed) - Day 1: Triangle Pass -&gt; Takhlakh Lake</name><trkseg>
-<trkpt lat="45.715179" lon="-121.828143"></trkpt>
-<trkpt lat="45.714986" lon="-121.829042"></trkpt>
-<trkpt lat="45.715051" lon="-121.829354"></trkpt>
-<trkpt lat="45.715252" lon="-121.82921"></trkpt>
-<trkpt lat="45.715522" lon="-121.828394"></trkpt>
-<trkpt lat="45.716185" lon="-121.827258"></trkpt>
-<trkpt lat="45.717121" lon="-121.826191"></trkpt>
-<trkpt lat="45.717262" lon="-121.825927"></trkpt>
-<trkpt lat="45.71797" lon="-121.8239"></trkpt>
-<trkpt lat="45.718357" lon="-121.82311"></trkpt>
-<trkpt lat="45.71957" lon="-121.821201"></trkpt>
-<trkpt lat="45.719798" lon="-121.820944"></trkpt>
-<trkpt lat="45.720165" lon="-121.820725"></trkpt>
-<trkpt lat="45.721326" lon="-121.820614"></trkpt>
-<trkpt lat="45.722654" lon="-121.820265"></trkpt>
-<trkpt lat="45.724202" lon="-121.820481"></trkpt>
-<trkpt lat="45.739179" lon="-121.820475"></trkpt>
-<trkpt lat="45.740931" lon="-121.820554"></trkpt>
-<trkpt lat="45.742887" lon="-121.821113"></trkpt>
-<trkpt lat="45.744313" lon="-121.821715"></trkpt>
-<trkpt lat="45.745909" lon="-121.822605"></trkpt>
-<trkpt lat="45.747532" lon="-121.82384"></trkpt>
-<trkpt lat="45.74912" lon="-121.825468"></trkpt>
-<trkpt lat="45.754204" lon="-121.831801"></trkpt>
-<trkpt lat="45.754569" lon="-121.832141"></trkpt>
-<trkpt lat="45.755791" lon="-121.833823"></trkpt>
-<trkpt lat="45.759133" lon="-121.837861"></trkpt>
 <trkpt lat="45.765487" lon="-121.845784"></trkpt>
 <trkpt lat="45.765604" lon="-121.845696"></trkpt>
 <trkpt lat="45.768784" lon="-121.845831"></trkpt>
@@ -7272,6 +7246,36 @@
 <trkpt lat="45.785258" lon="-121.739069"></trkpt>
 <trkpt lat="45.784837" lon="-121.738852"></trkpt>
 <trkpt lat="45.784837" lon="-121.738852"></trkpt>
+</trkseg></trk>
+<trk><name>Sep 8 (Tue) - Travel to the Gorge - highway leg</name><trkseg>
+<trkpt lat="45.715179" lon="-121.828143"></trkpt>
+<trkpt lat="45.714986" lon="-121.829042"></trkpt>
+<trkpt lat="45.715051" lon="-121.829354"></trkpt>
+<trkpt lat="45.715252" lon="-121.82921"></trkpt>
+<trkpt lat="45.715522" lon="-121.828394"></trkpt>
+<trkpt lat="45.716185" lon="-121.827258"></trkpt>
+<trkpt lat="45.717121" lon="-121.826191"></trkpt>
+<trkpt lat="45.717262" lon="-121.825927"></trkpt>
+<trkpt lat="45.71797" lon="-121.8239"></trkpt>
+<trkpt lat="45.718357" lon="-121.82311"></trkpt>
+<trkpt lat="45.71957" lon="-121.821201"></trkpt>
+<trkpt lat="45.719798" lon="-121.820944"></trkpt>
+<trkpt lat="45.720165" lon="-121.820725"></trkpt>
+<trkpt lat="45.721326" lon="-121.820614"></trkpt>
+<trkpt lat="45.722654" lon="-121.820265"></trkpt>
+<trkpt lat="45.724202" lon="-121.820481"></trkpt>
+<trkpt lat="45.739179" lon="-121.820475"></trkpt>
+<trkpt lat="45.740931" lon="-121.820554"></trkpt>
+<trkpt lat="45.742887" lon="-121.821113"></trkpt>
+<trkpt lat="45.744313" lon="-121.821715"></trkpt>
+<trkpt lat="45.745909" lon="-121.822605"></trkpt>
+<trkpt lat="45.747532" lon="-121.82384"></trkpt>
+<trkpt lat="45.74912" lon="-121.825468"></trkpt>
+<trkpt lat="45.754204" lon="-121.831801"></trkpt>
+<trkpt lat="45.754569" lon="-121.832141"></trkpt>
+<trkpt lat="45.755791" lon="-121.833823"></trkpt>
+<trkpt lat="45.759133" lon="-121.837861"></trkpt>
+<trkpt lat="45.765487" lon="-121.845784"></trkpt>
 </trkseg></trk>
 <trk><name>Sep 13 (Sun) - Close the loop + drive home - highway leg</name><trkseg>
 <trkpt lat="45.71518" lon="-121.82814"></trkpt>

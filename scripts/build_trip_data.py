@@ -23,6 +23,7 @@ if str(_SCRIPTS) not in sys.path:
 
 import trip_config as cfg  # noqa: E402
 from trip_core import (  # noqa: E402
+    build_day_track,
     build_payload,
     load_highway_tracks,
     load_route,
@@ -55,14 +56,24 @@ DAYS = [
             '9 to 9.5 hours with fuel and food stops for a six-vehicle group. You gain an hour '
             'crossing into Pacific time, which puts arrival in camp around 4:00 to 5:30 PM PDT. '
             'Fuel in Carson — last pump for 154 route miles — then continue onto the loop '
-            'instead of turning up Panther Creek. Camp the free pullouts on opposite arms of '
+            'instead of turning up Panther Creek. The Columbia River Gorge and Wind River High '
+            'Bridge are Tuesday stops on the way in. Camp the free pullouts on opposite arms of '
             'Triangle Pass: FR 68 near the pass (about mile 15) is the easier Tuesday arrival; '
             'the Big Lava Bed pin (about mile 26) banks eleven more forest-road miles if there '
             'is daylight. Moss Creek is the paid backup with a toilet and water. Wednesday '
             'starts already on the loop.'
         ),
-        'mi_lo': None,
-        'mi_hi': None,
+        'mi_lo': 0.0,
+        'mi_hi': 4.0,
+        'track_segments': [
+            {'mi_lo': 0.0, 'mi_hi': 4.0, 'reverse': False},
+        ],
+        'poi_extra_status': {
+            'Gas Station': (
+                'primary',
+                'Mandatory Carson top-off. Last fuel for 154 route miles.',
+            ),
+        },
         'miles': 384,
         'driving_hours_est': 7.7,
     },
@@ -84,9 +95,9 @@ DAYS = [
             'whole route. Overnight in the free High Lakes cluster (Council, Olallie, Chain of '
             'Lakes, Horseshoe) rather than the paid Takhlakh campground.'
         ),
-        'mi_lo': 0.0,
+        'mi_lo': 4.0,
         'mi_hi': 84.5,
-        'miles': 85,
+        'miles': 81,
         'driving_hours_est': 6.0,
     },
     {
@@ -843,7 +854,7 @@ INTRO_HTML = (
     'straight at Mount Rainier, then swings back south past Mount St Helens and down the Lewis '
     'River to close the loop at Triangle Pass.</p>'
     '<p>Four driving days on route, bracketed by two ~370-mile highway days to and from Nampa. '
-    'Day mileages are 85, 57, 91 and 77. Nights target free dispersed clusters on the track; '
+    'Day mileages are 81, 57, 91 and 77. Nights target free dispersed clusters on the track; '
     'paid developed campgrounds stay in each day as backups.</p>'
     '<p><strong>Nothing is reserved.</strong> The plan prefers free first-come pullouts. '
     'Six vehicles will need several adjacent sites in the same cluster. Stage 1 fire '
@@ -852,11 +863,15 @@ INTRO_HTML = (
 )
 
 
-def _attach_highway_tracks(hw: dict, day: dict) -> dict:
+def _attach_highway_tracks(hw: dict, day: dict, route: dict) -> dict:
     """Merge OSRM highway polylines onto the travel days."""
     d = dict(day)
     if d['id'] == 'sep8_travel':
         d['synthetic_track_points'] = hw.get('sep8_nampa_to_carson') or []
+        segs = d.get('track_segments') or []
+        if segs:
+            # Wind River / High Bridge GPX slice, drawn alongside the highway line.
+            d['extra_track_points'] = build_day_track(route, segs)
     elif d['id'] == 'sep13_return':
         # Sunday both closes the loop and drives home: the route slice is the
         # main line, the highway leg is drawn alongside it.
@@ -867,7 +882,7 @@ def _attach_highway_tracks(hw: dict, day: dict) -> dict:
 def main() -> None:
     route = load_route(PLAN)
     hw = load_highway_tracks(PLAN)
-    days_spec = [_attach_highway_tracks(hw, day) for day in DAYS]
+    days_spec = [_attach_highway_tracks(hw, day, route) for day in DAYS]
 
     payload = build_payload(
         days_spec=days_spec,

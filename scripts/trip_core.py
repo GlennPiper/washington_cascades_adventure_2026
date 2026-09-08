@@ -44,11 +44,13 @@ import trip_config as cfg  # noqa: E402
 # POI catalog
 # ---------------------------------------------------------------------------
 POI_STATUS: dict[str, tuple[str, str]] = {
-    # --- Day 1: Carson -> Takhlakh Lake (mi 0-84.5) ---------------------
-    'DP - Columbia River Gorge':      ('primary', 'Trip start. Only sea-level breach of the Cascade Range.'),
+    # --- Tue Sep 8: Gorge + High Bridge on the drive in (mi 0-4) --------
+    'DP - Columbia River Gorge':      ('primary', 'Trip start. Only sea-level breach of the Cascade Range. Tuesday stop on the drive in from Nampa.'),
     'Gas Station':                    ('logistics', 'Fuel stop'),
-    'DP - High Bridge':               ('primary', 'Wind River Rd crossing high above the canyon.'),
+    'DP - High Bridge':               ('primary', 'Wind River Rd crossing high above the canyon. Tuesday stop after fuelling in Carson.'),
     'DP - Wind River':                ('backup', 'Same pullout as High Bridge.'),
+
+    # --- Day 1: Triangle Pass -> Takhlakh Lake (mi 4-84.5) --------------
     'Triangle Pass':                  ('backup', 'Loop junction. The route returns through here at mi 324.8 on the final day.'),
     'DP - Big Lava Bed':              ('primary', 'Rugged 8,200-year-old basalt flow from the Indian Heaven volcanic field.'),
     'Monte Cristo Slab':              ('backup', 'Rock-climbing crag ~1.9 mi off route.'),

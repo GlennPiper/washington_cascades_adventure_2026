@@ -31,7 +31,7 @@ in the tables as backups.
 | Day | Route miles | Distance | Camp |
 |---|---|---|---|
 | Tue Sep 8 | travel | 384 mi highway | **Triangle Pass / Big Lava dispersed** |
-| Wed Sep 9 | 0 → 84.5 | 85 mi | **High Lakes free cluster** (Council / Olallie) |
+| Wed Sep 9 | 4 → 84.5 | 81 mi | **High Lakes free cluster** (Council / Olallie) |
 | Thu Sep 10 | 84.5 → 141 | 57 mi | **Chambers Lake** |
 | Fri Sep 11 | 141 → 232 | 91 mi | **Greenhorn Creek** |
 | Sat Sep 12 | 232 → 308.5 | 77 mi | **Panther Creek dispersed** |

@@ -158,12 +158,187 @@
       "date_iso": "2026-09-08",
       "title": "Nampa, ID -> Triangle Pass / Big Lava camp",
       "type": "travel",
-      "descr": "Meet at the Sinclair Stinker Station, 1902 N Franklin Blvd, Nampa at 8:00 AM MDT; roll out by 8:15. I-84 west through Oregon, then up the Columbia River Gorge and across into Washington. About 384 miles and 7.7 hours of moving time, so plan on 9 to 9.5 hours with fuel and food stops for a six-vehicle group. You gain an hour crossing into Pacific time, which puts arrival in camp around 4:00 to 5:30 PM PDT. Fuel in Carson — last pump for 154 route miles — then continue onto the loop instead of turning up Panther Creek. Camp the free pullouts on opposite arms of Triangle Pass: FR 68 near the pass (about mile 15) is the easier Tuesday arrival; the Big Lava Bed pin (about mile 26) banks eleven more forest-road miles if there is daylight. Moss Creek is the paid backup with a toilet and water. Wednesday starts already on the loop.",
-      "mi_lo": null,
-      "mi_hi": null,
+      "descr": "Meet at the Sinclair Stinker Station, 1902 N Franklin Blvd, Nampa at 8:00 AM MDT; roll out by 8:15. I-84 west through Oregon, then up the Columbia River Gorge and across into Washington. About 384 miles and 7.7 hours of moving time, so plan on 9 to 9.5 hours with fuel and food stops for a six-vehicle group. You gain an hour crossing into Pacific time, which puts arrival in camp around 4:00 to 5:30 PM PDT. Fuel in Carson — last pump for 154 route miles — then continue onto the loop instead of turning up Panther Creek. The Columbia River Gorge and Wind River High Bridge are Tuesday stops on the way in. Camp the free pullouts on opposite arms of Triangle Pass: FR 68 near the pass (about mile 15) is the easier Tuesday arrival; the Big Lava Bed pin (about mile 26) banks eleven more forest-road miles if there is daylight. Moss Creek is the paid backup with a toilet and water. Wednesday starts already on the loop.",
+      "mi_lo": 0.0,
+      "mi_hi": 4.0,
       "miles": 384,
       "driving_hours_est": 7.7,
-      "pois": [],
+      "extra_track_points": [
+        [
+          45.715179,
+          -121.828143
+        ],
+        [
+          45.714986,
+          -121.829042
+        ],
+        [
+          45.715051,
+          -121.829354
+        ],
+        [
+          45.715252,
+          -121.82921
+        ],
+        [
+          45.715522,
+          -121.828394
+        ],
+        [
+          45.716185,
+          -121.827258
+        ],
+        [
+          45.717121,
+          -121.826191
+        ],
+        [
+          45.717262,
+          -121.825927
+        ],
+        [
+          45.71797,
+          -121.8239
+        ],
+        [
+          45.718357,
+          -121.82311
+        ],
+        [
+          45.71957,
+          -121.821201
+        ],
+        [
+          45.719798,
+          -121.820944
+        ],
+        [
+          45.720165,
+          -121.820725
+        ],
+        [
+          45.721326,
+          -121.820614
+        ],
+        [
+          45.722654,
+          -121.820265
+        ],
+        [
+          45.724202,
+          -121.820481
+        ],
+        [
+          45.739179,
+          -121.820475
+        ],
+        [
+          45.740931,
+          -121.820554
+        ],
+        [
+          45.742887,
+          -121.821113
+        ],
+        [
+          45.744313,
+          -121.821715
+        ],
+        [
+          45.745909,
+          -121.822605
+        ],
+        [
+          45.747532,
+          -121.82384
+        ],
+        [
+          45.74912,
+          -121.825468
+        ],
+        [
+          45.754204,
+          -121.831801
+        ],
+        [
+          45.754569,
+          -121.832141
+        ],
+        [
+          45.755791,
+          -121.833823
+        ],
+        [
+          45.759133,
+          -121.837861
+        ],
+        [
+          45.765487,
+          -121.845784
+        ]
+      ],
+      "pois": [
+        {
+          "name": "DP - Columbia River Gorge",
+          "gpx_name": "DP - Columbia River Gorge",
+          "lat": 45.7083642,
+          "lon": -121.8266111,
+          "ele": null,
+          "mile": 0.04,
+          "dist_to_track_m": 760.1,
+          "true_off_track_m": 760.1,
+          "sym": "water",
+          "status": "primary",
+          "note": "Trip start. Only sea-level breach of the Cascade Range. Tuesday stop on the drive in from Nampa.",
+          "desc": "The Columbia River Gorge is a spectacular river canyon, approximately 80 to 85 miles long and up to 4,000 feet deep, that carves the only sea-level passage through the Cascade Mountain Range. It serves as the border between the states of Washington (to the north) and Oregon (to the south). The area around Hood River sits in the transition zone of the Gorge, marked by a dramatic shift in ecology from the temperate rainforests of the west to the dry grasslands of the east, thanks to the Cascade Mountains' rain shadow effect.\n\nThe Gorge’s formation began tens of millions of years ago, but its present, dramatic form was created by two major geological events. The first was the colossal Columbia River Basalt Group flows between 17 and 6 million years ago, which extruded hundreds of flows from eastern vents, laying down layers of basalt up to 2,000 feet thick. The Columbia River maintained its course, continually eroding the land as the Cascade Range slowly uplifted. The second, and most defining, event occurred at the end of the last Ice Age, when the cataclysmic Missoula Floods repeatedly crashed through the canyon, scouring away loose sediment, exposing the layers of basalt, and carving the steep cliffs and numerous hanging waterfalls visible today.\n\nFor over 13,000 years, the Columbia River has been a crucial travel corridor and center of trade for Indigenous peoples, including the Chinookan and Sahaptin-speaking tribes. They referred to it as Nch'i-W'ana (The Great River). The river was, and remains, a source of sustenance, particularly for the enormous salmon runs. Following European contact in the late 18th century and the arrival of the Lewis and Clark Expedition in 1805, the Gorge became an essential route for fur traders and, later, for pioneers on the Oregon Trail, who often used the river or the strenuous Barlow Road bypass around Mount Hood.\n\nToday, the Columbia River Gorge is protected as the Columbia River Gorge National Scenic Area, established by Congress in 1986. This designation protects its scenic, natural, cultural, and recreational resources across 292,000 acres managed by the U.S. Forest Service and the bi-state Columbia River Gorge Commission. The river remains an active commercial corridor, featuring two major railroads and barge navigation, and is a world-class destination for hiking, windsurfing, and sightseeing, especially near the town of Hood River.",
+          "spur_mi": 0.0
+        },
+        {
+          "name": "Fuel - Carson, WA",
+          "gpx_name": "Gas Station",
+          "lat": 45.7410648,
+          "lon": -121.8213691,
+          "ele": null,
+          "mile": 2.06,
+          "dist_to_track_m": 65.0,
+          "true_off_track_m": 65.0,
+          "sym": "fuel-24",
+          "status": "primary",
+          "note": "TOP OFF HERE. Last fuel for 154 route miles until Packwood at mi 156.",
+          "desc": "",
+          "spur_mi": 0.0
+        },
+        {
+          "name": "DP - High Bridge",
+          "gpx_name": "DP - High Bridge",
+          "lat": 45.758434,
+          "lon": -121.8372234,
+          "ele": null,
+          "mile": 3.59,
+          "dist_to_track_m": 92.1,
+          "true_off_track_m": 92.1,
+          "sym": "bridge",
+          "status": "primary",
+          "note": "Wind River Rd crossing high above the canyon. Tuesday stop after fuelling in Carson.",
+          "desc": "The High Bridge along the Wind River, officially known as the Conrad Lundy Wind River Bridge, is a significant vehicular crossing located in Skamania County, Washington, near the southern boundary of the Gifford Pinchot National Forest. The bridge carries Wind River Road (often designated as Forest Road 30) high above the deep, steep-sided canyon carved by the Wind River. The structure is an essential gateway, providing access to the upper Wind River Valley, the Wind River Experimental Forest, and the wilderness areas to the north.\n\nThe bridge deck sits approximately 260 feet above the river, a height that required specialized construction and maintenance techniques. The impressive drop provides a dramatic overlook of the river's course as it rushes through the gorge. The structure is a modern replacement for older crossings and was engineered to withstand the challenging terrain and conditions of the Cascade foothills.\n\nThe Wind River itself is a major tributary that flows south from the Cascade Mountains and empties into the Columbia River near the town of Carson, Washington. It is recognized as a scenic river and is highly valued for its recreational opportunities, including white-water rafting and kayaking. Ecologically, the river is critical, providing vital habitat and spawning grounds for various anadromous fish species, such as salmon and steelhead, which migrate from the Columbia River system.",
+          "spur_mi": 0.0
+        },
+        {
+          "name": "DP - Wind River",
+          "gpx_name": "DP - Wind River",
+          "lat": 45.7593874,
+          "lon": -121.835913,
+          "ele": null,
+          "mile": 3.59,
+          "dist_to_track_m": 153.7,
+          "true_off_track_m": 153.7,
+          "sym": "water",
+          "status": "backup",
+          "note": "Same pullout as High Bridge.",
+          "desc": "The Wind River is a major tributary of the Columbia River, originating in the Cascade Range of Washington, south of Mount Adams and Mount St. Helens, before flowing generally south through the Gifford Pinchot National Forest. Its entire course of approximately 30 miles (48 km) lies within Skamania County, and it joins the Columbia River near the town of Carson in the Columbia River Gorge.\n\nHistorically, the river was noted by the Lewis and Clark Expedition in 1805, who referred to it as the \"New Timbered River.\" Its watershed encompasses roughly 224 square miles (580 km$&$sup2;). The river's rapid descent through a deep, basalt cliff-lined gorge has created an outstanding scenic corridor. Ecologically, the Wind River is a vital Tier I Key Watershed under the Northwest Forest Plan and is designated as a Wild Steelhead Gene Bank by the Washington Department of Fish and Wildlife.\n\nThe river is most famous for its wild summer steelhead run, which historically numbered in the thousands. The naturally difficult migratory conditions created by Shipherd Falls, near the river mouth, meant that only the more athletic summer steelhead and lamprey could historically pass. While fish populations declined due to historical logging practices, the construction of a splash dam that blocked migration until 1947, and external harvest pressures, extensive conservation efforts have been ongoing since the late 20th century to restore habitat and maintain the wild genetic stock.\n\nRecreationally, the Wind River is a destination for experienced boaters. Its short, intense season, driven by rainfall and snowmelt, offers Class IV+ and Class V whitewater, particularly in the Upper Wind River section, which is known for its technical rapids like the \"Ram's Horn Sequence.\" Furthermore, the Wind River valley is home to the Wind River Experimental Forest, established in 1909, and the Wind River Arboretum, the oldest arboretum in the Pacific Northwest, providing unique opportunities for hiking and nature observation within the Gifford Pinchot National Forest.",
+          "spur_mi": 0.0
+        }
+      ],
       "track_points": [
         [
           43.60134,
@@ -3600,86 +3775,18 @@
       "title": "Day 1: Triangle Pass / Big Lava -> Indian Heaven -> Takhlakh Lake",
       "type": "overland",
       "descr": "The scenic-payoff day. You should already have topped off in Carson on Tuesday — there is no fuel for the next 154 route miles. From the Triangle Pass / Big Lava camp, skirt the lava bed and work north through Goose Lake. Peel east on FR 24 for Guler Ice Cave, a developed 650-ft lava tube (Northwest Forest Pass; ice is often gone by September), then back to the Forlorn Lakes and up into Indian Heaven and the Sawtooth Berry Fields. Huckleberries should still be on in early September. Over Babyshoe Pass to Takhlakh Lake, where Mount Adams reflects in the water - the signature view of the whole route. Overnight in the free High Lakes cluster (Council, Olallie, Chain of Lakes, Horseshoe) rather than the paid Takhlakh campground.",
-      "mi_lo": 0.0,
+      "mi_lo": 4.0,
       "mi_hi": 84.5,
-      "miles": 85,
+      "miles": 81,
       "driving_hours_est": 6.0,
       "pois": [
-        {
-          "name": "DP - Columbia River Gorge",
-          "gpx_name": "DP - Columbia River Gorge",
-          "lat": 45.7083642,
-          "lon": -121.8266111,
-          "ele": null,
-          "mile": 0.04,
-          "dist_to_track_m": 760.1,
-          "true_off_track_m": 760.1,
-          "sym": "water",
-          "status": "primary",
-          "note": "Trip start. Only sea-level breach of the Cascade Range.",
-          "desc": "The Columbia River Gorge is a spectacular river canyon, approximately 80 to 85 miles long and up to 4,000 feet deep, that carves the only sea-level passage through the Cascade Mountain Range. It serves as the border between the states of Washington (to the north) and Oregon (to the south). The area around Hood River sits in the transition zone of the Gorge, marked by a dramatic shift in ecology from the temperate rainforests of the west to the dry grasslands of the east, thanks to the Cascade Mountains' rain shadow effect.\n\nThe Gorge’s formation began tens of millions of years ago, but its present, dramatic form was created by two major geological events. The first was the colossal Columbia River Basalt Group flows between 17 and 6 million years ago, which extruded hundreds of flows from eastern vents, laying down layers of basalt up to 2,000 feet thick. The Columbia River maintained its course, continually eroding the land as the Cascade Range slowly uplifted. The second, and most defining, event occurred at the end of the last Ice Age, when the cataclysmic Missoula Floods repeatedly crashed through the canyon, scouring away loose sediment, exposing the layers of basalt, and carving the steep cliffs and numerous hanging waterfalls visible today.\n\nFor over 13,000 years, the Columbia River has been a crucial travel corridor and center of trade for Indigenous peoples, including the Chinookan and Sahaptin-speaking tribes. They referred to it as Nch'i-W'ana (The Great River). The river was, and remains, a source of sustenance, particularly for the enormous salmon runs. Following European contact in the late 18th century and the arrival of the Lewis and Clark Expedition in 1805, the Gorge became an essential route for fur traders and, later, for pioneers on the Oregon Trail, who often used the river or the strenuous Barlow Road bypass around Mount Hood.\n\nToday, the Columbia River Gorge is protected as the Columbia River Gorge National Scenic Area, established by Congress in 1986. This designation protects its scenic, natural, cultural, and recreational resources across 292,000 acres managed by the U.S. Forest Service and the bi-state Columbia River Gorge Commission. The river remains an active commercial corridor, featuring two major railroads and barge navigation, and is a world-class destination for hiking, windsurfing, and sightseeing, especially near the town of Hood River.",
-          "spur_mi": 0.0,
-          "default_minutes": 15,
-          "default_checked": true
-        },
-        {
-          "name": "Fuel - Carson, WA",
-          "gpx_name": "Gas Station",
-          "lat": 45.7410648,
-          "lon": -121.8213691,
-          "ele": null,
-          "mile": 2.06,
-          "dist_to_track_m": 65.0,
-          "true_off_track_m": 65.0,
-          "sym": "fuel-24",
-          "status": "logistics",
-          "note": "TOP OFF HERE. Last fuel for 154 route miles until Packwood at mi 156.",
-          "desc": "",
-          "spur_mi": 0.0,
-          "default_minutes": 25,
-          "default_checked": false
-        },
-        {
-          "name": "DP - High Bridge",
-          "gpx_name": "DP - High Bridge",
-          "lat": 45.758434,
-          "lon": -121.8372234,
-          "ele": null,
-          "mile": 3.59,
-          "dist_to_track_m": 92.1,
-          "true_off_track_m": 92.1,
-          "sym": "bridge",
-          "status": "primary",
-          "note": "Wind River Rd crossing high above the canyon.",
-          "desc": "The High Bridge along the Wind River, officially known as the Conrad Lundy Wind River Bridge, is a significant vehicular crossing located in Skamania County, Washington, near the southern boundary of the Gifford Pinchot National Forest. The bridge carries Wind River Road (often designated as Forest Road 30) high above the deep, steep-sided canyon carved by the Wind River. The structure is an essential gateway, providing access to the upper Wind River Valley, the Wind River Experimental Forest, and the wilderness areas to the north.\n\nThe bridge deck sits approximately 260 feet above the river, a height that required specialized construction and maintenance techniques. The impressive drop provides a dramatic overlook of the river's course as it rushes through the gorge. The structure is a modern replacement for older crossings and was engineered to withstand the challenging terrain and conditions of the Cascade foothills.\n\nThe Wind River itself is a major tributary that flows south from the Cascade Mountains and empties into the Columbia River near the town of Carson, Washington. It is recognized as a scenic river and is highly valued for its recreational opportunities, including white-water rafting and kayaking. Ecologically, the river is critical, providing vital habitat and spawning grounds for various anadromous fish species, such as salmon and steelhead, which migrate from the Columbia River system.",
-          "spur_mi": 0.0,
-          "default_minutes": 10,
-          "default_checked": true
-        },
-        {
-          "name": "DP - Wind River",
-          "gpx_name": "DP - Wind River",
-          "lat": 45.7593874,
-          "lon": -121.835913,
-          "ele": null,
-          "mile": 3.59,
-          "dist_to_track_m": 153.7,
-          "true_off_track_m": 153.7,
-          "sym": "water",
-          "status": "backup",
-          "note": "Same pullout as High Bridge.",
-          "desc": "The Wind River is a major tributary of the Columbia River, originating in the Cascade Range of Washington, south of Mount Adams and Mount St. Helens, before flowing generally south through the Gifford Pinchot National Forest. Its entire course of approximately 30 miles (48 km) lies within Skamania County, and it joins the Columbia River near the town of Carson in the Columbia River Gorge.\n\nHistorically, the river was noted by the Lewis and Clark Expedition in 1805, who referred to it as the \"New Timbered River.\" Its watershed encompasses roughly 224 square miles (580 km$&$sup2;). The river's rapid descent through a deep, basalt cliff-lined gorge has created an outstanding scenic corridor. Ecologically, the Wind River is a vital Tier I Key Watershed under the Northwest Forest Plan and is designated as a Wild Steelhead Gene Bank by the Washington Department of Fish and Wildlife.\n\nThe river is most famous for its wild summer steelhead run, which historically numbered in the thousands. The naturally difficult migratory conditions created by Shipherd Falls, near the river mouth, meant that only the more athletic summer steelhead and lamprey could historically pass. While fish populations declined due to historical logging practices, the construction of a splash dam that blocked migration until 1947, and external harvest pressures, extensive conservation efforts have been ongoing since the late 20th century to restore habitat and maintain the wild genetic stock.\n\nRecreationally, the Wind River is a destination for experienced boaters. Its short, intense season, driven by rainfall and snowmelt, offers Class IV+ and Class V whitewater, particularly in the Upper Wind River section, which is known for its technical rapids like the \"Ram's Horn Sequence.\" Furthermore, the Wind River valley is home to the Wind River Experimental Forest, established in 1909, and the Wind River Arboretum, the oldest arboretum in the Pacific Northwest, providing unique opportunities for hiking and nature observation within the Gifford Pinchot National Forest.",
-          "spur_mi": 0.0,
-          "default_minutes": 10,
-          "default_checked": false
-        },
         {
           "name": "Triangle Pass",
           "gpx_name": "Triangle Pass",
           "lat": 45.7855023,
           "lon": -121.7365882,
           "ele": null,
-          "mile": 15.03,
+          "mile": 11.03,
           "dist_to_track_m": 90.1,
           "true_off_track_m": 90.1,
           "sym": "attraction",
@@ -3696,7 +3803,7 @@
           "lat": 45.8532238,
           "lon": -121.7203839,
           "ele": null,
-          "mile": 25.13,
+          "mile": 21.13,
           "dist_to_track_m": 389.1,
           "true_off_track_m": 389.1,
           "sym": "volcano",
@@ -3713,7 +3820,7 @@
           "lat": 45.9249927,
           "lon": -121.6629149,
           "ele": null,
-          "mile": 30.79,
+          "mile": 26.79,
           "dist_to_track_m": 3044.1,
           "true_off_track_m": 3044.1,
           "sym": "cliff",
@@ -3730,7 +3837,7 @@
           "lat": 45.9412627,
           "lon": -121.7636038,
           "ele": null,
-          "mile": 34.47,
+          "mile": 30.47,
           "dist_to_track_m": 1042.9,
           "true_off_track_m": 1042.9,
           "sym": "lake",
@@ -3747,7 +3854,7 @@
           "lat": 45.97018294192685,
           "lon": -121.65952920913696,
           "ele": null,
-          "mile": 36.0,
+          "mile": 32.0,
           "dist_to_track_m": 5406.8,
           "true_off_track_m": 5406.8,
           "sym": "information",
@@ -3764,7 +3871,7 @@
           "lat": 45.961424,
           "lon": -121.631396,
           "ele": null,
-          "mile": 36.0,
+          "mile": 32.0,
           "dist_to_track_m": 7162.1,
           "true_off_track_m": 7162.1,
           "sym": "cave",
@@ -3781,7 +3888,7 @@
           "lat": 45.9581497,
           "lon": -121.7558541,
           "ele": null,
-          "mile": 38.25,
+          "mile": 34.25,
           "dist_to_track_m": 893.6,
           "true_off_track_m": 893.6,
           "sym": "lake",
@@ -3798,7 +3905,7 @@
           "lat": 46.0538329,
           "lon": -121.7504926,
           "ele": null,
-          "mile": 50.66,
+          "mile": 46.66,
           "dist_to_track_m": 33.6,
           "true_off_track_m": 33.6,
           "sym": "binoculars",
@@ -3815,7 +3922,7 @@
           "lat": 46.0881532,
           "lon": -121.7678311,
           "ele": null,
-          "mile": 53.48,
+          "mile": 49.48,
           "dist_to_track_m": 326.9,
           "true_off_track_m": 326.9,
           "sym": "attraction",
@@ -3832,7 +3939,7 @@
           "lat": 46.095372594088246,
           "lon": -121.71658246202995,
           "ele": null,
-          "mile": 59.45,
+          "mile": 55.45,
           "dist_to_track_m": 3194.7,
           "true_off_track_m": 3194.7,
           "sym": "attraction",
@@ -3849,7 +3956,7 @@
           "lat": 46.0985052,
           "lon": -121.7186593,
           "ele": null,
-          "mile": 59.45,
+          "mile": 55.45,
           "dist_to_track_m": 2817.8,
           "true_off_track_m": 2817.8,
           "sym": "waterfall",
@@ -3866,7 +3973,7 @@
           "lat": 46.1379788,
           "lon": -121.7277398,
           "ele": null,
-          "mile": 60.37,
+          "mile": 56.37,
           "dist_to_track_m": 895.7,
           "true_off_track_m": 895.7,
           "sym": "binoculars",
@@ -3883,7 +3990,7 @@
           "lat": 46.1536338,
           "lon": -121.6284801,
           "ele": null,
-          "mile": 67.39,
+          "mile": 63.39,
           "dist_to_track_m": 788.8,
           "true_off_track_m": 788.8,
           "sym": "binoculars",
@@ -3900,7 +4007,7 @@
           "lat": 46.1638419,
           "lon": -121.6384314,
           "ele": null,
-          "mile": 68.03,
+          "mile": 64.03,
           "dist_to_track_m": 296.9,
           "true_off_track_m": 296.9,
           "sym": "marsh",
@@ -3917,7 +4024,7 @@
           "lat": 46.25534875800656,
           "lon": -121.60873747043782,
           "ele": null,
-          "mile": 77.03,
+          "mile": 73.03,
           "dist_to_track_m": 22.4,
           "true_off_track_m": 22.4,
           "sym": "water",
@@ -3934,7 +4041,7 @@
           "lat": 46.2646371,
           "lon": -121.6315627,
           "ele": null,
-          "mile": 79.19,
+          "mile": 75.19,
           "dist_to_track_m": 144.9,
           "true_off_track_m": 144.9,
           "sym": "lake",
@@ -3951,7 +4058,7 @@
           "lat": 46.2716463,
           "lon": -121.6379407,
           "ele": null,
-          "mile": 79.2,
+          "mile": 75.2,
           "dist_to_track_m": 1046.7,
           "true_off_track_m": 1046.7,
           "sym": "cliff",
@@ -3968,7 +4075,7 @@
           "lat": 46.2681516,
           "lon": -121.6046563,
           "ele": null,
-          "mile": 81.48,
+          "mile": 77.48,
           "dist_to_track_m": 11.3,
           "true_off_track_m": 11.3,
           "sym": "attraction",
@@ -3985,7 +4092,7 @@
           "lat": 46.2782671,
           "lon": -121.5963891,
           "ele": null,
-          "mile": 83.82,
+          "mile": 79.82,
           "dist_to_track_m": 302.4,
           "true_off_track_m": 302.4,
           "sym": "lake",
@@ -3998,114 +4105,6 @@
         }
       ],
       "track_points": [
-        [
-          45.715179,
-          -121.828143
-        ],
-        [
-          45.714986,
-          -121.829042
-        ],
-        [
-          45.715051,
-          -121.829354
-        ],
-        [
-          45.715252,
-          -121.82921
-        ],
-        [
-          45.715522,
-          -121.828394
-        ],
-        [
-          45.716185,
-          -121.827258
-        ],
-        [
-          45.717121,
-          -121.826191
-        ],
-        [
-          45.717262,
-          -121.825927
-        ],
-        [
-          45.71797,
-          -121.8239
-        ],
-        [
-          45.718357,
-          -121.82311
-        ],
-        [
-          45.71957,
-          -121.821201
-        ],
-        [
-          45.719798,
-          -121.820944
-        ],
-        [
-          45.720165,
-          -121.820725
-        ],
-        [
-          45.721326,
-          -121.820614
-        ],
-        [
-          45.722654,
-          -121.820265
-        ],
-        [
-          45.724202,
-          -121.820481
-        ],
-        [
-          45.739179,
-          -121.820475
-        ],
-        [
-          45.740931,
-          -121.820554
-        ],
-        [
-          45.742887,
-          -121.821113
-        ],
-        [
-          45.744313,
-          -121.821715
-        ],
-        [
-          45.745909,
-          -121.822605
-        ],
-        [
-          45.747532,
-          -121.82384
-        ],
-        [
-          45.74912,
-          -121.825468
-        ],
-        [
-          45.754204,
-          -121.831801
-        ],
-        [
-          45.754569,
-          -121.832141
-        ],
-        [
-          45.755791,
-          -121.833823
-        ],
-        [
-          45.759133,
-          -121.837861
-        ],
         [
           45.765487,
           -121.845784
@@ -11821,8 +11820,8 @@
       "schedule": {
         "break_camp_time": "08:00",
         "moving_mph": 22,
-        "start_lat": 45.715179,
-        "start_lon": -121.828143,
+        "start_lat": 45.765487,
+        "start_lon": -121.845784,
         "mi_lo": 0.0
       }
     },
@@ -33272,5 +33271,5 @@
       }
     }
   ],
-  "intro_html": "<p>A 325-mile loop through Gifford Pinchot National Forest, starting and ending in the Columbia River Gorge at Carson. The route runs north along the Mount Adams flank, touches the Goat Rocks at Walupt Lake, reaches its northern limit at High Rock Lookout looking straight at Mount Rainier, then swings back south past Mount St Helens and down the Lewis River to close the loop at Triangle Pass.</p><p>Four driving days on route, bracketed by two ~370-mile highway days to and from Nampa. Day mileages are 85, 57, 91 and 77. Nights target free dispersed clusters on the track; paid developed campgrounds stay in each day as backups.</p><p><strong>Nothing is reserved.</strong> The plan prefers free first-come pullouts. Six vehicles will need several adjacent sites in the same cluster. Stage 1 fire restrictions typically ban campfires at dispersed sites &mdash; bring a gas stove. Paid Recreation.gov camps remain listed if a cluster is full or you want water.</p>"
+  "intro_html": "<p>A 325-mile loop through Gifford Pinchot National Forest, starting and ending in the Columbia River Gorge at Carson. The route runs north along the Mount Adams flank, touches the Goat Rocks at Walupt Lake, reaches its northern limit at High Rock Lookout looking straight at Mount Rainier, then swings back south past Mount St Helens and down the Lewis River to close the loop at Triangle Pass.</p><p>Four driving days on route, bracketed by two ~370-mile highway days to and from Nampa. Day mileages are 81, 57, 91 and 77. Nights target free dispersed clusters on the track; paid developed campgrounds stay in each day as backups.</p><p><strong>Nothing is reserved.</strong> The plan prefers free first-come pullouts. Six vehicles will need several adjacent sites in the same cluster. Stage 1 fire restrictions typically ban campfires at dispersed sites &mdash; bring a gas stove. Paid Recreation.gov camps remain listed if a cluster is full or you want water.</p>"
 }
