@@ -147,6 +147,7 @@ HOSPITALS = [
 # Areas where cell coverage is unreliable. Rendered on the reference page.
 CELL_DEAD_ZONES = [
     'Wind River / Panther Creek corridor (mi 0-20) - patchy, none above the High Bridge',
+    'Triangle Pass / FR 68 / Big Lava (mi 15-26) - none once you leave pavement',
     'Indian Heaven / Sawtooth Berry Fields (mi 44-60) - essentially none',
     'Babyshoe Pass and the Midway High Lakes (mi 60-92) - none',
     'Upper Cispus / Walupt Lake (mi 95-141) - none',
@@ -218,8 +219,8 @@ GEAR_NOTES = [
      'pavement. Check the current order before departure.'),
     ('Water for a dry camp',
      'The primary nights are free dispersed / primitive sites with no potable water. Carry '
-     'enough that a dry camp is the plan, not a surprise. Paid backups (Takhlakh, Walupt, '
-     'North Fork, Panther Creek, Tower Rock) have water if you fall back to them.'),
+    'enough that a dry camp is the plan, not a surprise. Paid backups (Moss Creek, Takhlakh, Walupt, '
+    'North Fork, Panther Creek, Tower Rock) have water if you fall back to them.'),
     ('Tire repair kit and a real spare',
      'Basalt and pumice on forest roads are hard on sidewalls, and the nearest tire shop is '
      'Packwood, Randle or Morton.'),

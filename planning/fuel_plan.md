@@ -80,14 +80,14 @@ Carson-to-Packwood leg with comfortable margin. Anything under 180 should carry 
 
 ## Travel days
 
-The drive out and back is 376 and 368 highway miles respectively — about 7 hours of moving time
-each way.
+The drive out and back is 384 and 368 highway miles respectively — about 7.7 hours out
+(including the FR 68 climb to camp) and 6.8 hours back.
 
 - Fill in Nampa before departure.
 - One fuel stop somewhere in eastern Oregon (Baker City, La Grande or Pendleton) covers the outbound
   leg comfortably.
-- Fuel again near the Gorge — Hood River or Stevenson — before turning up Wind River Road, so the
-  Carson top-off is genuinely a top-off rather than a fill from empty.
+- Fuel again at Carson (or Hood River / Stevenson) before leaving pavement for Triangle Pass. The
+  Carson top-off is the last pump for 154 route miles.
 - On the return, fuel at Carson or Stevenson before getting on WA-14 eastbound.
 
 ---

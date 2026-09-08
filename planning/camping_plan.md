@@ -22,7 +22,7 @@ drift. You do not need it unless you fall back to a developed campground.
 
 | Night | Primary (free) | Along-route overflow | Paid backup |
 |---|---|---|---|
-| **Tue Sep 8** | Panther Creek Dispersed #2, #1, Upper | — | Panther Creek CG · Home Valley |
+| **Tue Sep 8** | Triangle Pass (FR 68) · Big Lava Bed | — | Moss Creek · Home Valley · Panther Creek CG |
 | **Wed Sep 9** | Council, Olallie, Chain of Lakes, Horseshoe, Orr Creek | Near Lava Beds · FS 60 · Huckleberry Access · FR 9705 · Flattop Sno-Park | Takhlakh Lake CG |
 | **Thu Sep 10** | Chambers Lake · Cat Creek | — | Walupt Lake CG · Adams Fork |
 | **Fri Sep 11** | Greenhorn Creek | Skate Creek · Packwood NF · Iron Creek Dispersed (caution) | North Fork Elk Group · Tower Rock |
@@ -38,16 +38,32 @@ the map; treat them as unconfirmed until you see them.
 
 ## The plan, night by night
 
-### Tue Sep 8 — Panther Creek dispersed cluster · **Free**
+### Tue Sep 8 — Triangle Pass / Big Lava dispersed · **Free**
 
-Arriving from Nampa around 3:30 to 4:30 PM Pacific. Three named pullouts sit 1–2 miles up
-Panther Creek Road (FS 65 / 6513) from the developed campground — the same road you would
-have used anyway. Dispersed #2 is the closest and the most reviewed; Upper is the roomiest.
+Arriving from Nampa around 4:00 to 5:30 PM Pacific. Two unnamed existing pullouts sit on
+opposite arms of Triangle Pass, about **11 forest-road miles** apart. Fuel in Carson first —
+last pump for 154 route miles — then continue onto the loop instead of turning up Panther
+Creek.
 
-**Paid backup: Panther Creek Campground** — vault toilets and potable water. 19 sites showed
-open Tuesday as of 2026-08-31.
+**Triangle Pass Dispersed (FR 68)** at 45.78538, -121.75436 is the easier Tuesday arrival:
+about 0.8 mi west of the pass on FR 68 / 6808 (Grassy Knoll / Willard approach), near loop
+mile 15. From Carson take Wind River Hwy to Bear Creek Rd / FR 6808; from the east take
+Cook-Underwood / Willard / FR 66 / FR 68. Rough, potholed gravel.
+
+**Big Lava Bed Dispersed** at 45.86542, -121.70885 is the source-GPX Campsite pin at mile
+26.1, on the lava-bed edge toward Goose Lake. Push here if there is daylight and you want
+to bank miles for Wednesday.
+
+Six vehicles will not share one pad. Scout on arrival and split across both pins plus any
+adjacent existing sites. Capacity, toilets, and how many pads exist are unknown until you
+see them. Dry camp; Stage 1 typically means no legal fire.
+
+**Paid backup: Moss Creek** — vault toilets and water, a few miles east on the Little White
+Salmon.
 
 **Paid last-resort: Home Valley** — showers, but highway and train noise on the Columbia.
+**Panther Creek Campground** is the old Tuesday plan, 11 miles up Wind River the other way
+from Carson; use it only if you abort the FR 68 climb.
 
 ### Wed Sep 9 — High Lakes free cluster (Council / Olallie / Chain of Lakes / Horseshoe) · **Free / low fee**
 
@@ -90,7 +106,7 @@ weekend nights as of 2026-08-31) and Tower Rock (10 sites Friday, 8 Saturday).
 
 ### Sat Sep 12 — Panther Creek dispersed cluster · **Free**
 
-Same three pullouts as Tuesday, plus Crest Camp at mile 302.7 (no facilities, couple of
+Same three Panther Creek pullouts as the original Wind River cluster, plus Crest Camp at mile 302.7 (no facilities, couple of
 rigs). Along Saturday the map shows FR-7708, Forest Route 9039, NF-90, and the Lone Butte /
 Rush Creek / Curley Creek sno-parks — early-stop options if the day is running long.
 
@@ -123,7 +139,8 @@ campground; treat the dispersed pullouts past it as unconfirmed.
 ## Practical notes
 
 - **Water.** Primary nights are dry. Carry enough that a dry camp is survivable. Paid
-  backups (Takhlakh, Walupt, North Fork, Tower Rock, Panther Creek) have potable water.
+  backups (Moss Creek Tuesday, Takhlakh, Walupt, North Fork, Tower Rock, Panther Creek) have
+  potable water.
 - **Fees.** Primary sites are free or a fee-tube if anything. Bring small bills only for
   paid backups and trailhead pass machines.
 - **Elevation and cold.** Council / High Lakes and Chambers sit around 4,000–4,400 ft.

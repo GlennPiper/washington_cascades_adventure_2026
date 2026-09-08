@@ -43,13 +43,12 @@
 <wpt lat="46.0670247" lon="-121.9278136"><name>[BACKUP] Rush Creek Falls</name><desc>Same pullout area as Curly Creek Falls.</desc><sym>waterfall</sym></wpt>
 <wpt lat="45.9447262" lon="-121.8680716"><name>[HIKE] DP - Falls Creek Lava Caves</name><desc>LAVA TUBE. No permit, no paid entry — this is not Ape Cave. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. Decontaminate kit first if you went in Guler Ice Cave on Wednesday. See the lava caves page for parking and how to find the pits.</desc><sym>cave</sym></wpt>
 <wpt lat="45.9356072" lon="-121.821375"><name>[HIKE] Red Mountain Fire Lookout</name><desc>Lookout at 4,965 ft on the Indian Heaven boundary; panorama of four volcanoes. ~1.7 mi off route.</desc><sym>fire-lookout</sym></wpt>
-<wpt lat="45.8671944" lon="-121.8288441"><name>DP - Panther Creek Falls</name><desc>About 130 ft of tiered falls with a built viewing platform a short walk from the road. First and last night are the free pullouts just up this road.</desc><sym>waterfall</sym></wpt>
-<wpt lat="45.834828" lon="-121.870893"><name>[CAMP PRIMARY-A] Sep 8 (Tue) + Sep 12 (Sat) - Panther Creek Dispersed #2</name><desc>Free | Fire pit. No toilet, no water. Small-rig friendly. | Closest of the three named pullouts to the developed campground (~0.3 mi off the loop at mile 308, and the same road you drive Tuesday evening). Most reviewed of the cluster. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster. | Access: Panther Creek Rd (FS 65 / 6513) off Wind River Rd, north of the developed campground.</desc><sym>Campground</sym></wpt>
-<wpt lat="45.84326" lon="-121.85922"><name>[CAMP PRIMARY-B] Sep 8 (Tue) + Sep 12 (Sat) - Panther Creek Dispersed #1</name><desc>Free | No amenities. One of several pullouts along Panther Creek. | About a mile further up the same road as #2. Use it when #2 is taken or to spread the group. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster. | Access: FS 65 / 6513, continuing north from the developed campground.</desc><sym>Campground</sym></wpt>
-<wpt lat="45.84941" lon="-121.85544"><name>[CAMP PRIMARY-C] Sep 8 (Tue) + Sep 12 (Sat) - Upper Panther Creek Dispersed</name><desc>Free | Large, fairly flat grassy pullout with a fire ring. Unmaintained. | The roomiest of the three. Same arrival corridor Tuesday evening. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster. | Access: NF-6513 off Panther Creek Rd.</desc><sym>Campground</sym></wpt>
-<wpt lat="45.81972" lon="-121.87972"><name>[CAMP BACKUP] Sep 8 (Tue) - Panther Creek Campground (Recreation.gov 233103)</name><desc>Per-site fee; 9 of 33 sites are first-come | Vault toilets, potable water, tables, fire rings. No hookups. | Paid backup. 19 of 33 sites showed available for Sep 8 as of 2026-08-31. Use it if the pullouts are full or you want water and a toilet after the drive from Nampa. | Access: WA-14 to Carson, north on Wind River Rd, right on Panther Creek Rd (FS 65).</desc><sym>Campground</sym></wpt>
+<wpt lat="45.8671944" lon="-121.8288441"><name>DP - Panther Creek Falls</name><desc>About 130 ft of tiered falls with a built viewing platform a short walk from the road. Saturday night is the free pullouts just up this road.</desc><sym>waterfall</sym></wpt>
+<wpt lat="45.78538" lon="-121.75436"><name>[CAMP PRIMARY-A] Sep 8 (Tue) - Triangle Pass Dispersed (FR 68)</name><desc>Free | No facilities. Unnamed existing pullout. Dry camp. | About 0.8 mi west of the Triangle Pass waypoint on FR 68 / 6808 (Grassy Knoll / Willard approach), near loop mile 15. Easier Tuesday arrival after the Nampa drive — stop here without climbing the lava-bed arm. The two primary pins are 11 forest-road miles apart; they are a hub, not one pad. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster. | Access: From Carson (fuel first): Wind River Hwy to Bear Creek Rd / FR 6808 to Triangle Pass, then FR 68 west. From the east: Cook-Underwood Rd / Willard / FR 66 / FR 68. Rough, potholed gravel; high-clearance is happier.</desc><sym>Campground</sym></wpt>
+<wpt lat="45.86542" lon="-121.70885"><name>[CAMP PRIMARY-B] Sep 8 (Tue) - Big Lava Bed Dispersed</name><desc>Free | No facilities. Unnamed existing pullout at the lava-bed edge. Dry camp. | Already in the source GPX as an unnamed Campsite at route mile 26.1, 185 m off the track next to Big Lava Bed. About 11 forest-road miles north of the Triangle Pass pullout toward Goose Lake / FS 60. Push here Tuesday if there is daylight and you want to bank miles for Wednesday. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster. | Access: Continue north from Triangle Pass on the loop toward Goose Lake. Pin is 45.86542, -121.70885.</desc><sym>Campground</sym></wpt>
+<wpt lat="45.79501" lon="-121.63444"><name>[CAMP BACKUP] Sep 8 (Tue) - Moss Creek Campground</name><desc>Per-site fee | Vault toilets, water | Paid first-come on the Little White Salmon, a few miles east of the Triangle Pass pullout. Use it if the FR 68 / lava-bed pads are full or you want a toilet and water after the drive from Nampa. | Access: FS 18 north from Willard.</desc><sym>Campground</sym></wpt>
 <wpt lat="45.7087" lon="-121.77348"><name>[CAMP LAST-RESORT-A] Sep 8 (Tue) - Home Valley Campground (Skamania County park)</name><desc>County park fee | Showers, potable water, toilets - the only showers near the route. | Paid. Right on the Columbia and only 2.9 miles from route mile 0. Sits between WA-14 and the BNSF main line, so expect highway and train noise. | Access: Directly off WA-14 at Home Valley, east of Carson.</desc><sym>Campground</sym></wpt>
-<wpt lat="45.79501" lon="-121.63444"><name>[CAMP LAST-RESORT-B] Sep 8 (Tue) - Moss Creek Campground</name><desc>Per-site fee | Vault toilets, water | Paid first-come on the Little White Salmon. Only if the group banks miles on arrival evening. | Access: FS 18 north from Willard.</desc><sym>Campground</sym></wpt>
+<wpt lat="45.81972" lon="-121.87972"><name>[CAMP LAST-RESORT-B] Sep 8 (Tue) - Panther Creek Campground (Recreation.gov 233103)</name><desc>Per-site fee; 9 of 33 sites are first-come | Vault toilets, potable water, tables, fire rings. No hookups. | Paid last-resort. The old Tuesday plan, 11 miles up Wind River from Carson — the opposite direction from Triangle Pass. Use it only if you abort the FR 68 climb. 19 of 33 sites showed available for Sep 8 as of 2026-08-31. | Access: WA-14 to Carson, north on Wind River Rd, right on Panther Creek Rd (FS 65).</desc><sym>Campground</sym></wpt>
 <wpt lat="46.26327" lon="-121.63178"><name>[CAMP PRIMARY-A] Sep 9 (Wed) - Council Lake Campground</name><desc>Free or low fee | Vault toilet. No potable water. | On-route at mile 79.2, about 5 miles before Takhlakh. The best-documented free High Lakes camp. Small — not six rigs in one loop. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster. | Access: Short rough spur off FS 2334.</desc><sym>Campground</sym></wpt>
 <wpt lat="46.28868" lon="-121.61949"><name>[CAMP PRIMARY-B] Sep 9 (Wed) - Olallie Lake Campground</name><desc>Free or low fee | Vault toilet. No potable water. | First-come. Very small, same Midway High Lakes cluster as Takhlakh. | Access: Spur off FS 2329.</desc><sym>Campground</sym></wpt>
 <wpt lat="46.2931" lon="-121.59633"><name>[CAMP PRIMARY-C] Sep 9 (Wed) - Chain of Lakes Campground</name><desc>Free or low fee | Vault toilet. No potable water. | First-come, rough access road. Spillover for the High Lakes cluster. | Access: Rough spur off FS 2329.</desc><sym>Campground</sym></wpt>
@@ -71,6 +70,9 @@
 <wpt lat="46.427984" lon="-121.98043"><name>[CAMP BACKUP-C] Sep 11 (Fri) - Iron Creek Dispersed</name><desc>Free | Pullouts about 1/4 mile past the official Iron Creek campground. | The developed Iron Creek campground is CLOSED the entire trip week. These pullouts may still be open — or may be wrapped into the closure. Confirm with Cowlitz Valley Ranger District before counting on it. | Access: FS 25 toward Mt St Helens, past the closed Iron Creek campground.</desc><sym>Campground</sym></wpt>
 <wpt lat="46.4525" lon="-121.78889"><name>[CAMP LAST-RESORT-A] Sep 11 (Fri) - North Fork Elk Group Camp (Recreation.gov 232898)</name><desc>Single group-site fee for the whole party | Vault toilets, potable water, group shelter area, tables, fire rings. | Paid backup that actually fits six vehicles in one booking. As of 2026-08-31 it was open Fri Sep 11 and Sat Sep 12. Worth considering if the group wants to stay together with water and a shelter. | Access: FS 23 south from Randle along the Cispus, near North Fork Campground.</desc><sym>Campground</sym></wpt>
 <wpt lat="46.445" lon="-121.86806"><name>[CAMP LAST-RESORT-B] Sep 11 (Fri) - Tower Rock Campground (Recreation.gov 232855)</name><desc>Per-site fee; 6 of 20 sites are first-come | Vault toilets, potable water, tables, fire rings. | Paid backup at mile 228.6. Best weekend availability found on the paid list: 10 of 20 Friday, 8 Saturday as of 2026-08-31. | Access: FS 23 / FS 28 along the Cispus, south of Randle.</desc><sym>Campground</sym></wpt>
+<wpt lat="45.834828" lon="-121.870893"><name>[CAMP PRIMARY-A] Sep 12 (Sat) - Panther Creek Dispersed #2</name><desc>Free | Fire pit. No toilet, no water. Small-rig friendly. | Closest named pullout after Panther Creek Falls (mile 308.4). Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster. | Access: Panther Creek Rd (FS 65 / 6513) off Wind River Rd.</desc><sym>Campground</sym></wpt>
+<wpt lat="45.84326" lon="-121.85922"><name>[CAMP PRIMARY-B] Sep 12 (Sat) - Panther Creek Dispersed #1</name><desc>Free | No amenities. One of several pullouts along Panther Creek. | Same cluster as #2. Spread the group here if #2 is full. | Access: FS 65 / 6513, north of the developed campground.</desc><sym>Campground</sym></wpt>
+<wpt lat="45.84941" lon="-121.85544"><name>[CAMP PRIMARY-C] Sep 12 (Sat) - Upper Panther Creek Dispersed</name><desc>Free | Large grassy pullout with a fire ring. Unmaintained. | Roomiest of the three Panther Creek pullouts. Same Saturday cluster. | Access: NF-6513 off Panther Creek Rd.</desc><sym>Campground</sym></wpt>
 <wpt lat="45.90889" lon="-121.80103"><name>[CAMP PRIMARY-D] Sep 12 (Sat) - Crest Camp</name><desc>Free | None. No water, no toilet. | Primitive site at mile 302.7 near the PCT crossing. Fits a couple of rigs. Earlier Saturday stop if Panther Creek pullouts are full. | Access: FS 60 near the PCT trailhead.</desc><sym>Campground</sym></wpt>
 <wpt lat="46.336418" lon="-121.967987"><name>[CAMP BACKUP-A] Sep 12 (Sat) - FR-7708</name><desc>Free | Creek-side site with a cold pool. No facilities. | On-route at mile 244.5, Saturday morning after Greenhorn / Iron Creek. | Access: Gifford Pinchot, FS 7708 off the Cispus / Lewis divide.</desc><sym>Campground</sym></wpt>
 <wpt lat="46.110056" lon="-121.99432"><name>[CAMP BACKUP-B] Sep 12 (Sat) - Forest Route 9039</name><desc>Free | Several tucked sites. A couple will take a trailer. No facilities. | On-route at mile 272, Lewis River / Cougar side. Hunting-area notes in reviews. Early Saturday stop that leaves loop miles for Sunday. | Access: FS 9039 off the Lewis River corridor.</desc><sym>Campground</sym></wpt>
@@ -781,23 +783,149 @@
 <trkpt lat="45.75628" lon="-121.83437"></trkpt>
 <trkpt lat="45.75913" lon="-121.83786"></trkpt>
 <trkpt lat="45.76321" lon="-121.84294"></trkpt>
-<trkpt lat="45.76913" lon="-121.85033"></trkpt>
-<trkpt lat="45.78185" lon="-121.86614"></trkpt>
-<trkpt lat="45.7888" lon="-121.86616"></trkpt>
-<trkpt lat="45.79152" lon="-121.86649"></trkpt>
-<trkpt lat="45.79269" lon="-121.86621"></trkpt>
-<trkpt lat="45.79682" lon="-121.86614"></trkpt>
-<trkpt lat="45.79858" lon="-121.86697"></trkpt>
-<trkpt lat="45.80028" lon="-121.8688"></trkpt>
-<trkpt lat="45.80186" lon="-121.8695"></trkpt>
-<trkpt lat="45.80687" lon="-121.87444"></trkpt>
-<trkpt lat="45.81012" lon="-121.87868"></trkpt>
-<trkpt lat="45.8133" lon="-121.88044"></trkpt>
-<trkpt lat="45.81661" lon="-121.88121"></trkpt>
-<trkpt lat="45.81918" lon="-121.88074"></trkpt>
-<trkpt lat="45.81976" lon="-121.87974"></trkpt>
+<trkpt lat="45.76831" lon="-121.84584"></trkpt>
+<trkpt lat="45.76954" lon="-121.84754"></trkpt>
+<trkpt lat="45.77105" lon="-121.84892"></trkpt>
+<trkpt lat="45.77155" lon="-121.84916"></trkpt>
+<trkpt lat="45.77089" lon="-121.84771"></trkpt>
+<trkpt lat="45.76956" lon="-121.84477"></trkpt>
+<trkpt lat="45.76876" lon="-121.84217"></trkpt>
+<trkpt lat="45.76763" lon="-121.83848"></trkpt>
+<trkpt lat="45.76756" lon="-121.83657"></trkpt>
+<trkpt lat="45.76666" lon="-121.83558"></trkpt>
+<trkpt lat="45.76483" lon="-121.83468"></trkpt>
+<trkpt lat="45.76403" lon="-121.83283"></trkpt>
+<trkpt lat="45.76417" lon="-121.83034"></trkpt>
+<trkpt lat="45.76479" lon="-121.82847"></trkpt>
+<trkpt lat="45.76545" lon="-121.82632"></trkpt>
+<trkpt lat="45.76621" lon="-121.82504"></trkpt>
+<trkpt lat="45.76731" lon="-121.824"></trkpt>
+<trkpt lat="45.76897" lon="-121.82265"></trkpt>
+<trkpt lat="45.77028" lon="-121.82184"></trkpt>
+<trkpt lat="45.77119" lon="-121.82045"></trkpt>
+<trkpt lat="45.77186" lon="-121.81961"></trkpt>
+<trkpt lat="45.77367" lon="-121.81741"></trkpt>
+<trkpt lat="45.77463" lon="-121.81676"></trkpt>
+<trkpt lat="45.7758" lon="-121.8149"></trkpt>
+<trkpt lat="45.77616" lon="-121.81328"></trkpt>
+<trkpt lat="45.77695" lon="-121.8114"></trkpt>
+<trkpt lat="45.77786" lon="-121.81116"></trkpt>
+<trkpt lat="45.77857" lon="-121.81028"></trkpt>
+<trkpt lat="45.77929" lon="-121.8095"></trkpt>
+<trkpt lat="45.78053" lon="-121.80845"></trkpt>
+<trkpt lat="45.78147" lon="-121.80802"></trkpt>
+<trkpt lat="45.78324" lon="-121.80906"></trkpt>
+<trkpt lat="45.7843" lon="-121.80908"></trkpt>
+<trkpt lat="45.78501" lon="-121.80817"></trkpt>
+<trkpt lat="45.7842" lon="-121.80777"></trkpt>
+<trkpt lat="45.78308" lon="-121.80739"></trkpt>
+<trkpt lat="45.78149" lon="-121.80632"></trkpt>
+<trkpt lat="45.78006" lon="-121.80633"></trkpt>
+<trkpt lat="45.77923" lon="-121.80578"></trkpt>
+<trkpt lat="45.7785" lon="-121.80638"></trkpt>
+<trkpt lat="45.77744" lon="-121.80569"></trkpt>
+<trkpt lat="45.77643" lon="-121.80448"></trkpt>
+<trkpt lat="45.77556" lon="-121.80338"></trkpt>
+<trkpt lat="45.77486" lon="-121.80276"></trkpt>
+<trkpt lat="45.77454" lon="-121.8032"></trkpt>
+<trkpt lat="45.77526" lon="-121.80555"></trkpt>
+<trkpt lat="45.77525" lon="-121.80657"></trkpt>
+<trkpt lat="45.77519" lon="-121.80762"></trkpt>
+<trkpt lat="45.77397" lon="-121.80647"></trkpt>
+<trkpt lat="45.77369" lon="-121.80774"></trkpt>
+<trkpt lat="45.77343" lon="-121.80907"></trkpt>
+<trkpt lat="45.77328" lon="-121.81048"></trkpt>
+<trkpt lat="45.77217" lon="-121.81131"></trkpt>
+<trkpt lat="45.77112" lon="-121.81138"></trkpt>
+<trkpt lat="45.77065" lon="-121.8122"></trkpt>
+<trkpt lat="45.77004" lon="-121.81299"></trkpt>
+<trkpt lat="45.76958" lon="-121.81145"></trkpt>
+<trkpt lat="45.7694" lon="-121.81021"></trkpt>
+<trkpt lat="45.76995" lon="-121.80931"></trkpt>
+<trkpt lat="45.7698" lon="-121.80832"></trkpt>
+<trkpt lat="45.76995" lon="-121.80678"></trkpt>
+<trkpt lat="45.76974" lon="-121.8056"></trkpt>
+<trkpt lat="45.76883" lon="-121.80564"></trkpt>
+<trkpt lat="45.76814" lon="-121.80582"></trkpt>
+<trkpt lat="45.76759" lon="-121.80356"></trkpt>
+<trkpt lat="45.76777" lon="-121.80198"></trkpt>
+<trkpt lat="45.7677" lon="-121.80058"></trkpt>
+<trkpt lat="45.76723" lon="-121.79923"></trkpt>
+<trkpt lat="45.76655" lon="-121.79861"></trkpt>
+<trkpt lat="45.76566" lon="-121.79847"></trkpt>
+<trkpt lat="45.76499" lon="-121.79927"></trkpt>
+<trkpt lat="45.76486" lon="-121.79842"></trkpt>
+<trkpt lat="45.76566" lon="-121.79776"></trkpt>
+<trkpt lat="45.76702" lon="-121.79723"></trkpt>
+<trkpt lat="45.76756" lon="-121.79542"></trkpt>
+<trkpt lat="45.76757" lon="-121.79307"></trkpt>
+<trkpt lat="45.76811" lon="-121.79106"></trkpt>
+<trkpt lat="45.7687" lon="-121.78909"></trkpt>
+<trkpt lat="45.76907" lon="-121.78737"></trkpt>
+<trkpt lat="45.76999" lon="-121.78533"></trkpt>
+<trkpt lat="45.76948" lon="-121.7841"></trkpt>
+<trkpt lat="45.76882" lon="-121.7833"></trkpt>
+<trkpt lat="45.76881" lon="-121.78211"></trkpt>
+<trkpt lat="45.76923" lon="-121.78129"></trkpt>
+<trkpt lat="45.77034" lon="-121.78103"></trkpt>
+<trkpt lat="45.77068" lon="-121.77967"></trkpt>
+<trkpt lat="45.771" lon="-121.77805"></trkpt>
+<trkpt lat="45.77089" lon="-121.77696"></trkpt>
+<trkpt lat="45.77102" lon="-121.77535"></trkpt>
+<trkpt lat="45.77045" lon="-121.77396"></trkpt>
+<trkpt lat="45.77009" lon="-121.77301"></trkpt>
+<trkpt lat="45.76956" lon="-121.77176"></trkpt>
+<trkpt lat="45.77005" lon="-121.77073"></trkpt>
+<trkpt lat="45.77039" lon="-121.76817"></trkpt>
+<trkpt lat="45.76984" lon="-121.76728"></trkpt>
+<trkpt lat="45.76966" lon="-121.7661"></trkpt>
+<trkpt lat="45.76993" lon="-121.76368"></trkpt>
+<trkpt lat="45.77051" lon="-121.76075"></trkpt>
+<trkpt lat="45.77029" lon="-121.75907"></trkpt>
+<trkpt lat="45.77049" lon="-121.75711"></trkpt>
+<trkpt lat="45.77128" lon="-121.75644"></trkpt>
+<trkpt lat="45.77193" lon="-121.75565"></trkpt>
+<trkpt lat="45.77271" lon="-121.75403"></trkpt>
+<trkpt lat="45.77216" lon="-121.75348"></trkpt>
+<trkpt lat="45.77171" lon="-121.75239"></trkpt>
+<trkpt lat="45.77164" lon="-121.75153"></trkpt>
+<trkpt lat="45.77277" lon="-121.75091"></trkpt>
+<trkpt lat="45.77365" lon="-121.75102"></trkpt>
+<trkpt lat="45.77445" lon="-121.75031"></trkpt>
+<trkpt lat="45.77514" lon="-121.75021"></trkpt>
+<trkpt lat="45.77524" lon="-121.74911"></trkpt>
+<trkpt lat="45.77545" lon="-121.74774"></trkpt>
+<trkpt lat="45.77615" lon="-121.74714"></trkpt>
+<trkpt lat="45.77642" lon="-121.74626"></trkpt>
+<trkpt lat="45.77619" lon="-121.74554"></trkpt>
+<trkpt lat="45.77638" lon="-121.74436"></trkpt>
+<trkpt lat="45.77713" lon="-121.74429"></trkpt>
+<trkpt lat="45.77777" lon="-121.74355"></trkpt>
+<trkpt lat="45.77849" lon="-121.74314"></trkpt>
+<trkpt lat="45.77843" lon="-121.74215"></trkpt>
+<trkpt lat="45.77804" lon="-121.74075"></trkpt>
+<trkpt lat="45.77847" lon="-121.74013"></trkpt>
+<trkpt lat="45.77876" lon="-121.7391"></trkpt>
+<trkpt lat="45.77933" lon="-121.73874"></trkpt>
+<trkpt lat="45.77982" lon="-121.73773"></trkpt>
+<trkpt lat="45.78049" lon="-121.73698"></trkpt>
+<trkpt lat="45.78131" lon="-121.73674"></trkpt>
+<trkpt lat="45.78276" lon="-121.73483"></trkpt>
+<trkpt lat="45.78334" lon="-121.73488"></trkpt>
+<trkpt lat="45.78448" lon="-121.73457"></trkpt>
+<trkpt lat="45.7844" lon="-121.73661"></trkpt>
+<trkpt lat="45.78405" lon="-121.73793"></trkpt>
+<trkpt lat="45.78538" lon="-121.73905"></trkpt>
+<trkpt lat="45.78591" lon="-121.74009"></trkpt>
+<trkpt lat="45.78668" lon="-121.7408"></trkpt>
+<trkpt lat="45.78691" lon="-121.74189"></trkpt>
+<trkpt lat="45.78607" lon="-121.74318"></trkpt>
+<trkpt lat="45.78561" lon="-121.74521"></trkpt>
+<trkpt lat="45.78594" lon="-121.74723"></trkpt>
+<trkpt lat="45.7854" lon="-121.7495"></trkpt>
+<trkpt lat="45.78578" lon="-121.75022"></trkpt>
 </trkseg></trk>
-<trk><name>Sep 9 (Wed) - Day 1: Carson -&gt; Takhlakh Lake</name><trkseg>
+<trk><name>Sep 9 (Wed) - Day 1: Triangle Pass -&gt; Takhlakh Lake</name><trkseg>
 <trkpt lat="45.715179" lon="-121.828143"></trkpt>
 <trkpt lat="45.714986" lon="-121.829042"></trkpt>
 <trkpt lat="45.715051" lon="-121.829354"></trkpt>

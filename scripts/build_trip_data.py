@@ -38,41 +38,46 @@ PLAN = BASE / 'planning'
 # Day split
 # ---------------------------------------------------------------------------
 # Mile windows along the 324.8-mile main track. Overnight targets are free
-# dispersed clusters on the track (High Lakes, Chambers, Greenhorn, Panther
-# Creek pullouts). Paid developed campgrounds stay in the tables as backups.
+# dispersed clusters on the track (Triangle Pass / Big Lava, High Lakes,
+# Chambers, Greenhorn, Panther Creek pullouts). Paid developed campgrounds
+# stay in the tables as backups.
 DAYS = [
     {
         'id': 'sep8_travel',
         'label': 'Sep 8 (Tue) - Travel to the Gorge',
         'date_iso': '2026-09-08',
-        'title': 'Nampa, ID -> Carson, WA (Panther Creek camp)',
+        'title': 'Nampa, ID -> Triangle Pass / Big Lava camp',
         'type': 'travel',
         'descr': (
             'Meet at the Sinclair Stinker Station, 1902 N Franklin Blvd, Nampa at 8:00 AM MDT; '
             'roll out by 8:15. I-84 west through Oregon, then up the Columbia River Gorge and '
-            'across into Washington. About 376 miles and 7 hours of moving time, so plan on '
-            '8.5 to 9 hours with fuel and food stops for a six-vehicle group. You gain an hour '
-            'crossing into Pacific time, which puts arrival in camp around 3:30 to 4:30 PM PDT. '
-            'Camp the free pullouts along Panther Creek Road (FS 65 / 6513), roughly 11 miles '
-            'up Wind River Road from Carson, and start the loop from mile 0 in the morning. '
-            'The developed Panther Creek campground is the paid backup.'
+            'across into Washington. About 384 miles and 7.7 hours of moving time, so plan on '
+            '9 to 9.5 hours with fuel and food stops for a six-vehicle group. You gain an hour '
+            'crossing into Pacific time, which puts arrival in camp around 4:00 to 5:30 PM PDT. '
+            'Fuel in Carson — last pump for 154 route miles — then continue onto the loop '
+            'instead of turning up Panther Creek. Camp the free pullouts on opposite arms of '
+            'Triangle Pass: FR 68 near the pass (about mile 15) is the easier Tuesday arrival; '
+            'the Big Lava Bed pin (about mile 26) banks eleven more forest-road miles if there '
+            'is daylight. Moss Creek is the paid backup with a toilet and water. Wednesday '
+            'starts already on the loop.'
         ),
         'mi_lo': None,
         'mi_hi': None,
-        'miles': 376,
-        'driving_hours_est': 7.1,
+        'miles': 384,
+        'driving_hours_est': 7.7,
     },
     {
         'id': 'day1_cascades',
-        'label': 'Sep 9 (Wed) - Day 1: Carson -> Takhlakh Lake',
+        'label': 'Sep 9 (Wed) - Day 1: Triangle Pass -> Takhlakh Lake',
         'date_iso': '2026-09-09',
-        'title': 'Day 1: Columbia Gorge -> Indian Heaven -> Takhlakh Lake',
+        'title': 'Day 1: Triangle Pass / Big Lava -> Indian Heaven -> Takhlakh Lake',
         'type': 'overland',
         'descr': (
-            'The scenic-payoff day. Top off in Carson because there is no fuel for the next 154 '
-            'route miles. Climb Wind River Road past the High Bridge, skirt the Big Lava Bed, '
-            'and work north through Goose Lake. Peel east on FR 24 for Guler Ice Cave, a '
-            'developed 650-ft lava tube (Northwest Forest Pass; ice is often gone by September), '
+            'The scenic-payoff day. You should already have topped off in Carson on Tuesday — '
+            'there is no fuel for the next 154 route miles. From the Triangle Pass / Big Lava '
+            'camp, skirt the lava bed and work north through Goose Lake. Peel east on FR 24 for '
+            'Guler Ice Cave, a developed 650-ft lava tube (Northwest Forest Pass; ice is often '
+            'gone by September), '
             'then back to the Forlorn Lakes and up into Indian Heaven and the Sawtooth Berry '
             'Fields. Huckleberries should still be on in early September. Over Babyshoe Pass to '
             'Takhlakh Lake, where Mount Adams reflects in the water - the signature view of the '
@@ -134,8 +139,8 @@ DAYS = [
             'filling the window, then down the Lewis River past Curly Creek Falls and its twin '
             'natural basalt arches. Late in the day, the Falls Creek Lava Caves: a genuine lava '
             'tube from the Big Lava Bed eruption. Everyone going underground needs their own '
-            'headlamp plus a backup. Finish at Panther Creek Falls and camp the same free '
-            'pullouts the trip started at.'
+            'headlamp plus a backup. Finish at Panther Creek Falls and camp the free '
+            'pullouts along Panther Creek Road (FS 65 / 6513).'
         ),
         'mi_lo': 232.0,
         'mi_hi': 308.5,
@@ -209,45 +214,40 @@ CAMPSITES = {
     'sep8_travel': {
         'primary': [
             _camp(
-                'Panther Creek Dispersed #2', 45.834828, -121.870893,
+                'Triangle Pass Dispersed (FR 68)', 45.78538, -121.75436,
                 'primary', 'dispersed_fcfs', 'Free',
-                'Fire pit. No toilet, no water. Small-rig friendly.',
-                ('Closest of the three named pullouts to the developed campground (~0.3 mi off '
-                 'the loop at mile 308, and the same road you drive Tuesday evening). Most '
-                 'reviewed of the cluster. ' + _SPLIT_NOTE),
-                'Panther Creek Rd (FS 65 / 6513) off Wind River Rd, north of the developed campground.',
-                _FCS + 'panther-creek-dispersed-2/',
+                'No facilities. Unnamed existing pullout. Dry camp.',
+                ('About 0.8 mi west of the Triangle Pass waypoint on FR 68 / 6808 '
+                 '(Grassy Knoll / Willard approach), near loop mile 15. Easier Tuesday '
+                 'arrival after the Nampa drive — stop here without climbing the lava-bed '
+                 'arm. The two primary pins are 11 forest-road miles apart; they are a hub, '
+                 'not one pad. ' + _SPLIT_NOTE),
+                ('From Carson (fuel first): Wind River Hwy to Bear Creek Rd / FR 6808 to '
+                 'Triangle Pass, then FR 68 west. From the east: Cook-Underwood Rd / Willard '
+                 '/ FR 66 / FR 68. Rough, potholed gravel; high-clearance is happier.'),
             ),
             _camp(
-                'Panther Creek Dispersed #1', 45.84326, -121.85922,
+                'Big Lava Bed Dispersed', 45.86542, -121.70885,
                 'primary', 'dispersed_fcfs', 'Free',
-                'No amenities. One of several pullouts along Panther Creek.',
-                ('About a mile further up the same road as #2. Use it when #2 is taken or to '
-                 'spread the group. ' + _SPLIT_NOTE),
-                'FS 65 / 6513, continuing north from the developed campground.',
-                _FCS + 'panther-creek-dispersed-1/',
-            ),
-            _camp(
-                'Upper Panther Creek Dispersed', 45.84941, -121.85544,
-                'primary', 'dispersed_fcfs', 'Free',
-                'Large, fairly flat grassy pullout with a fire ring. Unmaintained.',
-                ('The roomiest of the three. Same arrival corridor Tuesday evening. ' + _SPLIT_NOTE),
-                'NF-6513 off Panther Creek Rd.',
-                _FCS + 'upper-panther-creek-dispersed/',
+                'No facilities. Unnamed existing pullout at the lava-bed edge. Dry camp.',
+                ('Already in the source GPX as an unnamed Campsite at route mile 26.1, 185 m '
+                 'off the track next to Big Lava Bed. About 11 forest-road miles north of the '
+                 'Triangle Pass pullout toward Goose Lake / FS 60. Push here Tuesday if there '
+                 'is daylight and you want to bank miles for Wednesday. ' + _SPLIT_NOTE),
+                'Continue north from Triangle Pass on the loop toward Goose Lake. Pin is 45.86542, -121.70885.',
             ),
         ],
         'secondary': {
-            'name': 'Panther Creek Campground (Recreation.gov 233103)',
-            'lat': 45.81972, 'lon': -121.87972,
+            'name': 'Moss Creek Campground',
+            'lat': 45.79501, 'lon': -121.63444,
             'status': 'secondary',
-            'kind': 'developed_reservable',
-            'cost': 'Per-site fee; 9 of 33 sites are first-come',
-            'facilities': 'Vault toilets, potable water, tables, fire rings. No hookups.',
-            'notes': ('Paid backup. 19 of 33 sites showed available for Sep 8 as of 2026-08-31. '
-                      'Use it if the pullouts are full or you want water and a toilet after the '
-                      'drive from Nampa.'),
-            'access': 'WA-14 to Carson, north on Wind River Rd, right on Panther Creek Rd (FS 65).',
-            'reserve_url': _RESGOV + '233103',
+            'kind': 'developed_fcfs',
+            'cost': 'Per-site fee',
+            'facilities': 'Vault toilets, water',
+            'notes': ('Paid first-come on the Little White Salmon, a few miles east of the '
+                      'Triangle Pass pullout. Use it if the FR 68 / lava-bed pads are full or '
+                      'you want a toilet and water after the drive from Nampa.'),
+            'access': 'FS 18 north from Willard.',
         },
         'tertiary': [
             {
@@ -262,14 +262,18 @@ CAMPSITES = {
                 'access': 'Directly off WA-14 at Home Valley, east of Carson.',
             },
             {
-                'name': 'Moss Creek Campground',
-                'lat': 45.79501, 'lon': -121.63444,
+                'name': 'Panther Creek Campground (Recreation.gov 233103)',
+                'lat': 45.81972, 'lon': -121.87972,
                 'status': 'tertiary',
-                'kind': 'developed_fcfs',
-                'cost': 'Per-site fee',
-                'facilities': 'Vault toilets, water',
-                'notes': 'Paid first-come on the Little White Salmon. Only if the group banks miles on arrival evening.',
-                'access': 'FS 18 north from Willard.',
+                'kind': 'developed_reservable',
+                'cost': 'Per-site fee; 9 of 33 sites are first-come',
+                'facilities': 'Vault toilets, potable water, tables, fire rings. No hookups.',
+                'notes': ('Paid last-resort. The old Tuesday plan, 11 miles up Wind River from '
+                          'Carson — the opposite direction from Triangle Pass. Use it only if '
+                          'you abort the FR 68 climb. 19 of 33 sites showed available for Sep 8 '
+                          'as of 2026-08-31.'),
+                'access': 'WA-14 to Carson, north on Wind River Rd, right on Panther Creek Rd (FS 65).',
+                'reserve_url': _RESGOV + '233103',
             },
         ],
     },
@@ -499,8 +503,7 @@ CAMPSITES = {
                 'Panther Creek Dispersed #2', 45.834828, -121.870893,
                 'primary', 'dispersed_fcfs', 'Free',
                 'Fire pit. No toilet, no water. Small-rig friendly.',
-                ('Same Saturday night as Tuesday: closest named pullout after Panther Creek Falls '
-                 '(mile 308.4). ' + _SPLIT_NOTE),
+                ('Closest named pullout after Panther Creek Falls (mile 308.4). ' + _SPLIT_NOTE),
                 'Panther Creek Rd (FS 65 / 6513) off Wind River Rd.',
                 _FCS + 'panther-creek-dispersed-2/',
             ),
@@ -680,7 +683,7 @@ FUEL_PLAN_SUMMARY = {
         'Forest-road fuel economy runs well below highway numbers. Plan on 65 to 82 percent of '
         'your normal mpg depending on surface, and worse if you are airing down and running low range.',
         'Fill in Nampa before departure and again somewhere in Oregon on the drive out; the '
-        'travel day is 376 highway miles.',
+        'travel day is about 384 highway miles including the FR 68 climb to camp.',
     ],
 }
 
@@ -744,6 +747,8 @@ REALTIME_LINKS = [
     # --- Weather ---
     {'cat': 'Weather', 'label': 'NWS Carson / Wind River (route start)',
      'url': _NWS_POINT.format(lat=45.7411, lon=-121.8214)},
+    {'cat': 'Weather', 'label': 'NWS Triangle Pass (Tue camp)',
+     'url': _NWS_POINT.format(lat=45.78538, lon=-121.75436)},
     {'cat': 'Weather', 'label': 'NWS Indian Heaven / Berry Fields',
      'url': _NWS_POINT.format(lat=46.0882, lon=-121.7678)},
     {'cat': 'Weather', 'label': 'NWS Takhlakh Lake (Day 1 camp)',
@@ -792,7 +797,7 @@ REALTIME_LINKS = [
      'url': _RESGOV + '232898'},
     {'cat': 'Camping/Permits', 'label': 'Tower Rock Campground (Day 3 paid backup)',
      'url': _RESGOV + '232855'},
-    {'cat': 'Camping/Permits', 'label': 'Panther Creek Campground (Tue/Sat paid backup)',
+    {'cat': 'Camping/Permits', 'label': 'Panther Creek Campground (Sat paid backup)',
      'url': _RESGOV + '233103'},
     {'cat': 'Camping/Permits', 'label': 'Northwest Forest Pass',
      'url': 'https://www.fs.usda.gov/detail/r6/passes-permits/recreation/?cid=fsbdev2_027010'},
@@ -837,7 +842,7 @@ INTRO_HTML = (
     'the Goat Rocks at Walupt Lake, reaches its northern limit at High Rock Lookout looking '
     'straight at Mount Rainier, then swings back south past Mount St Helens and down the Lewis '
     'River to close the loop at Triangle Pass.</p>'
-    '<p>Four driving days on route, bracketed by two 370-mile highway days to and from Nampa. '
+    '<p>Four driving days on route, bracketed by two ~370-mile highway days to and from Nampa. '
     'Day mileages are 85, 57, 91 and 77. Nights target free dispersed clusters on the track; '
     'paid developed campgrounds stay in each day as backups.</p>'
     '<p><strong>Nothing is reserved.</strong> The plan prefers free first-come pullouts. '

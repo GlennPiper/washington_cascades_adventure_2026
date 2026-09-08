@@ -29,7 +29,7 @@ MONTH_START = '2026-09-01'
 
 # (facility_id, label, route mile, which night it is wanted for)
 TARGETS = [
-    ('233103',   'Panther Creek',            'mi 308.4', 'Tue Sep 8 + Sat Sep 12'),
+    ('233103',   'Panther Creek',            'mi 308.4', 'Sat Sep 12'),
     ('10250549', 'Goose Lake',               'mi 34.5',  'first-come only'),
     ('232895',   'Peterson Prairie',         'mi 36.0',  'Day 1 backup'),
     ('10352092', 'Forlorn Lakes',            'mi 38.6',  'first-come only'),
@@ -94,7 +94,7 @@ def main() -> None:
             print(f'\n=== {label} id={cg_id} ERROR: {e}')
         time.sleep(2)
     print('\nBooking priority: North Fork Elk Group (Fri+Sat), Takhlakh Lake (Wed), '
-          'Panther Creek (Tue+Sat), Walupt Lake (Thu).')
+          'Panther Creek (Sat), Walupt Lake (Thu).')
 
 
 if __name__ == '__main__':

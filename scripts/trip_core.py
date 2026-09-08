@@ -106,7 +106,7 @@ POI_STATUS: dict[str, tuple[str, str]] = {
     'Falls Creek Caves Trailhead':    ('skip', 'Trailhead marker; DP - Falls Creek Lava Caves is the destination.'),
     'DP - Falls Creek Lava Caves':    ('hike_candidate', 'LAVA TUBE. No permit, no paid entry — this is not Ape Cave. A large cave system formed by the Big Lava Bed flow ~8,200 years ago. Every person going in needs their own headlamp plus a backup light and spare batteries; the cave is pitch dark, the floor is uneven basalt, and it stays cold year round. Boots, gloves and a helmet or beanie are worth having. Decontaminate kit first if you went in Guler Ice Cave on Wednesday. See the lava caves page for parking and how to find the pits.'),
     'Red Mountain Fire Lookout':      ('hike_candidate', 'Lookout at 4,965 ft on the Indian Heaven boundary; panorama of four volcanoes. ~1.7 mi off route.'),
-    'DP - Panther Creek Falls':       ('primary', 'About 130 ft of tiered falls with a built viewing platform a short walk from the road. First and last night are the free pullouts just up this road.'),
+    'DP - Panther Creek Falls':       ('primary', 'About 130 ft of tiered falls with a built viewing platform a short walk from the road. Saturday night is the free pullouts just up this road.'),
 }
 
 

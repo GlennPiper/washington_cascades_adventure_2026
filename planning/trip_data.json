@@ -28,10 +28,10 @@
     "highway_tracks_note": "Highway polylines follow OpenStreetMap road geometry via the public OSRM demo router. They are planning aids, not turn-by-turn navigation.",
     "highway_legs": {
       "sep8_nampa_to_carson": {
-        "label": "Nampa, ID -> Carson, WA (Panther Creek camp)",
-        "miles": 376.5,
-        "driving_hours": 7.08,
-        "point_count": 715
+        "label": "Nampa, ID -> Triangle Pass dispersed camp (via Carson fuel)",
+        "miles": 383.7,
+        "driving_hours": 7.66,
+        "point_count": 841
       },
       "sep13_carson_to_nampa": {
         "label": "Carson, WA -> Nampa, ID (drive home)",
@@ -134,6 +134,7 @@
     ],
     "cell_dead_zones": [
       "Wind River / Panther Creek corridor (mi 0-20) - patchy, none above the High Bridge",
+      "Triangle Pass / FR 68 / Big Lava (mi 15-26) - none once you leave pavement",
       "Indian Heaven / Sawtooth Berry Fields (mi 44-60) - essentially none",
       "Babyshoe Pass and the Midway High Lakes (mi 60-92) - none",
       "Upper Cispus / Walupt Lake (mi 95-141) - none",
@@ -155,13 +156,13 @@
       "id": "sep8_travel",
       "label": "Sep 8 (Tue) - Travel to the Gorge",
       "date_iso": "2026-09-08",
-      "title": "Nampa, ID -> Carson, WA (Panther Creek camp)",
+      "title": "Nampa, ID -> Triangle Pass / Big Lava camp",
       "type": "travel",
-      "descr": "Meet at the Sinclair Stinker Station, 1902 N Franklin Blvd, Nampa at 8:00 AM MDT; roll out by 8:15. I-84 west through Oregon, then up the Columbia River Gorge and across into Washington. About 376 miles and 7 hours of moving time, so plan on 8.5 to 9 hours with fuel and food stops for a six-vehicle group. You gain an hour crossing into Pacific time, which puts arrival in camp around 3:30 to 4:30 PM PDT. Camp the free pullouts along Panther Creek Road (FS 65 / 6513), roughly 11 miles up Wind River Road from Carson, and start the loop from mile 0 in the morning. The developed Panther Creek campground is the paid backup.",
+      "descr": "Meet at the Sinclair Stinker Station, 1902 N Franklin Blvd, Nampa at 8:00 AM MDT; roll out by 8:15. I-84 west through Oregon, then up the Columbia River Gorge and across into Washington. About 384 miles and 7.7 hours of moving time, so plan on 9 to 9.5 hours with fuel and food stops for a six-vehicle group. You gain an hour crossing into Pacific time, which puts arrival in camp around 4:00 to 5:30 PM PDT. Fuel in Carson — last pump for 154 route miles — then continue onto the loop instead of turning up Panther Creek. Camp the free pullouts on opposite arms of Triangle Pass: FR 68 near the pass (about mile 15) is the easier Tuesday arrival; the Big Lava Bed pin (about mile 26) banks eleven more forest-road miles if there is daylight. Moss Creek is the paid backup with a toilet and water. Wednesday starts already on the loop.",
       "mi_lo": null,
       "mi_hi": null,
-      "miles": 376,
-      "driving_hours_est": 7.1,
+      "miles": 384,
+      "driving_hours_est": 7.7,
       "pois": [],
       "track_points": [
         [
@@ -2965,116 +2966,605 @@
           -121.84294
         ],
         [
-          45.76913,
-          -121.85033
+          45.76831,
+          -121.84584
         ],
         [
-          45.78185,
-          -121.86614
+          45.76954,
+          -121.84754
         ],
         [
-          45.7888,
-          -121.86616
+          45.77105,
+          -121.84892
         ],
         [
-          45.79152,
-          -121.86649
+          45.77155,
+          -121.84916
         ],
         [
-          45.79269,
-          -121.86621
+          45.77089,
+          -121.84771
         ],
         [
-          45.79682,
-          -121.86614
+          45.76956,
+          -121.84477
         ],
         [
-          45.79858,
-          -121.86697
+          45.76876,
+          -121.84217
         ],
         [
-          45.80028,
-          -121.8688
+          45.76763,
+          -121.83848
         ],
         [
-          45.80186,
-          -121.8695
+          45.76756,
+          -121.83657
         ],
         [
-          45.80687,
-          -121.87444
+          45.76666,
+          -121.83558
         ],
         [
-          45.81012,
-          -121.87868
+          45.76483,
+          -121.83468
         ],
         [
-          45.8133,
-          -121.88044
+          45.76403,
+          -121.83283
         ],
         [
-          45.81661,
-          -121.88121
+          45.76417,
+          -121.83034
         ],
         [
-          45.81918,
-          -121.88074
+          45.76479,
+          -121.82847
         ],
         [
-          45.81976,
-          -121.87974
+          45.76545,
+          -121.82632
+        ],
+        [
+          45.76621,
+          -121.82504
+        ],
+        [
+          45.76731,
+          -121.824
+        ],
+        [
+          45.76897,
+          -121.82265
+        ],
+        [
+          45.77028,
+          -121.82184
+        ],
+        [
+          45.77119,
+          -121.82045
+        ],
+        [
+          45.77186,
+          -121.81961
+        ],
+        [
+          45.77367,
+          -121.81741
+        ],
+        [
+          45.77463,
+          -121.81676
+        ],
+        [
+          45.7758,
+          -121.8149
+        ],
+        [
+          45.77616,
+          -121.81328
+        ],
+        [
+          45.77695,
+          -121.8114
+        ],
+        [
+          45.77786,
+          -121.81116
+        ],
+        [
+          45.77857,
+          -121.81028
+        ],
+        [
+          45.77929,
+          -121.8095
+        ],
+        [
+          45.78053,
+          -121.80845
+        ],
+        [
+          45.78147,
+          -121.80802
+        ],
+        [
+          45.78324,
+          -121.80906
+        ],
+        [
+          45.7843,
+          -121.80908
+        ],
+        [
+          45.78501,
+          -121.80817
+        ],
+        [
+          45.7842,
+          -121.80777
+        ],
+        [
+          45.78308,
+          -121.80739
+        ],
+        [
+          45.78149,
+          -121.80632
+        ],
+        [
+          45.78006,
+          -121.80633
+        ],
+        [
+          45.77923,
+          -121.80578
+        ],
+        [
+          45.7785,
+          -121.80638
+        ],
+        [
+          45.77744,
+          -121.80569
+        ],
+        [
+          45.77643,
+          -121.80448
+        ],
+        [
+          45.77556,
+          -121.80338
+        ],
+        [
+          45.77486,
+          -121.80276
+        ],
+        [
+          45.77454,
+          -121.8032
+        ],
+        [
+          45.77526,
+          -121.80555
+        ],
+        [
+          45.77525,
+          -121.80657
+        ],
+        [
+          45.77519,
+          -121.80762
+        ],
+        [
+          45.77397,
+          -121.80647
+        ],
+        [
+          45.77369,
+          -121.80774
+        ],
+        [
+          45.77343,
+          -121.80907
+        ],
+        [
+          45.77328,
+          -121.81048
+        ],
+        [
+          45.77217,
+          -121.81131
+        ],
+        [
+          45.77112,
+          -121.81138
+        ],
+        [
+          45.77065,
+          -121.8122
+        ],
+        [
+          45.77004,
+          -121.81299
+        ],
+        [
+          45.76958,
+          -121.81145
+        ],
+        [
+          45.7694,
+          -121.81021
+        ],
+        [
+          45.76995,
+          -121.80931
+        ],
+        [
+          45.7698,
+          -121.80832
+        ],
+        [
+          45.76995,
+          -121.80678
+        ],
+        [
+          45.76974,
+          -121.8056
+        ],
+        [
+          45.76883,
+          -121.80564
+        ],
+        [
+          45.76814,
+          -121.80582
+        ],
+        [
+          45.76759,
+          -121.80356
+        ],
+        [
+          45.76777,
+          -121.80198
+        ],
+        [
+          45.7677,
+          -121.80058
+        ],
+        [
+          45.76723,
+          -121.79923
+        ],
+        [
+          45.76655,
+          -121.79861
+        ],
+        [
+          45.76566,
+          -121.79847
+        ],
+        [
+          45.76499,
+          -121.79927
+        ],
+        [
+          45.76486,
+          -121.79842
+        ],
+        [
+          45.76566,
+          -121.79776
+        ],
+        [
+          45.76702,
+          -121.79723
+        ],
+        [
+          45.76756,
+          -121.79542
+        ],
+        [
+          45.76757,
+          -121.79307
+        ],
+        [
+          45.76811,
+          -121.79106
+        ],
+        [
+          45.7687,
+          -121.78909
+        ],
+        [
+          45.76907,
+          -121.78737
+        ],
+        [
+          45.76999,
+          -121.78533
+        ],
+        [
+          45.76948,
+          -121.7841
+        ],
+        [
+          45.76882,
+          -121.7833
+        ],
+        [
+          45.76881,
+          -121.78211
+        ],
+        [
+          45.76923,
+          -121.78129
+        ],
+        [
+          45.77034,
+          -121.78103
+        ],
+        [
+          45.77068,
+          -121.77967
+        ],
+        [
+          45.771,
+          -121.77805
+        ],
+        [
+          45.77089,
+          -121.77696
+        ],
+        [
+          45.77102,
+          -121.77535
+        ],
+        [
+          45.77045,
+          -121.77396
+        ],
+        [
+          45.77009,
+          -121.77301
+        ],
+        [
+          45.76956,
+          -121.77176
+        ],
+        [
+          45.77005,
+          -121.77073
+        ],
+        [
+          45.77039,
+          -121.76817
+        ],
+        [
+          45.76984,
+          -121.76728
+        ],
+        [
+          45.76966,
+          -121.7661
+        ],
+        [
+          45.76993,
+          -121.76368
+        ],
+        [
+          45.77051,
+          -121.76075
+        ],
+        [
+          45.77029,
+          -121.75907
+        ],
+        [
+          45.77049,
+          -121.75711
+        ],
+        [
+          45.77128,
+          -121.75644
+        ],
+        [
+          45.77193,
+          -121.75565
+        ],
+        [
+          45.77271,
+          -121.75403
+        ],
+        [
+          45.77216,
+          -121.75348
+        ],
+        [
+          45.77171,
+          -121.75239
+        ],
+        [
+          45.77164,
+          -121.75153
+        ],
+        [
+          45.77277,
+          -121.75091
+        ],
+        [
+          45.77365,
+          -121.75102
+        ],
+        [
+          45.77445,
+          -121.75031
+        ],
+        [
+          45.77514,
+          -121.75021
+        ],
+        [
+          45.77524,
+          -121.74911
+        ],
+        [
+          45.77545,
+          -121.74774
+        ],
+        [
+          45.77615,
+          -121.74714
+        ],
+        [
+          45.77642,
+          -121.74626
+        ],
+        [
+          45.77619,
+          -121.74554
+        ],
+        [
+          45.77638,
+          -121.74436
+        ],
+        [
+          45.77713,
+          -121.74429
+        ],
+        [
+          45.77777,
+          -121.74355
+        ],
+        [
+          45.77849,
+          -121.74314
+        ],
+        [
+          45.77843,
+          -121.74215
+        ],
+        [
+          45.77804,
+          -121.74075
+        ],
+        [
+          45.77847,
+          -121.74013
+        ],
+        [
+          45.77876,
+          -121.7391
+        ],
+        [
+          45.77933,
+          -121.73874
+        ],
+        [
+          45.77982,
+          -121.73773
+        ],
+        [
+          45.78049,
+          -121.73698
+        ],
+        [
+          45.78131,
+          -121.73674
+        ],
+        [
+          45.78276,
+          -121.73483
+        ],
+        [
+          45.78334,
+          -121.73488
+        ],
+        [
+          45.78448,
+          -121.73457
+        ],
+        [
+          45.7844,
+          -121.73661
+        ],
+        [
+          45.78405,
+          -121.73793
+        ],
+        [
+          45.78538,
+          -121.73905
+        ],
+        [
+          45.78591,
+          -121.74009
+        ],
+        [
+          45.78668,
+          -121.7408
+        ],
+        [
+          45.78691,
+          -121.74189
+        ],
+        [
+          45.78607,
+          -121.74318
+        ],
+        [
+          45.78561,
+          -121.74521
+        ],
+        [
+          45.78594,
+          -121.74723
+        ],
+        [
+          45.7854,
+          -121.7495
+        ],
+        [
+          45.78578,
+          -121.75022
         ]
       ],
       "camps": {
         "primary": [
           {
-            "name": "Panther Creek Dispersed #2",
-            "lat": 45.834828,
-            "lon": -121.870893,
+            "name": "Triangle Pass Dispersed (FR 68)",
+            "lat": 45.78538,
+            "lon": -121.75436,
             "status": "primary",
             "kind": "dispersed_fcfs",
             "cost": "Free",
-            "facilities": "Fire pit. No toilet, no water. Small-rig friendly.",
-            "notes": "Closest of the three named pullouts to the developed campground (~0.3 mi off the loop at mile 308, and the same road you drive Tuesday evening). Most reviewed of the cluster. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
-            "access": "Panther Creek Rd (FS 65 / 6513) off Wind River Rd, north of the developed campground.",
-            "reserve_url": "https://freecampsites.net/panther-creek-dispersed-2/"
+            "facilities": "No facilities. Unnamed existing pullout. Dry camp.",
+            "notes": "About 0.8 mi west of the Triangle Pass waypoint on FR 68 / 6808 (Grassy Knoll / Willard approach), near loop mile 15. Easier Tuesday arrival after the Nampa drive — stop here without climbing the lava-bed arm. The two primary pins are 11 forest-road miles apart; they are a hub, not one pad. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "access": "From Carson (fuel first): Wind River Hwy to Bear Creek Rd / FR 6808 to Triangle Pass, then FR 68 west. From the east: Cook-Underwood Rd / Willard / FR 66 / FR 68. Rough, potholed gravel; high-clearance is happier."
           },
           {
-            "name": "Panther Creek Dispersed #1",
-            "lat": 45.84326,
-            "lon": -121.85922,
+            "name": "Big Lava Bed Dispersed",
+            "lat": 45.86542,
+            "lon": -121.70885,
             "status": "primary",
             "kind": "dispersed_fcfs",
             "cost": "Free",
-            "facilities": "No amenities. One of several pullouts along Panther Creek.",
-            "notes": "About a mile further up the same road as #2. Use it when #2 is taken or to spread the group. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
-            "access": "FS 65 / 6513, continuing north from the developed campground.",
-            "reserve_url": "https://freecampsites.net/panther-creek-dispersed-1/"
-          },
-          {
-            "name": "Upper Panther Creek Dispersed",
-            "lat": 45.84941,
-            "lon": -121.85544,
-            "status": "primary",
-            "kind": "dispersed_fcfs",
-            "cost": "Free",
-            "facilities": "Large, fairly flat grassy pullout with a fire ring. Unmaintained.",
-            "notes": "The roomiest of the three. Same arrival corridor Tuesday evening. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
-            "access": "NF-6513 off Panther Creek Rd.",
-            "reserve_url": "https://freecampsites.net/upper-panther-creek-dispersed/"
+            "facilities": "No facilities. Unnamed existing pullout at the lava-bed edge. Dry camp.",
+            "notes": "Already in the source GPX as an unnamed Campsite at route mile 26.1, 185 m off the track next to Big Lava Bed. About 11 forest-road miles north of the Triangle Pass pullout toward Goose Lake / FS 60. Push here Tuesday if there is daylight and you want to bank miles for Wednesday. Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "access": "Continue north from Triangle Pass on the loop toward Goose Lake. Pin is 45.86542, -121.70885."
           }
         ],
         "secondary": {
-          "name": "Panther Creek Campground (Recreation.gov 233103)",
-          "lat": 45.81972,
-          "lon": -121.87972,
+          "name": "Moss Creek Campground",
+          "lat": 45.79501,
+          "lon": -121.63444,
           "status": "secondary",
-          "kind": "developed_reservable",
-          "cost": "Per-site fee; 9 of 33 sites are first-come",
-          "facilities": "Vault toilets, potable water, tables, fire rings. No hookups.",
-          "notes": "Paid backup. 19 of 33 sites showed available for Sep 8 as of 2026-08-31. Use it if the pullouts are full or you want water and a toilet after the drive from Nampa.",
-          "access": "WA-14 to Carson, north on Wind River Rd, right on Panther Creek Rd (FS 65).",
-          "reserve_url": "https://www.recreation.gov/camping/campgrounds/233103"
+          "kind": "developed_fcfs",
+          "cost": "Per-site fee",
+          "facilities": "Vault toilets, water",
+          "notes": "Paid first-come on the Little White Salmon, a few miles east of the Triangle Pass pullout. Use it if the FR 68 / lava-bed pads are full or you want a toilet and water after the drive from Nampa.",
+          "access": "FS 18 north from Willard."
         },
         "tertiary": [
           {
@@ -3089,26 +3579,27 @@
             "access": "Directly off WA-14 at Home Valley, east of Carson."
           },
           {
-            "name": "Moss Creek Campground",
-            "lat": 45.79501,
-            "lon": -121.63444,
+            "name": "Panther Creek Campground (Recreation.gov 233103)",
+            "lat": 45.81972,
+            "lon": -121.87972,
             "status": "tertiary",
-            "kind": "developed_fcfs",
-            "cost": "Per-site fee",
-            "facilities": "Vault toilets, water",
-            "notes": "Paid first-come on the Little White Salmon. Only if the group banks miles on arrival evening.",
-            "access": "FS 18 north from Willard."
+            "kind": "developed_reservable",
+            "cost": "Per-site fee; 9 of 33 sites are first-come",
+            "facilities": "Vault toilets, potable water, tables, fire rings. No hookups.",
+            "notes": "Paid last-resort. The old Tuesday plan, 11 miles up Wind River from Carson — the opposite direction from Triangle Pass. Use it only if you abort the FR 68 climb. 19 of 33 sites showed available for Sep 8 as of 2026-08-31.",
+            "access": "WA-14 to Carson, north on Wind River Rd, right on Panther Creek Rd (FS 65).",
+            "reserve_url": "https://www.recreation.gov/camping/campgrounds/233103"
           }
         ]
       }
     },
     {
       "id": "day1_cascades",
-      "label": "Sep 9 (Wed) - Day 1: Carson -> Takhlakh Lake",
+      "label": "Sep 9 (Wed) - Day 1: Triangle Pass -> Takhlakh Lake",
       "date_iso": "2026-09-09",
-      "title": "Day 1: Columbia Gorge -> Indian Heaven -> Takhlakh Lake",
+      "title": "Day 1: Triangle Pass / Big Lava -> Indian Heaven -> Takhlakh Lake",
       "type": "overland",
-      "descr": "The scenic-payoff day. Top off in Carson because there is no fuel for the next 154 route miles. Climb Wind River Road past the High Bridge, skirt the Big Lava Bed, and work north through Goose Lake. Peel east on FR 24 for Guler Ice Cave, a developed 650-ft lava tube (Northwest Forest Pass; ice is often gone by September), then back to the Forlorn Lakes and up into Indian Heaven and the Sawtooth Berry Fields. Huckleberries should still be on in early September. Over Babyshoe Pass to Takhlakh Lake, where Mount Adams reflects in the water - the signature view of the whole route. Overnight in the free High Lakes cluster (Council, Olallie, Chain of Lakes, Horseshoe) rather than the paid Takhlakh campground.",
+      "descr": "The scenic-payoff day. You should already have topped off in Carson on Tuesday — there is no fuel for the next 154 route miles. From the Triangle Pass / Big Lava camp, skirt the lava bed and work north through Goose Lake. Peel east on FR 24 for Guler Ice Cave, a developed 650-ft lava tube (Northwest Forest Pass; ice is often gone by September), then back to the Forlorn Lakes and up into Indian Heaven and the Sawtooth Berry Fields. Huckleberries should still be on in early September. Over Babyshoe Pass to Takhlakh Lake, where Mount Adams reflects in the water - the signature view of the whole route. Overnight in the free High Lakes cluster (Council, Olallie, Chain of Lakes, Horseshoe) rather than the paid Takhlakh campground.",
       "mi_lo": 0.0,
       "mi_hi": 84.5,
       "miles": 85,
@@ -21113,7 +21604,7 @@
       "date_iso": "2026-09-12",
       "title": "Day 4: Burley Mountain -> Elk Pass -> lava caves -> Panther Creek",
       "type": "overland",
-      "descr": "The volcano-and-lava day, 77 miles. Burley Mountain Lookout takes in Rainier, Adams, St Helens and Hood from one spot. South over Elk Pass with Mount St Helens filling the window, then down the Lewis River past Curly Creek Falls and its twin natural basalt arches. Late in the day, the Falls Creek Lava Caves: a genuine lava tube from the Big Lava Bed eruption. Everyone going underground needs their own headlamp plus a backup. Finish at Panther Creek Falls and camp the same free pullouts the trip started at.",
+      "descr": "The volcano-and-lava day, 77 miles. Burley Mountain Lookout takes in Rainier, Adams, St Helens and Hood from one spot. South over Elk Pass with Mount St Helens filling the window, then down the Lewis River past Curly Creek Falls and its twin natural basalt arches. Late in the day, the Falls Creek Lava Caves: a genuine lava tube from the Big Lava Bed eruption. Everyone going underground needs their own headlamp plus a backup. Finish at Panther Creek Falls and camp the free pullouts along Panther Creek Road (FS 65 / 6513).",
       "mi_lo": 232.0,
       "mi_hi": 308.5,
       "miles": 77,
@@ -21283,7 +21774,7 @@
           "true_off_track_m": 84.8,
           "sym": "waterfall",
           "status": "primary",
-          "note": "About 130 ft of tiered falls with a built viewing platform a short walk from the road. First and last night are the free pullouts just up this road.",
+          "note": "About 130 ft of tiered falls with a built viewing platform a short walk from the road. Saturday night is the free pullouts just up this road.",
           "desc": "Panther Creek Falls is one of the most impressive and complex waterfalls in the Wind River Valley, located within the Gifford Pinchot National Forest, north of Carson, Washington. It is a highly popular and easily accessible destination in the Mt. Adams Ranger District. The total drop of the falls is estimated to be approximately 130 to 136 feet over a series of steps and plunges, distinguishing it from many single-drop waterfalls in the region.\n\nThe falls are characterized by a unique, multi-channel flow where Panther Creek and a large spring converge over a steep, mossy cliff face. Most of the creek's flow is channeled into a deep groove that steers the water over a two-tier plunge, while a separate, significant portion of water emerges from the canyon wall as a broad veil of springs, cascading down a sheer, moss-laden rock face before merging with the creek’s main flow in the plunge pool below. This complexity of water sources and varied drops makes for a mesmerizing, high-volume spectacle, particularly during high water.\n\nThe area is maintained by the U.S. Forest Service (Trail $#$137) and offers a very short, downhill hike (less than 0.7 miles round-trip) to two distinct viewpoints. The upper viewpoint provides a dramatic view of the convergence of the water over the upper tier, while the lower viewpoint (which is a more technical descent) offers a magnificent, close-up perspective of the main plunge and the mossy rock walls.",
           "spur_mi": 0.0,
           "default_minutes": 30,
@@ -27854,7 +28345,7 @@
             "kind": "dispersed_fcfs",
             "cost": "Free",
             "facilities": "Fire pit. No toilet, no water. Small-rig friendly.",
-            "notes": "Same Saturday night as Tuesday: closest named pullout after Panther Creek Falls (mile 308.4). Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
+            "notes": "Closest named pullout after Panther Creek Falls (mile 308.4). Six vehicles will not share one pullout. Scout on arrival and take several adjacent existing sites in the same cluster.",
             "access": "Panther Creek Rd (FS 65 / 6513) off Wind River Rd.",
             "reserve_url": "https://freecampsites.net/panther-creek-dispersed-2/"
           },
@@ -32508,7 +32999,7 @@
       "Two full refuels on route: Packwood at mile 156 and Randle at mile 217.",
       "The whole 325-mile loop at a 16 mpg baseline works out to roughly 20 gallons, but the binding constraint is the 154-mile Carson-to-Packwood leg, not the total.",
       "Forest-road fuel economy runs well below highway numbers. Plan on 65 to 82 percent of your normal mpg depending on surface, and worse if you are airing down and running low range.",
-      "Fill in Nampa before departure and again somewhere in Oregon on the drive out; the travel day is 376 highway miles."
+      "Fill in Nampa before departure and again somewhere in Oregon on the drive out; the travel day is about 384 highway miles including the FR 68 climb to camp."
     ]
   },
   "realtime_links": [
@@ -32566,6 +33057,11 @@
       "cat": "Weather",
       "label": "NWS Carson / Wind River (route start)",
       "url": "https://forecast.weather.gov/MapClick.php?lat=45.7411&lon=-121.8214"
+    },
+    {
+      "cat": "Weather",
+      "label": "NWS Triangle Pass (Tue camp)",
+      "url": "https://forecast.weather.gov/MapClick.php?lat=45.78538&lon=-121.75436"
     },
     {
       "cat": "Weather",
@@ -32679,7 +33175,7 @@
     },
     {
       "cat": "Camping/Permits",
-      "label": "Panther Creek Campground (Tue/Sat paid backup)",
+      "label": "Panther Creek Campground (Sat paid backup)",
       "url": "https://www.recreation.gov/camping/campgrounds/233103"
     },
     {
@@ -32776,5 +33272,5 @@
       }
     }
   ],
-  "intro_html": "<p>A 325-mile loop through Gifford Pinchot National Forest, starting and ending in the Columbia River Gorge at Carson. The route runs north along the Mount Adams flank, touches the Goat Rocks at Walupt Lake, reaches its northern limit at High Rock Lookout looking straight at Mount Rainier, then swings back south past Mount St Helens and down the Lewis River to close the loop at Triangle Pass.</p><p>Four driving days on route, bracketed by two 370-mile highway days to and from Nampa. Day mileages are 85, 57, 91 and 77. Nights target free dispersed clusters on the track; paid developed campgrounds stay in each day as backups.</p><p><strong>Nothing is reserved.</strong> The plan prefers free first-come pullouts. Six vehicles will need several adjacent sites in the same cluster. Stage 1 fire restrictions typically ban campfires at dispersed sites &mdash; bring a gas stove. Paid Recreation.gov camps remain listed if a cluster is full or you want water.</p>"
+  "intro_html": "<p>A 325-mile loop through Gifford Pinchot National Forest, starting and ending in the Columbia River Gorge at Carson. The route runs north along the Mount Adams flank, touches the Goat Rocks at Walupt Lake, reaches its northern limit at High Rock Lookout looking straight at Mount Rainier, then swings back south past Mount St Helens and down the Lewis River to close the loop at Triangle Pass.</p><p>Four driving days on route, bracketed by two ~370-mile highway days to and from Nampa. Day mileages are 85, 57, 91 and 77. Nights target free dispersed clusters on the track; paid developed campgrounds stay in each day as backups.</p><p><strong>Nothing is reserved.</strong> The plan prefers free first-come pullouts. Six vehicles will need several adjacent sites in the same cluster. Stage 1 fire restrictions typically ban campfires at dispersed sites &mdash; bring a gas stove. Paid Recreation.gov camps remain listed if a cluster is full or you want water.</p>"
 }

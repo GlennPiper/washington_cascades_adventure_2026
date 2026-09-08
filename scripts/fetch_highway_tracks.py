@@ -37,13 +37,13 @@ DECIMATE_EVERY = 6  # OSRM returns dense geometry; thin it for page weight.
 
 MEET = (cfg.MEET_POINT['lat'], cfg.MEET_POINT['lon'])
 ROUTE_START = (cfg.ROUTE_START['lat'], cfg.ROUTE_START['lon'])
-# Panther Creek Campground -- first and last night's camp.
-PANTHER_CREEK = (45.81979, -121.87988)
+# Tuesday night primary: FR 68 pullout west of Triangle Pass.
+TRIANGLE_PASS_CAMP = (45.78538, -121.75436)
 
 LEGS = {
     'sep8_nampa_to_carson': {
-        'label': 'Nampa, ID -> Carson, WA (Panther Creek camp)',
-        'points': [MEET, ROUTE_START, PANTHER_CREEK],
+        'label': 'Nampa, ID -> Triangle Pass dispersed camp (via Carson fuel)',
+        'points': [MEET, ROUTE_START, TRIANGLE_PASS_CAMP],
     },
     'sep13_carson_to_nampa': {
         'label': 'Carson, WA -> Nampa, ID (drive home)',

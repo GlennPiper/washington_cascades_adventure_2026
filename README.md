@@ -19,18 +19,18 @@ matters, because there is none between Carson and Packwood.
 | **Start / end** | Carson, WA (Columbia River Gorge) → Triangle Pass |
 | **Meet** | Sinclair Stinker Station, 1902 N Franklin Blvd, Nampa ID. Gather 8:00 AM MDT, depart 8:15 |
 | **Group** | ~6 vehicles, no split. Head count TBC |
-| **Highway legs** | 376 mi out, 368 mi back (~7 hr moving each way) |
+| **Highway legs** | 384 mi out, 368 mi back (~7.7 / 6.8 hr moving) |
 | **Fuel on route** | Carson (mi 2), Packwood (mi 156), Randle (mi 217) |
 
 ### Day split
 
-The split is dictated by free dispersed clusters on the track (High Lakes, Chambers,
-Greenhorn, Panther Creek pullouts). Paid developed campgrounds stay in the tables as
-backups.
+The split is dictated by free dispersed clusters on the track (Triangle Pass / Big Lava,
+High Lakes, Chambers, Greenhorn, Panther Creek pullouts). Paid developed campgrounds stay
+in the tables as backups.
 
 | Day | Route miles | Distance | Camp |
 |---|---|---|---|
-| Tue Sep 8 | travel | 376 mi highway | **Panther Creek dispersed** |
+| Tue Sep 8 | travel | 384 mi highway | **Triangle Pass / Big Lava dispersed** |
 | Wed Sep 9 | 0 → 84.5 | 85 mi | **High Lakes free cluster** (Council / Olallie) |
 | Thu Sep 10 | 84.5 → 141 | 57 mi | **Chambers Lake** |
 | Fri Sep 11 | 141 → 232 | 91 mi | **Greenhorn Creek** |
