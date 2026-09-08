@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useEffect } from 'react'
+import { useState, useCallback, useMemo, useEffect, useRef } from 'react'
 import { FileLoader } from './components/FileLoader'
 import { KmlMap } from './components/KmlMap'
 import { MapControls } from './components/MapControls'
@@ -17,6 +17,46 @@ function App() {
   const [showPoints, setShowPoints] = useState(true)
   const [showTracks, setShowTracks] = useState(true)
   const [showPolygons, setShowPolygons] = useState(true)
+  const [keepScreenAwake, setKeepScreenAwake] = useState(true)
+  const wakeLockRef = useRef<WakeLockSentinel | null>(null)
+
+  useEffect(() => {
+    if (!('wakeLock' in navigator)) return
+
+    const acquireWakeLock = async () => {
+      try {
+        wakeLockRef.current = await navigator.wakeLock.request('screen')
+      } catch {
+        // Device may deny the request (e.g. low battery); ignore silently
+      }
+    }
+
+    const releaseWakeLock = async () => {
+      if (wakeLockRef.current) {
+        await wakeLockRef.current.release()
+        wakeLockRef.current = null
+      }
+    }
+
+    if (keepScreenAwake) {
+      acquireWakeLock()
+
+      // Re-acquire after the page becomes visible again (wake lock is
+      // automatically released when the page is hidden)
+      const onVisibilityChange = () => {
+        if (document.visibilityState === 'visible') {
+          acquireWakeLock()
+        }
+      }
+      document.addEventListener('visibilitychange', onVisibilityChange)
+      return () => {
+        document.removeEventListener('visibilitychange', onVisibilityChange)
+        releaseWakeLock()
+      }
+    } else {
+      releaseWakeLock()
+    }
+  }, [keepScreenAwake])
 
   const mergedResult = useMemo(() => mergeKmlResults(results), [results])
   const [selectedSyms, setSelectedSyms] = useState<string[]>([])
@@ -70,6 +110,8 @@ function App() {
           hasPoints={(mergedResult?.pointCount ?? 0) > 0}
           hasTracks={(mergedResult?.trackCount ?? 0) > 0}
           hasPolygons={(mergedResult?.polygonCount ?? 0) > 0}
+          keepScreenAwake={keepScreenAwake}
+          onKeepScreenAwakeChange={setKeepScreenAwake}
         />
       </header>
       <main className="map-area">

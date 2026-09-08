@@ -17,6 +17,8 @@ interface MapControlsProps {
   hasPoints: boolean
   hasTracks: boolean
   hasPolygons: boolean
+  keepScreenAwake: boolean
+  onKeepScreenAwakeChange: (v: boolean) => void
 }
 
 const BASE_MAPS: { id: string; label: string }[] = [
@@ -42,6 +44,8 @@ export function MapControls({
   hasPoints,
   hasTracks,
   hasPolygons,
+  keepScreenAwake,
+  onKeepScreenAwakeChange,
 }: MapControlsProps) {
   return (
     <div className="map-controls">
@@ -121,6 +125,16 @@ export function MapControls({
             Polygons
           </label>
         )}
+      </div>
+      <div className="control-group">
+        <label>
+          <input
+            type="checkbox"
+            checked={keepScreenAwake}
+            onChange={(e) => onKeepScreenAwakeChange(e.target.checked)}
+          />
+          Keep screen on
+        </label>
       </div>
     </div>
   )
