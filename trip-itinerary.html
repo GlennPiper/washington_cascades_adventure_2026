@@ -2177,10 +2177,11 @@ const POI_DESCRIPTIONS = {"DP - Columbia River Gorge": {"desc": "The Columbia Ri
     scope: 'wca-speak-notes-scope',
     landmarks: 'wca-speak-notes-landmarks',
     repeat: 'wca-speak-notes-repeat',
-    voice: 'wca-speak-notes-voice'
+    voice: 'wca-speak-notes-voice',
+    keepAwake: 'wca-keep-screen-awake'
   };
   function defaults() {
-    return { enabled: false, scope: 'all', landmarks: true, repeat: false, voice: '' };
+    return { enabled: false, scope: 'all', landmarks: true, repeat: false, voice: '', keepAwake: true };
   }
   function readBool(key, fallback) {
     try {
@@ -2208,7 +2209,8 @@ const POI_DESCRIPTIONS = {"DP - Columbia River Gorge": {"desc": "The Columbia Ri
         scope: readStr(KEYS.scope, d.scope) === 'included' ? 'included' : 'all',
         landmarks: readBool(KEYS.landmarks, d.landmarks),
         repeat: readBool(KEYS.repeat, d.repeat),
-        voice: readStr(KEYS.voice, d.voice)
+        voice: readStr(KEYS.voice, d.voice),
+        keepAwake: readBool(KEYS.keepAwake, d.keepAwake)
       };
     },
     write: function(partial) {
@@ -2219,6 +2221,7 @@ const POI_DESCRIPTIONS = {"DP - Columbia River Gorge": {"desc": "The Columbia Ri
       write(KEYS.landmarks, next.landmarks ? '1' : '0');
       write(KEYS.repeat, next.repeat ? '1' : '0');
       write(KEYS.voice, next.voice || '');
+      write(KEYS.keepAwake, next.keepAwake ? '1' : '0');
       return next;
     },
     // Android Chrome often leaves voiceURI blank or identical across voices.
@@ -2326,6 +2329,8 @@ function _speakUnlock() {
   } catch (e) {}
 }
 function _speakRequestWake() {
+  const settings = window.WcaSpeakSettings && WcaSpeakSettings.read();
+  if (settings && settings.keepAwake === false) return;
   if (!navigator.wakeLock || typeof navigator.wakeLock.request !== 'function') return;
   navigator.wakeLock.request('screen').then(function(lock) {
     _speakWakeLock = lock;
@@ -2470,8 +2475,13 @@ document.addEventListener('click', function(e) {
   if (poi) speakPoi(poi);
 });
 window.addEventListener('storage', function(e) {
-  if (!e.key || e.key.indexOf('wca-speak-notes') !== 0) return;
   const settings = window.WcaSpeakSettings && WcaSpeakSettings.read();
+  if (e.key === 'wca-keep-screen-awake') {
+    if (!settings || settings.keepAwake === false) _speakReleaseWake();
+    else if (_speakCurrent) _speakRequestWake();
+    return;
+  }
+  if (!e.key || e.key.indexOf('wca-speak-notes') !== 0) return;
   if (!settings || !settings.enabled) _speakCancel();
 });
 if (window.speechSynthesis) {
@@ -2510,6 +2520,7 @@ if (window.WcaSpeakSettings && WcaSpeakSettings.read().enabled) {
   _speakRequestWake();
 }
 </script>
+<script src="screen-wake.js"></script>
 <script>window.__WCA_WEATHER_BOOT__={"variantKey": "main", "days": [{"day_id": "sep8_travel", "date_iso": "2026-09-08", "lat": 45.78538, "lon": -121.75436, "location_label": "Triangle Pass / FR 68 dispersed (2,300 ft)", "trip_label": "Sep 8 (Tue) - Travel to the Gorge", "trip_title": "Nampa, ID -> Triangle Pass / Big Lava camp"}, {"day_id": "day1_cascades", "date_iso": "2026-09-09", "lat": 46.2633, "lon": -121.6318, "location_label": "Council Lake camp (4,200 ft)", "trip_label": "Sep 9 (Wed) - Day 1: Triangle Pass -> Takhlakh Lake", "trip_title": "Day 1: Triangle Pass / Big Lava -> Indian Heaven -> Takhlakh Lake"}, {"day_id": "day2_cascades", "date_iso": "2026-09-10", "lat": 46.4655, "lon": -121.5318, "location_label": "Chambers Lake camp (Goat Rocks, ~4,400 ft)", "trip_label": "Sep 10 (Thu) - Day 2: Takhlakh -> Walupt Lake", "trip_title": "Day 2: Takh Takh lava -> Upper Cispus -> Walupt Lake"}, {"day_id": "day3_cascades", "date_iso": "2026-09-11", "lat": 46.4336, "lon": -121.9407, "location_label": "Greenhorn Creek camp, Cispus / FS 25 (1,500 ft)", "trip_label": "Sep 11 (Fri) - Day 3: Walupt -> North Fork", "trip_title": "Day 3: Packwood fuel -> High Rock Lookout -> Randle -> North Fork"}, {"day_id": "day4_cascades", "date_iso": "2026-09-12", "lat": 45.8348, "lon": -121.8709, "location_label": "Panther Creek dispersed, Wind River (1,000 ft)", "trip_label": "Sep 12 (Sat) - Day 4: North Fork -> Panther Creek", "trip_title": "Day 4: Burley Mountain -> Elk Pass -> lava caves -> Panther Creek"}, {"day_id": "sep13_return", "date_iso": "2026-09-13", "lat": 45.7411, "lon": -121.8214, "location_label": "Carson / Columbia Gorge (departure)", "trip_label": "Sep 13 (Sun) - Close the loop + drive home", "trip_title": "Panther Creek -> Triangle Pass (loop close) -> Nampa, ID"}]};</script>
 <script src="weather-client.js"></script>
 <script>if(window.TripWeather&&window.__WCA_WEATHER_BOOT__)TripWeather.init(Object.assign({mode:'itinerary'},window.__WCA_WEATHER_BOOT__));</script>

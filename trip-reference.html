@@ -704,10 +704,11 @@ const POI_DESCRIPTIONS = {"DP - Columbia River Gorge": {"desc": "The Columbia Ri
     scope: 'wca-speak-notes-scope',
     landmarks: 'wca-speak-notes-landmarks',
     repeat: 'wca-speak-notes-repeat',
-    voice: 'wca-speak-notes-voice'
+    voice: 'wca-speak-notes-voice',
+    keepAwake: 'wca-keep-screen-awake'
   };
   function defaults() {
-    return { enabled: false, scope: 'all', landmarks: true, repeat: false, voice: '' };
+    return { enabled: false, scope: 'all', landmarks: true, repeat: false, voice: '', keepAwake: true };
   }
   function readBool(key, fallback) {
     try {
@@ -735,7 +736,8 @@ const POI_DESCRIPTIONS = {"DP - Columbia River Gorge": {"desc": "The Columbia Ri
         scope: readStr(KEYS.scope, d.scope) === 'included' ? 'included' : 'all',
         landmarks: readBool(KEYS.landmarks, d.landmarks),
         repeat: readBool(KEYS.repeat, d.repeat),
-        voice: readStr(KEYS.voice, d.voice)
+        voice: readStr(KEYS.voice, d.voice),
+        keepAwake: readBool(KEYS.keepAwake, d.keepAwake)
       };
     },
     write: function(partial) {
@@ -746,6 +748,7 @@ const POI_DESCRIPTIONS = {"DP - Columbia River Gorge": {"desc": "The Columbia Ri
       write(KEYS.landmarks, next.landmarks ? '1' : '0');
       write(KEYS.repeat, next.repeat ? '1' : '0');
       write(KEYS.voice, next.voice || '');
+      write(KEYS.keepAwake, next.keepAwake ? '1' : '0');
       return next;
     },
     // Android Chrome often leaves voiceURI blank or identical across voices.
@@ -853,6 +856,8 @@ function _speakUnlock() {
   } catch (e) {}
 }
 function _speakRequestWake() {
+  const settings = window.WcaSpeakSettings && WcaSpeakSettings.read();
+  if (settings && settings.keepAwake === false) return;
   if (!navigator.wakeLock || typeof navigator.wakeLock.request !== 'function') return;
   navigator.wakeLock.request('screen').then(function(lock) {
     _speakWakeLock = lock;
@@ -997,8 +1002,13 @@ document.addEventListener('click', function(e) {
   if (poi) speakPoi(poi);
 });
 window.addEventListener('storage', function(e) {
-  if (!e.key || e.key.indexOf('wca-speak-notes') !== 0) return;
   const settings = window.WcaSpeakSettings && WcaSpeakSettings.read();
+  if (e.key === 'wca-keep-screen-awake') {
+    if (!settings || settings.keepAwake === false) _speakReleaseWake();
+    else if (_speakCurrent) _speakRequestWake();
+    return;
+  }
+  if (!e.key || e.key.indexOf('wca-speak-notes') !== 0) return;
   if (!settings || !settings.enabled) _speakCancel();
 });
 if (window.speechSynthesis) {
@@ -1006,6 +1016,7 @@ if (window.speechSynthesis) {
 }
 
 </script>
+<script src="screen-wake.js"></script>
 <script>
 (function(){
   if (!('serviceWorker' in navigator)) return;

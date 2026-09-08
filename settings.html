@@ -240,6 +240,15 @@ else init();
 <h1>Settings</h1>
 <p class="muted">Preferences stay on this device and work offline.</p>
 
+<section class="settings-section" aria-labelledby="display-heading">
+<h2 id="display-heading">Display</h2>
+<p>Keep the screen awake while this app is open. Turn this off if you want your phone's normal screen lock behavior while viewing trip pages.</p>
+<label class="settings-row">
+  <input type="checkbox" id="keep-screen-awake">
+  <span>Keep screen awake while app is open</span>
+</label>
+</section>
+
 <section class="settings-section" aria-labelledby="speak-notes-heading">
 <h2 id="speak-notes-heading">Spoken notes</h2>
 <p>Read a stop’s description out loud as you approach it. Uses voices already on this phone, so it works offline. Keep the itinerary open — the phone will not speak if the app is in the background or the screen is locked.</p>
@@ -281,10 +290,11 @@ else init();
     scope: 'wca-speak-notes-scope',
     landmarks: 'wca-speak-notes-landmarks',
     repeat: 'wca-speak-notes-repeat',
-    voice: 'wca-speak-notes-voice'
+    voice: 'wca-speak-notes-voice',
+    keepAwake: 'wca-keep-screen-awake'
   };
   function defaults() {
-    return { enabled: false, scope: 'all', landmarks: true, repeat: false, voice: '' };
+    return { enabled: false, scope: 'all', landmarks: true, repeat: false, voice: '', keepAwake: true };
   }
   function readBool(key, fallback) {
     try {
@@ -312,7 +322,8 @@ else init();
         scope: readStr(KEYS.scope, d.scope) === 'included' ? 'included' : 'all',
         landmarks: readBool(KEYS.landmarks, d.landmarks),
         repeat: readBool(KEYS.repeat, d.repeat),
-        voice: readStr(KEYS.voice, d.voice)
+        voice: readStr(KEYS.voice, d.voice),
+        keepAwake: readBool(KEYS.keepAwake, d.keepAwake)
       };
     },
     write: function(partial) {
@@ -323,6 +334,7 @@ else init();
       write(KEYS.landmarks, next.landmarks ? '1' : '0');
       write(KEYS.repeat, next.repeat ? '1' : '0');
       write(KEYS.voice, next.voice || '');
+      write(KEYS.keepAwake, next.keepAwake ? '1' : '0');
       return next;
     },
     // Android Chrome often leaves voiceURI blank or identical across voices.
@@ -382,6 +394,7 @@ else init();
   var formEnabled = document.getElementById('speak-enabled');
   var formLandmarks = document.getElementById('speak-landmarks');
   var formRepeat = document.getElementById('speak-repeat');
+  var formKeepAwake = document.getElementById('keep-screen-awake');
   var formVoice = document.getElementById('speak-voice');
   var formFallback = document.getElementById('speak-voice-fallback');
   var scopeAll = document.querySelector('input[name="speak-scope"][value="all"]');
@@ -392,6 +405,7 @@ else init();
     formEnabled.checked = !!s.enabled;
     formLandmarks.checked = !!s.landmarks;
     formRepeat.checked = !!s.repeat;
+    formKeepAwake.checked = s.keepAwake !== false;
     if (s.scope === 'included') scopeInc.checked = true;
     else scopeAll.checked = true;
   }
@@ -403,6 +417,7 @@ else init();
       landmarks: formLandmarks.checked,
       repeat: formRepeat.checked,
       scope: scopeInc.checked ? 'included' : 'all',
+      keepAwake: formKeepAwake.checked,
       voice: formVoice.value || WcaSpeakSettings.read().voice
     });
   }
@@ -510,6 +525,12 @@ else init();
   });
   formLandmarks.addEventListener('change', persistFromForm);
   formRepeat.addEventListener('change', persistFromForm);
+  formKeepAwake.addEventListener('change', function(){
+    persistFromForm();
+    if (window.WcaScreenWake && typeof WcaScreenWake.refresh === 'function') {
+      WcaScreenWake.refresh();
+    }
+  });
   scopeAll.addEventListener('change', persistFromForm);
   scopeInc.addEventListener('change', persistFromForm);
   formVoice.addEventListener('change', function(){
@@ -526,6 +547,7 @@ else init();
 })();
 </script>
 
+<script src="screen-wake.js"></script>
 <script>
 (function(){
   if (!('serviceWorker' in navigator)) return;
